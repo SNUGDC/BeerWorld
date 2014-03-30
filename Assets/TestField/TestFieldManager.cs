@@ -4,30 +4,34 @@ using System.Collections.Generic;
 
 public class TestFieldManager : MonoBehaviour {
 
-	public int TW = 58;
-	public int TH = 64;
+	public static float TilePixelWidth = 58;
+	public static float TilePixelHeight = 64;
+    public static float unityTileX = TilePixelWidth / 100;
+    public static float unityTileY = TilePixelHeight / 100;
 
-	public Vector2 getTranslatedPosition(float i, float j){
+	public static Vector2 getTranslatedPosition(float i, float j){
 		float posX, posY;
+		float zeroIndexX = i - 1;
+		float zeroIndexY = j - 1;
 		if (j%2 == 1){
-			posX = 77+TW/2+TW*(i-1);
-			posY = 4+TH/2+(TH-15)*(j-1);
+			posX = unityTileX/2+unityTileX * zeroIndexX;
+			posY = unityTileY/2+(unityTileY-0.15f) * zeroIndexY;
 		}
 		else {
-			posX = 77+TW*(i-1);
-			posY = 4+TH/2+(TH-15)*(j-1);
+			posX = unityTileX * zeroIndexX;
+			posY = unityTileY/2+(unityTileY-0.15f) * zeroIndexY;
 		}		
 		return new Vector2(posX, posY);
 	}
 							
-	public Vector2 getTranslatedCoordinate(float x, float y){
+	public static Vector2 getTranslatedCoordinate(float x, float y){
 		float i, j;	
-		j = math.floor((y-11.5)/(TH-15)) +1;
+		j = Mathf.Floor(y/unityTileY + 0.5f);
 		if (j%2 == 1){
-			i = math.floor(((x-77)/TW)+1); 
+			i = Mathf.Floor(x/unityTileX + 0.5f); 
 		}
 		else {
-			i = math.floor(((x-77)/TW)+3/2);
+			i = Mathf.Floor(x/unityTileX);
 		}
 		return new Vector2(i, j);
 	}
