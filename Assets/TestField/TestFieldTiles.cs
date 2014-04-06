@@ -11,7 +11,7 @@ public class TestFieldTiles : MonoBehaviour {
 			for (int j = 0; j < 13; j++) {
 				Vector2 tilePosition;
 				tilePosition = TestFieldManager.getTranslatedPosition (i, j);
-				Tile tileInstance = Instantiate (tile, new Vector3 (tilePosition.x, tilePosition.y, 0), Quaternion.identity) as Tile;
+				Tile tileInstance = Instantiate (tile, new Vector3 (tilePosition.x, tilePosition.y, j*0.1f), Quaternion.identity) as Tile;
 
 				GameObject tileInstanceGameObject = tileInstance.gameObject;
 				GameObject testFieldTilesGameObject = gameObject;
