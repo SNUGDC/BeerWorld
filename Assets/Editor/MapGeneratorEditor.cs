@@ -4,7 +4,7 @@ using System.Collections;
 
 public class MapGeneratorEditor : EditorWindow {
 
-	[MenuItem("Minjung/mapeditor")]
+	[MenuItem("Editor/Map Editor")]
 	static void ShowWindow()
 	{
 		EditorWindow.GetWindow (typeof(MapGeneratorEditor));

@@ -67,6 +67,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c485ed3300eb647be8d7db0f9409014f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isVisible: 0
+  isStartTile: 0
+  defaultTile: {fileID: 0}
+  startTile: {fileID: 0}
+  itemTile: {fileID: 0}
+  buffTile: {fileID: 0}
+  warpTile: {fileID: 0}
+  jailTile: {fileID: 0}
+  saveTile: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,6 +87,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c485ed3300eb647be8d7db0f9409014f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isVisible: 1
+  isStartTile: 0
+  defaultTile: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
+  startTile: {fileID: 21300000, guid: 59e68d659144d4338921f0c7595d20fa, type: 3}
+  itemTile: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
+  buffTile: {fileID: 21300000, guid: 98f48aefc66c54b3babebeed06f907c0, type: 3}
+  warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
+  jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
+  saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
