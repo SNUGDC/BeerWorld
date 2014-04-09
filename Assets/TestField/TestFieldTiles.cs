@@ -15,8 +15,6 @@ public class TestFieldTiles : MonoBehaviour {
 				Vector2 tilePosition;
 				tilePosition = TestFieldManager.getTranslatedPosition (i, j);
 
-//				float halfWidth = TestFieldManager.unityTileX * (MapWidth-1) / 2;
-//				float halfHeight = (TestFieldManager.unityTileY * (MapHeight-1) - (0.15f * (MapHeight-2))) / 2;
 				Vector3 zerozeroPosition = new Vector3 (tilePosition.x, tilePosition.y, j*0.1f);
 				Tile tileInstance = Instantiate (tile, zerozeroPosition, Quaternion.identity) as Tile;
 
@@ -26,6 +24,7 @@ public class TestFieldTiles : MonoBehaviour {
 				Transform tileInstanceTransform = tileInstanceGameObject.GetComponent<Transform>();
 				Transform tileTestTilesTransform = testFieldTilesGameObject.GetComponent<Transform>();
 
+                tileInstanceGameObject.name = "(" + (i+1) + "," + (j+1) + ") tile";
 				tileInstanceTransform.parent = testFieldTilesGameObject.transform;
 			}
 		}

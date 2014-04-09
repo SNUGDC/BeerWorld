@@ -3,8 +3,15 @@ using System.Collections;
 
 public class Tile : MonoBehaviour {
 
+	public enum TileType
+	{
+        Default, Start, Item, Buff, Warp, Jail, Save		
+    }
+
 	public bool isVisible;
-	public bool isStartTile;
+	//public bool isStartTile;
+
+    public TileType tileType;
 
 	public Sprite defaultTile;
 	public Sprite startTile;

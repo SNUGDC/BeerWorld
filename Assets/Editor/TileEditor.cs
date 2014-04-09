@@ -22,16 +22,48 @@ public class TileEditor : Editor {
             {
                 Debug.LogWarning ("Tile is invisible.");
             }
-            if (tile.isStartTile == true)
+
+            switch(tile.tileType)
             {
-                spriteRenderer.sprite = tile.startTile;
-                Debug.LogWarning ("startTile.");
+                case Tile.TileType.Default:
+                    spriteRenderer.sprite = tile.defaultTile;
+                    Debug.LogWarning ("defaultTile.");
+                    break;
+                case Tile.TileType.Start:
+                    spriteRenderer.sprite = tile.startTile;
+                    Debug.LogWarning ("startTile.");
+                    break;
+                case Tile.TileType.Item:
+                    spriteRenderer.sprite = tile.itemTile;
+                    Debug.LogWarning ("itemTile.");
+                    break;
+                case Tile.TileType.Save:
+                    spriteRenderer.sprite = tile.saveTile;
+                    Debug.LogWarning ("saveTile.");
+                    break;
+                case Tile.TileType.Warp:
+                    spriteRenderer.sprite = tile.warpTile;
+                    Debug.LogWarning ("warpTile.");
+                    break;
+                case Tile.TileType.Buff:
+                    spriteRenderer.sprite = tile.buffTile;
+                    Debug.LogWarning ("buffTile.");
+                    break;
+                case Tile.TileType.Jail:
+                    spriteRenderer.sprite = tile.jailTile;
+                    Debug.LogWarning ("jailTile.");
+                    break;
             }
-            else if (tile.isStartTile == false)
-            {
-                spriteRenderer.sprite = tile.defaultTile;
-                Debug.LogWarning ("not startTile.");
-            }
+//            if (tile.isStartTile == true)
+//            {
+//                spriteRenderer.sprite = tile.startTile;
+//                Debug.LogWarning ("startTile.");
+//            }
+//            else if (tile.isStartTile == false)
+//            {
+//                spriteRenderer.sprite = tile.defaultTile;
+//                Debug.LogWarning ("not startTile.");
+//            }
             tile.gameObject.SetActive(tile.isVisible);
             EditorUtility.SetDirty (target);
         }
