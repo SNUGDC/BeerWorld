@@ -13,7 +13,7 @@ public class TestFieldTiles : MonoBehaviour {
 		for (int i = 0; i < MapWidth; i++) {
 			for (int j = 0; j < MapHeight; j++) {
 				Vector2 tilePosition;
-				tilePosition = TestFieldManager.getTranslatedPosition (i, j);
+				tilePosition = FieldTileUtility.getTranslatedPosition (i, j);
 
 				Vector3 zerozeroPosition = new Vector3 (tilePosition.x, tilePosition.y, j*0.1f);
 				Tile tileInstance = Instantiate (tile, zerozeroPosition, Quaternion.identity) as Tile;

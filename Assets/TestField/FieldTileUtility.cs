@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TestFieldManager : MonoBehaviour {
+public class FieldTileUtility : MonoBehaviour {
 
 	public static float TilePixelWidth = 58;
 	public static float TilePixelHeight = 64;
