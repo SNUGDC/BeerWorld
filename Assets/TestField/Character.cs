@@ -13,6 +13,8 @@ public class Character : MonoBehaviour {
 	public int numberOfMoveDice;
 	//public List<Item> itemList = new List<Item>();
 
+
+
 	// Use this for initialization
 	void Start () {
 
