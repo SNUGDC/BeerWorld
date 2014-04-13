@@ -25,14 +25,11 @@ public class FieldTileUtility : MonoBehaviour {
 	}
 							
 	public static Vector2 getTranslatedCoordinate(float x, float y){
-		float i, j;	
-		j = Mathf.Floor(y/unityTileY + 0.5f);
-		if (j%2 == 1){
-			i = Mathf.Floor(x/unityTileX + 0.5f); 
-		}
-		else {
-			i = Mathf.Floor(x/unityTileX);
-		}
+		float i, j;
+		
+		j = (int)((((y - unityTileY / 2) / (unityTileY - 0.15f)) + 1) + 0.1f);
+		i = (int)((x / unityTileX + 1) + 0.4f);
+		
 		return new Vector2(i, j);
 	}
 	

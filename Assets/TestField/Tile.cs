@@ -21,6 +21,11 @@ public class Tile : MonoBehaviour {
 	public Sprite jailTile;
 	public Sprite saveTile;
 
+    public bool IsStartTile()
+    {
+        return tileType == TileType.Start;
+    }
+
 	// Use this for initialization
 	void Start () {
 //		

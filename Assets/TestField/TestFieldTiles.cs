@@ -33,6 +33,6 @@ public class TestFieldTiles : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        GenerateTile ();
+      //  GenerateTile ();
     }
 }
