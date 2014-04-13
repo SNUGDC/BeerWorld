@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TestFieldTiles : MonoBehaviour {
+public class FieldTilesMaker : MonoBehaviour {
 
 	public Tile tile;
 

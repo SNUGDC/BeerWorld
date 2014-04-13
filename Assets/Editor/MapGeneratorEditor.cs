@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
@@ -15,7 +15,7 @@ public class MapGeneratorEditor : EditorWindow {
 		EditorGUILayout.LabelField ("This is label.");
 		if (GUILayout.Button("sample button."))
         {
-            TestFieldTiles tileGenerator = GameObject.FindObjectOfType<TestFieldTiles> ();
+            FieldTilesMaker tileGenerator = GameObject.FindObjectOfType<FieldTilesMaker> ();
             if (tileGenerator == null)
             {
                 Debug.LogWarning("TileGenerator not found.");
