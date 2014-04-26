@@ -9,7 +9,7 @@ public class FieldTileUtility : MonoBehaviour {
     public static float unityTileX = TilePixelWidth / 100;
     public static float unityTileY = TilePixelHeight / 100;
 
-	public static Vector2 getTranslatedPosition(float i, float j){
+	public static Vector2 GetTranslatedPosition(float i, float j){
 		float posX, posY;
 		float zeroIndexX = i - 1;
 		float zeroIndexY = j - 1;
@@ -24,11 +24,11 @@ public class FieldTileUtility : MonoBehaviour {
 		return new Vector2(posX, posY);
 	}
 							
-	public static Vector2 getTranslatedCoordinate(float x, float y){
+	public static Vector2 GetTranslatedCoordinate(float x, float y){
 		float i, j;
 		
-		j = (int)((((y - unityTileY / 2) / (unityTileY - 0.15f)) + 1) + 0.1f);
-		i = (int)((x / unityTileX + 1) + 0.4f);
+		j = (int)((((y - unityTileY / 2) / (unityTileY - 0.15f)) + 1) + 0.1f) +1;
+		i = (int)((x / unityTileX + 1) + 0.4f) +1;
 		
 		return new Vector2(i, j);
 	}

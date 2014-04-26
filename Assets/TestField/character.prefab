@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.13448715, y: .0827590227, z: 3}
+  m_LocalPosition: {x: -.579999983, y: .809999943, z: -3}
   m_LocalScale: {x: .0799999982, y: .0799999982, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,8 +39,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b57f235a9844d10a2943edc9641944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0}
-  prePosition: {x: 0, y: 0}
   HP: 0
   numberOfAttackDice: 0
   numberOfDefenceDice: 0

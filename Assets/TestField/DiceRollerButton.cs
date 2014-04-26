@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DiceRollerButton : MonoBehaviour {
 
+    public CharManager characterManager;
+
 	// Use this for initialization
 	void Start () {
 	    //Instantiate(
@@ -14,6 +16,8 @@ public class DiceRollerButton : MonoBehaviour {
 	}
 
     void OnMouseDown() {
-        Debug.Log("Dice : " + Dice.Roll());
+        int diceResult = Dice.Roll();
+        Debug.Log("Dice : " + diceResult);
+        characterManager.howManyMove = 1;
     }
 }
