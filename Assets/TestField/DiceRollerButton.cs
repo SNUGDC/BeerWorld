@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DiceRollerButton : MonoBehaviour {
 
-    public CharManager characterManager;
+    public CharacterManager characterManager;
 
 	// Use this for initialization
 	void Start () {

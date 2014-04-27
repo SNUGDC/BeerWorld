@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class CharManager : MonoBehaviour {
+public class CharacterManager : MonoBehaviour {
 
 	public Character characterPrefeb;
     private Character characterInstance;
+
+    public static CharacterManager characterManagerInstance = null; 
+
     public int howManyMove = 0;
 
     public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
 
-
+    void Awake()
+    {
+        characterManagerInstance = this;
+    }
 
     void SearchBorderTiles () 
     {
