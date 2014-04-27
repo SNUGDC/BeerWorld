@@ -18,6 +18,6 @@ public class DiceRollerButton : MonoBehaviour {
     void OnMouseDown() {
         int diceResult = Dice.Roll();
         Debug.Log("Dice : " + diceResult);
-        characterManager.howManyMove = 1;
+        characterManager.howManyMove = diceResult;
     }
 }

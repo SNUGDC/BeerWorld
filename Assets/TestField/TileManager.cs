@@ -33,12 +33,12 @@ public class TileManager : MonoBehaviour {
     {
         if (singletonInstance.tileDictionary.ContainsKey(tileKey) == false)
         {
-            Debug.Log("tileKey : " + tileKey + " , tileValue : null");
+//            Debug.Log("tileKey : " + tileKey + " , tileValue : null");
             return null;
         }
         else
         {
-            Debug.Log("tileKey : " + tileKey + " , tileValue : NOT null");
+//            Debug.Log("tileKey : " + tileKey + " , tileValue : NOT null");
             return singletonInstance.tileDictionary[tileKey];
         }
     }
