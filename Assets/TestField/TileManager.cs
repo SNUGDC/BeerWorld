@@ -51,7 +51,7 @@ public class TileManager : MonoBehaviour {
     public static Dictionary<TileDirection, Tile> GetTileDictionaryOfBorderTiles(Vector2 characterCoordinate)
     {
         Dictionary<TileDirection, Tile> borderDictionary = new Dictionary<TileDirection, Tile>();
-        if ((int)characterCoordinate.x % 2 == 0) //even number
+        if ((int)characterCoordinate.y % 2 == 0) //even number
         {
             int upLeftKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y + 1);
             int midLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y);

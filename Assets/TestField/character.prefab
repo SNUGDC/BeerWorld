@@ -39,6 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b57f235a9844d10a2943edc9641944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTileKey: 0
+  preTileKey: 0
   HP: 0
   numberOfAttackDice: 0
   numberOfDefenceDice: 0

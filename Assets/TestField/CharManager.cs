@@ -15,14 +15,14 @@ public class CharManager : MonoBehaviour {
     {
         Vector3 position = characterInstance.transform.position;
         Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(position.x, position.y);
-        Debug.Log("characterPos : (" + position.x + ", " + position.y + ")");
         Debug.Log("characterCoord : (" + characterCoordinate.x + ", " + characterCoordinate.y + ")");
         borderDictionary = TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
     }
 
     void MoveCharacter () {
+        Debug.Log("------Searching------");
         SearchBorderTiles();
-        //characterInstance.preKey = characterInstance.key;
+        Debug.Log("------Moving------");
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in borderDictionary)
         {
             TileManager.TileDirection direction = pair.Key;
@@ -47,7 +47,12 @@ public class CharManager : MonoBehaviour {
             Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
             characterInstance.currentTileKey = (int)(newCoordinate.x*100 + newCoordinate.y);
 
+            Camera.main.transform.position = new Vector3(characterInstance.transform.position.x, characterInstance.transform.position.y, Camera.main.transform.position.z);
+
+            Debug.Log("key : " + characterInstance.currentTileKey + ", preKey : " + characterInstance.preTileKey);
             Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
+
+            break; // move end.
 
         }
     }
@@ -61,6 +66,8 @@ public class CharManager : MonoBehaviour {
         Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(startPositionOfCharacter.x, startPositionOfCharacter.y);
         characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
         characterInstance.preTileKey = 000;
+
+        Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
 	}
 	
 	// Update is called once per frame
