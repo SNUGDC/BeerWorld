@@ -7,6 +7,13 @@ public class NetworkManager : MonoBehaviour {
 	string username;
 	NetworkViewID Id;
 
+    private static NetworkManager networkInstance = null;
+
+    void Awake ()
+    {
+        networkInstance = this;
+    }
+
 	// Use this for initialization
 	void Start () {
 		username = PlayerPrefs.GetString ("id");
@@ -38,4 +45,15 @@ public class NetworkManager : MonoBehaviour {
 	private void StartGame(NetworkViewID id, Vector3 pos, Quaternion rot){
 		//implement if func when started
 	}
+
+    public static void SendRollDice(int diceResult)
+    {
+        networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.All, networkInstance.Id, diceResult);
+    }
+
+    private void ReceiveRollDice(NetworkViewID id, int diceResult)
+    {
+        //targetFunction.variable = diceResult;
+        Debug.Log("Dice of another player : " + diceResult);
+    }
 }

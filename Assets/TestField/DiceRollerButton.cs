@@ -19,5 +19,8 @@ public class DiceRollerButton : MonoBehaviour {
         int diceResult = Dice.Roll();
         Debug.Log("Dice : " + diceResult);
         characterManager.howManyMove = diceResult;
+
+        //call RPC function.
+        NetworkManager.SendRollDice(diceResult);
     }
 }
