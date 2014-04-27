@@ -8,7 +8,8 @@ public class CharManager : MonoBehaviour {
     public int howManyMove = 0;
 
     public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
-        
+
+
 
     void SearchBorderTiles () 
     {
@@ -20,28 +21,34 @@ public class CharManager : MonoBehaviour {
     }
 
     void MoveCharacter () {
-        //bool movable = true;
         SearchBorderTiles();
+        //characterInstance.preKey = characterInstance.key;
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in borderDictionary)
         {
-            if (pair.Value != null)
+            TileManager.TileDirection direction = pair.Key;
+            Tile toMoveTile = pair.Value;
+            if (toMoveTile == null)
             {
-//                Vector2 nextTilePosition = new Vector2(pair.Value.transform.position.x, pair.Value.transform.position.y);
-//                if (nextTilePosition != characterPrefeb.prePosition)
-//                {
-//                    if (movable == true)
-//                    {
-//                        characterPrefeb.prePosition = new Vector2(characterPrefeb.transform.position.x, characterPrefeb.transform.position.y);
-//                        Vector2 nextPosition = FieldTileUtility.GetTranslatedPosition((int)pair.Key/100, (int)pair.Key%10);
-//                        characterPrefeb.transform.position = new Vector3(nextPosition.x, nextPosition.y, Character.Depth);
-//                        Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextPosition.x, nextPosition.y);
-//                        characterPrefeb.position = new Vector2(characterPrefeb.transform.position.x, characterPrefeb.transform.position.y);
-//
-//                        movable = false;
-//                    }
-//                }
-                  Debug.Log("Key : " + pair.Key + " , Value : " + pair.Value);
+                continue;
             }
+
+            Vector2 nextTilePosition = new Vector2(toMoveTile.transform.position.x, toMoveTile.transform.position.y);
+            Vector2 nextTileCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
+            int nextTileKey = (int)(nextTileCoordinate.x * 100 + nextTileCoordinate.y);
+
+            if ((int)nextTileKey == characterInstance.preTileKey)
+            {
+                continue;
+            }
+
+            characterInstance.preTileKey = characterInstance.currentTileKey;
+
+            characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
+            Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
+            characterInstance.currentTileKey = (int)(newCoordinate.x*100 + newCoordinate.y);
+
+            Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
+
         }
     }
 
@@ -50,8 +57,10 @@ public class CharManager : MonoBehaviour {
 		Tile startTile = TileManager.GetStartTile ();
         Vector3 startTilePosition = startTile.gameObject.transform.position;
         Vector3 startPositionOfCharacter = new Vector3(startTilePosition.x, startTilePosition.y, Character.Depth);
-        characterInstance = Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character;
-//        characterPrefeb.position = new Vector2(characterPrefeb.transform.position.x, characterPrefeb.transform.position.y); 
+        characterInstance = Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
+        Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(startPositionOfCharacter.x, startPositionOfCharacter.y);
+        characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
+        characterInstance.preTileKey = 000;
 	}
 	
 	// Update is called once per frame

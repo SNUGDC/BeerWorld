@@ -5,8 +5,8 @@ public class Character : MonoBehaviour {
 
     public static readonly int Depth = -3;
 
-	public Vector2 position;
-	public Vector2 prePosition;
+	public int currentTileKey;
+	public int preTileKey;
 	public int HP;
 	public int numberOfAttackDice;
 	public int numberOfDefenceDice;

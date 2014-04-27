@@ -102,13 +102,9 @@ public class TileManager : MonoBehaviour {
             Vector2 tilePreCoordinate = FieldTileUtility.GetTranslatedCoordinate(tile.transform.localPosition.x, tile.transform.localPosition.y);
 			Vector2 tileCoordinate = new Vector2(tilePreCoordinate.x, tilePreCoordinate.y); 
             int tileKey = (int)(tileCoordinate.x * 100 + tileCoordinate.y);
-            Debug.Log(tile.gameObject.name + " : " + tileCoordinate.x + ", " + tileCoordinate.y);
             tileDictionary.Add(tileKey, tile);
         }
-
-        Debug.Log("length of List : " + tileList.Count);
-        Debug.Log("length of Dictionary : " + tileDictionary.Count);
-	}
+    }
 
 	// Use this for initialization
 	void Start () {
