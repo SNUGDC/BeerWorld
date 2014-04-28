@@ -46,7 +46,6 @@ public class NetworkManager : MonoBehaviour {
 		//implement if func when started
 	}
 
-    [RPC]
     public static void SendRollDice(int diceResult)
     {
         networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.All, networkInstance.Id, diceResult);
@@ -58,5 +57,17 @@ public class NetworkManager : MonoBehaviour {
         //targetFunction.variable = diceResult;
         Debug.Log("Dice of another player : " + diceResult);
         CharacterManager.characterManagerInstance.howManyMove = diceResult;
+    }
+
+    public static void SendGameStartMessage ()
+    {
+        networkInstance.networkView.RPC("ReceiveGameStartMessage", RPCMode.All, networkInstance.Id);
+        Debug.Log("Game Start! @Server");
+    }
+
+    [RPC]
+    private void ReceiveGameStartMessage(NetworkViewID id)
+    {
+        Debug.Log("Game Start! @Cilent");
     }
 }
