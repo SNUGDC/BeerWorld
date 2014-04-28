@@ -9829,6 +9829,7 @@ GameObject:
   - 4: {fileID: 928562028}
   - 212: {fileID: 928562030}
   - 61: {fileID: 928562029}
+  - 114: {fileID: 928562031}
   m_Layer: 0
   m_Name: GameStart
   m_TagString: Untagged
@@ -9881,6 +9882,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 028c23afba09640b39e453507211e61b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &928562031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 928562027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfbc67551cb5444b9e74fd460c53eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &932738207
 GameObject:
   m_ObjectHideFlags: 0
