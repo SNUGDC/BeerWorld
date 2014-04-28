@@ -69,5 +69,17 @@ public class NetworkManager : MonoBehaviour {
     private void ReceiveGameStartMessage(NetworkViewID id)
     {
         Debug.Log("Game Start! @Cilent");
+        SendUsersNetworkViewID();
+    }
+
+    public static void SendUsersNetworkViewID ()
+    {
+        networkInstance.networkView.RPC("ReceiveUsersNetworkViewID", RPCMode.All, networkInstance.Id);
+    }
+
+    [RPC]
+    private void ReceiveUsersNetworkViewID(NetworkViewID id)
+    {
+        Debug.Log("SendID : " + id);
     }
 }
