@@ -22,9 +22,9 @@ public class Login : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.skin = guiskin;
-		username = GUI.TextField(new Rect(10*width_unit,10*height_unit,100*width_unit,40*height_unit),username);
+		username = GUI.TextField(new Rect(10*width_unit,10*height_unit,150*width_unit,40*height_unit),username);
 		PlayerPrefs.SetString ("id", username);
-		if(GUI.Button(new Rect(10*width_unit,60*height_unit,100*width_unit,40*height_unit),"Login")){
+		if(GUI.Button(new Rect(10*width_unit,60*height_unit,150*width_unit,50*height_unit),"Login")){
 			//username = "";
 			Application.LoadLevel("Lobby");
 		}

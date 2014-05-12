@@ -30,8 +30,8 @@ public class RoomManager : MonoBehaviour {
 		MasterServer.port = 5000;
 		username = PlayerPrefs.GetString ("id");
 		ChatWindow = new Rect(0*width_unit,Screen.height-300*height_unit,500*width_unit,300*height_unit);
-		CreateRoom = new Rect (100*width_unit, 60*height_unit, 200*width_unit, 130*height_unit);
-		RoomList = new Rect (100*width_unit, 100*height_unit, 200*width_unit, 130*height_unit);
+		CreateRoom = new Rect (150*width_unit, 60*height_unit, 300*width_unit, 195*height_unit);
+		RoomList = new Rect (150*width_unit, 100*height_unit, 300*width_unit, 195*height_unit);
 		guiskin.textField.fontSize = (int)(20 * height_unit);
 		guiskin.label.fontSize = (int)(20 * height_unit);
 		Id = Network.AllocateViewID ();
@@ -45,15 +45,15 @@ public class RoomManager : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin = guiskin;
 		if (Network.peerType == NetworkPeerType.Disconnected) {
-			if(GUI.Button(new Rect(10*width_unit,10*height_unit,100*width_unit,40*height_unit), "Create Room")){
+			if(GUI.Button(new Rect(10*width_unit,10*height_unit,150*width_unit,50*height_unit), "Create Room")){
 				iscreating = true;
 				Debug.Log("Create");
 			}
-			if(GUI.Button(new Rect(10*width_unit,60*height_unit,100*width_unit,40*height_unit), "Enter Room")){
+			if(GUI.Button(new Rect(10*width_unit,60*height_unit,150*width_unit,50*height_unit), "Enter Room")){
 				isfinding = true;
 				received = false;
 			}
-			if(GUI.Button(new Rect(10*width_unit,110*height_unit,100*width_unit,40*height_unit), "Log Out")){
+			if(GUI.Button(new Rect(10*width_unit,110*height_unit,150*width_unit,50*height_unit), "Log Out")){
 				Destroy(this.gameObject);
 				Application.LoadLevel("Login");
 			}
@@ -111,27 +111,27 @@ public class RoomManager : MonoBehaviour {
 	}
 	
 	private void CreateRoom_func(int id){
-		RoomName = GUI.TextField(new Rect(10*width_unit,25*height_unit,180*width_unit,25*height_unit), RoomName);
-		RoomType = GUI.TextField(new Rect(10*width_unit,60*height_unit,180*width_unit,25*height_unit), RoomType);
+		RoomName = GUI.TextField(new Rect(15*width_unit,40*height_unit, 270*width_unit,40*height_unit), RoomName);
+		RoomType = GUI.TextField(new Rect(15*width_unit,90*height_unit,270*width_unit,40*height_unit), RoomType);
 
-		if(GUI.Button(new Rect(10*width_unit,95*height_unit,90*width_unit,25*height_unit), "Create")){
+		if(GUI.Button(new Rect(15*width_unit,140*height_unit,135*width_unit,40*height_unit), "Create")){
 			Network.InitializeServer(10,25000,!Network.HavePublicAddress());
 			MasterServer.RegisterHost(RoomType,RoomName,"testing");
 			iscreating = false;
 		}
-		if(GUI.Button(new Rect(100*width_unit,95*height_unit,90*width_unit,25*height_unit), "Close"))
+		if(GUI.Button(new Rect(150*width_unit,140*height_unit,135*width_unit,40*height_unit), "Close"))
 			iscreating = false;
 		GUI.DragWindow ();
 	}
 	
 	private void RoomList_func(int id){
-		RoomType = GUI.TextField(new Rect(10*width_unit,25*height_unit,180*width_unit,25*height_unit), RoomType);
+		RoomType = GUI.TextField(new Rect(15*width_unit,40*height_unit,270*width_unit,40*height_unit), RoomType);
 
-		if(GUI.Button(new Rect(10*width_unit,95*height_unit,90*width_unit,25*height_unit), "Search")){
+		if(GUI.Button(new Rect(15*width_unit,140*height_unit,135*width_unit,40*height_unit), "Search")){
 			MasterServer.ClearHostList();
 			MasterServer.RequestHostList(RoomType);
 		}
-		if(GUI.Button(new Rect(100*width_unit,95*height_unit,90*width_unit,25*height_unit),"Close"))
+		if(GUI.Button(new Rect(150*width_unit,140*height_unit,135*width_unit,40*height_unit),"Close"))
 			isfinding = false;
 		if(received){
 			HostList = MasterServer.PollHostList();
