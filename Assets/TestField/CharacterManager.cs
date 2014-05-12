@@ -11,6 +11,7 @@ public class CharacterManager : MonoBehaviour {
     public int howManyMove = 0;
 
     public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
+    public Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
 
     void Awake()
     {
@@ -25,9 +26,136 @@ public class CharacterManager : MonoBehaviour {
         borderDictionary = TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
     }
 
+    Dictionary<TileManager.TileDirection, Tile> GetTileDictionaryOfMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderDictionary)
+    {
+        Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
+
+        TileManager.TileDirection tempKey;
+        Tile tempTile;
+
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in borderDictionary)
+        {
+            tempKey = pair.Key;
+            tempTile = pair.Value;
+            
+            Debug.Log("@SMT func, Key : " + pair.Key + " ,Value : " + pair.Value);   
+            
+            if (tempTile == null)
+            {
+                continue;
+            }
+            
+            if (IsPreTile(tempTile) == true)
+            {
+                movableDictionary.Add(tempKey, null);
+            }
+            else
+            {
+                movableDictionary.Add(tempKey, tempTile);
+            }
+        }
+
+        return movableDictionary;
+    }
+
+    void SearchMovableTiles()
+    {
+        movableDictionary = GetTileDictionaryOfMovableTiles(borderDictionary);
+    }
+
+    bool IsBranch()
+    {
+        int numberOfMovableDirection = 0;
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
+        {
+            Debug.Log("branch counting");
+            if (pair.Value != null)
+            {
+                numberOfMovableDirection++;
+            }
+        }
+
+        Debug.Log("NOMD : " + numberOfMovableDirection);
+
+        if (numberOfMovableDirection > 1)
+        {
+            Debug.Log("is branch");
+            return true;
+        }
+        
+        if (numberOfMovableDirection == 0)
+        {
+            Debug.Log("There is no movable tile!");
+        }
+        
+        Debug.Log("isn't branch");
+        return false;
+    }
+
+    bool IsPreTile(Tile tile)
+    {
+        int preTileKeyOfCharacter = characterInstance.preTileKey;
+        int tileKeyOfBorderTile = FieldTileUtility.GetTranslatedTileToKey(tile);
+
+        return preTileKeyOfCharacter == tileKeyOfBorderTile;
+    }
+
+    /*void SearchMovableTiles()
+    {
+        TileManager.TileDirection tempKey;
+        Tile tempTile;
+
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in borderDictionary)
+        {
+            tempKey = pair.Key;
+            tempTile = pair.Value;
+
+            Debug.Log("@SMT func, Key : " + pair.Key + " ,Value : " + pair.Value);   
+
+            if (tempTile == null)
+            {
+                Debug.Log("Can't move!");
+                continue;
+            }
+
+            if (IsPreTile(tempTile) == true)
+            {
+                Debug.Log("You've came from here");
+
+                movableDictionary.Add(tempKey, null);
+                Debug.Log("Add null");
+            }
+            else
+            {
+                Debug.Log("New Way!");
+                movableDictionary.Add(tempKey, tempTile);
+                Debug.Log("Add new");
+            }
+            Debug.Log("Found way");
+        }
+
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
+        {
+            Debug.Log("MovableDictionary) Key : " + pair.Key + ", Value : " + pair.Value);
+        }
+    }*/
+
+    void selectDirection()
+    {
+
+    }
+
     void MoveCharacter () {
         Debug.Log("------Searching------");
         SearchBorderTiles();
+        SearchMovableTiles();
+
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
+        {
+            Debug.Log("Key : " + pair.Key + " ,Value : " + pair.Value);
+        }
+
+        IsBranch();
         Debug.Log("------Moving------");
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in borderDictionary)
         {
@@ -38,21 +166,23 @@ public class CharacterManager : MonoBehaviour {
                 continue;
             }
 
+//            int nextTileKey = FieldTileUtility.GetTranslatedTileToKey(toMoveTile);
+
             Vector2 nextTilePosition = new Vector2(toMoveTile.transform.position.x, toMoveTile.transform.position.y);
             Vector2 nextTileCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
-            int nextTileKey = (int)(nextTileCoordinate.x * 100 + nextTileCoordinate.y);
+//            int nextTileKey = (int)(nextTileCoordinate.x * 100 + nextTileCoordinate.y);
 
-            if ((int)nextTileKey == characterInstance.preTileKey)
-            {
-                continue;
-            }
+//            if (nextTileKey == characterInstance.preTileKey)
+//            {
+//                continue;
+//            }
 
             characterInstance.preTileKey = characterInstance.currentTileKey;
 
             characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
             Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
-            characterInstance.currentTileKey = (int)(newCoordinate.x*100 + newCoordinate.y);
-
+            characterInstance.currentTileKey = FieldTileUtility.GetTranslatedCoordinateToKey(newCoordinate);
+            
             Camera.main.transform.position = new Vector3(characterInstance.transform.position.x, characterInstance.transform.position.y, Camera.main.transform.position.z);
 
             Debug.Log("key : " + characterInstance.currentTileKey + ", preKey : " + characterInstance.preTileKey);

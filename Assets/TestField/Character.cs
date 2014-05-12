@@ -20,7 +20,7 @@ public class Character : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+	// Update is called once per frameb
 	void Update () {
 
 	
