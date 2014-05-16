@@ -3,15 +3,111 @@
 	{
 		"selected_items":
 		[
+			[
+				"m",
+				"movablePair"
+			],
+			[
+				"num",
+				"numberOfBorderTiles"
+			],
+			[
+				"Tile",
+				"TileDirection"
+			],
+			[
+				"T",
+				"TileDirection"
+			],
+			[
+				"Search",
+				"SearchMovableTiles"
+			],
+			[
+				"tile",
+				"tileKeyOfBorderTile"
+			],
+			[
+				"pre",
+				"preTileKeyOfCharacter"
+			],
+			[
+				"get",
+				"GetTranslatedTileToKey"
+			],
+			[
+				"ca",
+				"characterInstance"
+			],
+			[
+				"mova",
+				"movableDictionary"
+			],
+			[
+				"temp",
+				"tempTile"
+			],
+			[
+				"mo",
+				"movableDictionary"
+			],
+			[
+				"Key",
+				"KeyValuePair"
+			],
+			[
+				"new",
+				"newCoordinate"
+			],
+			[
+				"G",
+				"GetTranslatedCoordinate"
+			],
+			[
+				"Get",
+				"GetTranslatedCoodinateToKey"
+			],
+			[
+				"next",
+				"nextTileKey"
+			],
+			[
+				"is",
+				"isBranch"
+			],
+			[
+				"Ke",
+				"KeyValuePair"
+			],
+			[
+				"for",
+				"foreach"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "Assets/TestField/Character.cs",
+			"file": "Assets/TestField/CharacterManager.cs",
 			"settings":
 			{
-				"buffer_size": 473,
+				"buffer_size": 6020,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/TestField/FieldTileUtility.cs",
+			"settings":
+			{
+				"buffer_size": 1583,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/TestField/TileManager.cs",
+			"settings":
+			{
+				"buffer_size": 4751,
 				"line_ending": "Unix"
 			}
 		}
@@ -52,12 +148,13 @@
 	},
 	"file_history":
 	[
+		"/Users/Reny/BeerWorld/Assets/TestField/TestField.unity",
 		"/Users/Reny/BeerWorld/BeerWorld.sln",
 		"/Users/Reny/BeerWorld/Assets/TestField/TileManager.cs"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -71,6 +168,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tileKeyOfBorderTile"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -78,6 +176,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"GetTileDictionaryOfBorderTiles"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -93,10 +192,70 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/TestField/Character.cs",
+					"file": "Assets/TestField/CharacterManager.cs",
 					"settings":
 					{
-						"buffer_size": 473,
+						"buffer_size": 6020,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3711,
+								3711
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1436.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/TestField/FieldTileUtility.cs",
+					"settings":
+					{
+						"buffer_size": 1583,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "Assets/TestField/TileManager.cs",
+					"settings":
+					{
+						"buffer_size": 4751,
 						"regions":
 						{
 						},
@@ -110,10 +269,11 @@
 						"settings":
 						{
 							"syntax": "Packages/C#/C#.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 192.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -138,11 +298,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.865817535545,
 			1.0
 		],
 		"rows":
@@ -154,11 +321,11 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 100.0
+		"height": 132.0
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -185,6 +352,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 291.0,
+	"side_bar_width": 169.0,
 	"status_bar_visible": true
 }
