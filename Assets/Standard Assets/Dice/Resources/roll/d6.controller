@@ -38,9 +38,15 @@ Transition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
+<<<<<<< HEAD
   m_SrcState: {fileID: 110211399}
   m_DstState: {fileID: 110268300}
   m_TransitionDuration: .5
+=======
+  m_SrcState: {fileID: 110200000}
+  m_DstState: {fileID: 110243216}
+  m_TransitionDuration: .14211233
+>>>>>>> origin/master
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
@@ -94,13 +100,22 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110211399}
   m_DstState: {fileID: 110274314}
+<<<<<<< HEAD
   m_TransitionDuration: .5
   m_TransitionOffset: 0
+=======
+  m_TransitionDuration: .121925145
+  m_TransitionOffset: .0104166353
+>>>>>>> origin/master
   m_Conditions:
   - m_ConditionMode: 5
     m_ConditionEvent: 
     m_EventTreshold: 0
+<<<<<<< HEAD
     m_ExitTime: .5
+=======
+    m_ExitTime: .641484082
+>>>>>>> origin/master
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -129,14 +144,24 @@ Transition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_SrcState: {fileID: 110200000}
+<<<<<<< HEAD
   m_DstState: {fileID: 110211399}
   m_TransitionDuration: .13636364
   m_TransitionOffset: 0
+=======
+  m_DstState: {fileID: 110268300}
+  m_TransitionDuration: .2039437
+  m_TransitionOffset: .0238970686
+>>>>>>> origin/master
   m_Conditions:
   - m_ConditionMode: 5
     m_ConditionEvent: 
     m_EventTreshold: 0
+<<<<<<< HEAD
     m_ExitTime: .863636374
+=======
+    m_ExitTime: .442673981
+>>>>>>> origin/master
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
