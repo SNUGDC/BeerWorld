@@ -28,6 +28,7 @@ public class RoomManager : MonoBehaviour {
 	void Start () {
 		MasterServer.ipAddress = "147.46.241.250";
 		MasterServer.port = 5000;
+        Network.minimumAllocatableViewIDs = 3000;
 		username = PlayerPrefs.GetString ("id");
 		ChatWindow = new Rect(0*width_unit,Screen.height-300*height_unit,500*width_unit,300*height_unit);
 		CreateRoom = new Rect (150*width_unit, 60*height_unit, 300*width_unit, 195*height_unit);
@@ -35,6 +36,7 @@ public class RoomManager : MonoBehaviour {
 		guiskin.textField.fontSize = (int)(20 * height_unit);
 		guiskin.label.fontSize = (int)(20 * height_unit);
 		Id = Network.AllocateViewID ();
+        Debug.Log(Id);
 	}
 	
 	// Update is called once per frame
@@ -47,7 +49,6 @@ public class RoomManager : MonoBehaviour {
 		if (Network.peerType == NetworkPeerType.Disconnected) {
 			if(GUI.Button(new Rect(10*width_unit,10*height_unit,150*width_unit,50*height_unit), "Create Room")){
 				iscreating = true;
-				Debug.Log("Create");
 			}
 			if(GUI.Button(new Rect(10*width_unit,60*height_unit,150*width_unit,50*height_unit), "Enter Room")){
 				isfinding = true;
