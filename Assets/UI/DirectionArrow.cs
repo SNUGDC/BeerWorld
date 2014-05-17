@@ -10,7 +10,7 @@ public class DirectionArrow : MonoBehaviour {
 	public Sprite midRightArrow;
 	public Sprite downRightArrow;
 
-	private TileManager.TileDirection arrowDirection;
+	private static TileManager.TileDirection arrowDirection;
 
 	public static void SetArrowDirection (TileManager.TileDirection enumFormTileKey)
 	{
