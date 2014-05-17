@@ -9,6 +9,22 @@ public class FieldTileUtility : MonoBehaviour {
     public static float unityTileX = TilePixelWidth / 100;
     public static float unityTileY = TilePixelHeight / 100;
 
+    public static int GetTranslatedTileToKey(Tile tile)
+    {
+    	Vector2 position = new Vector2(tile.transform.position.x, tile.transform.position.y);
+        Vector2 coordinate = GetTranslatedCoordinate(position.x, position.y);
+        int key = GetTranslatedCoordinateToKey(coordinate);
+
+        return key;
+    }
+
+    public static int GetTranslatedCoordinateToKey(Vector2 coordinate)
+    {
+    	int key = (int)(coordinate.x*100 + coordinate.y);
+
+    	return key;
+    }
+
 	public static Vector2 GetTranslatedPosition(float i, float j){
 		float posX, posY;
 		float zeroIndexX = i - 1;
