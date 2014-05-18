@@ -8,13 +8,6 @@ public class CharacterManager : MonoBehaviour {
 
     public static CharacterManager characterManagerInstance = null; 
 
-    public GameObject upLeftArrow;
-    public GameObject midLeftArrow;
-    public GameObject downLeftArrow;
-    public GameObject upRightArrow;
-    public GameObject midRightArrow;
-    public GameObject downRightArrow;
-
     public int howManyMove = 0;
 
     public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
