@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TestField/Login.unity
+    path: Assets/Scenes/Lobby.unity
   - enabled: 1
-    path: Assets/TestField/Lobby.unity
+    path: Assets/Scenes/Game.unity
   - enabled: 1
-    path: Assets/TestField/TestField.unity
+    path: Assets/Scenes/Login.unity

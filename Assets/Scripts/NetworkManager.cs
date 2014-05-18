@@ -48,7 +48,7 @@ public class NetworkManager : MonoBehaviour {
 
     public static void SendRollDice(int diceResult)
     {
-        networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.All, networkInstance.Id, diceResult);
+        networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.Others, networkInstance.Id, diceResult);
     }
 
     [RPC]
@@ -61,7 +61,7 @@ public class NetworkManager : MonoBehaviour {
 
     public static void SendGameStartMessage ()
     {
-        networkInstance.networkView.RPC("ReceiveGameStartMessage", RPCMode.All, networkInstance.Id);
+        networkInstance.networkView.RPC("ReceiveGameStartMessage", RPCMode.Others, networkInstance.Id);
         Debug.Log("Game Start! @Server");
     }
 
@@ -74,7 +74,7 @@ public class NetworkManager : MonoBehaviour {
 
     public static void SendUsersNetworkViewID ()
     {
-        networkInstance.networkView.RPC("ReceiveUsersNetworkViewID", RPCMode.All, networkInstance.Id);
+        networkInstance.networkView.RPC("ReceiveUsersNetworkViewID", RPCMode.Others, networkInstance.Id);
     }
 
     [RPC]
