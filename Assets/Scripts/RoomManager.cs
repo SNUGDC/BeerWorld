@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Xml;
+using System.IO;
+
 
 public class RoomManager : MonoBehaviour {
 	
@@ -11,9 +14,15 @@ public class RoomManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		MasterServer.ipAddress = "147.46.241.250";
-		MasterServer.port = 5000;
-        Network.minimumAllocatableViewIDs = 3000;
+        TextAsset config = Resources.Load<TextAsset>("Config/masterserver");
+        if (config != null) {
+            XmlTextReader reader = new XmlTextReader(new StringReader(config.text));
+            reader.ReadToFollowing("ipAddress");
+            MasterServer.ipAddress = reader.ReadElementContentAsString();
+            reader.ReadToFollowing("port");
+            MasterServer.port = reader.ReadElementContentAsInt();
+        }
+        Debug.Log(MasterServer.port);
 		Id = Network.AllocateViewID ();
         Debug.Log(Id);
 	}
