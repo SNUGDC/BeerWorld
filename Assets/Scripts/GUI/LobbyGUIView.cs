@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public partial class LobbyGUIView : MonoBehaviour {
 
@@ -41,32 +42,25 @@ public partial class LobbyGUIView : MonoBehaviour {
     {
         GUI.skin = guiSkin;
 		if (Network.peerType == NetworkPeerType.Disconnected) {
-            if (GUI.Button(new Rect(
-                10 * Const.GUI_WIDTH_UNIT,
-                10 * Const.GUI_HEIGHT_UNIT,
-                150 * Const.GUI_WIDTH_UNIT,
-                50 * Const.GUI_HEIGHT_UNIT
-            ), "Create Room")) {
-				isCreating = true;
-			}
-            if (GUI.Button(new Rect(
-                10 * Const.GUI_WIDTH_UNIT,
-                60 * Const.GUI_HEIGHT_UNIT,
-                150 * Const.GUI_WIDTH_UNIT,
-                50 * Const.GUI_HEIGHT_UNIT
-            ), "Enter Room")) {
-				isFinding = true;
-				isReceived = false;
-			}
-            if (GUI.Button(new Rect(
-                10 * Const.GUI_WIDTH_UNIT,
-                110 * Const.GUI_HEIGHT_UNIT,
-                150 * Const.GUI_WIDTH_UNIT,
-                50 * Const.GUI_HEIGHT_UNIT
-            ), "Log Out")) {
-				Destroy(this.gameObject);
-				Application.LoadLevel("Login");
-			}
+            RoomManager roomManager = FindObjectOfType<RoomManager>();
+            GUILayout.BeginVertical();
+            roomManager.ipAddress = GUILayout.TextField(roomManager.ipAddress, 256);
+            roomManager.port = Convert.ToInt32(GUILayout.TextField(roomManager.port.ToString(), 256));
+            if (GUILayout.Button("Update MasterServer Info")) {
+                roomManager.UpdateMasterServerInfo();
+            }
+            if (GUILayout.Button("Create Room")) {
+                isCreating = true;
+            }
+            if (GUILayout.Button("Enter Room")) {
+                isFinding = true;
+                isReceived = false;
+            }
+            if (GUILayout.Button("Login")) {
+                Destroy(this.gameObject);
+                Application.LoadLevel("Login");
+            }
+            GUILayout.EndVertical();
 		}
 		if(isCreating == true)
 			createRoomRect = GUI.Window(1, createRoomRect, OnClickCreateRoom, "Create");
@@ -148,6 +142,7 @@ public partial class LobbyGUIView : MonoBehaviour
         MasterServer.RegisterHost(roomType, roomName, "testing");
         isCreating = false;
     }
+
     void JoinRoom(HostData element)
     {
         Network.Connect(element);
