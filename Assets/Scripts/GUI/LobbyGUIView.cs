@@ -123,15 +123,19 @@ public partial class LobbyGUIView : MonoBehaviour {
     {
         HostData[] HostList = MasterServer.PollHostList();
         int i = 0;
-        while (i < HostList.Length) {
-            HostData element = HostList[i];
-            if (GUI.Button(new Rect(10 * Const.GUI_WIDTH_UNIT, (60 + 25 * i) * Const.GUI_HEIGHT_UNIT, 180 * Const.GUI_WIDTH_UNIT, 25 * Const.GUI_HEIGHT_UNIT), HostList[i].gameType + ":" + HostList[i].gameName)) {
-                JoinRoom(element);
+        if (HostList.Length == 1) {
+            JoinRoom(HostList[0]);
+        }
+        else {
+            while (i < HostList.Length) {
+                HostData element = HostList[i];
+                if (GUI.Button(new Rect(10 * Const.GUI_WIDTH_UNIT, (60 + 25 * i) * Const.GUI_HEIGHT_UNIT, 180 * Const.GUI_WIDTH_UNIT, 25 * Const.GUI_HEIGHT_UNIT), HostList[i].gameType + ":" + HostList[i].gameName)) {
+                    JoinRoom(element);
+                }
+                i++;
             }
-            i++;
         }
     }
-
 }
 
 public partial class LobbyGUIView : MonoBehaviour
@@ -145,7 +149,8 @@ public partial class LobbyGUIView : MonoBehaviour
 
     void JoinRoom(HostData element)
     {
-        Network.Connect(element);
+        NetworkConnectionError error = Network.Connect(element);
+        Debug.Log("Join Room : " + error);
         isFinding = false;
     }
 
