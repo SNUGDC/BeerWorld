@@ -15,7 +15,7 @@ public class CharacterManager : MonoBehaviour {
     public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
     public Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
 
-    public List<GameObject> directionArrowList = new List<GameObject>();
+    public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
 
     void Awake()
     {
@@ -102,19 +102,22 @@ public class CharacterManager : MonoBehaviour {
 
     void InstantiateArrows ()
     {
-        directionArrowList = new List<GameObject>();
+        directionArrowList = new List<DirectionArrow>();
 
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
         {
             Vector3 characterPosition = characterInstance.transform.position;
             Vector2 arrowCoordinate = FieldTileUtility.GetTranslatedKeyToCoordinate (pair.Key, characterPosition);
             Debug.Log("Arrow Coordinate : " + arrowCoordinate.x + ", " + arrowCoordinate.y);
+            Debug.Log("Arrow Key : " + pair.Key);
             Vector2 arrowPosition = FieldTileUtility.GetTranslatedPosition(arrowCoordinate.x, arrowCoordinate.y);
             Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
 
-            GameObject directionArrow = null;
-            directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as GameObject;
-            DirectionArrow.SetArrowDirection(pair.Key);
+            DirectionArrow directionArrow = null;
+            directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
+            
+            DirectionArrow directionArrowScript = directionArrow.gameObject.GetComponent<DirectionArrow>();
+            directionArrowScript.SetArrowDirection(pair.Key);
 
             directionArrowList.Add(directionArrow);
         }
