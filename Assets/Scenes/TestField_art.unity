@@ -5998,9 +5998,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 533606439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c68051bcb6341cbba2d47200a0759d, type: 3}
+  m_Script: {fileID: 11500000, guid: 14073a90ef94d4baf8b9ea7cdbef1b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tile: {fileID: 11400002, guid: b76bc5f1d97f4457a8718d8e4e39e8c1, type: 2}
 --- !u!4 &533606441
 Transform:
   m_ObjectHideFlags: 0
@@ -12408,7 +12409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefeb: {fileID: 11400000, guid: f2bcc7d11c14b48a994c7ad4e12b09c8, type: 2}
+  arrowPrefeb: {fileID: 11400000, guid: 8ed448d76a4ed4a228d92b8b6da9d495, type: 2}
   howManyMove: 0
+  directionArrowList: []
 --- !u!4 &1154166921
 Transform:
   m_ObjectHideFlags: 0

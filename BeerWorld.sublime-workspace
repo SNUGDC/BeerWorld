@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"Tile",
+				"TileDirection"
+			],
+			[
+				"tile",
+				"TileDirection"
+			],
+			[
+				"to",
+				"toMoveTile"
+			],
+			[
 				"m",
 				"movablePair"
 			],
@@ -12,20 +24,12 @@
 				"numberOfBorderTiles"
 			],
 			[
-				"Tile",
-				"TileDirection"
-			],
-			[
 				"T",
 				"TileDirection"
 			],
 			[
 				"Search",
 				"SearchMovableTiles"
-			],
-			[
-				"tile",
-				"tileKeyOfBorderTile"
 			],
 			[
 				"pre",
@@ -88,26 +92,10 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/TestField/CharacterManager.cs",
+			"file": "Assets/Scripts/DirectionArrow.cs",
 			"settings":
 			{
-				"buffer_size": 6020,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/TestField/FieldTileUtility.cs",
-			"settings":
-			{
-				"buffer_size": 1583,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/TestField/TileManager.cs",
-			"settings":
-			{
-				"buffer_size": 4751,
+				"buffer_size": 600,
 				"line_ending": "Unix"
 			}
 		}
@@ -148,9 +136,14 @@
 	},
 	"file_history":
 	[
+		"/Users/Reny/BeerWorld/Assets/TestField/Tile.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/UI/DirectionArrow.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/CharacterManager.cs",
+		"/Users/Reny/BeerWorld/Assets/TestField/TileManager.cs",
+		"/Users/Reny/BeerWorld/Assets/TestField/FieldTileUtility.cs",
+		"/Users/Reny/BeerWorld/Assets/TestField/CharacterManager.cs",
 		"/Users/Reny/BeerWorld/Assets/TestField/TestField.unity",
-		"/Users/Reny/BeerWorld/BeerWorld.sln",
-		"/Users/Reny/BeerWorld/Assets/TestField/TileManager.cs"
+		"/Users/Reny/BeerWorld/BeerWorld.sln"
 	],
 	"find":
 	{
@@ -192,70 +185,10 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/TestField/CharacterManager.cs",
+					"file": "Assets/Scripts/DirectionArrow.cs",
 					"settings":
 					{
-						"buffer_size": 6020,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3711,
-								3711
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1436.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Assets/TestField/FieldTileUtility.cs",
-					"settings":
-					{
-						"buffer_size": 1583,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "Assets/TestField/TileManager.cs",
-					"settings":
-					{
-						"buffer_size": 4751,
+						"buffer_size": 600,
 						"regions":
 						{
 						},
@@ -269,15 +202,19 @@
 						"settings":
 						{
 							"syntax": "Packages/C#/C#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 192.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -309,7 +246,7 @@
 		"cols":
 		[
 			0.0,
-			0.865817535545,
+			0.572975291271,
 			1.0
 		],
 		"rows":

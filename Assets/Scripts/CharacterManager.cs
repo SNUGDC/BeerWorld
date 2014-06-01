@@ -6,12 +6,16 @@ public class CharacterManager : MonoBehaviour {
 	public Character characterPrefeb;
     private Character characterInstance;
 
+    public DirectionArrow arrowPrefeb;
+
     public static CharacterManager characterManagerInstance = null; 
 
     public int howManyMove = 0;
 
     public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
     public Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
+
+    public List<GameObject> directionArrowList = new List<GameObject>();
 
     void Awake()
     {
@@ -37,9 +41,7 @@ public class CharacterManager : MonoBehaviour {
         {
             tempKey = pair.Key;
             tempTile = pair.Value;
-            
-            //Debug.Log("@SMT func, Key : " + pair.Key + " ,Value : " + pair.Value);   
-            
+                        
             if (tempTile == null)
             {
                 continue;
@@ -47,7 +49,6 @@ public class CharacterManager : MonoBehaviour {
             
             if (IsPreTile(tempTile) == true)
             {
-                //movableDictionary.Add(tempKey, null);
                 continue;
             }
         
@@ -93,7 +94,33 @@ public class CharacterManager : MonoBehaviour {
         return preTileKeyOfCharacter == tileKeyOfBorderTile;
     }
 
-    void selectDirection()
+    void SelectDirection()
+    {
+        //TileManager.TileDirection seletedDirection;
+        InstantiateArrows();
+    }
+
+    void InstantiateArrows ()
+    {
+        directionArrowList = new List<GameObject>();
+
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
+        {
+            Vector3 characterPosition = characterInstance.transform.position;
+            Vector2 arrowCoordinate = FieldTileUtility.GetTranslatedKeyToCoordinate (pair.Key, characterPosition);
+            Debug.Log("Arrow Coordinate : " + arrowCoordinate.x + ", " + arrowCoordinate.y);
+            Vector2 arrowPosition = FieldTileUtility.GetTranslatedPosition(arrowCoordinate.x, arrowCoordinate.y);
+            Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
+
+            GameObject directionArrow = null;
+            directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as GameObject;
+            DirectionArrow.SetArrowDirection(pair.Key);
+
+            directionArrowList.Add(directionArrow);
+        }
+    }
+
+    void DestroyAllDirectionArrows()
     {
 
     }
@@ -103,7 +130,13 @@ public class CharacterManager : MonoBehaviour {
         SearchBorderTiles();
         SearchMovableTiles();
 
-        IsBranch();
+        //IsBranch();
+
+        if (IsBranch() == true)
+        {
+            SelectDirection();
+        }
+
         Debug.Log("------Moving------");
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
         {
