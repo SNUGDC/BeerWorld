@@ -30,7 +30,7 @@ public class FieldTileUtility : MonoBehaviour {
     	Vector2 standardPosition = standardPositionWithZ;
     	Vector2 standardCoordinate = GetTranslatedCoordinate(standardPosition.x, standardPosition.y);
     	Vector2 coordinate = Vector3.zero;
-    	if ((int)standardCoordinate.y % 2 == 0) //even number
+    	if ((int)standardCoordinate.y % 2 == 1) //odd number
     	{
     		if (key == TileManager.TileDirection.UpLeft) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y + 1);}
     		else if (key == TileManager.TileDirection.MidLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y);}
@@ -39,7 +39,7 @@ public class FieldTileUtility : MonoBehaviour {
     		else if (key == TileManager.TileDirection.MidRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y);}
     		else if (key == TileManager.TileDirection.DownRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y - 1);}	
     	}
-    	else //odd number
+    	else //even number
     	{
     		if (key == TileManager.TileDirection.UpLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y + 1);}
     		else if (key == TileManager.TileDirection.MidLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y);}
