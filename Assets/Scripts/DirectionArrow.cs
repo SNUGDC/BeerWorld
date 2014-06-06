@@ -10,6 +10,8 @@ public class DirectionArrow : MonoBehaviour {
 	public Sprite midRightArrow;
 	public Sprite downRightArrow;
 
+	public bool setDirection;
+
 	private TileManager.TileDirection arrowDirection;
 
 	public void SetArrowDirection (TileManager.TileDirection enumFormTileKey)
@@ -24,7 +26,7 @@ public class DirectionArrow : MonoBehaviour {
 
 	public void SetArrowImage()
 	{
-		Debug.Log("Set Arrow Img");
+		Debug.Log("Set Arrow Img, ArrowDirection : " + arrowDirection);
 		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
 		if (arrowDirection == TileManager.TileDirection.UpLeft)
@@ -55,17 +57,21 @@ public class DirectionArrow : MonoBehaviour {
 
 	void Awake () 
 	{
-		SetArrowImage();
+	//	SetArrowImage();
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		setDirection = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (setDirection == false)
+		{
+			SetArrowImage();
+			setDirection = true;
+		}
 	}
 
 	void OnMouseDown()

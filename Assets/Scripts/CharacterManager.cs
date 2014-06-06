@@ -109,9 +109,10 @@ public class CharacterManager : MonoBehaviour {
             Vector3 characterPosition = characterInstance.transform.position;
             Vector2 arrowCoordinate = FieldTileUtility.GetTranslatedKeyToCoordinate (pair.Key, characterPosition);
             Debug.Log("Arrow Coordinate : " + arrowCoordinate.x + ", " + arrowCoordinate.y);
-            Debug.Log("Arrow Key : " + pair.Key);
             Vector2 arrowPosition = FieldTileUtility.GetTranslatedPosition(arrowCoordinate.x, arrowCoordinate.y);
             Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
+
+            Debug.Log("Arrow Key : " + pair.Key);
 
             DirectionArrow directionArrow = null;
             directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
