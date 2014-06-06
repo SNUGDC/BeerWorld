@@ -56,11 +56,11 @@ public class FieldTileUtility : MonoBehaviour {
 		float posX, posY;
 		float zeroIndexX = i - 1;
 		float zeroIndexY = j - 1;
-		if (j%2 == 1){
+		if (j%2 == 1){  //odd number Y
 			posX = unityTileX/2+unityTileX * zeroIndexX;
 			posY = unityTileY/2+(unityTileY-0.15f) * zeroIndexY;
 		}
-		else {
+		else {  //even number y
 			posX = unityTileX * zeroIndexX;
 			posY = unityTileY/2+(unityTileY-0.15f) * zeroIndexY;
 		}		

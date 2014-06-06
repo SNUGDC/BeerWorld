@@ -49,7 +49,7 @@ public class TileManager : MonoBehaviour {
     public static Dictionary<TileDirection, Tile> GetTileDictionaryOfBorderTiles(Vector2 characterCoordinate)
     {
         Dictionary<TileDirection, Tile> borderDictionary = new Dictionary<TileDirection, Tile>();
-        if ((int)characterCoordinate.y % 2 == 0) //even number
+        if ((int)characterCoordinate.y % 2 == 1) //odd number
         {
             int upLeftKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y + 1);
             int midLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y);
@@ -65,7 +65,7 @@ public class TileManager : MonoBehaviour {
             borderDictionary.Add(TileDirection.MidRight,singletonInstance.GetExistTile(midRightKey));
             borderDictionary.Add(TileDirection.DownRight, singletonInstance.GetExistTile(downRightKey));
         } 
-        else //odd number
+        else //even number
         {
             int upLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y + 1);
             int midLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y);
