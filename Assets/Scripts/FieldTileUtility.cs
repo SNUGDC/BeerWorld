@@ -69,10 +69,7 @@ public class FieldTileUtility : MonoBehaviour {
 							
 	public static Vector2 GetTranslatedCoordinate(float x, float y){
 		float i, j;
-		
-		//j = (int)((((y - unityTileY / 2) / (unityTileY - 0.15f)) + 1) + 0.1f) +1;
-		//i = (int)((x / unityTileX + 1) + 0.4f) +1;
-		
+
 		j = (int)((((y - unityTileY / 2) / (unityTileY - 0.15f)) + 1) + 0.1f);
 		i = (int)((x / unityTileX + 1) + 0.4f);
 

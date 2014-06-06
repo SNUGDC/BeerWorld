@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour {
     }
 
 	public bool isVisible;
+    [SerializeField]
+    private int tileKey = 0;
 	//public bool isStartTile;
 
     public TileType tileType;
@@ -26,6 +28,11 @@ public class Tile : MonoBehaviour {
         return tileType == TileType.Start;
     }
 
+    public void SetTileKey(int key)
+    {
+        tileKey = key;
+    }
+    
 	// Use this for initialization
 	void Start () {
 //		

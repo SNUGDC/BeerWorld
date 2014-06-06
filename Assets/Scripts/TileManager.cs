@@ -100,6 +100,7 @@ public class TileManager : MonoBehaviour {
             Vector2 tilePreCoordinate = FieldTileUtility.GetTranslatedCoordinate(tile.transform.localPosition.x, tile.transform.localPosition.y);
 			Vector2 tileCoordinate = new Vector2(tilePreCoordinate.x, tilePreCoordinate.y); 
             int tileKey = (int)(tileCoordinate.x * 100 + tileCoordinate.y);
+            tile.SetTileKey(tileKey);
             tileDictionary.Add(tileKey, tile);
         }
     }
