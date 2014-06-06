@@ -24,7 +24,7 @@ public class FieldTilesMaker : MonoBehaviour {
 				Transform tileInstanceTransform = tileInstanceGameObject.GetComponent<Transform>();
 				Transform tileTestTilesTransform = testFieldTilesGameObject.GetComponent<Transform>();
 
-                tileInstanceGameObject.name = "(" + (i+1) + "," + (j+1) + ") tile";
+                tileInstanceGameObject.name = "(" + i + "," + j + ") tile";
 				tileInstanceTransform.parent = testFieldTilesGameObject.transform;
 			}
 		}
