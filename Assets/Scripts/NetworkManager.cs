@@ -56,7 +56,7 @@ public class NetworkManager : MonoBehaviour {
     {
         //targetFunction.variable = diceResult;
         Debug.Log("Dice of another player : " + diceResult);
-        CharacterManager.characterManagerInstance.howManyMove = diceResult;
+        CharacterManager.characterManagerInstance.SetMovement(diceResult);
     }
 
     public static void SendGameStartMessage ()

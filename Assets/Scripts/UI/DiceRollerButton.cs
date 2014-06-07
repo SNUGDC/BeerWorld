@@ -18,7 +18,8 @@ public class DiceRollerButton : MonoBehaviour {
     void OnMouseDown() {
         int diceResult = Dice.Roll();
         Debug.Log("Dice : " + diceResult);
-        characterManager.howManyMove = diceResult;
+        characterManager.SetMovement(diceResult);
+        //characterManager.howManyMove = diceResult;
 
         //call RPC function.
         NetworkManager.SendRollDice(diceResult);
