@@ -12,8 +12,6 @@ public class CharacterManager : MonoBehaviour {
 
     private int howManyMove = 0;
 
-    private bool isMovable = false;
-    public bool isSelectDirection = false;
     enum MoveState
     {
         Idle,
@@ -22,9 +20,6 @@ public class CharacterManager : MonoBehaviour {
         DirectionSelected
     }
     private MoveState moveState = MoveState.Idle;
-
-    //public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
-    //public Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
 
@@ -37,7 +32,6 @@ public class CharacterManager : MonoBehaviour {
     {
         Vector3 position = characterInstance.transform.position;
         Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(position.x, position.y);
-    //    Debug.Log("characterCoord : (" + characterCoordinate.x + ", " + characterCoordinate.y + ")");
         return TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
     }
 
@@ -84,7 +78,6 @@ public class CharacterManager : MonoBehaviour {
 
         if (numberOfMovableDirection > 1)
         {
-       //     Debug.Log("is branch");
             return true;
         }
         
@@ -133,18 +126,11 @@ public class CharacterManager : MonoBehaviour {
     {
         moveState = MoveState.DirectionSelected;
 
-        var borderDictionary = SearchBorderTiles();
-        var movableDictionary = SearchMovableTiles(borderDictionary);
-
         foreach(DirectionArrow arrow in directionArrowList)
         {
             Destroy(arrow.gameObject);
         }
         directionArrowList = new List<DirectionArrow>();
-
-        isMovable = true;
-        isSelectDirection = false;
-        toMoveTile = SetDestination(movableDictionary);
     }
 
     void MoveCharacter(Tile toMoveTile)
@@ -166,9 +152,8 @@ public class CharacterManager : MonoBehaviour {
         Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
     }
 
-    Tile SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary) {
-        Tile toMoveTile = null;
-
+    void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
+    {
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
         {
             TileManager.TileDirection direction = pair.Key;
@@ -178,8 +163,16 @@ public class CharacterManager : MonoBehaviour {
                 continue;
             }
         }
+    }
 
-        return toMoveTile;
+    public void SetDestinationByArrow(TileManager.TileDirection tileKey)
+    {        
+        var borderDictionary = SearchBorderTiles();
+        var movableDictionary = SearchMovableTiles(borderDictionary);
+
+        toMoveTile = movableDictionary[tileKey];  
+
+        Debug.Log("toMoveTile in SetDestinationByArrow : " + toMoveTile);      
     }
 
 	// Use this for initialization
@@ -194,20 +187,6 @@ public class CharacterManager : MonoBehaviour {
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
 	}
-
-    bool IsArrowCreated()
-    {
-        return isSelectDirection;
-    }
-
-    void CreateArrowIfBranch(Dictionary<TileManager.TileDirection, Tile> movableDictionary)
-    {
-        if (IsBranch(movableDictionary) == true && IsArrowCreated() == false)
-        {
-            CreateArrow(movableDictionary);
-            isSelectDirection = true;
-        }
-    }
 
     public void SetMovement(int toMove)
     {
@@ -230,15 +209,15 @@ public class CharacterManager : MonoBehaviour {
         {
             var borderDictionary = SearchBorderTiles();
             var movableDictionary = SearchMovableTiles(borderDictionary);
-            CreateArrowIfBranch(movableDictionary);
-
+            
             if (IsBranch(movableDictionary) == true)
             {
+                CreateArrow(movableDictionary);
                 moveState = MoveState.Waiting;
             }
             else
             {
-                toMoveTile = SetDestination(movableDictionary);
+                SetDestination(movableDictionary);
                 MoveCharacter(toMoveTile);
                 howManyMove--;
             }
@@ -249,32 +228,12 @@ public class CharacterManager : MonoBehaviour {
         }
         else if (moveState == MoveState.DirectionSelected)
         {
-            var borderDictionary = SearchBorderTiles();
-            var movableDictionary = SearchMovableTiles(borderDictionary);
+            Debug.Log("toMoveTile in Update : " + toMoveTile);
 
             MoveCharacter(toMoveTile);
             howManyMove--;
 
             moveState = MoveState.Moving;
         }
-
-    //    Debug.Log("------Searching------");
-    /*    var borderDictionary = SearchBorderTiles();
-        var movableDictionary = SearchMovableTiles(borderDictionary);
-        CreateArrowIfBranch(movableDictionary);
-
-
-        if (IsBranch(movableDictionary) == false)
-        {            
-            isMovable = true;
-            toMoveTile = SetDestination(movableDictionary);
-        }
-        if (isMovable == true)
-        {
-            MoveCharacter (toMoveTile);
-            howManyMove--;
-            isMovable = false;
-        }
-        */
 	}
 }

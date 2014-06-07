@@ -55,11 +55,6 @@ public class DirectionArrow : MonoBehaviour {
 		}
 	}
 
-	void Awake () 
-	{
-	//	SetArrowImage();
-	}
-
 	// Use this for initialization
 	void Start () {
 		setDirection = false;
@@ -77,6 +72,8 @@ public class DirectionArrow : MonoBehaviour {
 	void OnMouseDown()
 	{
 		//characterManagerInstance.selectedDirection = GetArrowDirection();
+		CharacterManager.characterManagerInstance.SetDestinationByArrow(arrowDirection);
 		CharacterManager.characterManagerInstance.DestroyAllDirectionArrows();
+
 	}
 }
