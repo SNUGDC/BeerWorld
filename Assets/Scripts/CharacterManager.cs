@@ -11,9 +11,11 @@ public class CharacterManager : MonoBehaviour {
     public static CharacterManager characterManagerInstance = null; 
 
     public int howManyMove = 0;
+    private bool isMovable = false;
+    public bool isSelectDirection = false;
 
-    public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
-    public Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
+    //public Dictionary<TileManager.TileDirection, Tile> borderDictionary = new Dictionary<TileManager.TileDirection, Tile>();
+    //public Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
 
@@ -22,12 +24,12 @@ public class CharacterManager : MonoBehaviour {
         characterManagerInstance = this;
     }
 
-    void SearchBorderTiles () 
+    Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles () 
     {
         Vector3 position = characterInstance.transform.position;
         Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(position.x, position.y);
         Debug.Log("characterCoord : (" + characterCoordinate.x + ", " + characterCoordinate.y + ")");
-        borderDictionary = TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
+        return TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
     }
 
     Dictionary<TileManager.TileDirection, Tile> GetTileDictionaryOfMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderDictionary)
@@ -58,12 +60,12 @@ public class CharacterManager : MonoBehaviour {
         return movableDictionary;
     }
 
-    void SearchMovableTiles()
+    Dictionary<TileManager.TileDirection, Tile>  SearchMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderTileDictionary)
     {
-        movableDictionary = GetTileDictionaryOfMovableTiles(borderDictionary);
+        return GetTileDictionaryOfMovableTiles(borderTileDictionary);
     }
 
-    bool IsBranch()
+    bool IsBranch(Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
         int numberOfMovableDirection = 0;
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
@@ -94,13 +96,7 @@ public class CharacterManager : MonoBehaviour {
         return preTileKeyOfCharacter == tileKeyOfBorderTile;
     }
 
-    void SelectDirection()
-    {
-        //TileManager.TileDirection seletedDirection;
-        InstantiateArrows();
-    }
-
-    void InstantiateArrows ()
+    void CreateArrow (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
         directionArrowList = new List<DirectionArrow>();
 
@@ -124,49 +120,55 @@ public class CharacterManager : MonoBehaviour {
         }
     }
 
-    void DestroyAllDirectionArrows()
+    public void DestroyAllDirectionArrows()
     {
+        var borderDictionary = SearchBorderTiles();
+        var movableDictionary = SearchMovableTiles(borderDictionary);
 
+        foreach(DirectionArrow arrow in directionArrowList)
+        {
+            Destroy(arrow.gameObject);
+        }
+        directionArrowList = new List<DirectionArrow>();
+
+        isMovable = true;
+        isSelectDirection = false;
+        toMoveTile = SetDestination(movableDictionary);
     }
 
-    void MoveCharacter () {
-        Debug.Log("------Searching------");
-        SearchBorderTiles();
-        SearchMovableTiles();
-
-        //IsBranch();
-
-        if (IsBranch() == true)
-        {
-            SelectDirection();
-        }
-
+    void MoveCharacter(Tile toMoveTile)
+    {
         Debug.Log("------Moving------");
+
+        Vector2 nextTilePosition = new Vector2(toMoveTile.transform.position.x, toMoveTile.transform.position.y);
+        Vector2 nextTileCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
+
+        characterInstance.preTileKey = characterInstance.currentTileKey;
+
+        characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
+        Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
+        characterInstance.currentTileKey = FieldTileUtility.GetTranslatedCoordinateToKey(newCoordinate);
+        
+        Camera.main.transform.position = new Vector3(characterInstance.transform.position.x, characterInstance.transform.position.y, Camera.main.transform.position.z);
+
+        Debug.Log("key : " + characterInstance.currentTileKey + ", preKey : " + characterInstance.preTileKey);
+        Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
+    }
+
+    Tile SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary) {
+        Tile toMoveTile = null;
+
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
         {
             TileManager.TileDirection direction = pair.Key;
-            Tile toMoveTile = pair.Value;
+            toMoveTile = pair.Value;
             if (toMoveTile == null)
             {
                 continue;
             }
-
-            Vector2 nextTilePosition = new Vector2(toMoveTile.transform.position.x, toMoveTile.transform.position.y);
-            Vector2 nextTileCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
-
-            characterInstance.preTileKey = characterInstance.currentTileKey;
-
-            characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
-            Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
-            characterInstance.currentTileKey = FieldTileUtility.GetTranslatedCoordinateToKey(newCoordinate);
-            
-            Camera.main.transform.position = new Vector3(characterInstance.transform.position.x, characterInstance.transform.position.y, Camera.main.transform.position.z);
-
-            Debug.Log("key : " + characterInstance.currentTileKey + ", preKey : " + characterInstance.preTileKey);
-            Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
-
-            break; // move end.
         }
+
+        return toMoveTile;
     }
 
 	// Use this for initialization
@@ -181,13 +183,48 @@ public class CharacterManager : MonoBehaviour {
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        while (howManyMove > 0)
+
+    bool IsArrowCreated()
+    {
+        return isSelectDirection;
+    }
+
+    void CreateArrowIfBranch(Dictionary<TileManager.TileDirection, Tile> movableDictionary)
+    {
+        if (IsBranch(movableDictionary) == true && IsArrowCreated() == false)
         {
-            MoveCharacter ();
-            howManyMove--;
+            CreateArrow(movableDictionary);
+            isSelectDirection = true;
         }
+    }
+	
+    Tile toMoveTile = null;
+
+	// Update is called once per frame
+	void Update ()
+    {
+        if (howManyMove <= 0)
+        {
+            return;
+        }
+
+        Debug.Log("------Searching------");
+        var borderDictionary = SearchBorderTiles();
+        var movableDictionary = SearchMovableTiles(borderDictionary);
+        CreateArrowIfBranch(movableDictionary);
+
+
+        if (IsBranch(movableDictionary) == false)
+        {            
+            isMovable = true;
+            toMoveTile = SetDestination(movableDictionary);
+        }
+        if (isMovable == true)
+        {
+            MoveCharacter (toMoveTile);
+            howManyMove--;
+            isMovable = false;
+        }
+        
 	}
 }

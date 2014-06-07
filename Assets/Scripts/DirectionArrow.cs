@@ -77,6 +77,6 @@ public class DirectionArrow : MonoBehaviour {
 	void OnMouseDown()
 	{
 		//characterManagerInstance.selectedDirection = GetArrowDirection();
-		//characterManagerInstance.DestroyAllDirectionArrows();
+		CharacterManager.characterManagerInstance.DestroyAllDirectionArrows();
 	}
 }
