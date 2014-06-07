@@ -7,6 +7,7 @@ public class Character : MonoBehaviour {
 
 	public int currentTileKey;
 	public int preTileKey;
+	public int prePreTileKey;
 	public int HP;
 	public int numberOfAttackDice;
 	public int numberOfDefenceDice;

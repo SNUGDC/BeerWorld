@@ -56,6 +56,16 @@ public class CharacterManager : MonoBehaviour {
             {
                 continue;
             }
+
+            if (IsPrePreTile(tempTile) == true)
+            {
+                continue;
+            }
+
+            /*if (tempTile.TileType == Start)
+            {
+                continue;
+            }*/
         
             movableDictionary.Add(tempKey, tempTile);
         }
@@ -98,6 +108,14 @@ public class CharacterManager : MonoBehaviour {
         return preTileKeyOfCharacter == tileKeyOfBorderTile;
     }
 
+    bool IsPrePreTile(Tile tile)
+    {
+        int prePreTileKeyOfCharacter = characterInstance.prePreTileKey;
+        int tileKeyOfBorderTile = FieldTileUtility.GetTranslatedTileToKey(tile);
+
+        return prePreTileKeyOfCharacter == tileKeyOfBorderTile;
+    }
+
     void CreateArrow (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
         directionArrowList = new List<DirectionArrow>();
@@ -106,11 +124,8 @@ public class CharacterManager : MonoBehaviour {
         {
             Vector3 characterPosition = characterInstance.transform.position;
             Vector2 arrowCoordinate = FieldTileUtility.GetTranslatedKeyToCoordinate (pair.Key, characterPosition);
-            Debug.Log("Arrow Coordinate : " + arrowCoordinate.x + ", " + arrowCoordinate.y);
             Vector2 arrowPosition = FieldTileUtility.GetTranslatedPosition(arrowCoordinate.x, arrowCoordinate.y);
             Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
-
-            Debug.Log("Arrow Key : " + pair.Key);
 
             DirectionArrow directionArrow = null;
             directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
@@ -135,11 +150,12 @@ public class CharacterManager : MonoBehaviour {
 
     void MoveCharacter(Tile toMoveTile)
     {
-        Debug.Log("------Moving------");
+        //Debug.Log("------Moving------");
 
         Vector2 nextTilePosition = new Vector2(toMoveTile.transform.position.x, toMoveTile.transform.position.y);
         Vector2 nextTileCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
 
+        characterInstance.prePreTileKey = characterInstance.preTileKey;
         characterInstance.preTileKey = characterInstance.currentTileKey;
 
         characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
@@ -148,8 +164,8 @@ public class CharacterManager : MonoBehaviour {
         
         Camera.main.transform.position = new Vector3(characterInstance.transform.position.x, characterInstance.transform.position.y, Camera.main.transform.position.z);
 
-        Debug.Log("key : " + characterInstance.currentTileKey + ", preKey : " + characterInstance.preTileKey);
-        Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
+        //Debug.Log("key : " + characterInstance.currentTileKey + ", preKey : " + characterInstance.preTileKey);
+        //Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
     }
 
     void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
@@ -171,8 +187,6 @@ public class CharacterManager : MonoBehaviour {
         var movableDictionary = SearchMovableTiles(borderDictionary);
 
         toMoveTile = movableDictionary[tileKey];  
-
-        Debug.Log("toMoveTile in SetDestinationByArrow : " + toMoveTile);      
     }
 
 	// Use this for initialization
@@ -184,6 +198,7 @@ public class CharacterManager : MonoBehaviour {
         Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(startPositionOfCharacter.x, startPositionOfCharacter.y);
         characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
         characterInstance.preTileKey = 000;
+        characterInstance.prePreTileKey = 000;
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
 	}
