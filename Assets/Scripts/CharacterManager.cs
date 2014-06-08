@@ -103,7 +103,7 @@ public class CharacterManager : MonoBehaviour {
     bool IsPreTile(Tile tile)
     {
         int preTileKeyOfCharacter = characterInstance.preTileKey;
-        int tileKeyOfBorderTile = FieldTileUtility.GetTranslatedTileToKey(tile);
+        int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
 
         return preTileKeyOfCharacter == tileKeyOfBorderTile;
     }
@@ -111,7 +111,7 @@ public class CharacterManager : MonoBehaviour {
     bool IsPrePreTile(Tile tile)
     {
         int prePreTileKeyOfCharacter = characterInstance.prePreTileKey;
-        int tileKeyOfBorderTile = FieldTileUtility.GetTranslatedTileToKey(tile);
+        int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
 
         return prePreTileKeyOfCharacter == tileKeyOfBorderTile;
     }
@@ -160,7 +160,7 @@ public class CharacterManager : MonoBehaviour {
 
         characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
         Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
-        characterInstance.currentTileKey = FieldTileUtility.GetTranslatedCoordinateToKey(newCoordinate);
+        characterInstance.currentTileKey = FieldTileUtility.GetKeyFromCoord(newCoordinate);
         
         Camera.main.transform.position = new Vector3(characterInstance.transform.position.x, characterInstance.transform.position.y, Camera.main.transform.position.z);
 

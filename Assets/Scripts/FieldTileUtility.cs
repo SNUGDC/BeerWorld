@@ -10,26 +10,26 @@ public class FieldTileUtility : MonoBehaviour {
     public static float unityTileX = TilePixelWidth / 100;
     public static float unityTileY = TilePixelHeight / 100;
 
-    [Obsolete("Refactored.")]
-    public static int GetTranslatedTileToKey(Tile tile)
-    {
-        return GetKeyFromTile(tile);
-    }
+//    [Obsolete("Refactored.")]
+//    public static int GetTranslatedTileToKey(Tile tile)
+//    {
+//        return GetKeyFromTile(tile);
+//    }
 
     public static int GetKeyFromTile(Tile tile)
     {
     	Vector2 position = new Vector2(tile.transform.position.x, tile.transform.position.y);
         Vector2 coordinate = GetTranslatedCoordinate(position.x, position.y);
-        int key = GetTranslatedCoordinateToKey(coordinate);
+        int key = GetKeyFromCoord(coordinate);
 
         return key;
     }
 
-    [Obsolete("Refactored.")]
-    public static int GetTranslatedCoordinateToKey(Vector2 coordinate)
-    {
-        return GetKeyFromCoord(coordinate);
-    }
+//    [Obsolete("Refactored.")]
+//    public static int GetTranslatedCoordinateToKey(Vector2 coordinate)
+//    {
+//        return GetKeyFromCoord(coordinate);
+//    }
 
     public static int GetKeyFromCoord(Vector2 coordinate)
     {
@@ -51,21 +51,21 @@ public class FieldTileUtility : MonoBehaviour {
     	Vector2 coordinate = Vector3.zero;
     	if ((int)standardCoordinate.y % 2 == 1) //odd number
     	{
-    		if (key == TileManager.TileDirection.UpLeft) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y + 1);}
-    		else if (key == TileManager.TileDirection.MidLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y);}
-    		else if (key == TileManager.TileDirection.DownLeft) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y - 1);}
-    		else if (key == TileManager.TileDirection.UpRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y + 1);}
-    		else if (key == TileManager.TileDirection.MidRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y);}
-    		else if (key == TileManager.TileDirection.DownRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y - 1);}	
+    		if (direction == TileManager.TileDirection.UpLeft) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y + 1);}
+    		else if (direction == TileManager.TileDirection.MidLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y);}
+    		else if (direction == TileManager.TileDirection.DownLeft) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y - 1);}
+    		else if (direction == TileManager.TileDirection.UpRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y + 1);}
+    		else if (direction == TileManager.TileDirection.MidRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y);}
+    		else if (direction == TileManager.TileDirection.DownRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y - 1);}	
     	}
     	else //even number
     	{
-    		if (key == TileManager.TileDirection.UpLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y + 1);}
-    		else if (key == TileManager.TileDirection.MidLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y);}
-    		else if (key == TileManager.TileDirection.DownLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y - 1);}
-    		else if (key == TileManager.TileDirection.UpRight) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y + 1);}
-    		else if (key == TileManager.TileDirection.MidRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y);}
-    		else if (key == TileManager.TileDirection.DownRight) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y - 1);}
+    		if (direction == TileManager.TileDirection.UpLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y + 1);}
+    		else if (direction == TileManager.TileDirection.MidLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y);}
+    		else if (direction == TileManager.TileDirection.DownLeft) {coordinate = new Vector2 (standardCoordinate.x - 1, standardCoordinate.y - 1);}
+    		else if (direction == TileManager.TileDirection.UpRight) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y + 1);}
+    		else if (direction == TileManager.TileDirection.MidRight) {coordinate = new Vector2 (standardCoordinate.x + 1, standardCoordinate.y);}
+    		else if (direction == TileManager.TileDirection.DownRight) {coordinate = new Vector2 (standardCoordinate.x, standardCoordinate.y - 1);}
     	}
 
     	return coordinate;
