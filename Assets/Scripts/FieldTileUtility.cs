@@ -71,11 +71,12 @@ public class FieldTileUtility : MonoBehaviour {
     	return coordinate;
     }
 
-	public static Vector2 GetTranslatedPosition(float i, float j){
+    public static Vector2 GetPositionFromCoordinate(float coordX, float coordY)
+    {
 		float posX, posY;
-		float zeroIndexX = i - 1;
-		float zeroIndexY = j - 1;
-		if (j%2 == 1){  //odd number Y
+		float zeroIndexX = coordX - 1;
+		float zeroIndexY = coordY - 1;
+		if (coordY%2 == 1){  //odd number Y
 			posX = unityTileX/2+unityTileX * zeroIndexX;
 			posY = unityTileY/2+(unityTileY-0.15f) * zeroIndexY;
 		}
@@ -84,24 +85,25 @@ public class FieldTileUtility : MonoBehaviour {
 			posY = unityTileY/2+(unityTileY-0.15f) * zeroIndexY;
 		}		
 		return new Vector2(posX, posY);
+    }
+
+    [Obsolete("Refactored.")]
+	public static Vector2 GetTranslatedPosition(float i, float j){
+        return GetPositionFromCoordinate(i, j);
 	}
-							
-	public static Vector2 GetTranslatedCoordinate(float x, float y){
+
+    public static Vector2 GetCoordFromPosition(float posX, float posY)
+    {
 		float i, j;
 
-		j = (int)((((y - unityTileY / 2) / (unityTileY - 0.15f)) + 1) + 0.1f);
-		i = (int)((x / unityTileX + 1) + 0.4f);
+		j = (int)((((posY - unityTileY / 2) / (unityTileY - 0.15f)) + 1) + 0.1f);
+		i = (int)((posX / unityTileX + 1) + 0.4f);
 
 		return new Vector2(i, j);
-	}
-	
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+    }
+
+    [Obsolete("Refactored.")]
+	public static Vector2 GetTranslatedCoordinate(float x, float y){
+        return GetCoordFromPosition(x, y);
 	}
 }
