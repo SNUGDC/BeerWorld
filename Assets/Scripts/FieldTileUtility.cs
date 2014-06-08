@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,7 +10,13 @@ public class FieldTileUtility : MonoBehaviour {
     public static float unityTileX = TilePixelWidth / 100;
     public static float unityTileY = TilePixelHeight / 100;
 
+    [Obsolete("Refactored.")]
     public static int GetTranslatedTileToKey(Tile tile)
+    {
+        return GetKeyFromTile(tile);
+    }
+
+    public static int GetKeyFromTile(Tile tile)
     {
     	Vector2 position = new Vector2(tile.transform.position.x, tile.transform.position.y);
         Vector2 coordinate = GetTranslatedCoordinate(position.x, position.y);
@@ -18,16 +25,28 @@ public class FieldTileUtility : MonoBehaviour {
         return key;
     }
 
+    [Obsolete("Refactored.")]
     public static int GetTranslatedCoordinateToKey(Vector2 coordinate)
+    {
+        return GetKeyFromCoord(coordinate);
+    }
+
+    public static int GetKeyFromCoord(Vector2 coordinate)
     {
     	int key = (int)(coordinate.x*100 + coordinate.y);
 
     	return key;
     }
 
+    [Obsolete("Refactored.")]
     public static Vector2 GetTranslatedKeyToCoordinate (TileManager.TileDirection key, Vector3 standardPositionWithZ)
     {
-    	Vector2 standardPosition = standardPositionWithZ;
+        return GetCoordOfDirectionByPosition(key, standardPositionWithZ);
+    }
+
+    public static Vector2 GetCoordOfDirectionByPosition(TileManager.TileDirection direction, Vector3 basePosition)
+    {
+    	Vector2 standardPosition = basePosition;
     	Vector2 standardCoordinate = GetTranslatedCoordinate(standardPosition.x, standardPosition.y);
     	Vector2 coordinate = Vector3.zero;
     	if ((int)standardCoordinate.y % 2 == 1) //odd number
