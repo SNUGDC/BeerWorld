@@ -85,12 +85,14 @@ public class NetworkManager : MonoBehaviour {
 
     public static void SendMoveTile(int coordX, int coordY)
     {
-        networkInstance.networkView.RPC("ReceiveMoveTile", RPCMode.Others, coordX, coordY);
+        networkInstance.networkView.RPC("ReceiveMoveTile", RPCMode.Others,
+                networkInstance.Id, coordX, coordY);
     }
 
     [RPC]
     private void ReceiveMoveTile(NetworkViewID id, int coordX, int coordY)
     {
+        CharacterManager.characterManagerInstance.MoveCharacter(coordX, coordY);
         Debug.Log("Move tile to " + coordX + ", " + coordY);
     }
 }

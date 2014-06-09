@@ -38,6 +38,11 @@ public class FieldTileUtility : MonoBehaviour {
     	return key;
     }
 
+    public static Vector2 GetCoordFromKey(int key)
+    {
+        return new Vector2(key / 100, key % 100);
+    }
+
     [Obsolete("Refactored.")]
     public static Vector2 GetTranslatedKeyToCoordinate (TileManager.TileDirection key, Vector3 standardPositionWithZ)
     {

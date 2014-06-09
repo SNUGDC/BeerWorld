@@ -32,6 +32,11 @@ public class Tile : MonoBehaviour {
     {
         tileKey = key;
     }
+
+    public Vector2 GetCoord()
+    {
+        return FieldTileUtility.GetCoordFromKey(tileKey);
+    }
     
 	// Use this for initialization
 	void Start () {

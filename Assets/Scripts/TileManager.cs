@@ -29,6 +29,12 @@ public class TileManager : MonoBehaviour {
         return null;
 	}
 
+    public static Tile GetTileByCoord(int coordX, int coordY)
+    {
+        int tileKey = MakeTileKeyFromCoord(coordX, coordY);
+        return GetExistTile(tileKey);
+    }
+
     public static Tile GetExistTile(int tileKey)
     {
         if (singletonInstance.tileDictionary.ContainsKey(tileKey) == false)

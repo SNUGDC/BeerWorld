@@ -148,7 +148,23 @@ public class CharacterManager : MonoBehaviour {
         directionArrowList = new List<DirectionArrow>();
     }
 
-    void MoveCharacter(Tile toMoveTile)
+    void MoveCharacterAndNotify(Tile toMoveTile)
+    {
+        var toMoveTileCoord = toMoveTile.GetCoord();
+        NetworkManager.SendMoveTile(
+                (int)toMoveTileCoord.x,
+                (int)toMoveTileCoord.y);
+
+        MoveCharacter(toMoveTile);
+    }
+
+    public void MoveCharacter(int coordX, int coordY)
+    {
+        Tile tile = TileManager.GetTileByCoord(coordX, coordY);
+        MoveCharacter(tile);
+    }
+
+    public void MoveCharacter(Tile toMoveTile)
     {
         //Debug.Log("------Moving------");
 
@@ -233,7 +249,7 @@ public class CharacterManager : MonoBehaviour {
             else
             {
                 SetDestination(movableDictionary);
-                MoveCharacter(toMoveTile);
+                MoveCharacterAndNotify(toMoveTile);
                 howManyMove--;
             }
         }
@@ -245,7 +261,7 @@ public class CharacterManager : MonoBehaviour {
         {
             Debug.Log("toMoveTile in Update : " + toMoveTile);
 
-            MoveCharacter(toMoveTile);
+            MoveCharacterAndNotify(toMoveTile);
             howManyMove--;
 
             moveState = MoveState.Moving;
