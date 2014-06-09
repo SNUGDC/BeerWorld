@@ -42,12 +42,12 @@ public class RoomManager : MonoBehaviour {
 	void OnConnectedToServer(){
         Debug.Log("Connected");
 		Network.SetLevelPrefix (1);
-		Application.LoadLevel ("Game");
+		Application.LoadLevel ("TestField_art");
 	}
 	
 	void OnServerInitialized(){
 		Network.SetLevelPrefix (1);
-		Application.LoadLevel ("Game");
+		Application.LoadLevel ("TestField_art");
 	}
 
     [RPC]
