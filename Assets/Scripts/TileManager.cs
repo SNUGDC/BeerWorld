@@ -29,7 +29,7 @@ public class TileManager : MonoBehaviour {
         return null;
 	}
 
-    public Tile GetExistTile(int tileKey)
+    public static Tile GetExistTile(int tileKey)
     {
         if (singletonInstance.tileDictionary.ContainsKey(tileKey) == false)
         {
@@ -58,12 +58,12 @@ public class TileManager : MonoBehaviour {
             int midRightKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y);
             int downRightKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y - 1);
 
-            borderDictionary.Add(TileDirection.UpLeft, singletonInstance.GetExistTile(upLeftKey));
-            borderDictionary.Add(TileDirection.MidLeft, singletonInstance.GetExistTile(midLeftKey));
-            borderDictionary.Add(TileDirection.DownLeft, singletonInstance.GetExistTile(downLeftKey));
-            borderDictionary.Add(TileDirection.UpRight, singletonInstance.GetExistTile(upRightKey));
-            borderDictionary.Add(TileDirection.MidRight,singletonInstance.GetExistTile(midRightKey));
-            borderDictionary.Add(TileDirection.DownRight, singletonInstance.GetExistTile(downRightKey));
+            borderDictionary.Add(TileDirection.UpLeft, GetExistTile(upLeftKey));
+            borderDictionary.Add(TileDirection.MidLeft, GetExistTile(midLeftKey));
+            borderDictionary.Add(TileDirection.DownLeft, GetExistTile(downLeftKey));
+            borderDictionary.Add(TileDirection.UpRight, GetExistTile(upRightKey));
+            borderDictionary.Add(TileDirection.MidRight, GetExistTile(midRightKey));
+            borderDictionary.Add(TileDirection.DownRight, GetExistTile(downRightKey));
         } 
         else //even number
         {
@@ -74,12 +74,12 @@ public class TileManager : MonoBehaviour {
             int midRightKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y);
             int downRightKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y - 1);
             
-            borderDictionary.Add(TileDirection.UpLeft, singletonInstance.GetExistTile(upLeftKey));
-            borderDictionary.Add(TileDirection.MidLeft, singletonInstance.GetExistTile(midLeftKey));
-            borderDictionary.Add(TileDirection.DownLeft, singletonInstance.GetExistTile(downLeftKey));
-            borderDictionary.Add(TileDirection.UpRight, singletonInstance.GetExistTile(upRightKey));
-            borderDictionary.Add(TileDirection.MidRight,singletonInstance.GetExistTile(midRightKey));
-            borderDictionary.Add(TileDirection.DownRight, singletonInstance.GetExistTile(downRightKey));
+            borderDictionary.Add(TileDirection.UpLeft, GetExistTile(upLeftKey));
+            borderDictionary.Add(TileDirection.MidLeft, GetExistTile(midLeftKey));
+            borderDictionary.Add(TileDirection.DownLeft, GetExistTile(downLeftKey));
+            borderDictionary.Add(TileDirection.UpRight, GetExistTile(upRightKey));
+            borderDictionary.Add(TileDirection.MidRight,GetExistTile(midRightKey));
+            borderDictionary.Add(TileDirection.DownRight, GetExistTile(downRightKey));
         }
 
         return borderDictionary;
