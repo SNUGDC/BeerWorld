@@ -7,7 +7,7 @@ public class DiceRollerButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    //Instantiate(
+
 	}
 	
 	// Update is called once per frame
@@ -19,9 +19,5 @@ public class DiceRollerButton : MonoBehaviour {
         int diceResult = Dice.Roll();
         Debug.Log("Dice : " + diceResult);
         characterManager.SetMovement(diceResult);
-        //characterManager.howManyMove = diceResult;
-
-        //call RPC function.
-        //NetworkManager.SendRollDice(diceResult);
     }
 }
