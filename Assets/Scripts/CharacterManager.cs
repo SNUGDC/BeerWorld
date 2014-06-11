@@ -14,7 +14,7 @@ public class CharacterManager : MonoBehaviour {
 
     enum MoveState
     {
-        Idle,
+        Idle,  // diceRoller btn visible.
         Moving,
         Waiting,
         DirectionSelected
@@ -62,10 +62,10 @@ public class CharacterManager : MonoBehaviour {
                 continue;
             }
 
-            /*if (tempTile.TileType == Start)
+            if (tempTile.tileType == Tile.TileType.Start)
             {
                 continue;
-            }*/
+            }
         
             movableDictionary.Add(tempKey, tempTile);
         }
