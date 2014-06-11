@@ -57,35 +57,35 @@ public class TileManager : MonoBehaviour {
         Dictionary<TileDirection, Tile> borderDictionary = new Dictionary<TileDirection, Tile>();
         if ((int)characterCoordinate.y % 2 == 1) //odd number
         {
-            int upLeftKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y + 1);
-            int midLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y);
-            int downLeftKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y - 1);
-            int upRightKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y + 1);
-            int midRightKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y);
-            int downRightKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y - 1);
+            int upLeftTileKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y + 1);
+            int midLeftTileKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y);
+            int downLeftTileKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y - 1);
+            int upRightTileKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y + 1);
+            int midRightTileKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y);
+            int downRightTileKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y - 1);
 
-            borderDictionary.Add(TileDirection.UpLeft, GetExistTile(upLeftKey));
-            borderDictionary.Add(TileDirection.MidLeft, GetExistTile(midLeftKey));
-            borderDictionary.Add(TileDirection.DownLeft, GetExistTile(downLeftKey));
-            borderDictionary.Add(TileDirection.UpRight, GetExistTile(upRightKey));
-            borderDictionary.Add(TileDirection.MidRight, GetExistTile(midRightKey));
-            borderDictionary.Add(TileDirection.DownRight, GetExistTile(downRightKey));
+            borderDictionary.Add(TileDirection.UpLeft, GetExistTile(upLeftTileKey));
+            borderDictionary.Add(TileDirection.MidLeft, GetExistTile(midLeftTileKey));
+            borderDictionary.Add(TileDirection.DownLeft, GetExistTile(downLeftTileKey));
+            borderDictionary.Add(TileDirection.UpRight, GetExistTile(upRightTileKey));
+            borderDictionary.Add(TileDirection.MidRight, GetExistTile(midRightTileKey));
+            borderDictionary.Add(TileDirection.DownRight, GetExistTile(downRightTileKey));
         } 
         else //even number
         {
-            int upLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y + 1);
-            int midLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y);
-            int downLeftKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y - 1);
-            int upRightKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y + 1);
-            int midRightKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y);
-            int downRightKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y - 1);
+            int upLeftTileKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y + 1);
+            int midLeftTileKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y);
+            int downLeftTileKey = MakeTileKeyFromCoord(characterCoordinate.x - 1, characterCoordinate.y - 1);
+            int upRightTileKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y + 1);
+            int midRightTileKey = MakeTileKeyFromCoord(characterCoordinate.x + 1, characterCoordinate.y);
+            int downRightTileKey = MakeTileKeyFromCoord(characterCoordinate.x, characterCoordinate.y - 1);
             
-            borderDictionary.Add(TileDirection.UpLeft, GetExistTile(upLeftKey));
-            borderDictionary.Add(TileDirection.MidLeft, GetExistTile(midLeftKey));
-            borderDictionary.Add(TileDirection.DownLeft, GetExistTile(downLeftKey));
-            borderDictionary.Add(TileDirection.UpRight, GetExistTile(upRightKey));
-            borderDictionary.Add(TileDirection.MidRight,GetExistTile(midRightKey));
-            borderDictionary.Add(TileDirection.DownRight, GetExistTile(downRightKey));
+            borderDictionary.Add(TileDirection.UpLeft, GetExistTile(upLeftTileKey));
+            borderDictionary.Add(TileDirection.MidLeft, GetExistTile(midLeftTileKey));
+            borderDictionary.Add(TileDirection.DownLeft, GetExistTile(downLeftTileKey));
+            borderDictionary.Add(TileDirection.UpRight, GetExistTile(upRightTileKey));
+            borderDictionary.Add(TileDirection.MidRight,GetExistTile(midRightTileKey));
+            borderDictionary.Add(TileDirection.DownRight, GetExistTile(downRightTileKey));
         }
 
         return borderDictionary;

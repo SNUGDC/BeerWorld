@@ -73,7 +73,7 @@ public class CharacterManager : MonoBehaviour {
         return movableDictionary;
     }
 
-    Dictionary<TileManager.TileDirection, Tile>  SearchMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderTileDictionary)
+    Dictionary<TileManager.TileDirection, Tile> SearchMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderTileDictionary)
     {
         return GetTileDictionaryOfMovableTiles(borderTileDictionary);
     }
@@ -95,8 +95,7 @@ public class CharacterManager : MonoBehaviour {
         {
             Debug.Log("There is no movable tile!");
         }
-        
-        Debug.Log("isn't branch");
+
         return false;
     }
 
@@ -122,8 +121,10 @@ public class CharacterManager : MonoBehaviour {
 
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
         {
+            TileManager.TileDirection direction = pair.Key;
+
             Vector3 characterPosition = characterInstance.transform.position;
-            Vector2 arrowCoordinate = FieldTileUtility.GetTranslatedKeyToCoordinate (pair.Key, characterPosition);
+            Vector2 arrowCoordinate = FieldTileUtility.GetTranslatedKeyToCoordinate (direction, characterPosition);
             Vector2 arrowPosition = FieldTileUtility.GetTranslatedPosition(arrowCoordinate.x, arrowCoordinate.y);
             Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
 
@@ -131,7 +132,7 @@ public class CharacterManager : MonoBehaviour {
             directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
             
             DirectionArrow directionArrowScript = directionArrow.gameObject.GetComponent<DirectionArrow>();
-            directionArrowScript.SetArrowDirection(pair.Key);
+            directionArrowScript.SetArrowDirection(direction);
 
             directionArrowList.Add(directionArrow);
         }
@@ -166,10 +167,13 @@ public class CharacterManager : MonoBehaviour {
 
     public void MoveCharacter(Tile toMoveTile)
     {
-        //Debug.Log("------Moving------");
-
-        Vector2 nextTilePosition = new Vector2(toMoveTile.transform.position.x, toMoveTile.transform.position.y);
-        Vector2 nextTileCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
+        Vector2 nextTilePosition = new Vector2(
+            toMoveTile.transform.position.x, 
+            toMoveTile.transform.position.y);
+        Vector2 nextTileCoordinate =
+            FieldTileUtility.GetTranslatedCoordinate(
+                nextTilePosition.x, 
+                nextTilePosition.y);
 
         characterInstance.prePreTileKey = characterInstance.preTileKey;
         characterInstance.preTileKey = characterInstance.currentTileKey;
@@ -178,10 +182,10 @@ public class CharacterManager : MonoBehaviour {
         Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
         characterInstance.currentTileKey = FieldTileUtility.GetKeyFromCoord(newCoordinate);
         
-        Camera.main.transform.position = new Vector3(characterInstance.transform.position.x, characterInstance.transform.position.y, Camera.main.transform.position.z);
-
-        //Debug.Log("key : " + characterInstance.currentTileKey + ", preKey : " + characterInstance.preTileKey);
-        //Debug.Log("Move to (" + characterInstance.currentTileKey + ")");
+        Camera.main.transform.position = new Vector3(
+            characterInstance.transform.position.x, 
+            characterInstance.transform.position.y, 
+            Camera.main.transform.position.z);
     }
 
     void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
@@ -197,12 +201,12 @@ public class CharacterManager : MonoBehaviour {
         }
     }
 
-    public void SetDestinationByArrow(TileManager.TileDirection tileKey)
+    public void SetDestinationByArrow(TileManager.TileDirection direction)
     {        
         var borderDictionary = SearchBorderTiles();
         var movableDictionary = SearchMovableTiles(borderDictionary);
 
-        toMoveTile = movableDictionary[tileKey];  
+        toMoveTile = movableDictionary[direction];  
     }
 
 	// Use this for initialization
