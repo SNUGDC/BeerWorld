@@ -12,14 +12,20 @@ public class CharacterManager : MonoBehaviour {
 
     private int howManyMove = 0;
 
-    enum MoveState
+    public enum MoveState
     {
         Idle,  // diceRoller btn visible.
         Moving,
         Waiting,
         DirectionSelected
     }
+    [SerializeField]
     private MoveState moveState = MoveState.Idle;
+
+    public static CharacterManager.MoveState GetMoveState ()
+    {
+        return characterManagerInstance.moveState;
+    }
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
 

@@ -10,12 +10,6 @@ public class FieldTileUtility : MonoBehaviour {
     public static float unityTileX = TilePixelWidth / 100;
     public static float unityTileY = TilePixelHeight / 100;
 
-//    [Obsolete("Refactored.")]
-//    public static int GetTranslatedTileToKey(Tile tile)
-//    {
-//        return GetKeyFromTile(tile);
-//    }
-
     public static int GetKeyFromTile(Tile tile)
     {
     	Vector2 position = new Vector2(tile.transform.position.x, tile.transform.position.y);
@@ -24,12 +18,6 @@ public class FieldTileUtility : MonoBehaviour {
 
         return key;
     }
-
-//    [Obsolete("Refactored.")]
-//    public static int GetTranslatedCoordinateToKey(Vector2 coordinate)
-//    {
-//        return GetKeyFromCoord(coordinate);
-//    }
 
     public static int GetKeyFromCoord(Vector2 coordinate)
     {
