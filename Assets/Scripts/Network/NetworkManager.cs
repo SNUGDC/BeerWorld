@@ -46,6 +46,9 @@ public class NetworkManager : MonoBehaviour {
 		//implement if func when started
 	}
 
+
+    //public static void Send
+
     public static void SendRollDice(int diceResult)
     {
         networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.Others, networkInstance.Id, diceResult);
@@ -80,7 +83,8 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveUsersNetworkViewID(NetworkViewID id)
     {
-        Debug.Log("SendID : " + id);
+        Debug.Log("SendID(Client) : " + id);
+        Debug.Log("ID(Server) : " + networkInstance.Id);
     }
 
     public static void SendMoveTile(int coordX, int coordY)
