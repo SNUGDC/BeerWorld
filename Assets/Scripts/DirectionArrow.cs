@@ -57,7 +57,7 @@ public class DirectionArrow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		setDirection = false;
+		setDirection = false;	
 	}
 	
 	// Update is called once per frame
@@ -71,9 +71,7 @@ public class DirectionArrow : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		//characterManagerInstance.selectedDirection = GetArrowDirection();
-		CharacterManager.characterManagerInstance.SetDestinationByArrow(arrowDirection);
-		CharacterManager.characterManagerInstance.DestroyAllDirectionArrows();
-
+		GameManager.GetMyCharacterManager().SetDestinationByArrow(arrowDirection);
+		GameManager.GetMyCharacterManager().DestroyAllDirectionArrows();
 	}
 }

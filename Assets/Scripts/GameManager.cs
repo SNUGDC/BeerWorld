@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour {
 
 	List<NetworkViewID> playerList = new List<NetworkViewID>();
 
+	public static CharacterManager GetMyCharacterManager()
+	{
+		return CharacterManager.FIXME_GetCharacterInstance();
+	}
+
+//	public static CharacterManager charaterManagerInstance;
 
 	public static void AddUserID (NetworkViewID id)
 	{

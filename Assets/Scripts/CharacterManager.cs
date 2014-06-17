@@ -8,7 +8,11 @@ public class CharacterManager : MonoBehaviour {
 
     public DirectionArrow arrowPrefeb;
 
-    public static CharacterManager characterManagerInstance = null; 
+    private static CharacterManager characterManagerInstance = null; 
+    public static CharacterManager FIXME_GetCharacterInstance()
+    {
+        return characterManagerInstance;
+    }
 
     private int howManyMove = 0;
 
