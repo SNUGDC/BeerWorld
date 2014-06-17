@@ -4,6 +4,9 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager gameManagerInstance = null;
+	public Character characterPrefab;
+	public DirectionArrow arrowPrefab;
+	private CharacterManager characterManager = null;
 
 	List<NetworkViewID> playerList = new List<NetworkViewID>();
 
@@ -27,15 +30,16 @@ public class GameManager : MonoBehaviour {
 	void Awake ()
 	{
 		gameManagerInstance = this;
+		characterManager = new CharacterManager(characterPrefab, arrowPrefab);
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		characterManager.Init();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		characterManager.Update();
 	}
 }

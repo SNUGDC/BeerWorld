@@ -1,12 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class CharacterManager : MonoBehaviour {
+public class CharacterManager
+{
+    public CharacterManager(Character characterPrefeb, DirectionArrow arrowPrefab)
+    {
+        this.characterPrefeb = characterPrefeb;
+        this.arrowPrefeb = arrowPrefab;
 
-	public Character characterPrefeb;
+        Awake();
+    }
+
+    public void Init()
+    {
+        Start();
+    }
+
+	private Character characterPrefeb;
+    private DirectionArrow arrowPrefeb;
     private Character characterInstance;
-
-    public DirectionArrow arrowPrefeb;
 
     private static CharacterManager characterManagerInstance = null; 
     public static CharacterManager FIXME_GetCharacterInstance()
@@ -144,7 +156,7 @@ public class CharacterManager : MonoBehaviour {
             Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
 
             DirectionArrow directionArrow = null;
-            directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
+            directionArrow = GameObject.Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
             
             DirectionArrow directionArrowScript = directionArrow.gameObject.GetComponent<DirectionArrow>();
             directionArrowScript.SetArrowDirection(direction);
@@ -159,7 +171,7 @@ public class CharacterManager : MonoBehaviour {
 
         foreach(DirectionArrow arrow in directionArrowList)
         {
-            Destroy(arrow.gameObject);
+            GameObject.Destroy(arrow.gameObject);
         }
         directionArrowList = new List<DirectionArrow>();
     }
@@ -229,7 +241,7 @@ public class CharacterManager : MonoBehaviour {
 		Tile startTile = TileManager.GetStartTile ();
         Vector3 startTilePosition = startTile.gameObject.transform.position;
         Vector3 startPositionOfCharacter = new Vector3(startTilePosition.x, startTilePosition.y, Character.Depth);
-        characterInstance = Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
+        characterInstance = GameObject.Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
         Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(startPositionOfCharacter.x, startPositionOfCharacter.y);
         characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
         characterInstance.preTileKey = 000;
@@ -247,7 +259,7 @@ public class CharacterManager : MonoBehaviour {
     Tile toMoveTile = null;
 
 	// Update is called once per frame
-	void Update ()
+	public void Update ()
     {
         if (howManyMove <= 0)
         {
