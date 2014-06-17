@@ -26,9 +26,14 @@ public class CharacterManager : MonoBehaviour {
     [SerializeField]
     private MoveState moveState = MoveState.Idle;
 
-    public static CharacterManager.MoveState GetMoveState ()
+    //private static CharacterManager.MoveState GetMoveState ()
+    //{
+        //return characterManagerInstance.moveState;
+    //}
+
+    public CharacterManager.MoveState GetMoveState()
     {
-        return characterManagerInstance.moveState;
+        return moveState;
     }
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
