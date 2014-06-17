@@ -6,13 +6,13 @@ public class GameManager : MonoBehaviour {
 	public static GameManager gameManagerInstance = null;
 	public Character characterPrefab;
 	public DirectionArrow arrowPrefab;
-	private CharacterManager characterManager = null;
+	private CharacterManager myCharacterManager = null;
 
 	List<NetworkViewID> playerList = new List<NetworkViewID>();
 
 	public static CharacterManager GetMyCharacterManager()
 	{
-		return CharacterManager.FIXME_GetCharacterInstance();
+		return gameManagerInstance.myCharacterManager;
 	}
 
 //	public static CharacterManager charaterManagerInstance;
@@ -30,16 +30,16 @@ public class GameManager : MonoBehaviour {
 	void Awake ()
 	{
 		gameManagerInstance = this;
-		characterManager = new CharacterManager(characterPrefab, arrowPrefab);
+		myCharacterManager = new CharacterManager(characterPrefab, arrowPrefab);
 	}
 
 	// Use this for initialization
 	void Start () {
-		characterManager.Init();
+		myCharacterManager.Init();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		characterManager.Update();
+		myCharacterManager.Update();
 	}
 }

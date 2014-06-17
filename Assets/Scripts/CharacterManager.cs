@@ -7,8 +7,6 @@ public class CharacterManager
     {
         this.characterPrefeb = characterPrefeb;
         this.arrowPrefeb = arrowPrefab;
-
-        Awake();
     }
 
     public void Init()
@@ -19,12 +17,6 @@ public class CharacterManager
 	private Character characterPrefeb;
     private DirectionArrow arrowPrefeb;
     private Character characterInstance;
-
-    private static CharacterManager characterManagerInstance = null; 
-    public static CharacterManager FIXME_GetCharacterInstance()
-    {
-        return characterManagerInstance;
-    }
 
     private int howManyMove = 0;
 
@@ -49,11 +41,6 @@ public class CharacterManager
     }
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
-
-    void Awake()
-    {
-        characterManagerInstance = this;
-    }
 
     Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles () 
     {
