@@ -95,10 +95,7 @@ public class CharacterManager
     bool IsBranch(Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
         int numberOfMovableDirection = 0;
-        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
-        {
-            numberOfMovableDirection++;
-        }
+        numberOfMovableDirection = movableDictionary.Count;
 
         if (numberOfMovableDirection > 1)
         {
