@@ -82,8 +82,8 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveUsersNetworkViewID(NetworkViewID id)
     {
-        Debug.Log("SendID(Client) : " + id);
-        Debug.Log("ID(Server) : " + networkInstance.Id);
+        GameManager.gameManagerInstance.AddUser(id);
+        //
     }
 
     public static void SendMoveTile(int coordX, int coordY)
@@ -95,7 +95,8 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveMoveTile(NetworkViewID id, int coordX, int coordY)
     {
-        GameManager.GetMyCharacterManager().MoveCharacter(coordX, coordY);
+        GameManager.GetCharacterManager(id).MoveCharacter(coordX, coordY);
+        //GameManager.GetMyCharacterManager().MoveCharacter(coordX, coordY);
         Debug.Log("Move tile to " + coordX + ", " + coordY);
     }
 }

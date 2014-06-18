@@ -21,6 +21,7 @@ public class GameStartButton : MonoBehaviour {
     void OnMouseDown ()
     {
         NetworkManager.SendGameStartMessage();
+        NetworkManager.SendUsersNetworkViewID();
         gameObject.SetActive(false);
     }
 }
