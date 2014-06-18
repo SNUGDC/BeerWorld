@@ -45,7 +45,7 @@ public class CharacterManager
     Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles () 
     {
         Vector3 position = characterInstance.transform.position;
-        Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(position.x, position.y);
+        Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
         return TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
     }
 
@@ -185,7 +185,7 @@ public class CharacterManager
             toMoveTile.transform.position.x, 
             toMoveTile.transform.position.y);
         Vector2 nextTileCoordinate =
-            FieldTileUtility.GetTranslatedCoordinate(
+            FieldTileUtility.GetCoordFromPosition(
                 nextTilePosition.x, 
                 nextTilePosition.y);
 
@@ -193,7 +193,7 @@ public class CharacterManager
         characterInstance.preTileKey = characterInstance.currentTileKey;
 
         characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
-        Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
+        Vector2 newCoordinate = FieldTileUtility.GetCoordFromPosition(nextTilePosition.x, nextTilePosition.y);
         characterInstance.currentTileKey = FieldTileUtility.GetKeyFromCoord(newCoordinate);
         
         Camera.main.transform.position = new Vector3(
@@ -229,7 +229,7 @@ public class CharacterManager
         Vector3 startTilePosition = startTile.gameObject.transform.position;
         Vector3 startPositionOfCharacter = new Vector3(startTilePosition.x, startTilePosition.y, Character.Depth);
         characterInstance = GameObject.Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
-        Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(startPositionOfCharacter.x, startPositionOfCharacter.y);
+        Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfCharacter.x, startPositionOfCharacter.y);
         characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
         characterInstance.preTileKey = 000;
         characterInstance.prePreTileKey = 000;
