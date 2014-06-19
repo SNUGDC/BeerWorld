@@ -22,6 +22,7 @@ public class CharacterManager
 
     public enum MoveState
     {
+        Inactive // other user's turn.
         Idle,  // diceRoller btn visible.
         Moving,
         Waiting,
