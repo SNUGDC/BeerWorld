@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour {
 
 	public void PassTurnToNextPlayer()
 	{
+		NetworkViewID nextPlayersId;
+
 		turnOfActivePlayer = FindNextExistingPlayer(turnOfActivePlayer);
+
 	}
 
 	int FindNextExistingPlayer (int currentTurnOfActivePlayer)
