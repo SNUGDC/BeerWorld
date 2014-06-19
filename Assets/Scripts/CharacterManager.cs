@@ -227,7 +227,12 @@ public class CharacterManager
         characterInstance.preTileKey = 000;
         characterInstance.prePreTileKey = 000;
 
-        Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
+        //Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
+        
+        if (Network.isClient == true)
+        {
+            moveState = MoveState.Idle;
+        }
 	}
 
     public void SetMovement(int toMove)
@@ -256,7 +261,8 @@ public class CharacterManager
 
         if (howManyMove <= 0)
         {
-            moveState = MoveState.Idle;
+            moveState = MoveState.Inactive;
+            NetworkManager.SendTurnEndMessage();
             return;
         }
 

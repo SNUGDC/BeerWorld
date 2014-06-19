@@ -11,13 +11,37 @@ public class GameManager : MonoBehaviour {
 	private Dictionary<NetworkViewID, CharacterManager> otherCharacterManagers = new Dictionary<NetworkViewID, CharacterManager>();
 	//private List<NetworkViewID> playerList = new List<NetworkViewID>();
 	private Dictionary<int, NetworkViewID> otherPlayers = new Dictionary<int, NetworkViewID>();
-	private int[] indexOfPlayers = new int[4] {0, 0, 0, 0};
+	private int[] ExistingPlayersArray = new int[4] {1, 0, 0, 0};
 
-	private int indexOfActivePlayer;
+	private int turnOfActivePlayer = 0;
 
-	public static int getIndexOfActivePlayer()
+	public static int getTurnOfActivePlayer()
 	{
-		return gameManagerInstance.indexOfActivePlayer;
+		return gameManagerInstance.turnOfActivePlayer;
+	}
+
+	public void PassTurnToNextPlayer()
+	{
+		turnOfActivePlayer = FindNextExistingPlayer(turnOfActivePlayer);
+	}
+
+	int FindNextExistingPlayer (int currentTurnOfActivePlayer)
+	{
+		if (currentTurnOfActivePlayer == ExistingPlayersArray.Length - 1)
+		{
+			return 0;
+		}
+
+		int nextTurnIndex = currentTurnOfActivePlayer + 1;
+		for(;nextTurnIndex < ExistingPlayersArray.Length; nextTurnIndex += 1)
+		{
+			if (ExistingPlayersArray[nextTurnIndex] != 0)
+			{
+				return nextTurnIndex;
+			}
+		}
+
+		return 0;		
 	}
 
 	public static CharacterManager GetMyCharacterManager()
@@ -53,10 +77,10 @@ public class GameManager : MonoBehaviour {
 
 	void PrintLog()
 	{
-		Debug.Log("indexOfPlayers(Array) = { ");
+		Debug.Log("ExistingPlayersArray(Array) = { ");
 		for (int i = 0; i < 4; i++)
 		{
-			Debug.Log("indexOfPlayers, i th : " + indexOfPlayers[i]);
+			Debug.Log("ExistingPlayersArray, i th : " + ExistingPlayersArray[i]);
 		}
 		foreach (KeyValuePair<int, NetworkViewID> pair in otherPlayers)
 		{
@@ -68,18 +92,13 @@ public class GameManager : MonoBehaviour {
 	{
 		for (int i = 1; i < 4; i++)
 		{
-			if (indexOfPlayers[i] == 0)
+			if (ExistingPlayersArray[i] == 0)
 			{
-				indexOfPlayers[i] = i;
+				ExistingPlayersArray[i] = i;
 				return i;
 			}
 		}
 		return 0;
-	}
-
-	void AddIndex(int index)
-	{
-
 	}
 
 	void Awake ()

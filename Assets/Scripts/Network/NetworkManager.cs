@@ -99,4 +99,18 @@ public class NetworkManager : MonoBehaviour {
         //GameManager.GetMyCharacterManager().MoveCharacter(coordX, coordY);
         Debug.Log("Move tile to " + coordX + ", " + coordY);
     }
+
+    public static void SendTurnEndMessage ()
+    {
+        networkInstance.networkView.RPC("ReceiveTurnEndMessage", RPCMode.All, networkInstance.Id);
+    }
+
+    [RPC]
+    private void ReceiveTurnEndMessage(NetworkViewID id)
+    {
+        if (Network.isClient == true)
+        {
+            GameManager.gameManagerInstance.PassTurnToNextPlayer();
+        }
+    }
 }
