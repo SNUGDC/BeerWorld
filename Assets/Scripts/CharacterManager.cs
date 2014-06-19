@@ -22,19 +22,14 @@ public class CharacterManager
 
     public enum MoveState
     {
-        Inactive // other user's turn.
+        Inactive, // other user's turn.
         Idle,  // diceRoller btn visible.
         Moving,
         Waiting,
         DirectionSelected
     }
     [SerializeField]
-    private MoveState moveState = MoveState.Idle;
-
-    //private static CharacterManager.MoveState GetMoveState ()
-    //{
-        //return characterManagerInstance.moveState;
-    //}
+    private MoveState moveState = MoveState.Inactive;
 
     public CharacterManager.MoveState GetMoveState()
     {
@@ -194,11 +189,11 @@ public class CharacterManager
         Vector2 newCoordinate = FieldTileUtility.GetCoordFromPosition(nextTilePosition.x, nextTilePosition.y);
         characterInstance.currentTileKey = FieldTileUtility.GetKeyFromCoord(newCoordinate);
         
-        Camera.main.transform.position = new Vector3(
+/*        Camera.main.transform.position = new Vector3(
             characterInstance.transform.position.x, 
             characterInstance.transform.position.y, 
             Camera.main.transform.position.z);
-    }
+*/    }
 
     void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
@@ -243,9 +238,22 @@ public class CharacterManager
 	
     Tile toMoveTile = null;
 
+    void cameraFollow()
+    {
+        Camera.main.transform.position = new Vector3(
+                characterInstance.transform.position.x, 
+                characterInstance.transform.position.y, 
+                Camera.main.transform.position.z);
+    }
+
 	// Update is called once per frame
 	public void Update ()
     {
+        if (moveState != MoveState.Inactive)
+        {
+            cameraFollow();
+        }
+
         if (howManyMove <= 0)
         {
             moveState = MoveState.Idle;
