@@ -108,7 +108,7 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveTurnEndMessage(NetworkViewID id)
     {
-        if (Network.isClient == true)
+        if (Network.isClient == false)
         {
             GameManager.gameManagerInstance.PassTurnToNextPlayer();
         }
