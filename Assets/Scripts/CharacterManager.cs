@@ -1,37 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class CharacterManager : MonoBehaviour {
+public class CharacterManager
+{
+    public CharacterManager(Character characterPrefeb, DirectionArrow arrowPrefab)
+    {
+        this.characterPrefeb = characterPrefeb;
+        this.arrowPrefeb = arrowPrefab;
+    }
 
-	public Character characterPrefeb;
+    public void Init()
+    {
+        Start();
+    }
+
+	private Character characterPrefeb;
+    private DirectionArrow arrowPrefeb;
     private Character characterInstance;
-
-    public DirectionArrow arrowPrefeb;
-
-    public static CharacterManager characterManagerInstance = null; 
 
     private int howManyMove = 0;
 
-    enum MoveState
+    public enum MoveState
     {
+        Inactive, // other user's turn.
         Idle,  // diceRoller btn visible.
         Moving,
         Waiting,
         DirectionSelected
     }
-    private MoveState moveState = MoveState.Idle;
+    [SerializeField]
+    private MoveState moveState = MoveState.Inactive;
+
+    public CharacterManager.MoveState GetMoveState()
+    {
+        return moveState;
+    }
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
-
-    void Awake()
-    {
-        characterManagerInstance = this;
-    }
 
     Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles () 
     {
         Vector3 position = characterInstance.transform.position;
-        Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(position.x, position.y);
+        Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
         return TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
     }
 
@@ -81,10 +91,7 @@ public class CharacterManager : MonoBehaviour {
     bool IsBranch(Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
         int numberOfMovableDirection = 0;
-        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
-        {
-            numberOfMovableDirection++;
-        }
+        numberOfMovableDirection = movableDictionary.Count;
 
         if (numberOfMovableDirection > 1)
         {
@@ -129,7 +136,7 @@ public class CharacterManager : MonoBehaviour {
             Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
 
             DirectionArrow directionArrow = null;
-            directionArrow = Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
+            directionArrow = GameObject.Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
             
             DirectionArrow directionArrowScript = directionArrow.gameObject.GetComponent<DirectionArrow>();
             directionArrowScript.SetArrowDirection(direction);
@@ -144,7 +151,7 @@ public class CharacterManager : MonoBehaviour {
 
         foreach(DirectionArrow arrow in directionArrowList)
         {
-            Destroy(arrow.gameObject);
+            GameObject.Destroy(arrow.gameObject);
         }
         directionArrowList = new List<DirectionArrow>();
     }
@@ -171,7 +178,7 @@ public class CharacterManager : MonoBehaviour {
             toMoveTile.transform.position.x, 
             toMoveTile.transform.position.y);
         Vector2 nextTileCoordinate =
-            FieldTileUtility.GetTranslatedCoordinate(
+            FieldTileUtility.GetCoordFromPosition(
                 nextTilePosition.x, 
                 nextTilePosition.y);
 
@@ -179,14 +186,14 @@ public class CharacterManager : MonoBehaviour {
         characterInstance.preTileKey = characterInstance.currentTileKey;
 
         characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
-        Vector2 newCoordinate = FieldTileUtility.GetTranslatedCoordinate(nextTilePosition.x, nextTilePosition.y);
+        Vector2 newCoordinate = FieldTileUtility.GetCoordFromPosition(nextTilePosition.x, nextTilePosition.y);
         characterInstance.currentTileKey = FieldTileUtility.GetKeyFromCoord(newCoordinate);
         
-        Camera.main.transform.position = new Vector3(
+/*        Camera.main.transform.position = new Vector3(
             characterInstance.transform.position.x, 
             characterInstance.transform.position.y, 
             Camera.main.transform.position.z);
-    }
+*/    }
 
     void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
@@ -214,13 +221,18 @@ public class CharacterManager : MonoBehaviour {
 		Tile startTile = TileManager.GetStartTile ();
         Vector3 startTilePosition = startTile.gameObject.transform.position;
         Vector3 startPositionOfCharacter = new Vector3(startTilePosition.x, startTilePosition.y, Character.Depth);
-        characterInstance = Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
-        Vector2 characterCoordinate = FieldTileUtility.GetTranslatedCoordinate(startPositionOfCharacter.x, startPositionOfCharacter.y);
+        characterInstance = GameObject.Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
+        Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfCharacter.x, startPositionOfCharacter.y);
         characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
         characterInstance.preTileKey = 000;
         characterInstance.prePreTileKey = 000;
 
-        Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
+        //Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
+        
+        if (Network.isClient == true)
+        {
+            moveState = MoveState.Idle;
+        }
 	}
 
     public void SetMovement(int toMove)
@@ -231,12 +243,26 @@ public class CharacterManager : MonoBehaviour {
 	
     Tile toMoveTile = null;
 
-	// Update is called once per frame
-	void Update ()
+    void cameraFollow()
     {
+        Camera.main.transform.position = new Vector3(
+                characterInstance.transform.position.x, 
+                characterInstance.transform.position.y, 
+                Camera.main.transform.position.z);
+    }
+
+	// Update is called once per frame
+	public void Update ()
+    {
+        if (moveState != MoveState.Inactive)
+        {
+            cameraFollow();
+        }
+
         if (howManyMove <= 0)
         {
-            moveState = MoveState.Idle;
+            moveState = MoveState.Inactive;
+            NetworkManager.SendTurnEndMessage();
             return;
         }
 

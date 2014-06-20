@@ -46,6 +46,9 @@ public class NetworkManager : MonoBehaviour {
 		//implement if func when started
 	}
 
+
+    //public static void Send
+
     public static void SendRollDice(int diceResult)
     {
         networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.Others, networkInstance.Id, diceResult);
@@ -54,9 +57,8 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveRollDice(NetworkViewID id, int diceResult)
     {
-        //targetFunction.variable = diceResult;
         Debug.Log("Dice of another player : " + diceResult);
-        CharacterManager.characterManagerInstance.SetMovement(diceResult);
+        GameManager.GetMyCharacterManager().SetMovement(diceResult);
     }
 
     public static void SendGameStartMessage ()
@@ -80,7 +82,8 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveUsersNetworkViewID(NetworkViewID id)
     {
-        Debug.Log("SendID : " + id);
+        GameManager.gameManagerInstance.AddUser(id);
+        //
     }
 
     public static void SendMoveTile(int coordX, int coordY)
@@ -92,7 +95,22 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveMoveTile(NetworkViewID id, int coordX, int coordY)
     {
-        CharacterManager.characterManagerInstance.MoveCharacter(coordX, coordY);
+        GameManager.GetCharacterManager(id).MoveCharacter(coordX, coordY);
+        //GameManager.GetMyCharacterManager().MoveCharacter(coordX, coordY);
         Debug.Log("Move tile to " + coordX + ", " + coordY);
+    }
+
+    public static void SendTurnEndMessage ()
+    {
+        networkInstance.networkView.RPC("ReceiveTurnEndMessage", RPCMode.All, networkInstance.Id);
+    }
+
+    [RPC]
+    private void ReceiveTurnEndMessage(NetworkViewID id)
+    {
+        if (Network.isClient == true)
+        {
+            GameManager.gameManagerInstance.PassTurnToNextPlayer();
+        }
     }
 }
