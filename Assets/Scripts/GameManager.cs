@@ -22,10 +22,14 @@ public class GameManager : MonoBehaviour {
 
 	public void PassTurnToNextPlayer()
 	{
-		NetworkViewID nextPlayersId;
+		NetworkViewID nextPlayerId;
+		CharacterManager nextPlayerCharacterManager;
 
 		turnOfActivePlayer = FindNextExistingPlayer(turnOfActivePlayer);
+		nextPlayerId = otherPlayers[turnOfActivePlayer];
+		nextPlayerCharacterManager = otherCharacterManagers[nextPlayerId];
 
+		nextPlayerCharacterManager.changeMoveStateToIdle();
 	}
 
 	int FindNextExistingPlayer (int currentTurnOfActivePlayer)

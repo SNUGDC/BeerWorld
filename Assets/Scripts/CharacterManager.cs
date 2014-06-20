@@ -36,6 +36,11 @@ public class CharacterManager
         return moveState;
     }
 
+    public void changeMoveStateToIdle()
+    {
+        moveState = MoveState.Idle;
+    }
+
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
 
     Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles () 
@@ -227,7 +232,7 @@ public class CharacterManager
         characterInstance.preTileKey = 000;
         characterInstance.prePreTileKey = 000;
 
-        //Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
+        Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
         
         if (Network.isClient == true)
         {
