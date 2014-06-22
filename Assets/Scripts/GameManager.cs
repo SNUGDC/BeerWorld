@@ -26,10 +26,18 @@ public class GameManager : MonoBehaviour {
 		CharacterManager nextPlayerCharacterManager;
 
 		turnOfActivePlayer = FindNextExistingPlayer(turnOfActivePlayer);
-		nextPlayerId = otherPlayers[turnOfActivePlayer];
-		nextPlayerCharacterManager = otherCharacterManagers[nextPlayerId];
 
-		nextPlayerCharacterManager.changeMoveStateToIdle();
+		if (turnOfActivePlayer != 0)
+		{
+			nextPlayerId = otherPlayers[turnOfActivePlayer];
+			nextPlayerCharacterManager = otherCharacterManagers[nextPlayerId];
+
+			nextPlayerCharacterManager.changeMoveStateToIdle();
+		}
+		else 
+		{
+			
+		}
 	}
 
 	int FindNextExistingPlayer (int currentTurnOfActivePlayer)

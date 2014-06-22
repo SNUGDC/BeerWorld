@@ -234,7 +234,7 @@ public class CharacterManager
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
         
-        if (Network.isClient == true)
+        if (Network.isClient == false)
         {
             moveState = MoveState.Idle;
         }
