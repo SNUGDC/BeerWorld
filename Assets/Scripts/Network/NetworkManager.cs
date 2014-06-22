@@ -7,8 +7,13 @@ public class NetworkManager : MonoBehaviour {
 	string username;
 	NetworkViewID Id;
 
-    private static NetworkManager networkInstance = null;
+    public static NetworkManager networkInstance = null;
 
+    public NetworkViewID GetNetworkID()
+    {
+        return Id;
+    }
+    
     void Awake ()
     {
         networkInstance = this;
@@ -111,6 +116,25 @@ public class NetworkManager : MonoBehaviour {
         if (Network.isClient == false)
         {
             GameManager.gameManagerInstance.PassTurnToNextPlayer();
+        }
+    }
+
+    public static void SendTurnStartMessage (NetworkViewID nextPlayerId)
+    {
+        networkInstance.networkView.RPC("ReceiveTurnStartMessage", RPCMode.All, nextPlayerId);
+    }
+
+    [RPC]
+    private void ReceiveTurnStartMessage(NetworkViewID nextPlayerId)
+    {
+        if (NetworkManager.networkInstance.Id == nextPlayerId)
+        {
+            GameManager.GetMyCharacterManager().ChangeMoveStateToIdle();
+            Debug.Log("My turn");
+        }
+        else 
+        {
+            Debug.Log("Not My turn");
         }
     }
 }

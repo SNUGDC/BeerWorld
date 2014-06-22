@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour {
 			nextPlayerId = otherPlayers[turnOfActivePlayer];
 			nextPlayerCharacterManager = otherCharacterManagers[nextPlayerId];
 
-			nextPlayerCharacterManager.changeMoveStateToIdle();
+			NetworkManager.SendTurnStartMessage (nextPlayerId);
 			Debug.Log("nextTurnIndex : " + turnOfActivePlayer + ", nextPlayerId : " + nextPlayerId);
 		}
 		else 
 		{
-
+			Debug.Log("There is no other player.");
 		}
 	}
 

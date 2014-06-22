@@ -36,9 +36,10 @@ public class CharacterManager
         return moveState;
     }
 
-    public void changeMoveStateToIdle()
+    public void ChangeMoveStateToIdle()
     {
         moveState = MoveState.Idle;
+        Debug.Log("Changed MoveState to Idle @" + NetworkManager.networkInstance.GetNetworkID());
     }
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
