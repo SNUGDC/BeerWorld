@@ -15,6 +15,8 @@ public class ChatGUIView : MonoBehaviour {
     }
     // Use this for initialization
 	void Start () {
+        Application.RegisterLogCallback(HandleLog);
+
         chatWindowRect = new Rect(
             0 * Const.GUI_WIDTH_UNIT,
             Screen.height - 300 * Const.GUI_HEIGHT_UNIT,
@@ -63,4 +65,9 @@ public class ChatGUIView : MonoBehaviour {
         textToread += id + ": " + msg + "\n";
         ScrollPos.y += 100;
     }
+
+    void HandleLog(string logString, string stackTrace, LogType type) {
+        textToread += logString + "\n";
+    }
+
 }

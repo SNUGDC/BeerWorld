@@ -237,6 +237,7 @@ public class CharacterManager
         if (Network.isClient == false)
         {
             moveState = MoveState.Idle;
+            Debug.Log("MoveState of server : Idle");
         }
 	}
 
@@ -264,7 +265,7 @@ public class CharacterManager
             cameraFollow();
         }
 
-        if (howManyMove <= 0)
+        if (howManyMove <= 0 && moveState == MoveState.Moving)
         {
             moveState = MoveState.Inactive;
             NetworkManager.SendTurnEndMessage();

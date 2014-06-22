@@ -33,10 +33,11 @@ public class GameManager : MonoBehaviour {
 			nextPlayerCharacterManager = otherCharacterManagers[nextPlayerId];
 
 			nextPlayerCharacterManager.changeMoveStateToIdle();
+			Debug.Log("nextTurnIndex : " + turnOfActivePlayer + ", nextPlayerId : " + nextPlayerId);
 		}
 		else 
 		{
-			
+
 		}
 	}
 
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour {
 		}
 		otherPlayers.Add(userIndex, id); 
 
-		PrintLog();
+		//PrintLog();
 	}
 
 	void PrintLog()
