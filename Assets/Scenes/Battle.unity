@@ -14262,9 +14262,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1168680146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cfbc67551cb5444b9e74fd460c53eb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 84f030a3593d24cc5ade5b2ba74ca15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleManager: {fileID: 368207989}
 --- !u!61 &1168680149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18410,7 +18411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1523686537
 Transform:
   m_ObjectHideFlags: 0
@@ -18442,7 +18443,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1523686536}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
