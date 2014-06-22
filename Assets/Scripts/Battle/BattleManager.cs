@@ -25,6 +25,18 @@ public class BattleManager : MonoBehaviour
     BattlePlayer enemy;
     CalculationResult playerCalcResult = null;
     CalculationResult enemyCalcResult = null;
+    public Camera battleCamera;
+
+    public void ShowBattle()
+    {
+        battleCamera.enabled = true;
+        state = State.Start;
+    }
+
+    public void EndBattle()
+    {
+        battleCamera.enabled = false;
+    }
 
     void Update()
     {
@@ -49,10 +61,12 @@ public class BattleManager : MonoBehaviour
         else if (state == State.BattleEnd)
         {
             Debug.Log("BattleENd.");
+            state = State.Inactive;
+            EndBattle();
         }
     }
 
-    void OnRollClicked()
+    public void OnRollClicked()
     {
         BattleCalculator calculator = new BattleCalculator();
         if (attackOrDefense == AttackOrDefense.Attack)
