@@ -66,7 +66,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    void OnRollClicked()
+    public void OnRollClicked()
     {
         BattleCalculator calculator = new BattleCalculator();
         if (attackOrDefense == AttackOrDefense.Attack)
