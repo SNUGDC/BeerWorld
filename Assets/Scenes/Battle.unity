@@ -4693,6 +4693,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc072a303f6a43a18197ee5dc576f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAttackDices:
+  - {fileID: 1685932314}
+  - {fileID: 656547755}
+  - {fileID: 2072238893}
+  playerDefenceDices:
+  - {fileID: 686071721}
+  - {fileID: 1914139536}
+  - {fileID: 1334652148}
+  enemyAttackDices:
+  - {fileID: 109716809}
+  - {fileID: 945317814}
+  - {fileID: 419099343}
+  enemyDefenceDices:
+  - {fileID: 86937802}
+  - {fileID: 1456708861}
+  - {fileID: 721417332}
   battleCamera: {fileID: 1523686541}
 --- !u!1 &371080943
 GameObject:
