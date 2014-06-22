@@ -110,13 +110,13 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < playerDiceNum; i++)
         {
             int diceResult = playerCalcResult.diceResults[i];
-            playerAttackDices[0].SendMessage("rollByNumber", diceResult);    
+            playerAttackDices[i].SendMessage("rollByNumber", diceResult);    
         }
         
         for (int i = 0; i < playerDiceNum; i++)
         {
             int diceResult = playerCalcResult.diceResults[i];
-            playerDefenceDices[0].SendMessage("rollByNumber", diceResult);    
+            playerDefenceDices[i].SendMessage("rollByNumber", diceResult);    
         }
 
         int enemyDiceNum = enemyCalcResult.diceResults.Count;
@@ -135,15 +135,15 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < enemyDiceNum; i++)
         {
             int diceResult = enemyCalcResult.diceResults[i];
-            enemyAttackDices[0].SendMessage("rollByNumber", diceResult);    
+            enemyAttackDices[i].SendMessage("rollByNumber", diceResult);    
         }
         
         for (int i = 0; i < enemyDiceNum; i++)
         {
             int diceResult = enemyCalcResult.diceResults[i];
-            enemyDefenceDices[0].SendMessage("rollByNumber", diceResult);    
+            enemyDefenceDices[i].SendMessage("rollByNumber", diceResult);    
         }                
-        
+
         //show animation with calculation result.
         state = State.ShowDamage;
         AnimateDamage();
