@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="diceAll.png">
+	<!-- Created with Adobe Flash Professional version 13.1.0.226 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="10000" x="15" y="159" width="57" height="57" pivotX="28.65" pivotY="28.85"/>
+	<SubTexture name="20000" x="87" y="159" width="57" height="57" pivotX="28.65" pivotY="28.85"/>
+	<SubTexture name="30000" x="15" y="87" width="57" height="57" pivotX="28.7" pivotY="28.85"/>
+	<SubTexture name="40000" x="15" y="15" width="57" height="57" pivotX="28.65" pivotY="28.85"/>
+	<SubTexture name="50000" x="87" y="15" width="57" height="57" pivotX="28.65" pivotY="28.85"/>
+	<SubTexture name="60000" x="87" y="87" width="57" height="57" pivotX="28.65" pivotY="28.85"/>
+</TextureAtlas>
