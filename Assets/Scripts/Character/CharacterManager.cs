@@ -17,6 +17,7 @@ public class CharacterManager
 	private Character characterPrefeb;
     private DirectionArrow arrowPrefeb;
     private Character characterInstance;
+    private CharacterMover characterMover;
 
     private int howManyMove = 0;
 
@@ -180,20 +181,14 @@ public class CharacterManager
 
     public void MoveCharacter(Tile toMoveTile)
     {
-        Vector2 nextTilePosition = new Vector2(
-            toMoveTile.transform.position.x, 
-            toMoveTile.transform.position.y);
-        Vector2 nextTileCoordinate =
-            FieldTileUtility.GetCoordFromPosition(
-                nextTilePosition.x, 
-                nextTilePosition.y);
+        characterMover.MoveTo(toMoveTile);
 
         characterInstance.prePreTileKey = characterInstance.preTileKey;
         characterInstance.preTileKey = characterInstance.currentTileKey;
+        characterInstance.currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
 
-        characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
-        Vector2 newCoordinate = FieldTileUtility.GetCoordFromPosition(nextTilePosition.x, nextTilePosition.y);
-        characterInstance.currentTileKey = FieldTileUtility.GetKeyFromCoord(newCoordinate);
+            /*characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
+        */
         
 /*        Camera.main.transform.position = new Vector3(
             characterInstance.transform.position.x, 
@@ -222,11 +217,12 @@ public class CharacterManager
         toMoveTile = movableDictionary[direction];  
     }
 
-	// Use this for initialization
-	void Start () {
+    void InitializeCharacter()
+    {
 		Tile startTile = TileManager.GetStartTile ();
         Vector3 startTilePosition = startTile.gameObject.transform.position;
         Vector3 startPositionOfCharacter = new Vector3(startTilePosition.x, startTilePosition.y, Character.Depth);
+
         characterInstance = GameObject.Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
         Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfCharacter.x, startPositionOfCharacter.y);
         characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
@@ -234,6 +230,14 @@ public class CharacterManager
         characterInstance.prePreTileKey = 000;
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
+
+        characterMover = characterInstance.GetComponent<CharacterMover>();
+    }
+
+	// Use this for initialization
+	void Start () {
+
+        InitializeCharacter();
         
         if (Network.isClient == false)
         {
