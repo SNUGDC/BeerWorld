@@ -29,7 +29,6 @@ public class ChatGUIView : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
     public void OnGUI()
@@ -40,6 +39,7 @@ public class ChatGUIView : MonoBehaviour {
 
     private void OnChatGUI(int id)
     {
+        GUI.DragWindow();
         ScrollPos = GUILayout.BeginScrollView(ScrollPos);
         GUILayout.Label(textToread);
         GUILayout.EndScrollView();
