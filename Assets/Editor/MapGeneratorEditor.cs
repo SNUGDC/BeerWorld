@@ -12,8 +12,8 @@ public class MapGeneratorEditor : EditorWindow {
 
 	void OnGUI()
 	{
-		EditorGUILayout.LabelField ("This is label.");
-		if (GUILayout.Button("sample button."))
+		EditorGUILayout.LabelField ("Map Generator");
+		if (GUILayout.Button("15x15 Generating."))
         {
             FieldTilesMaker tileGenerator = GameObject.FindObjectOfType<FieldTilesMaker> ();
             if (tileGenerator == null)
