@@ -873,7 +873,7 @@ GameObject:
   - 95: {fileID: 86937806}
   - 114: {fileID: 86937805}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,7 +1203,7 @@ GameObject:
   - 95: {fileID: 109716813}
   - 114: {fileID: 109716812}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4694,21 +4694,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAttackDices:
-  - {fileID: 1685932314}
   - {fileID: 656547755}
   - {fileID: 2072238893}
-  playerDefenceDices:
-  - {fileID: 686071721}
+  - {fileID: 1685932314}
+  playerDefenseDices:
   - {fileID: 1914139536}
   - {fileID: 1334652148}
+  - {fileID: 686071721}
   enemyAttackDices:
-  - {fileID: 109716809}
   - {fileID: 945317814}
   - {fileID: 419099343}
-  enemyDefenceDices:
-  - {fileID: 86937802}
+  - {fileID: 109716809}
+  enemyDefenseDices:
   - {fileID: 1456708861}
   - {fileID: 721417332}
+  - {fileID: 86937802}
   battleCamera: {fileID: 1523686541}
 --- !u!1 &371080943
 GameObject:
@@ -5317,7 +5317,7 @@ GameObject:
   - 95: {fileID: 419099347}
   - 114: {fileID: 419099346}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7511,6 +7511,30 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
   m_RootGameObject: {fileID: 238083993}
@@ -8375,7 +8399,7 @@ GameObject:
   - 95: {fileID: 656547759}
   - 114: {fileID: 656547758}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8997,7 +9021,7 @@ GameObject:
   - 95: {fileID: 686071725}
   - 114: {fileID: 686071724}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9322,7 +9346,7 @@ GameObject:
   - 95: {fileID: 721417336}
   - 114: {fileID: 721417335}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9997,6 +10021,30 @@ Prefab:
     - target: {fileID: 100032, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
       propertyPath: m_Name
       value: Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
@@ -11816,7 +11864,7 @@ GameObject:
   - 95: {fileID: 945317818}
   - 114: {fileID: 945317817}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16822,7 +16870,7 @@ GameObject:
   - 95: {fileID: 1334652152}
   - 114: {fileID: 1334652151}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18055,7 +18103,7 @@ GameObject:
   - 95: {fileID: 1456708865}
   - 114: {fileID: 1456708864}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20705,7 +20753,7 @@ GameObject:
   - 95: {fileID: 1685932318}
   - 114: {fileID: 1685932317}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23047,7 +23095,7 @@ GameObject:
   - 95: {fileID: 1914139540}
   - 114: {fileID: 1914139539}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24979,7 +25027,7 @@ GameObject:
   - 95: {fileID: 2072238897}
   - 114: {fileID: 2072238896}
   m_Layer: 0
-  m_Name: miniDice
+  m_Name: miniDice2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

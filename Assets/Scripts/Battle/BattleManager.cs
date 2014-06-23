@@ -20,9 +20,9 @@ public class BattleManager : MonoBehaviour
     }
 
     public GameObject[] playerAttackDices = new GameObject[3];
-    public GameObject[] playerDefenceDices = new GameObject[3];
+    public GameObject[] playerDefenseDices = new GameObject[3];
     public GameObject[] enemyAttackDices = new GameObject[3];
-    public GameObject[] enemyDefenceDices = new GameObject[3]; 
+    public GameObject[] enemyDefenseDices = new GameObject[3]; 
 
     State state = State.Inactive;
     AttackOrDefense attackOrDefense = AttackOrDefense.Attack;
@@ -77,11 +77,11 @@ public class BattleManager : MonoBehaviour
         if (attackOrDefense == AttackOrDefense.Attack)
         {
             playerCalcResult = calculator.GetAttackDiceResult(player);
-            enemyCalcResult = calculator.GetDefenceDiceResult(enemy);
+            enemyCalcResult = calculator.GetDefenseDiceResult(enemy);
         }
         else
         {
-            playerCalcResult = calculator.GetDefenceDiceResult(player);
+            playerCalcResult = calculator.GetDefenseDiceResult(player);
             enemyCalcResult = calculator.GetAttackDiceResult(player);
         }
 
@@ -95,32 +95,37 @@ public class BattleManager : MonoBehaviour
     void AnimateDice()
     {
         int playerDiceNum = playerCalcResult.diceResults.Count;
-
-        for (int i = 0; i < playerDiceNum; i++)
-        {
-            int diceResult = playerCalcResult.diceResults[i];
-            playerAttackDices[i].SendMessage("rollByNumber", diceResult);    
-        }
-        
-        for (int i = 0; i < playerDiceNum; i++)
-        {
-            int diceResult = playerCalcResult.diceResults[i];
-            playerDefenceDices[i].SendMessage("rollByNumber", diceResult);    
-        }
-
         int enemyDiceNum = enemyCalcResult.diceResults.Count;
 
-        for (int i = 0; i < enemyDiceNum; i++)
+        if (attackOrDefense == AttackOrDefense.Attack)
         {
-            int diceResult = enemyCalcResult.diceResults[i];
-            enemyAttackDices[i].SendMessage("rollByNumber", diceResult);    
-        }
-        
-        for (int i = 0; i < enemyDiceNum; i++)
+            for (int i = 0; i < playerDiceNum; i++)
+            {
+                int diceResult = playerCalcResult.diceResults[i];
+                playerAttackDices[i].SendMessage("rollByNumber", diceResult);    
+            }
+                    
+            for (int i = 0; i < enemyDiceNum; i++)
+            {
+                int diceResult = enemyCalcResult.diceResults[i];
+                enemyDefenseDices[i].SendMessage("rollByNumber", diceResult);    
+            }
+        }   
+        else
         {
-            int diceResult = enemyCalcResult.diceResults[i];
-            enemyDefenceDices[i].SendMessage("rollByNumber", diceResult);    
-        }                
+            for (int i = 0; i < playerDiceNum; i++)
+            {
+                int diceResult = playerCalcResult.diceResults[i];
+                playerDefenseDices[i].SendMessage("rollByNumber", diceResult);    
+            }
+
+            for (int i = 0; i < enemyDiceNum; i++)
+            {
+                int diceResult = enemyCalcResult.diceResults[i];
+                enemyAttackDices[i].SendMessage("rollByNumber", diceResult);    
+            }
+
+        }             
 
         //show animation with calculation result.
         state = State.ShowDamage;

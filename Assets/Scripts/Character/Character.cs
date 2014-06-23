@@ -10,7 +10,7 @@ public class Character : MonoBehaviour {
 	public int prePreTileKey;
 	public int HP;
 	public int numberOfAttackDice;
-	public int numberOfDefenceDice;
+	public int numberOfdefenseDice;
 	public int numberOfMoveDice;
 	//public List<Item> itemList = new List<Item>();
 
