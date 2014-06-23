@@ -43,6 +43,18 @@ public class BattleManager : MonoBehaviour
         battleCamera.enabled = false;
     }
 
+    void changeAttackOrDefense()
+    {
+        if (attackOrDefense == AttackOrDefense.Attack)
+        {
+            attackOrDefense = AttackOrDefense.Defense;
+        }
+        else 
+        {
+            attackOrDefense = AttackOrDefense.Attack;
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.A))
@@ -90,6 +102,8 @@ public class BattleManager : MonoBehaviour
 
         state = State.ShowRoll;
         AnimateDice();
+
+        changeAttackOrDefense();
     }
 
     void AnimateDice()
