@@ -77,6 +77,8 @@ public class BattleManager : MonoBehaviour
             player = BattleUtil.GetDummyPlayer();
             enemy = BattleUtil.GetDummyEnemy();
             state = State.WaitingRoll;
+
+            UpdateRemainHP();
         }
         else if (state == State.BattleEnd)
         {
@@ -237,6 +239,10 @@ public class BattleManager : MonoBehaviour
             {
                 playerHearts[i].SetActive(false);
             }
+            else
+            {
+                playerHearts[i].SetActive(true);
+            }
         }
 
         for (int i = 0; i < enemyHearts.Length; i++)
@@ -244,6 +250,10 @@ public class BattleManager : MonoBehaviour
             if (remainEnemyHPRatio <= ((float)i / (float)enemyHearts.Length))
             {
                 enemyHearts[i].SetActive(false);
+            }
+            else 
+            {
+                enemyHearts[i].SetActive(true);
             }
         }
     }
