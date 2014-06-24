@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BattleManager : MonoBehaviour
 {
-    enum State
+    public enum State
     {
         Inactive,
         Start,
@@ -18,6 +18,18 @@ public class BattleManager : MonoBehaviour
         Attack,
         Defense
     }
+
+    public static BattleManager battleManagerInstance = null;
+
+    void Awake()
+    {
+        battleManagerInstance = this;
+    }
+
+    public State GetBattleState()
+    {
+        return state;
+    } 
 
     public GameObject[] playerAttackDices = new GameObject[3];
     public GameObject[] playerDefenseDices = new GameObject[3];
@@ -232,7 +244,6 @@ public class BattleManager : MonoBehaviour
             " EnemyHP ratio : " + remainEnemyHPRatio
             );
 
-//        ShowUserHP(remainPlayerHPRatio * playerHearts.Length);
         for (int i = 0; i < playerHearts.Length; i++)
         {
             if (remainPlayerHPRatio <= ((float)i / (float)playerHearts.Length))
@@ -254,26 +265,6 @@ public class BattleManager : MonoBehaviour
             else 
             {
                 enemyHearts[i].SetActive(true);
-            }
-        }
-    }
-
-    void ShowUserHP(int life)
-    {
-        if (life < 0 || playerHearts.Length < life)
-        {
-            Debug.LogError("Life not valid.");
-        }
-
-        for (int i=0; i < playerHearts.Length; i++)
-        {
-            if (i < life)
-            {
-                playerHearts[i].SetActive(true);
-            }
-            else
-            {
-                playerHearts[i].SetActive(false);
             }
         }
     }
