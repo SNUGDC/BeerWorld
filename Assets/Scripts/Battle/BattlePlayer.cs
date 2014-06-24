@@ -17,6 +17,12 @@ public class BattlePlayer
     public readonly int maxHp;
     private int currentHp;
 
+    //using Test.
+    public int GetHp()
+    {
+        return currentHp;
+    }
+
     public BattlePlayer(List<BDice.Species> attackDices,
             List<BDice.Species> defenseDices,
             int maxHp)

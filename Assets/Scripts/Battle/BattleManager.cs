@@ -102,8 +102,6 @@ public class BattleManager : MonoBehaviour
 
         state = State.ShowRoll;
         AnimateDice();
-
-        changeAttackOrDefense();
     }
 
     void AnimateDice()
@@ -143,19 +141,69 @@ public class BattleManager : MonoBehaviour
 
         //show animation with calculation result.
         state = State.ShowDamage;
-        AnimateDamage();
+        AnimateDamage(playerDiceNum, enemyDiceNum);
     }
 
-    void AnimateDamage()
+    BattlePlayer CompareDamageAndSelectTarget(int playerDiceNum, int enemyDiceNum)
     {
+        if (playerDiceNum > enemyDiceNum)
+        {
+            return enemy;
+        }
+        else if (playerDiceNum < enemyDiceNum) 
+        {
+            return player;
+        }
+        else
+        {
+            Debug.Log("Dice is same.");
+            return null;
+        }
+    }
+
+    int CalculateDamage(int playerDiceNum, int enemyDiceNum)
+    {
+        return System.Math.Abs(playerDiceNum - enemyDiceNum);
+    }
+
+    void AnimateDamage(int playerDiceNum, int enemyDiceNum)
+    {
+        BattlePlayer target = null;
+        int damage = 0;
+        
+//        CompareDamageAndSelectTarget(playerDiceNum, enemyDiceNum);
+        damage = CalculateDamage(playerDiceNum, enemyDiceNum);
+        target = CompareDamageAndSelectTarget(playerDiceNum, enemyDiceNum);
+
+        Debug.Log("PlayerDice : " + playerDiceNum + ", EnemyDice : " + enemyDiceNum);
         //show animation with calculation result.
         //apply damage.
         state = State.WaitingRoll;
-        enemy.ApplyDamage(1);
-
+        target.ApplyDamage(damage);
+        if (target == enemy)
+        {
+            Debug.Log("Enemy is Damaged " + damage);
+        }
+        else if (target == player)
+        {
+            Debug.Log("Player is Damaged " + damage);
+        }
+        
         if (enemy.IsDie())
         {
             state = State.BattleEnd;
+            //EnemyDelete();
         }
+        else if (player.IsDie())
+        {
+            state = State.BattleEnd;
+            //PlayerRespawn();
+        }
+
+        Debug.Log(
+            "PlayerHP : " + player.GetHp() + "/" + player.maxHp +
+            " EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
+            );
+        changeAttackOrDefense();
     }
 }
