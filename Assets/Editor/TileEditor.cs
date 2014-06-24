@@ -54,16 +54,7 @@ public class TileEditor : Editor {
                     Debug.LogWarning ("jailTile.");
                     break;
             }
-//            if (tile.isStartTile == true)
-//            {
-//                spriteRenderer.sprite = tile.startTile;
-//                Debug.LogWarning ("startTile.");
-//            }
-//            else if (tile.isStartTile == false)
-//            {
-//                spriteRenderer.sprite = tile.defaultTile;
-//                Debug.LogWarning ("not startTile.");
-//            }
+
             tile.gameObject.SetActive(tile.isVisible);
             EditorUtility.SetDirty (target);
         }

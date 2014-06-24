@@ -46,7 +46,7 @@ public class BattleManager : MonoBehaviour
         battleCamera.enabled = false;
     }
 
-    void changeAttackOrDefense()
+    void ChangeAttackOrDefense()
     {
         if (attackOrDefense == AttackOrDefense.Attack)
         {
@@ -210,11 +210,61 @@ public class BattleManager : MonoBehaviour
             //PlayerRespawn();
         }
 
-//        CheckAndShowRemainHP();
+        UpdateRemainHP();
+
         Debug.Log(
             "PlayerHP : " + player.GetHp() + "/" + player.maxHp +
             " EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
             );
-        changeAttackOrDefense();
+        
+        ChangeAttackOrDefense();
+    }
+
+    void UpdateRemainHP()
+    {
+        float remainPlayerHPRatio = (float)player.GetHp() / (float)player.maxHp;
+        float remainEnemyHPRatio = (float)enemy.GetHp() / (float)enemy.maxHp;
+
+        Debug.Log(
+            "PlayerHP ratio : " + remainPlayerHPRatio +
+            " EnemyHP ratio : " + remainEnemyHPRatio
+            );
+
+//        ShowUserHP(remainPlayerHPRatio * playerHearts.Length);
+        for (int i = 0; i < playerHearts.Length; i++)
+        {
+            if (remainPlayerHPRatio <= ((float)i / (float)playerHearts.Length))
+            {
+                playerHearts[i].SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < enemyHearts.Length; i++)
+        {
+            if (remainEnemyHPRatio <= ((float)i / (float)enemyHearts.Length))
+            {
+                enemyHearts[i].SetActive(false);
+            }
+        }
+    }
+
+    void ShowUserHP(int life)
+    {
+        if (life < 0 || playerHearts.Length < life)
+        {
+            Debug.LogError("Life not valid.");
+        }
+
+        for (int i=0; i < playerHearts.Length; i++)
+        {
+            if (i < life)
+            {
+                playerHearts[i].SetActive(true);
+            }
+            else
+            {
+                playerHearts[i].SetActive(false);
+            }
+        }
     }
 }
