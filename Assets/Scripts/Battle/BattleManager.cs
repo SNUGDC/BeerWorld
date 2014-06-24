@@ -24,6 +24,9 @@ public class BattleManager : MonoBehaviour
     public GameObject[] enemyAttackDices = new GameObject[3];
     public GameObject[] enemyDefenseDices = new GameObject[3]; 
 
+    public GameObject[] playerHearts = new GameObject[4];
+    public GameObject[] enemyHearts = new GameObject[4];
+
     State state = State.Inactive;
     AttackOrDefense attackOrDefense = AttackOrDefense.Attack;
     BattlePlayer player;
@@ -207,6 +210,7 @@ public class BattleManager : MonoBehaviour
             //PlayerRespawn();
         }
 
+//        CheckAndShowRemainHP();
         Debug.Log(
             "PlayerHP : " + player.GetHp() + "/" + player.maxHp +
             " EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp

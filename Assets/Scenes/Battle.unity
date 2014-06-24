@@ -4709,6 +4709,16 @@ MonoBehaviour:
   - {fileID: 1456708861}
   - {fileID: 721417332}
   - {fileID: 86937802}
+  playerHearts:
+  - {fileID: 1164197818}
+  - {fileID: 1743098418}
+  - {fileID: 372056436}
+  - {fileID: 2058185930}
+  enemyHearts:
+  - {fileID: 612435258}
+  - {fileID: 1442461899}
+  - {fileID: 938989213}
+  - {fileID: 1397580791}
   battleCamera: {fileID: 1523686541}
 --- !u!1 &371080943
 GameObject:
