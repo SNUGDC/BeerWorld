@@ -4793,7 +4793,7 @@ GameObject:
   - 4: {fileID: 372056437}
   - 212: {fileID: 372056438}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7535,6 +7535,22 @@ Prefab:
       propertyPath: m_Name
       value: miniDice2
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
   m_RootGameObject: {fileID: 238083993}
@@ -7997,7 +8013,7 @@ GameObject:
   - 4: {fileID: 612435259}
   - 212: {fileID: 612435260}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10046,6 +10062,22 @@ Prefab:
       propertyPath: m_Name
       value: miniDice2
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: Heart2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
   m_RootGameObject: {fileID: 1184511811}
@@ -11686,7 +11718,7 @@ GameObject:
   - 4: {fileID: 938989214}
   - 212: {fileID: 938989215}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14237,7 +14269,7 @@ GameObject:
   - 4: {fileID: 1164197819}
   - 212: {fileID: 1164197820}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17796,7 +17828,7 @@ GameObject:
   - 4: {fileID: 1397580792}
   - 212: {fileID: 1397580793}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17951,7 +17983,7 @@ GameObject:
   - 4: {fileID: 1442461900}
   - 212: {fileID: 1442461901}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21248,7 +21280,7 @@ GameObject:
   - 4: {fileID: 1743098419}
   - 212: {fileID: 1743098420}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24677,7 +24709,7 @@ GameObject:
   - 4: {fileID: 2058185931}
   - 212: {fileID: 2058185932}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: Heart4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
