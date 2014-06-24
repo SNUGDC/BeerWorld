@@ -3,6 +3,12 @@ using System.Collections;
 
 public class CharacterMover : MonoBehaviour
 {
+    public void MoveTo(int tileKey)
+    {
+        Tile tile = TileManager.GetExistTile(tileKey);
+        MoveTo(tile);
+    }
+
     public void MoveTo(int tileCoordX, int tileCoordY)
     {
         Tile tile = TileManager.GetTileByCoord(tileCoordX, tileCoordY);

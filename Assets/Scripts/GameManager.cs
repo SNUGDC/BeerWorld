@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 	public Character characterPrefab;
 	public DirectionArrow arrowPrefab;
 	private CharacterManager myCharacterManager = null;
+    private EnemyPlaceHolder enemyHolder = null;
+    public Enemy enemyPrefab;
 
 	private Dictionary<NetworkViewID, CharacterManager> otherCharacterManagers = new Dictionary<NetworkViewID, CharacterManager>();
 	//private List<NetworkViewID> playerList = new List<NetworkViewID>();
@@ -123,11 +125,13 @@ public class GameManager : MonoBehaviour {
 	{
 		gameManagerInstance = this;
 		myCharacterManager = new CharacterManager(characterPrefab, arrowPrefab);
+        enemyHolder = new EnemyPlaceHolder(enemyPrefab);
 	}
 
 	// Use this for initialization
 	void Start () {
 		myCharacterManager.Init();
+        enemyHolder.PlaceEnemy();
 	}
 	
 	// Update is called once per frame

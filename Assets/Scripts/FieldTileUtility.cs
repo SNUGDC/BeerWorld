@@ -21,9 +21,12 @@ public class FieldTileUtility : MonoBehaviour {
 
     public static int GetKeyFromCoord(Vector2 coordinate)
     {
-    	int key = (int)(coordinate.x*100 + coordinate.y);
+        return GetKeyFromCoord((int)coordinate.x, (int)coordinate.y);
+    }
 
-    	return key;
+    public static int GetKeyFromCoord(int coordX, int coordY)
+    {
+        return coordX * 100 + coordY;
     }
 
     public static Vector2 GetCoordFromKey(int key)
