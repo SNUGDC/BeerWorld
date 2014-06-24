@@ -4,12 +4,12 @@ using System.Collections.Generic;
 public class CalculationResult
 {
     public readonly List<int> diceResults;
-    public readonly int totalDamage;
+    public readonly int totalDiceResult;
 
-    public CalculationResult(List<int> diceResults, int totalDamage)
+    public CalculationResult(List<int> diceResults, int totalDiceResult)
     {
         this.diceResults = diceResults;
-        this.totalDamage = totalDamage;
+        this.totalDiceResult = totalDiceResult;
     }
 
     public string ToString()

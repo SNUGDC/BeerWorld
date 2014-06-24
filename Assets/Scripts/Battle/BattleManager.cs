@@ -77,7 +77,7 @@ public class BattleManager : MonoBehaviour
         }
         else if (state == State.BattleEnd)
         {
-            Debug.Log("BattleENd.");
+            Debug.Log("BattleEnd.");
             state = State.Inactive;
             EndBattle();
         }
@@ -139,18 +139,20 @@ public class BattleManager : MonoBehaviour
 
         }             
 
+        int totalPlayerDice = playerCalcResult.totalDiceResult;
+        int totalEnemyDice = enemyCalcResult.totalDiceResult;
         //show animation with calculation result.
         state = State.ShowDamage;
-        AnimateDamage(playerDiceNum, enemyDiceNum);
+        AnimateDamage(totalPlayerDice, totalEnemyDice);
     }
 
-    BattlePlayer CompareDamageAndSelectTarget(int playerDiceNum, int enemyDiceNum)
+    BattlePlayer CompareDamageAndSelectTarget(int totalPlayerDice, int totalEnemyDice)
     {
-        if (playerDiceNum > enemyDiceNum)
+        if (totalPlayerDice > totalEnemyDice)
         {
             return enemy;
         }
-        else if (playerDiceNum < enemyDiceNum) 
+        else if (totalPlayerDice < totalEnemyDice) 
         {
             return player;
         }
@@ -161,25 +163,30 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    int CalculateDamage(int playerDiceNum, int enemyDiceNum)
+    int CalculateDamage(int totalPlayerDice, int totalEnemyDice)
     {
-        return System.Math.Abs(playerDiceNum - enemyDiceNum);
+        return System.Math.Abs(totalPlayerDice - totalEnemyDice);
     }
 
-    void AnimateDamage(int playerDiceNum, int enemyDiceNum)
+    void AnimateDamage(int totalPlayerDice, int totalEnemyDice)
     {
         BattlePlayer target = null;
         int damage = 0;
         
-//        CompareDamageAndSelectTarget(playerDiceNum, enemyDiceNum);
-        damage = CalculateDamage(playerDiceNum, enemyDiceNum);
-        target = CompareDamageAndSelectTarget(playerDiceNum, enemyDiceNum);
+//        CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
+        damage = CalculateDamage(totalPlayerDice, totalEnemyDice);
+        target = CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
 
-        Debug.Log("PlayerDice : " + playerDiceNum + ", EnemyDice : " + enemyDiceNum);
+        Debug.Log("PlayerDice : " + totalPlayerDice + ", EnemyDice : " + totalEnemyDice);
         //show animation with calculation result.
         //apply damage.
         state = State.WaitingRoll;
-        target.ApplyDamage(damage);
+        
+        if (target != null)
+        {
+            target.ApplyDamage(damage);
+        }
+
         if (target == enemy)
         {
             Debug.Log("Enemy is Damaged " + damage);
