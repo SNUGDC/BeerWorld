@@ -216,12 +216,12 @@ public class BattleManager : MonoBehaviour
         if (enemy.IsDie())
         {
             state = State.BattleEnd;
-            //EnemyDelete();
+            //EnemyDelete(enemy);
         }
         else if (player.IsDie())
         {
             state = State.BattleEnd;
-            //PlayerRespawn();
+            //PlayerRespawn(player);
         }
 
         UpdateRemainHP();
