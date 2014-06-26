@@ -203,6 +203,12 @@ public class BattleManager : MonoBehaviour
         {
             target.ApplyDamage(damage);
         }
+        else
+        {
+            player.ApplyDamage(1);
+            enemy.ApplyDamage(1);
+            Debug.Log("Each player is Damaged 1");
+        }
 
         if (target == enemy)
         {
