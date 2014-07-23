@@ -21,6 +21,11 @@ public class CharacterManager
 
     private int howManyMove = 0;
 
+    public Character GetCharacterInstance()
+    {
+        return characterInstance;
+    }
+
     public enum MoveState
     {
         Inactive, // other user's turn.

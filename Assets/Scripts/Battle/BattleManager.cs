@@ -86,7 +86,9 @@ public class BattleManager : MonoBehaviour
 
         if (state == State.Start)
         {
-            player = BattleUtil.GetDummyPlayer();
+            //CharacterManager myCharacterManagerOnBattle = GameManager.GetMyCharacterManager();
+            player = BattleUtil.GetPlayer(GameManager.GetMyCharacterManager().GetCharacterInstance());
+            //player = BattleUtil.GetDummyPlayer();
             enemy = BattleUtil.GetDummyEnemy();
             state = State.WaitingRoll;
 

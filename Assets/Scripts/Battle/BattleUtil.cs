@@ -38,13 +38,19 @@ public class BattleUtil
         List<BDice.Species> attackDices = new List<BDice.Species>();
         List<BDice.Species> defenseDices = new List<BDice.Species>();
 
-        attackDices.Add(BDice.Species.Six);
-        attackDices.Add(BDice.Species.Six);
-        attackDices.Add(BDice.Species.Six);
+        for(int i = 0; i < Player.numberOfAttackDice; i++)
+        {
+            attackDices.Add(Player.speciesOfAttackDice); 
+        }
 
-        defenseDices.Add(BDice.Species.Six);
+        for(int i = 0; i < Player.numberOfDefenseDice; i++)
+        {
+            defenseDices.Add(Player.speciesOfDefenseDice);    
+        }    
+
+        int Hp = Player.currentHp;
 
         return new BattlePlayer(attackDices, defenseDices,
-                10);   
+                Hp);   
     }
 }
