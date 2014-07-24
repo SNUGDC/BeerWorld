@@ -44,16 +44,7 @@ public class BattleCalculator
         }
 
         return new CalculationResult(diceResults, totalDiceResult);
-        /*int firstDiceResult = 3;
-        int secondDiceResult = 5;
-
-        List<int> diceResults = new List<int>();
-        diceResults.Add(firstDiceResult);
-        diceResults.Add(secondDiceResult);
-
-        return new CalculationResult(
-                diceResults, 3 + 5);
-*/    }
+    }
 
     public CalculationResult GetDefenseDiceResult(BattlePlayer player)
     {
@@ -71,15 +62,5 @@ public class BattleCalculator
         }
 
         return new CalculationResult(diceResults, totalDiceResult);
-
-/*        int firstDiceResult = 4;
-        int secondDiceResult = 2;
-
-        List<int> diceResults = new List<int>();
-        diceResults.Add(firstDiceResult);
-        diceResults.Add(secondDiceResult);
-
-        return new CalculationResult(
-                diceResults, 4 + 2);
-*/    }
+    }
 }

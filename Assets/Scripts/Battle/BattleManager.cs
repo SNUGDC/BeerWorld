@@ -55,6 +55,7 @@ public class BattleManager : MonoBehaviour
 
     public void EndBattle()
     {
+        BattleResult.UpdateResult(player, enemy);
         battleCamera.enabled = false;
     }
 
@@ -192,7 +193,6 @@ public class BattleManager : MonoBehaviour
         BattlePlayer target = null;
         int damage = 0;
         
-//        CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
         damage = CalculateDamage(totalPlayerDice, totalEnemyDice);
         target = CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
 
@@ -224,12 +224,12 @@ public class BattleManager : MonoBehaviour
         if (enemy.IsDie())
         {
             state = State.BattleEnd;
-            //EnemyDelete(enemy);
+            BattleResult.EnemyDelete(enemy);
         }
         else if (player.IsDie())
         {
             state = State.BattleEnd;
-            //PlayerRespawn(player);
+            BattleResult.PlayerRespawn(player);
         }
 
         UpdateRemainHP();

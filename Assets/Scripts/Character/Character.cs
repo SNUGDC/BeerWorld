@@ -21,14 +21,7 @@ public class Character : MonoBehaviour {
 	public int numberOfMoveDice;
 	public BDice.Species speciesOfMoveDice;
 	
-	/*
-	public List<BDice.Species> attackDices = new List<BDice.Species>();
-    public List<BDice.Species> defenseDices = new List<BDice.Species>(); 
-    public List<BDice.Species> moveDices = new List<BDice.Species>();
-	*/
-
 	//public List<Item> itemList = new List<Item>();
-
 
 
 	// Use this for initialization = BDice.Species.Six;

@@ -25,12 +25,12 @@ public class BattlePlayer
 
     public BattlePlayer(List<BDice.Species> attackDices,
             List<BDice.Species> defenseDices,
-            int maxHp)
+            int maxHp, int currentHp)
     {
         this.attackDices = attackDices;
         this.defenseDices = defenseDices;
         this.maxHp = maxHp;
-        this.currentHp = maxHp;
+        this.currentHp = currentHp;
     }
 
     public void ApplyDamage(int damage)

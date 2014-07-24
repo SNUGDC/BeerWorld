@@ -3,14 +3,19 @@ using System.Collections;
 
 public class BattleResult 
 {
-	public static void EnemyDelete(BattlePlayer player)
+	public static void EnemyDelete(BattlePlayer enemy)
 	{
 
 	}
 
-	public static void PlayerRespawn(BattlePlayer enemy)
+	public static void PlayerRespawn(BattlePlayer player)
 	{
 
+	}
+
+	public static void UpdateResult(BattlePlayer player, BattlePlayer enemy)
+	{
+		GameManager.GetMyCharacterManager().GetCharacterInstance().currentHp = player.GetHp();
 	}
 
 	// Use this for initialization
