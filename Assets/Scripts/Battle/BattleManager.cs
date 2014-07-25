@@ -117,8 +117,8 @@ public class BattleManager : MonoBehaviour
             enemyCalcResult = calculator.GetAttackDiceResult(player);
         }
 
-        Debug.Log("Player result is " + playerCalcResult.ToString());
-        Debug.Log("Enemy result is " + enemyCalcResult.ToString());
+        //Debug.Log("Player result is " + playerCalcResult.ToString());
+        //Debug.Log("Enemy result is " + enemyCalcResult.ToString());
 
         state = State.ShowRoll;
         AnimateDice();
@@ -223,13 +223,13 @@ public class BattleManager : MonoBehaviour
         
         if (enemy.IsDie())
         {
+            BattleResult.state = BattleResult.BattleResultState.PlayerWin;
             state = State.BattleEnd;
-            BattleResult.EnemyDelete(enemy);
         }
         else if (player.IsDie())
         {
+            BattleResult.state = BattleResult.BattleResultState.EnemyWin;
             state = State.BattleEnd;
-            BattleResult.PlayerRespawn(player);
         }
 
         UpdateRemainHP();

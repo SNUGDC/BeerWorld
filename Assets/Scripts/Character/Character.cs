@@ -28,7 +28,7 @@ public class Character : MonoBehaviour {
 	void Start () 
 	{
 		//temporary values.
-		maxHp = 40;
+		maxHp = 20;
 		currentHp = maxHp;
 
 		numberOfAttackDice = 1;
