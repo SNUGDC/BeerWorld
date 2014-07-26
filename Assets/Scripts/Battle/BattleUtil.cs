@@ -33,23 +33,23 @@ public class BattleUtil
                 5, 5);
     }
 
-    public static BattlePlayer GetPlayer(Character player)
+    public static BattlePlayer GetPlayer(Character character)
     {
         List<BDice.Species> attackDices = new List<BDice.Species>();
         List<BDice.Species> defenseDices = new List<BDice.Species>();
 
-        for(int i = 0; i < player.numberOfAttackDice; i++)
+        for(int i = 0; i < character.numberOfAttackDice; i++)
         {
-            attackDices.Add(player.speciesOfAttackDice); 
+            attackDices.Add(character.speciesOfAttackDice); 
         }
 
-        for(int i = 0; i < player.numberOfDefenseDice; i++)
+        for(int i = 0; i < character.numberOfDefenseDice; i++)
         {
-            defenseDices.Add(player.speciesOfDefenseDice);    
+            defenseDices.Add(character.speciesOfDefenseDice);    
         }    
 
-        int maxHp = player.maxHp;
-        int currentHp = player.currentHp;
+        int maxHp = character.maxHp;
+        int currentHp = character.currentHp;
 
         return new BattlePlayer(attackDices, defenseDices,
                 maxHp, currentHp);   
