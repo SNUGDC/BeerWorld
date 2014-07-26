@@ -28,13 +28,13 @@ public class Character : MonoBehaviour {
 	void Start () 
 	{
 		//temporary values.
-		maxHp = 20;
+		maxHp = 10;
 		currentHp = maxHp;
 
 		numberOfAttackDice = 1;
 		speciesOfAttackDice = BDice.Species.Six;
 
-		numberOfDefenseDice = 2;
+		numberOfDefenseDice = 1;
 		speciesOfDefenseDice = BDice.Species.Six;
 
 		numberOfMoveDice = 1;

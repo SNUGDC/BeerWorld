@@ -55,7 +55,7 @@ public class BattleManager : MonoBehaviour
 
     public void EndBattle()
     {
-        BattleResult.UpdateResult(player, enemy);
+        BattleResultApplier.ApplyBattleResult(player, enemy);
         battleCamera.enabled = false;
     }
 
@@ -223,12 +223,12 @@ public class BattleManager : MonoBehaviour
         
         if (enemy.IsDie())
         {
-            BattleResult.state = BattleResult.BattleResultState.PlayerWin;
+            BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
             state = State.BattleEnd;
         }
         else if (player.IsDie())
         {
-            BattleResult.state = BattleResult.BattleResultState.EnemyWin;
+            BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
             state = State.BattleEnd;
         }
 

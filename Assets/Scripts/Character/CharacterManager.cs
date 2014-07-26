@@ -222,27 +222,31 @@ public class CharacterManager
         toMoveTile = movableDictionary[direction];  
     }
 
-    void InitializeCharacter()
+    void InstantiateCharacter()
+    {
+        characterInstance = GameObject.Instantiate(characterPrefeb) as Character; 
+    }
+
+    public void InitializeCharacter()
     {
 		Tile startTile = TileManager.GetStartTile ();
         Vector3 startTilePosition = startTile.gameObject.transform.position;
         Vector3 startPositionOfCharacter = new Vector3(startTilePosition.x, startTilePosition.y, Character.Depth);
 
-        characterInstance = GameObject.Instantiate(characterPrefeb, startPositionOfCharacter, Quaternion.identity) as Character; 
+        characterInstance.transform.position = startPositionOfCharacter;
         Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfCharacter.x, startPositionOfCharacter.y);
         characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
         characterInstance.preTileKey = 000;
         characterInstance.prePreTileKey = 000;
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
-
-        characterMover = characterInstance.GetComponent<CharacterMover>();
     }
 
 	// Use this for initialization
 	void Start () {
-
+        InstantiateCharacter();
         InitializeCharacter();
+        characterMover = characterInstance.GetComponent<CharacterMover>();
         
         if (Network.isClient == false)
         {
