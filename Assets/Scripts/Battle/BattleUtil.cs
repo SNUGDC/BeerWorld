@@ -40,18 +40,18 @@ public class BattleUtil
 
         for(int i = 0; i < character.numberOfAttackDice; i++)
         {
-            attackDices.Add(character.speciesOfAttackDice); 
+            attackDices.Add(character.speciesOfAttackDice);
         }
 
         for(int i = 0; i < character.numberOfDefenseDice; i++)
         {
-            defenseDices.Add(character.speciesOfDefenseDice);    
-        }    
+            defenseDices.Add(character.speciesOfDefenseDice);
+        }
 
         int maxHp = character.maxHp;
         int currentHp = character.currentHp;
 
         return new BattlePlayer(attackDices, defenseDices,
-                maxHp, currentHp);   
+                maxHp, currentHp);
     }
 }

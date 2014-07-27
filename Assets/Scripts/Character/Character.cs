@@ -8,24 +8,24 @@ public class Character : MonoBehaviour {
 	public int currentTileKey;
 	public int preTileKey;
 	public int prePreTileKey;
-	
+
 	public int maxHp;
 	public int currentHp;
 
 	public int numberOfAttackDice;
 	public BDice.Species speciesOfAttackDice;
-	
+
 	public int numberOfDefenseDice;
 	public BDice.Species speciesOfDefenseDice;
-	
+
 	public int numberOfMoveDice;
 	public BDice.Species speciesOfMoveDice;
-	
-	//public List<Item> itemList = new List<Item>();
+
+	public List<Item> itemList = new List<Item>();
 
 
 	// Use this for initialization = BDice.Species.Six;
-	void Start () 
+	void Start ()
 	{
 		//temporary values.
 		maxHp = 10;
@@ -40,10 +40,10 @@ public class Character : MonoBehaviour {
 		numberOfMoveDice = 1;
 		speciesOfMoveDice = BDice.Species.Six;
 	}
-	
+
 	// Update is called once per frameb
-	void Update () 
+	void Update ()
 	{
-	
+
 	}
 }
