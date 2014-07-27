@@ -9,6 +9,11 @@ public class NetworkManager : MonoBehaviour {
 
     public static NetworkManager networkInstance = null;
 
+		public static bool isConnected()
+		{
+			return Network.connections.Length > 0;
+		}
+
     public NetworkViewID GetNetworkID()
     {
         return Id;

@@ -266,7 +266,16 @@ public class CharacterManager
 
         if (howManyMove <= 0 && moveState == MoveState.Moving)
         {
+					if (NetworkManager.isConnected())
+					{
             moveState = MoveState.Inactive;
+					}
+					else
+					{
+						// For local test.
+            moveState = MoveState.Idle;
+					}
+
             NetworkManager.SendTurnEndMessage();
             return;
         }
