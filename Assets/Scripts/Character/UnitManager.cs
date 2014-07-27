@@ -3,10 +3,23 @@ using System.Collections.Generic;
 
 public class UnitManager
 {
-    public UnitManager(Unit unitPrefab, DirectionArrow arrowPrefab)
+	private Tile spawnTile = null;
+	public static UnitManager CreateInStart(Unit unitPrefab, DirectionArrow arrowPrefab)
+	{
+		Tile startTile = TileManager.GetStartTile ();
+		return new UnitManager(unitPrefab, arrowPrefab, startTile);
+	}
+
+	public static UnitManager Create(Unit unitPrefab, DirectionArrow arrowPrefab, Tile spawnTile)
+	{
+		return new UnitManager(unitPrefab, arrowPrefab, spawnTile);
+	}
+
+    private UnitManager(Unit unitPrefab, DirectionArrow arrowPrefab, Tile spawnTile)
     {
 		this.unitPrefab = unitPrefab;
         this.arrowPrefeb = arrowPrefab;
+			this.spawnTile = spawnTile;
     }
 
     public void Init()
@@ -216,17 +229,16 @@ public class UnitManager
 
     public void InitializeUnit()
 		{
-			Tile startTile = TileManager.GetStartTile ();
-			Vector3 startTilePosition = startTile.gameObject.transform.position;
-			Vector3 startPositionOfUnit = new Vector3(startTilePosition.x, startTilePosition.y, Unit.Depth);
+			Vector3 spawnTilePosition = spawnTile.gameObject.transform.position;
+			Vector3 spawnPositionOfUnit = new Vector3(spawnTilePosition.x, spawnTilePosition.y, Unit.Depth);
 
-			unitInstance.transform.position = startPositionOfUnit;
-			Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfUnit.x, startPositionOfUnit.y);
+			unitInstance.transform.position = spawnPositionOfUnit;
+			Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(spawnPositionOfUnit.x, spawnPositionOfUnit.y);
 
 			CharacterMover mover = unitInstance.GetComponent<CharacterMover>();
 			mover.InitializeTileKey((int)(unitCoordinate.x * 100 + unitCoordinate.y));
 
-			Camera.main.transform.position = new Vector3(startPositionOfUnit.x, startPositionOfUnit.y, Camera.main.transform.position.z);
+			Camera.main.transform.position = new Vector3(spawnPositionOfUnit.x, spawnPositionOfUnit.y, Camera.main.transform.position.z);
 		}
 
 	// Use this for initialization

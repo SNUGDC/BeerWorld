@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 		}
 
 		otherCharacterManagers.Add(id,
-		new UnitManager(characterPrefab, arrowPrefab));
+			UnitManager.CreateInStart(characterPrefab, arrowPrefab));
 		otherCharacterManagers[id].Init();
 		otherPlayers.Add(id); 
 		TurnManager.Get().AddPlayerTEMP(id);
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 	void Awake ()
 	{
 		gameManagerInstance = this;
-		myCharacterManager = new UnitManager(characterPrefab, arrowPrefab);
+		myCharacterManager = UnitManager.CreateInStart(characterPrefab, arrowPrefab);
 		enemyHolder = new EnemyPlaceHolder(enemyPrefab);
 	}
 
