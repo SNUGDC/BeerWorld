@@ -143,8 +143,8 @@ public class CharacterManager
             TileManager.TileDirection direction = pair.Key;
 
             Vector3 characterPosition = characterInstance.transform.position;
-            Vector2 arrowCoordinate = FieldTileUtility.GetTranslatedKeyToCoordinate (direction, characterPosition);
-            Vector2 arrowPosition = FieldTileUtility.GetTranslatedPosition(arrowCoordinate.x, arrowCoordinate.y);
+            Vector2 arrowCoordinate = FieldTileUtility.GetCoordOfDirectionByPosition(direction, characterPosition);
+            Vector2 arrowPosition = FieldTileUtility.GetPositionFromCoordinate(arrowCoordinate.x, arrowCoordinate.y);
             Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
 
             DirectionArrow directionArrow = null;
@@ -205,7 +205,6 @@ public class CharacterManager
     {
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
         {
-            TileManager.TileDirection direction = pair.Key;
             toMoveTile = pair.Value;
             if (toMoveTile == null)
             {

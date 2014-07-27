@@ -13,7 +13,7 @@ public class FieldTilesMaker : MonoBehaviour {
 		for (int i = 0; i < MapWidth; i++) {
 			for (int j = 0; j < MapHeight; j++) {
 				Vector2 tilePosition;
-				tilePosition = FieldTileUtility.GetTranslatedPosition (i, j);
+				tilePosition = FieldTileUtility.GetCoordFromPosition(i, j);
 
 				Vector3 zerozeroPosition = new Vector3 (tilePosition.x, tilePosition.y, j*0.1f);
 				Tile tileInstance = Instantiate (tile, zerozeroPosition, Quaternion.identity) as Tile;
@@ -22,9 +22,8 @@ public class FieldTilesMaker : MonoBehaviour {
 				GameObject testFieldTilesGameObject = gameObject;
 
 				Transform tileInstanceTransform = tileInstanceGameObject.GetComponent<Transform>();
-				Transform tileTestTilesTransform = testFieldTilesGameObject.GetComponent<Transform>();
 
-                tileInstanceGameObject.name = "(" + i + "," + j + ") tile";
+				tileInstanceGameObject.name = "(" + i + "," + j + ") tile";
 				tileInstanceTransform.parent = testFieldTilesGameObject.transform;
 			}
 		}
