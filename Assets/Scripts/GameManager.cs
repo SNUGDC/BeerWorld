@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
 	public static GameManager gameManagerInstance = null;
 	public Character characterPrefab;
 	public DirectionArrow arrowPrefab;
 	private CharacterManager myCharacterManager = null;
-    private EnemyPlaceHolder enemyHolder = null;
-    public Enemy enemyPrefab;
+	private EnemyPlaceHolder enemyHolder = null;
+	public Enemy enemyPrefab;
 
 	public static CharacterManager GetMyCharacterManager()
 	{
