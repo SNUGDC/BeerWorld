@@ -1,21 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Character : MonoBehaviour {
-
-	public static readonly int Depth = -3;
-
-	public int maxHp;
-	public int currentHp;
-
-	public int numberOfAttackDice;
-	public BDice.Species speciesOfAttackDice;
-
-	public int numberOfDefenseDice;
-	public BDice.Species speciesOfDefenseDice;
-
-	public int numberOfMoveDice;
-	public BDice.Species speciesOfMoveDice;
+public class Character : Unit {
 
 	//public List<Item> itemList = new List<Item>();
 
