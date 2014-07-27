@@ -20,18 +20,18 @@ public class BattleResultApplier
 
 	public static void PlayerRespawn(BattlePlayer player)
 	{
-		Character characterInstance = GameManager.GetMyCharacterManager().GetCharacterInstance();
+		Unit characterInstance = GameManager.GetMyCharacterManager().GetUnitInstance();
 
 		characterInstance.currentHp = characterInstance.maxHp;
 		Debug.Log("currentHp : " + characterInstance.currentHp + " maxHp : " + characterInstance.maxHp);
 
-		GameManager.GetMyCharacterManager().InitializeCharacter();
+		GameManager.GetMyCharacterManager().InitializeUnit();
 		Debug.Log("Player return to startTile.");
 	}
 
 	public static void ApplyBattleResult(BattlePlayer player, BattlePlayer enemy)
 	{
-		GameManager.GetMyCharacterManager().GetCharacterInstance().currentHp = player.GetHp();
+		GameManager.GetMyCharacterManager().GetUnitInstance().currentHp = player.GetHp();
 
 		if(state == BattleResultState.PlayerWin)
 		{

@@ -6,21 +6,21 @@ public class GameManager : MonoBehaviour
 	public static GameManager gameManagerInstance = null;
 	public Character characterPrefab;
 	public DirectionArrow arrowPrefab;
-	private CharacterManager myCharacterManager = null;
+	private UnitManager myCharacterManager = null;
 	private EnemyPlaceHolder enemyHolder = null;
 	public Enemy enemyPrefab;
 
-	public static CharacterManager GetMyCharacterManager()
+	public static UnitManager GetMyCharacterManager()
 	{
 		return gameManagerInstance.myCharacterManager;
 	}
 
-	private Dictionary<NetworkViewID, CharacterManager> otherCharacterManagers = new Dictionary<NetworkViewID, CharacterManager>();
+	private Dictionary<NetworkViewID, UnitManager> otherCharacterManagers = new Dictionary<NetworkViewID, UnitManager>();
 
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
 	private int turnOfActivePlayer = 0;
 
-	public static CharacterManager GetCharacterManager(NetworkViewID id)
+	public static UnitManager GetCharacterManager(NetworkViewID id)
 	{
 		if (null == gameManagerInstance.otherCharacterManagers[id])
 		{
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 		}
 
 		otherCharacterManagers.Add(id,
-			new CharacterManager(characterPrefab, arrowPrefab));
+		new UnitManager(characterPrefab, arrowPrefab));
 		otherCharacterManagers[id].Init();
 		otherPlayers.Add(id); 
 		TurnManager.Get().AddPlayerTEMP(id);
@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour
 	void Awake ()
 	{
 		gameManagerInstance = this;
-		myCharacterManager = new CharacterManager(characterPrefab, arrowPrefab);
-        enemyHolder = new EnemyPlaceHolder(enemyPrefab);
+		myCharacterManager = new UnitManager(characterPrefab, arrowPrefab);
+		enemyHolder = new EnemyPlaceHolder(enemyPrefab);
 	}
 
 	// Use this for initialization

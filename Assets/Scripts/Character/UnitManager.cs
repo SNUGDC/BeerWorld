@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class CharacterManager
+public class UnitManager
 {
-    public CharacterManager(Character characterPrefeb, DirectionArrow arrowPrefab)
+    public UnitManager(Unit unitPrefab, DirectionArrow arrowPrefab)
     {
-        this.characterPrefeb = characterPrefeb;
+		this.unitPrefab = unitPrefab;
         this.arrowPrefeb = arrowPrefab;
     }
 
@@ -14,16 +14,16 @@ public class CharacterManager
         Start();
     }
 
-	private Character characterPrefeb;
+	private Unit unitPrefab;
     private DirectionArrow arrowPrefeb;
-    private Character characterInstance;
+	private Unit unitInstance;
     private CharacterMover characterMover;
 
     private int howManyMove = 0;
 
-    public Character GetCharacterInstance()
+    public Unit GetUnitInstance()
     {
-        return characterInstance;
+        return unitInstance;
     }
 
     public enum MoveState
@@ -37,7 +37,7 @@ public class CharacterManager
     [SerializeField]
     private MoveState moveState = MoveState.Inactive;
 
-    public CharacterManager.MoveState GetMoveState()
+    public UnitManager.MoveState GetMoveState()
     {
         return moveState;
     }
@@ -52,9 +52,9 @@ public class CharacterManager
 
     Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles () 
     {
-        Vector3 position = characterInstance.transform.position;
-        Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
-        return TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
+        Vector3 position = unitInstance.transform.position;
+		Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
+        return TileManager.GetTileDictionaryOfBorderTiles(unitCoordinate);
     }
 
     Dictionary<TileManager.TileDirection, Tile> GetTileDictionaryOfMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderDictionary)
@@ -120,18 +120,18 @@ public class CharacterManager
 
     bool IsPreTile(Tile tile)
     {
-        int preTileKeyOfCharacter = characterMover.preTileKey;
+		int preTileKey = characterMover.preTileKey;
         int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
 
-        return preTileKeyOfCharacter == tileKeyOfBorderTile;
+        return preTileKey == tileKeyOfBorderTile;
     }
 
     bool IsPrePreTile(Tile tile)
     {
-        int prePreTileKeyOfCharacter = characterMover.prePreTileKey;
+		int prePreTileKey = characterMover.prePreTileKey;
         int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
 
-        return prePreTileKeyOfCharacter == tileKeyOfBorderTile;
+        return prePreTileKey == tileKeyOfBorderTile;
     }
 
     void CreateArrow (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
@@ -142,10 +142,10 @@ public class CharacterManager
         {
             TileManager.TileDirection direction = pair.Key;
 
-            Vector3 characterPosition = characterInstance.transform.position;
-            Vector2 arrowCoordinate = FieldTileUtility.GetCoordOfDirectionByPosition(direction, characterPosition);
+            Vector3 unitPosition = unitInstance.transform.position;
+            Vector2 arrowCoordinate = FieldTileUtility.GetCoordOfDirectionByPosition(direction, unitPosition);
             Vector2 arrowPosition = FieldTileUtility.GetPositionFromCoordinate(arrowCoordinate.x, arrowCoordinate.y);
-            Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
+            Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, unitPosition.z);
 
             DirectionArrow directionArrow = null;
             directionArrow = GameObject.Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
@@ -168,23 +168,23 @@ public class CharacterManager
         directionArrowList = new List<DirectionArrow>();
     }
 
-    void MoveCharacterAndNotify(Tile toMoveTile)
+    void MoveAndNotify(Tile toMoveTile)
     {
         var toMoveTileCoord = toMoveTile.GetCoord();
         NetworkManager.SendMoveTile(
                 (int)toMoveTileCoord.x,
                 (int)toMoveTileCoord.y);
 
-        MoveCharacter(toMoveTile);
+        Move(toMoveTile);
     }
 
-    public void MoveCharacter(int coordX, int coordY)
+    public void Move(int coordX, int coordY)
     {
         Tile tile = TileManager.GetTileByCoord(coordX, coordY);
-        MoveCharacter(tile);
+        Move(tile);
     }
 
-    public void MoveCharacter(Tile toMoveTile)
+    public void Move(Tile toMoveTile)
     {
         characterMover.MoveTo(toMoveTile);
     }
@@ -209,31 +209,31 @@ public class CharacterManager
         toMoveTile = movableDictionary[direction];  
     }
 
-    void InstantiateCharacter()
+    void InstantiateUnit()
     {
-        characterInstance = GameObject.Instantiate(characterPrefeb) as Character; 
+        unitInstance = GameObject.Instantiate(unitPrefab) as Unit; 
     }
 
-    public void InitializeCharacter()
+    public void InitializeUnit()
     {
 		Tile startTile = TileManager.GetStartTile ();
         Vector3 startTilePosition = startTile.gameObject.transform.position;
-        Vector3 startPositionOfCharacter = new Vector3(startTilePosition.x, startTilePosition.y, Character.Depth);
+		Vector3 startPositionOfUnit = new Vector3(startTilePosition.x, startTilePosition.y, Unit.Depth);
 
-        characterInstance.transform.position = startPositionOfCharacter;
-        Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfCharacter.x, startPositionOfCharacter.y);
+        unitInstance.transform.position = startPositionOfUnit;
+        Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfUnit.x, startPositionOfUnit.y);
 
-				CharacterMover mover = characterInstance.GetComponent<CharacterMover>();
-				mover.InitializeTileKey((int)(characterCoordinate.x * 100 + characterCoordinate.y));
+		CharacterMover mover = unitInstance.GetComponent<CharacterMover>();
+		mover.InitializeTileKey((int)(unitCoordinate.x * 100 + unitCoordinate.y));
 
-        Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
+        Camera.main.transform.position = new Vector3(startPositionOfUnit.x, startPositionOfUnit.y, Camera.main.transform.position.z);
     }
 
 	// Use this for initialization
 	void Start () {
-        InstantiateCharacter();
-        InitializeCharacter();
-        characterMover = characterInstance.GetComponent<CharacterMover>();
+        InstantiateUnit();
+        InitializeUnit();
+        characterMover = unitInstance.GetComponent<CharacterMover>();
         
         if (Network.isClient == false)
         {
@@ -253,8 +253,8 @@ public class CharacterManager
     void cameraFollow()
     {
         Camera.main.transform.position = new Vector3(
-                characterInstance.transform.position.x, 
-                characterInstance.transform.position.y, 
+                unitInstance.transform.position.x, 
+                unitInstance.transform.position.y, 
                 Camera.main.transform.position.z);
     }
 
@@ -278,8 +278,8 @@ public class CharacterManager
             moveState = MoveState.Idle;
 					}
 
-            NetworkManager.SendTurnEndMessage();
-            return;
+					NetworkManager.SendTurnEndMessage();
+					return;
         }
 
         if (moveState == MoveState.Moving)
@@ -295,7 +295,7 @@ public class CharacterManager
             else
             {
                 SetDestination(movableDictionary);
-                MoveCharacterAndNotify(toMoveTile);
+                MoveAndNotify(toMoveTile);
                 howManyMove--;
             }
         }
@@ -307,7 +307,7 @@ public class CharacterManager
         {
             Debug.Log("toMoveTile in Update : " + toMoveTile);
 
-            MoveCharacterAndNotify(toMoveTile);
+            MoveAndNotify(toMoveTile);
             howManyMove--;
 
             moveState = MoveState.Moving;

@@ -109,7 +109,7 @@ public class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceiveMoveTile(NetworkViewID id, int coordX, int coordY)
     {
-        GameManager.GetCharacterManager(id).MoveCharacter(coordX, coordY);
+        GameManager.GetCharacterManager(id).Move(coordX, coordY);
         //GameManager.GetMyCharacterManager().MoveCharacter(coordX, coordY);
         Debug.Log("Move tile to " + coordX + ", " + coordY);
     }

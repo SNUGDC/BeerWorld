@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DiceRollerButton : MonoBehaviour
 {	
-	CharacterManager characterManager = null;
+	UnitManager characterManager = null;
 	void Start()
 	{
 		characterManager  = GameManager.GetMyCharacterManager();
@@ -11,9 +11,9 @@ public class DiceRollerButton : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{		
-		CharacterManager.MoveState moveState = characterManager.GetMoveState();
+		UnitManager.MoveState moveState = characterManager.GetMoveState();
 		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-		if (moveState == CharacterManager.MoveState.Idle)
+		if (moveState == UnitManager.MoveState.Idle)
 		{
 			spriteRenderer.enabled = true;
 			collider2D.enabled = true;
