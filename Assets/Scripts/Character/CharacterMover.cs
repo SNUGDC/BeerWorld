@@ -20,13 +20,8 @@ public class CharacterMover : MonoBehaviour
         Vector2 nextTilePosition = new Vector2(
             toMoveTile.transform.position.x, 
             toMoveTile.transform.position.y);
-        Vector2 nextTileCoordinate =
-            FieldTileUtility.GetCoordFromPosition(
-                nextTilePosition.x, 
-                nextTilePosition.y);
 
         transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
-        Vector2 newCoordinate = FieldTileUtility.GetCoordFromPosition(nextTilePosition.x, nextTilePosition.y);
 				int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
 				gameObject.SendMessage("UpdateTileKey", currentTileKey);
     }
