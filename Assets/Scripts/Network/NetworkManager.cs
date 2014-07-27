@@ -5,7 +5,11 @@ public class NetworkManager : MonoBehaviour {
 	public GameObject target;
 	GameObject player;
 	string username;
-	NetworkViewID Id;
+	public NetworkViewID Id
+	{
+		get;
+		private set;
+	}
 
 	public static NetworkManager networkInstance = null;
 
