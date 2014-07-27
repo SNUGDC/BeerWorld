@@ -25,24 +25,19 @@ public class GameManager : MonoBehaviour {
 	public void PassTurnToNextPlayer()
 	{
 		NetworkViewID nextPlayerId;
-		CharacterManager nextPlayerCharacterManager;
-
 		turnOfActivePlayer = FindNextExistingPlayer(turnOfActivePlayer);
 
 		if (turnOfActivePlayer != 0)
 		{
 			nextPlayerId = otherPlayers[turnOfActivePlayer];
-			
 			Debug.Log("nextTurnIndex : " + turnOfActivePlayer + ", nextPlayerId : " + nextPlayerId);
 		}
 		else 
 		{
 			nextPlayerId = NetworkManager.networkInstance.GetNetworkID();
-
 			Debug.Log("There is no other player.");
 		}
 		NetworkManager.SendTurnStartMessage (nextPlayerId);
-
 	}
 
 	int FindNextExistingPlayer (int currentTurnOfActivePlayer)

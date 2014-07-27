@@ -12,7 +12,7 @@ public class CalculationResult
         this.totalDiceResult = totalDiceResult;
     }
 
-    public string ToString()
+    public override string ToString()
     {
         string ret = string.Empty;
         foreach(var result in diceResults)

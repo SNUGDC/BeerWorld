@@ -13,7 +13,7 @@ public class FieldTileUtility : MonoBehaviour {
     public static int GetKeyFromTile(Tile tile)
     {
     	Vector2 position = new Vector2(tile.transform.position.x, tile.transform.position.y);
-        Vector2 coordinate = GetTranslatedCoordinate(position.x, position.y);
+        Vector2 coordinate = GetCoordFromPosition(position.x, position.y);
         int key = GetKeyFromCoord(coordinate);
 
         return key;
@@ -34,16 +34,10 @@ public class FieldTileUtility : MonoBehaviour {
         return new Vector2(key / 100, key % 100);
     }
 
-    [Obsolete("Refactored.")]
-    public static Vector2 GetTranslatedKeyToCoordinate (TileManager.TileDirection key, Vector3 standardPositionWithZ)
-    {
-        return GetCoordOfDirectionByPosition(key, standardPositionWithZ);
-    }
-
     public static Vector2 GetCoordOfDirectionByPosition(TileManager.TileDirection direction, Vector3 basePosition)
     {
     	Vector2 standardPosition = basePosition;
-    	Vector2 standardCoordinate = GetTranslatedCoordinate(standardPosition.x, standardPosition.y);
+    	Vector2 standardCoordinate = GetCoordFromPosition(standardPosition.x, standardPosition.y);
     	Vector2 coordinate = Vector3.zero;
     	if ((int)standardCoordinate.y % 2 == 1) //odd number
     	{
@@ -83,11 +77,6 @@ public class FieldTileUtility : MonoBehaviour {
 		return new Vector2(posX, posY);
     }
 
-    [Obsolete("Refactored.")]
-	public static Vector2 GetTranslatedPosition(float i, float j){
-        return GetPositionFromCoordinate(i, j);
-	}
-
     public static Vector2 GetCoordFromPosition(float posX, float posY)
     {
 		float i, j;
@@ -97,9 +86,4 @@ public class FieldTileUtility : MonoBehaviour {
 
 		return new Vector2(i, j);
     }
-
-    [Obsolete("Refactored.")]
-	public static Vector2 GetTranslatedCoordinate(float x, float y){
-        return GetCoordFromPosition(x, y);
-	}
 }
