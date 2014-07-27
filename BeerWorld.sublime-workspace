@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"Player",
+				"PlayerRespawn"
+			],
+			[
+				"Batt",
+				"BattleResultState"
+			],
+			[
+				"Get",
+				"GetMyCharacterManager"
+			],
+			[
+				"charc",
+				"characterInstance"
+			],
+			[
+				"Instan",
+				"InstantiateCharacter"
+			],
+			[
+				"Play",
+				"PlayerRespawn"
+			],
+			[
+				"BattleResu",
+				"BattleResultState"
+			],
+			[
+				"eney",
+				"EnemyDelete"
+			],
+			[
+				"sp",
+				"speciesOfMoveDice"
+			],
+			[
+				"sP",
+				"Species"
+			],
+			[
+				"num",
+				"numberOfMoveDice"
+			],
+			[
+				"spe",
+				"speciesOfAttackDice"
+			],
+			[
 				"player",
 				"player"
 			],
@@ -46,10 +94,6 @@
 			[
 				"enem",
 				"enemy"
-			],
-			[
-				"Batt",
-				"BattlePlayer"
 			],
 			[
 				"Ch",
@@ -316,10 +360,6 @@
 				"standardCoordinate"
 			],
 			[
-				"Get",
-				"GetTranslatedCoordinate"
-			],
-			[
 				"Ve",
 				"Vector2"
 			],
@@ -358,10 +398,6 @@
 			[
 				"m",
 				"movablePair"
-			],
-			[
-				"num",
-				"numberOfBorderTiles"
 			],
 			[
 				"T",
@@ -428,7 +464,7 @@
 			"file": "Assets/Scripts/Battle/BattleManager.cs",
 			"settings":
 			{
-				"buffer_size": 7493,
+				"buffer_size": 7794,
 				"line_ending": "Unix"
 			}
 		},
@@ -436,7 +472,15 @@
 			"file": "Assets/Scripts/Battle/BattleCalculator.cs",
 			"settings":
 			{
-				"buffer_size": 2237,
+				"buffer_size": 1681,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Enemy/EnemyGenerator",
+			"settings":
+			{
+				"buffer_size": 536,
 				"line_ending": "Unix"
 			}
 		},
@@ -444,7 +488,7 @@
 			"file": "Assets/Scripts/Battle/BattlePlayer.cs",
 			"settings":
 			{
-				"buffer_size": 917,
+				"buffer_size": 936,
 				"line_ending": "Unix"
 			}
 		},
@@ -460,39 +504,39 @@
 			"file": "Assets/Scripts/Battle/BattleUtil.cs",
 			"settings":
 			{
-				"buffer_size": 1000,
+				"buffer_size": 1688,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/UI/DiceRollerButton.cs",
+			"file": "Assets/Scripts/Battle/BattleResultApplier.cs",
 			"settings":
 			{
-				"buffer_size": 805,
+				"buffer_size": 1351,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Battle/BattleRollDice.cs",
+			"file": "Assets/Scripts/Character/Character.cs",
 			"settings":
 			{
-				"buffer_size": 617,
+				"buffer_size": 941,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Battle/BattleResult.cs",
+			"file": "Assets/Scripts/Character/CharacterManager.cs",
 			"settings":
 			{
-				"buffer_size": 315,
+				"buffer_size": 10025,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Tile.cs",
+			"file": "Assets/Scripts/GameManager.cs",
 			"settings":
 			{
-				"buffer_size": 864,
+				"buffer_size": 3393,
 				"line_ending": "Unix"
 			}
 		}
@@ -503,6 +547,18 @@
 		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"dash",
+				"DashDoc: invoke Dash with selected word"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
 			[
 				"git c",
 				"Git: Commit"
@@ -592,10 +648,6 @@
 				"Package Control: Install Package"
 			],
 			[
-				"in",
-				"Indentation: Reindent Lines"
-			],
-			[
 				"pak",
 				"Package Control: Install Package"
 			],
@@ -608,7 +660,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 620.0
+		"width": 511.0
 	},
 	"console":
 	{
@@ -625,10 +677,14 @@
 	},
 	"file_history":
 	[
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/Enemy/EnemyGenerator",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleResult.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Tile.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleStartButton.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleRollDice.cs",
+		"/Users/Reny/BeerWorld/Assets/Scripts/UI/DiceRollerButton.cs",
 		"/Users/Reny/BeerWorld/Assets/Scripts/Character/Character.cs",
 		"/Users/Reny/BeerWorld/Assets/Editor/TileEditor.cs",
-		"/Users/Reny/BeerWorld/Assets/Scripts/UI/DiceRollerButton.cs",
-		"/Users/Reny/BeerWorld/Assets/Scripts/Battle/BattleRollDice.cs",
 		"/Users/Reny/BeerWorld/Assets/Resources/Dice/DiceAnimation.cs",
 		"/Users/Reny/BeerWorld/Assets/Scripts/Character/CharacterManager.cs",
 		"/Users/Reny/BeerWorld/Assets/Prefabs/character.prefab",
@@ -654,7 +710,6 @@
 		"/Users/Reny/BeerWorld/Assets/Resources/Images/CharacterManager.prefab.meta",
 		"/Users/Reny/BeerWorld/Assets/Scripts/Character.cs",
 		"/Users/Reny/BeerWorld/Assets/Scripts/FieldTileUtility.cs",
-		"/Users/Reny/BeerWorld/Assets/Scripts/Tile.cs",
 		"/Users/Reny/BeerWorld/Assets/Scripts/NetworkManager.cs",
 		"/Users/Reny/BeerWorld/Assets/TestField/Tile.cs",
 		"/Users/Reny/BeerWorld/Assets/Scripts/UI/DirectionArrow.cs",
@@ -670,7 +725,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -683,6 +738,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"awake",
+			"Default",
+			"applier",
+			"applyer",
+			"BattleResult",
+			"player",
+			"ToString",
+			"characterIn",
+			"character",
+			"numberOf",
 			"inca",
 			"changeAttackOrDefense",
 			"totalDamage",
@@ -749,6 +814,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"player",
 			"Defense",
 			"defense",
 			"myCharacterManager",
@@ -802,15 +868,15 @@
 					"file": "Assets/Scripts/Battle/BattleManager.cs",
 					"settings":
 					{
-						"buffer_size": 7493,
+						"buffer_size": 7794,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5784,
-								5784
+								2009,
+								2009
 							]
 						],
 						"settings":
@@ -820,7 +886,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2890.0,
+						"translation.y": 3166.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -830,15 +896,15 @@
 					"file": "Assets/Scripts/Battle/BattleCalculator.cs",
 					"settings":
 					{
-						"buffer_size": 2237,
+						"buffer_size": 1681,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								169,
-								169
+								364,
+								372
 							]
 						],
 						"settings":
@@ -855,18 +921,44 @@
 				},
 				{
 					"buffer": 3,
-					"file": "Assets/Scripts/Battle/BattlePlayer.cs",
+					"file": "Assets/Scripts/Enemy/EnemyGenerator",
 					"settings":
 					{
-						"buffer_size": 917,
+						"buffer_size": 536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								412,
-								412
+								530,
+								530
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Battle/BattlePlayer.cs",
+					"settings":
+					{
+						"buffer_size": 936,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								705,
+								705
 							]
 						],
 						"settings":
@@ -876,13 +968,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 146.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "Assets/Scripts/Dice.cs",
 					"settings":
 					{
@@ -899,34 +991,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Assets/Scripts/Battle/BattleUtil.cs",
-					"settings":
-					{
-						"buffer_size": 1000,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								15,
-								15
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/C#/C#.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 8,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -937,75 +1003,85 @@
 				},
 				{
 					"buffer": 6,
-					"file": "Assets/Scripts/UI/DiceRollerButton.cs",
+					"file": "Assets/Scripts/Battle/BattleUtil.cs",
 					"settings":
 					{
-						"buffer_size": 805,
+						"buffer_size": 1688,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								213,
-								213
+								536,
+								536
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 158.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "Assets/Scripts/Battle/BattleRollDice.cs",
+					"file": "Assets/Scripts/Battle/BattleResultApplier.cs",
 					"settings":
 					{
-						"buffer_size": 617,
+						"buffer_size": 1351,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								399,
-								399
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
 					"buffer": 8,
-					"file": "Assets/Scripts/Battle/BattleResult.cs",
+					"file": "Assets/Scripts/Character/Character.cs",
 					"settings":
 					{
-						"buffer_size": 315,
+						"buffer_size": 941,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								131,
-								131
+								218,
+								218
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1015,23 +1091,52 @@
 				},
 				{
 					"buffer": 9,
-					"file": "Assets/Scripts/Tile.cs",
+					"file": "Assets/Scripts/Character/CharacterManager.cs",
 					"settings":
 					{
-						"buffer_size": 864,
+						"buffer_size": 10025,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								193,
-								193
+								7144,
+								7144
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3335.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Assets/Scripts/GameManager.cs",
+					"settings":
+					{
+						"buffer_size": 3393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1230,
+								1230
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1059,11 +1164,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.470704661683,
 			1.0
 		],
 		"rows":
