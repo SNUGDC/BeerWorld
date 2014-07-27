@@ -7,22 +7,22 @@ public class NetworkManager : MonoBehaviour {
 	string username;
 	NetworkViewID Id;
 
-    public static NetworkManager networkInstance = null;
+	public static NetworkManager networkInstance = null;
 
-		public static bool isConnected()
-		{
-			return Network.connections.Length > 0;
-		}
+	public static bool isConnected()
+	{
+		return Network.connections.Length > 0;
+	}
 
-    public NetworkViewID GetNetworkID()
-    {
-        return Id;
-    }
-    
-    void Awake ()
-    {
-        networkInstance = this;
-    }
+	public NetworkViewID GetNetworkID()
+	{
+		return Id;
+	}
+
+	void Awake ()
+	{
+		networkInstance = this;
+	}
 
 	// Use this for initialization
 	void Start () {
