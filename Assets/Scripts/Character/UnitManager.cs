@@ -215,19 +215,19 @@ public class UnitManager
     }
 
     public void InitializeUnit()
-    {
-		Tile startTile = TileManager.GetStartTile ();
-        Vector3 startTilePosition = startTile.gameObject.transform.position;
-		Vector3 startPositionOfUnit = new Vector3(startTilePosition.x, startTilePosition.y, Unit.Depth);
+		{
+			Tile startTile = TileManager.GetStartTile ();
+			Vector3 startTilePosition = startTile.gameObject.transform.position;
+			Vector3 startPositionOfUnit = new Vector3(startTilePosition.x, startTilePosition.y, Unit.Depth);
 
-        unitInstance.transform.position = startPositionOfUnit;
-        Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfUnit.x, startPositionOfUnit.y);
+			unitInstance.transform.position = startPositionOfUnit;
+			Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfUnit.x, startPositionOfUnit.y);
 
-		CharacterMover mover = unitInstance.GetComponent<CharacterMover>();
-		mover.InitializeTileKey((int)(unitCoordinate.x * 100 + unitCoordinate.y));
+			CharacterMover mover = unitInstance.GetComponent<CharacterMover>();
+			mover.InitializeTileKey((int)(unitCoordinate.x * 100 + unitCoordinate.y));
 
-        Camera.main.transform.position = new Vector3(startPositionOfUnit.x, startPositionOfUnit.y, Camera.main.transform.position.z);
-    }
+			Camera.main.transform.position = new Vector3(startPositionOfUnit.x, startPositionOfUnit.y, Camera.main.transform.position.z);
+		}
 
 	// Use this for initialization
 	void Start () {
