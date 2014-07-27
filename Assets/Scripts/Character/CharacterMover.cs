@@ -27,5 +27,7 @@ public class CharacterMover : MonoBehaviour
 
         transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
         Vector2 newCoordinate = FieldTileUtility.GetCoordFromPosition(nextTilePosition.x, nextTilePosition.y);
+				int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
+				gameObject.SendMessage("UpdateTileKey", currentTileKey);
     }
 }

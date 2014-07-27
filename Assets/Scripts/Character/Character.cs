@@ -3,11 +3,25 @@ using System.Collections.Generic;
 
 public class Character : MonoBehaviour {
 
-    public static readonly int Depth = -3;
+	public static readonly int Depth = -3;
 
-	public int currentTileKey;
-	public int preTileKey;
-	public int prePreTileKey;
+	public int currentTileKey
+	{
+		get;
+		private set;
+	}
+
+	public int preTileKey
+	{
+		get;
+		private set;
+	}
+
+	public int prePreTileKey
+	{
+		get;
+		private set;
+	}
 	
 	public int maxHp;
 	public int currentHp;
@@ -40,10 +54,19 @@ public class Character : MonoBehaviour {
 		numberOfMoveDice = 1;
 		speciesOfMoveDice = BDice.Species.Six;
 	}
-	
-	// Update is called once per frameb
-	void Update () 
+
+	public void InitializeTileKey(int tileKey)
 	{
-	
+		currentTileKey = tileKey;
+		prePreTileKey = 0;
+		preTileKey = 0;
+	}
+
+	/* Can be called with SendMessage */
+	public void UpdateTileKey(int tileKey)
+	{
+		prePreTileKey = preTileKey;
+		preTileKey = currentTileKey;
+		currentTileKey = tileKey;
 	}
 }

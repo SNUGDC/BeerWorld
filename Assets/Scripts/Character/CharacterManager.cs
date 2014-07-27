@@ -187,19 +187,7 @@ public class CharacterManager
     public void MoveCharacter(Tile toMoveTile)
     {
         characterMover.MoveTo(toMoveTile);
-
-        characterInstance.prePreTileKey = characterInstance.preTileKey;
-        characterInstance.preTileKey = characterInstance.currentTileKey;
-        characterInstance.currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
-
-            /*characterInstance.transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
-        */
-        
-/*        Camera.main.transform.position = new Vector3(
-            characterInstance.transform.position.x, 
-            characterInstance.transform.position.y, 
-            Camera.main.transform.position.z);
-*/    }
+    }
 
     void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
     {
@@ -234,9 +222,7 @@ public class CharacterManager
 
         characterInstance.transform.position = startPositionOfCharacter;
         Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfCharacter.x, startPositionOfCharacter.y);
-        characterInstance.currentTileKey = (int)(characterCoordinate.x * 100 + characterCoordinate.y);
-        characterInstance.preTileKey = 000;
-        characterInstance.prePreTileKey = 000;
+				characterInstance.InitializeTileKey((int)(characterCoordinate.x * 100 + characterCoordinate.y));
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
     }
