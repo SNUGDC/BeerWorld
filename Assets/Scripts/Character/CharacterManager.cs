@@ -120,7 +120,7 @@ public class CharacterManager
 
     bool IsPreTile(Tile tile)
     {
-        int preTileKeyOfCharacter = characterInstance.preTileKey;
+        int preTileKeyOfCharacter = characterMover.preTileKey;
         int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
 
         return preTileKeyOfCharacter == tileKeyOfBorderTile;
@@ -128,7 +128,7 @@ public class CharacterManager
 
     bool IsPrePreTile(Tile tile)
     {
-        int prePreTileKeyOfCharacter = characterInstance.prePreTileKey;
+        int prePreTileKeyOfCharacter = characterMover.prePreTileKey;
         int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
 
         return prePreTileKeyOfCharacter == tileKeyOfBorderTile;
@@ -222,7 +222,9 @@ public class CharacterManager
 
         characterInstance.transform.position = startPositionOfCharacter;
         Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(startPositionOfCharacter.x, startPositionOfCharacter.y);
-				characterInstance.InitializeTileKey((int)(characterCoordinate.x * 100 + characterCoordinate.y));
+
+				CharacterMover mover = characterInstance.GetComponent<CharacterMover>();
+				mover.InitializeTileKey((int)(characterCoordinate.x * 100 + characterCoordinate.y));
 
         Camera.main.transform.position = new Vector3(startPositionOfCharacter.x, startPositionOfCharacter.y, Camera.main.transform.position.z);
     }
