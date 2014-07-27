@@ -22,24 +22,24 @@ public class Character : MonoBehaviour {
 		get;
 		private set;
 	}
-	
+
 	public int maxHp;
 	public int currentHp;
 
 	public int numberOfAttackDice;
 	public BDice.Species speciesOfAttackDice;
-	
+
 	public int numberOfDefenseDice;
 	public BDice.Species speciesOfDefenseDice;
-	
+
 	public int numberOfMoveDice;
 	public BDice.Species speciesOfMoveDice;
-	
+
 	//public List<Item> itemList = new List<Item>();
 
 
 	// Use this for initialization = BDice.Species.Six;
-	void Start () 
+	void Start ()
 	{
 		//temporary values.
 		maxHp = 10;
