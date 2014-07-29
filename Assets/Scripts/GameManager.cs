@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 		otherCharacterManagers.Add(id,
 			UnitManager.CreateInStart(characterPrefab, arrowPrefab));
 		otherCharacterManagers[id].Init();
-		otherPlayers.Add(id); 
+		otherPlayers.Add(id);
 		TurnManager.Get().AddPlayerTEMP(id);
 	}
 
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 		myCharacterManager.Init();
         enemyHolder.PlaceEnemy();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		myCharacterManager.Update();

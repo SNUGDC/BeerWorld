@@ -19,7 +19,7 @@ public class UnitManager
     {
 		this.unitPrefab = unitPrefab;
         this.arrowPrefeb = arrowPrefab;
-			this.spawnTile = spawnTile;
+		this.spawnTile = spawnTile;
     }
 
     public void Init()
@@ -63,7 +63,7 @@ public class UnitManager
 
     public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
 
-    Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles () 
+    Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles ()
     {
         Vector3 position = unitInstance.transform.position;
 		Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
@@ -81,12 +81,12 @@ public class UnitManager
         {
             tempKey = pair.Key;
             tempTile = pair.Value;
-                        
+
             if (tempTile == null)
             {
                 continue;
             }
-            
+
             if (IsPreTile(tempTile) == true)
             {
                 continue;
@@ -101,7 +101,7 @@ public class UnitManager
             {
                 continue;
             }
-        
+
             movableDictionary.Add(tempKey, tempTile);
         }
 
@@ -122,7 +122,7 @@ public class UnitManager
         {
             return true;
         }
-        
+
         if (numberOfMovableDirection == 0)
         {
             Debug.Log("There is no movable tile!");
@@ -162,7 +162,7 @@ public class UnitManager
 
             DirectionArrow directionArrow = null;
             directionArrow = GameObject.Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
-            
+
             DirectionArrow directionArrowScript = directionArrow.gameObject.GetComponent<DirectionArrow>();
             directionArrowScript.SetArrowDirection(direction);
 
@@ -215,16 +215,16 @@ public class UnitManager
     }
 
     public void SetDestinationByArrow(TileManager.TileDirection direction)
-    {        
+    {
         var borderDictionary = SearchBorderTiles();
         var movableDictionary = SearchMovableTiles(borderDictionary);
 
-        toMoveTile = movableDictionary[direction];  
+        toMoveTile = movableDictionary[direction];
     }
 
     void InstantiateUnit()
     {
-        unitInstance = GameObject.Instantiate(unitPrefab) as Unit; 
+        unitInstance = GameObject.Instantiate(unitPrefab) as Unit;
     }
 
     public void InitializeUnit()
@@ -246,7 +246,7 @@ public class UnitManager
         InstantiateUnit();
         InitializeUnit();
         characterMover = unitInstance.GetComponent<CharacterMover>();
-        
+
         if (Network.isClient == false)
         {
             moveState = MoveState.Idle;
@@ -259,14 +259,14 @@ public class UnitManager
         moveState = MoveState.Moving;
         howManyMove = toMove;
     }
-	
+
     Tile toMoveTile = null;
 
     void cameraFollow()
     {
         Camera.main.transform.position = new Vector3(
-                unitInstance.transform.position.x, 
-                unitInstance.transform.position.y, 
+                unitInstance.transform.position.x,
+                unitInstance.transform.position.y,
                 Camera.main.transform.position.z);
     }
 
@@ -298,7 +298,7 @@ public class UnitManager
         {
             var borderDictionary = SearchBorderTiles();
             var movableDictionary = SearchMovableTiles(borderDictionary);
-            
+
             if (IsBranch(movableDictionary) == true)
             {
                 CreateArrow(movableDictionary);
