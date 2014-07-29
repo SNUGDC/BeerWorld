@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		myCharacterManager.Init();
-        enemyHolder.PlaceEnemy();
+        enemyHolder.PlaceEnemy(EnemyPlaceHolder.EnemyType.Smallest);
 	}
 
 	// Update is called once per frame
