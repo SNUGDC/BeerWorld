@@ -29,12 +29,12 @@ public class BattleManager : MonoBehaviour
     public State GetBattleState()
     {
         return state;
-    } 
+    }
 
     public GameObject[] playerAttackDices = new GameObject[3];
     public GameObject[] playerDefenseDices = new GameObject[3];
     public GameObject[] enemyAttackDices = new GameObject[3];
-    public GameObject[] enemyDefenseDices = new GameObject[3]; 
+    public GameObject[] enemyDefenseDices = new GameObject[3];
 
     public GameObject[] playerHearts = new GameObject[4];
     public GameObject[] enemyHearts = new GameObject[4];
@@ -65,7 +65,7 @@ public class BattleManager : MonoBehaviour
         {
             attackOrDefense = AttackOrDefense.Defense;
         }
-        else 
+        else
         {
             attackOrDefense = AttackOrDefense.Attack;
         }
@@ -134,30 +134,30 @@ public class BattleManager : MonoBehaviour
             for (int i = 0; i < playerDiceNum; i++)
             {
                 int diceResult = playerCalcResult.diceResults[i];
-                playerAttackDices[i].SendMessage("rollByNumber", diceResult);    
+                playerAttackDices[i].SendMessage("rollByNumber", diceResult);
             }
-                    
+
             for (int i = 0; i < enemyDiceNum; i++)
             {
                 int diceResult = enemyCalcResult.diceResults[i];
-                enemyDefenseDices[i].SendMessage("rollByNumber", diceResult);    
+                enemyDefenseDices[i].SendMessage("rollByNumber", diceResult);
             }
-        }   
+        }
         else
         {
             for (int i = 0; i < playerDiceNum; i++)
             {
                 int diceResult = playerCalcResult.diceResults[i];
-                playerDefenseDices[i].SendMessage("rollByNumber", diceResult);    
+                playerDefenseDices[i].SendMessage("rollByNumber", diceResult);
             }
 
             for (int i = 0; i < enemyDiceNum; i++)
             {
                 int diceResult = enemyCalcResult.diceResults[i];
-                enemyAttackDices[i].SendMessage("rollByNumber", diceResult);    
+                enemyAttackDices[i].SendMessage("rollByNumber", diceResult);
             }
 
-        }             
+        }
 
         int totalPlayerDice = playerCalcResult.totalDiceResult;
         int totalEnemyDice = enemyCalcResult.totalDiceResult;
@@ -172,7 +172,7 @@ public class BattleManager : MonoBehaviour
         {
             return enemy;
         }
-        else if (totalPlayerDice < totalEnemyDice) 
+        else if (totalPlayerDice < totalEnemyDice)
         {
             return player;
         }
@@ -192,7 +192,7 @@ public class BattleManager : MonoBehaviour
     {
         BattlePlayer target = null;
         int damage = 0;
-        
+
         damage = CalculateDamage(totalPlayerDice, totalEnemyDice);
         target = CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
 
@@ -200,7 +200,7 @@ public class BattleManager : MonoBehaviour
         //show animation with calculation result.
         //apply damage.
         state = State.WaitingRoll;
-        
+
         if (target != null)
         {
             target.ApplyDamage(damage);
@@ -220,7 +220,7 @@ public class BattleManager : MonoBehaviour
         {
             Debug.Log("Player is Damaged " + damage);
         }
-        
+
         if (enemy.IsDie())
         {
             BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
@@ -238,7 +238,7 @@ public class BattleManager : MonoBehaviour
             "PlayerHP : " + player.GetHp() + "/" + player.maxHp +
             " EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
             );
-        
+
         ChangeAttackOrDefense();
     }
 
@@ -270,7 +270,7 @@ public class BattleManager : MonoBehaviour
             {
                 enemyHearts[i].SetActive(false);
             }
-            else 
+            else
             {
                 enemyHearts[i].SetActive(true);
             }
