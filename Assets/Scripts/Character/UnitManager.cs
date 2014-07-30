@@ -262,20 +262,11 @@ public class UnitManager
 
 	Tile toMoveTile = null;
 
-	void cameraFollow()
-	{
-		Camera.main.transform.position = new Vector3(
-			unitInstance.transform.position.x,
-			unitInstance.transform.position.y,
-			Camera.main.transform.position.z);
-	}
-
-	// Update is called once per frame
 	public void Update ()
 	{
 		if (moveState != MoveState.Inactive)
 		{
-			cameraFollow();
+			unitInstance.SendMessage("OnCmaeraFollow", unitInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
 		if (howManyMove <= 0 && moveState == MoveState.Moving)

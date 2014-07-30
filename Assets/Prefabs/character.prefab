@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalScale: {x: .0799999982, y: .0799999982, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,13 +42,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b57f235a9844d10a2943edc9641944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTileKey: 0
-  preTileKey: 0
-  prePreTileKey: 0
-  HP: 0
+  maxHp: 0
+  currentHp: 0
   numberOfAttackDice: 0
-  numberOfdefenseDice: 0
+  speciesOfAttackDice: 0
+  numberOfDefenseDice: 0
+  speciesOfDefenseDice: 0
   numberOfMoveDice: 0
+  speciesOfMoveDice: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,6 +59,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c72ac376d2c3242c983c8bca0a39c5bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c63b2a6dd9c44e4b9c95843a48d5020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000
@@ -76,9 +90,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 758e4ce22ed554118a5a7c4e1cee82f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
