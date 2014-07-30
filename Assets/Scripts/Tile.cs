@@ -5,7 +5,13 @@ public class Tile : MonoBehaviour {
 
 	public enum TileType
 	{
-		Default, Start, Item, Buff, Warp, Jail, Save
+		Default,
+		Start,
+		Item,
+		Buff,
+		Warp,
+		Jail,
+		Save
 	}
 
 	public bool isVisible;

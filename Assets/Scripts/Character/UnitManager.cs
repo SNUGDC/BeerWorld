@@ -286,33 +286,33 @@ public class UnitManager
 			}
 			else
 			{
-						// For local test.
-						moveState = MoveState.Idle;
-					}
+				// For local test.
+				moveState = MoveState.Idle;
+			}
 
-					NetworkManager.SendTurnEndMessage();
-					return;
-				}
+			NetworkManager.SendTurnEndMessage();
+			return;
+		}
 
-				if (moveState == MoveState.Moving)
-				{
-					var borderDictionary = SearchBorderTiles();
-					var movableDictionary = SearchMovableTiles(borderDictionary);
+		if (moveState == MoveState.Moving)
+		{
+			var borderDictionary = SearchBorderTiles();
+			var movableDictionary = SearchMovableTiles(borderDictionary);
 
-					if (IsBranch(movableDictionary) == true)
-					{
-						CreateArrow(movableDictionary);
-						moveState = MoveState.Waiting;
-					}
-					else
-					{
-						SetDestination(movableDictionary);
-						MoveAndNotify(toMoveTile);
-						howManyMove--;
-					}
-				}
-				else if (moveState == MoveState.Waiting)
-				{
+			if (IsBranch(movableDictionary) == true)
+			{
+				CreateArrow(movableDictionary);
+				moveState = MoveState.Waiting;
+			}
+			else
+			{
+				SetDestination(movableDictionary);
+				MoveAndNotify(toMoveTile);
+				howManyMove--;
+			}
+		}
+		else if (moveState == MoveState.Waiting)
+		{
             // Do nothing, wait user input.
         }
         else if (moveState == MoveState.DirectionSelected)
