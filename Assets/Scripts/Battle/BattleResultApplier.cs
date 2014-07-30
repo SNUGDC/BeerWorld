@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BattleResultApplier 
+public class BattleResultApplier
 {
 	public enum BattleResultState
 	{
@@ -54,7 +54,7 @@ public class BattleResultApplier
 	void Start () {
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 

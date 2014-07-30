@@ -3,7 +3,19 @@ using System.Collections;
 
 public class Enemy : Unit
 {
-	public EnemyPlaceHolder holder;
+	public enum EnemyType
+    {
+        Smallest,
+        None
+    }
+
+   	EnemyType enemyType;
+
+
+    public void SetEnemyType(EnemyType enemyType)
+	{
+		this.enemyType = enemyType;
+	}
 
 	void SetSmallestEnemyStats()
 	{
@@ -24,7 +36,7 @@ public class Enemy : Unit
 
 	void Start ()
 	{
-		if (holder.GetEnemyType() == EnemyPlaceHolder.EnemyType.Smallest)
+		if (enemyType == EnemyType.Smallest)
 		{
 			SetSmallestEnemyStats();
 		}
