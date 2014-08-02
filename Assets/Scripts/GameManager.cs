@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 	private Dictionary<NetworkViewID, UnitManager> otherCharacterManagers = new Dictionary<NetworkViewID, UnitManager>();
 
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
-	private int turnOfActivePlayer = 0;
 
 	public static UnitManager GetCharacterManager(NetworkViewID id)
 	{
