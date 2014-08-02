@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 	{
 		TurnManager.Get().PassTurn();
 		TurnManager.State turnState = TurnManager.Get().GetState();
+
 		if (turnState == TurnManager.State.Player)
 		{
 			GetMyCharacterManager().ChangeMoveStateToIdle();
@@ -40,6 +41,10 @@ public class GameManager : MonoBehaviour
 		{
 			NetworkViewID turnPlayerViewID = TurnManager.Get().GetTurnPlayer();
 			NetworkManager.SendTurnStartMessage(turnPlayerViewID);
+		}
+		else if (turnState == TurnManager.State.Enemy)
+		{
+			enemyManager.ChangeMoveStateToIdle();
 		}
 	}
 
@@ -64,14 +69,20 @@ public class GameManager : MonoBehaviour
 		enemyHolder = new EnemyPlaceHolder(enemyPrefab);
 	}
 
+	public EnemyManager enemyManager;
 	// Use this for initialization
 	void Start () {
 		myCharacterManager.Init();
-        enemyHolder.PlaceEnemy(Enemy.EnemyType.Smallest);
+		enemyHolder.PlaceEnemy(Enemy.EnemyType.Smallest);
+		enemyManager = enemyHolder.getEnemyManager();
 	}
 
 	// Update is called once per frame
 	void Update () {
 		myCharacterManager.Update();
+		if (enemyManager != null)
+		{
+			enemyManager.Update();
+		}
 	}
 }

@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -45,6 +46,7 @@ Transform:
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -56,6 +58,7 @@ Transform:
   m_LocalScale: {x: .400000006, y: .400000006, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,6 +81,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ce996f36bef4cffb27a333502f5b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 0
+  currentHp: 0
+  numberOfAttackDice: 0
+  speciesOfAttackDice: 0
+  numberOfDefenseDice: 0
+  speciesOfDefenseDice: 0
+  numberOfMoveDice: 0
+  speciesOfMoveDice: 0
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c63b2a6dd9c44e4b9c95843a48d5020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -96,9 +118,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4cb4d639b91074ee6b5dc818e3539ff8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000

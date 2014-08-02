@@ -271,17 +271,14 @@ public class UnitManager
 
 		if (howManyMove <= 0 && moveState == MoveState.Moving)
 		{
+			moveState = MoveState.Inactive;
 			if (NetworkManager.isConnected())
 			{
-				moveState = MoveState.Inactive;
-			}
-			else
-			{
-				// For local test.
-				moveState = MoveState.Idle;
+				NetworkManager.SendTurnEndMessage();
+			} else {
+				GameManager.gameManagerInstance.PassTurnToNextPlayer();
 			}
 
-			NetworkManager.SendTurnEndMessage();
 			return;
 		}
 

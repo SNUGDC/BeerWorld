@@ -40,20 +40,22 @@ public class TurnManager : MonoBehaviour
 	private void EnemyTurn()
 	{
 		Debug.LogWarning("Enemy Turn Start");
-		PassTurn();
+		//PassTurn();
 	}
 
 	public void PassTurn()
 	{
 		if (state == State.Player)
 		{
-			state = State.OtherPlayer;
-			currentTurnIndex = 0;
-
 			if (otherPlayers.Count == 0)
 			{
 				state = State.Enemy;
 				EnemyTurn();
+			}
+			else
+			{
+				state = State.OtherPlayer;
+				currentTurnIndex = 0;
 			}
 		}
 		else if (state == State.OtherPlayer)

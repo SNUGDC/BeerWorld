@@ -14,12 +14,17 @@ public class EnemyPlaceHolder
         enemyPaces.Add(FieldTileUtility.GetKeyFromCoord(5,5));
     }
 
+		private EnemyManager enemyManager;
+
     public void PlaceEnemy(Enemy.EnemyType enemyType)
     {
         Debug.Log("Place enemy.");
-        Enemy enemyInstance = GameObject.Instantiate(enemyPrefab) as Enemy;
-        enemyInstance.SetEnemyType(enemyType);
-        CharacterMover mover = enemyInstance.GetComponent<CharacterMover>();
-        mover.MoveTo(enemyPaces[0]);
+				Tile initialTile = TileManager.GetExistTile(enemyPaces[0]);
+				enemyManager = EnemyManager.Create(enemyPrefab, null, initialTile);
+				enemyManager.Init();
     }
+
+		public EnemyManager getEnemyManager() {
+			return enemyManager;
+		}
 }
