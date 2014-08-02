@@ -66,15 +66,18 @@ public class GameManager : MonoBehaviour
 	{
 		gameManagerInstance = this;
 		myCharacterManager = UnitManager.CreateInStart(characterPrefab, arrowPrefab);
-		enemyHolder = new EnemyPlaceHolder(enemyPrefab);
+		enemyHolder = new EnemyPlaceHolder();
 	}
 
 	public EnemyManager enemyManager;
 	// Use this for initialization
 	void Start () {
 		myCharacterManager.Init();
-		enemyHolder.PlaceEnemy(Enemy.EnemyType.Smallest);
-		enemyManager = enemyHolder.getEnemyManager();
+		int enemyStartTileKey = enemyHolder.getEnemyStartTileKey();
+		if (Network.isServer)
+		{
+			NetworkManager.MakeEnemy(enemyStartTileKey);
+		}
 	}
 
 	// Update is called once per frame
@@ -84,5 +87,14 @@ public class GameManager : MonoBehaviour
 		{
 			enemyManager.Update();
 		}
+	}
+
+	private Dictionary<string, EnemyManager> enemies;
+	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
+	{
+		Tile startTile = TileManager.GetExistTile(tileKey);
+		enemyManager = EnemyManager.Create(enemyPrefab, null, startTile);
+
+		enemyManager.Init();
 	}
 }

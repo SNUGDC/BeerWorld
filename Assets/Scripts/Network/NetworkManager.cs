@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NetworkManager : MonoBehaviour {
+public partial class NetworkManager : MonoBehaviour {
 	public GameObject target;
 	GameObject player;
 	string username;

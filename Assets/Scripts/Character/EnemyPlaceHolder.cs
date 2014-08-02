@@ -3,28 +3,15 @@ using System.Collections.Generic;
 
 public class EnemyPlaceHolder
 {
-    private Enemy enemyPrefab;
+    private List<int> enemyPlaces = new List<int>();
 
-    private List<int> enemyPaces = new List<int>();
-
-    public EnemyPlaceHolder(Enemy enemyPrefab)
+    public EnemyPlaceHolder()
     {
-        this.enemyPrefab = enemyPrefab;
-
-        enemyPaces.Add(FieldTileUtility.GetKeyFromCoord(5,5));
+        enemyPlaces.Add(FieldTileUtility.GetKeyFromCoord(5,5));
     }
 
-		private EnemyManager enemyManager;
-
-    public void PlaceEnemy(Enemy.EnemyType enemyType)
-    {
-        Debug.Log("Place enemy.");
-				Tile initialTile = TileManager.GetExistTile(enemyPaces[0]);
-				enemyManager = EnemyManager.Create(enemyPrefab, null, initialTile);
-				enemyManager.Init();
-    }
-
-		public EnemyManager getEnemyManager() {
-			return enemyManager;
+		public int getEnemyStartTileKey()
+		{
+			return enemyPlaces[0];
 		}
 }
