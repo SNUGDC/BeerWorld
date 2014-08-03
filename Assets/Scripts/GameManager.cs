@@ -62,6 +62,13 @@ public class GameManager : MonoBehaviour
 		TurnManager.Get().AddPlayerTEMP(id);
 	}
 
+	public void GameStart()
+	{
+		int enemyStartTileKey = enemyHolder.getEnemyStartTileKey();
+		NetworkManager.MakeEnemy(enemyStartTileKey);
+		NetworkManager.SendGameStartMessage();
+	}
+
 	void Awake ()
 	{
 		gameManagerInstance = this;
@@ -73,11 +80,6 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		myCharacterManager.Init();
-		int enemyStartTileKey = enemyHolder.getEnemyStartTileKey();
-		if (Network.isServer)
-		{
-			NetworkManager.MakeEnemy(enemyStartTileKey);
-		}
 	}
 
 	// Update is called once per frame
