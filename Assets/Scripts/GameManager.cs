@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Slinq;
+using Smooth;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class GameManager : MonoBehaviour
 	private UnitManager myCharacterManager = null;
 	private EnemyPlaceHolder enemyHolder = null;
 	public Enemy enemyPrefab;
+	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
 	public static UnitManager GetMyCharacterManager()
 	{
@@ -44,7 +47,8 @@ public class GameManager : MonoBehaviour
 		}
 		else if (turnState == TurnManager.State.Enemy)
 		{
-			enemyManager.ChangeMoveStateToIdle();
+            Slinqable.Slinq(enemies.Values).FirstOrNone()
+                .ForEach(enemyManager => enemyManager.ChangeMoveStateToIdle());
 		}
 	}
 
@@ -76,7 +80,6 @@ public class GameManager : MonoBehaviour
 		enemyHolder = new EnemyPlaceHolder();
 	}
 
-	public EnemyManager enemyManager;
 	// Use this for initialization
 	void Start () {
 		myCharacterManager.Init();
@@ -85,18 +88,17 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 		myCharacterManager.Update();
-		if (enemyManager != null)
-		{
-			enemyManager.Update();
-		}
-	}
+		Slinqable.Slinq(enemies.Values).ForEach(
+            enemyManager => enemyManager.Update());
+    }
 
-	private Dictionary<string, EnemyManager> enemies;
 	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
 	{
 		Tile startTile = TileManager.GetExistTile(tileKey);
-		enemyManager = EnemyManager.Create(enemyPrefab, startTile);
+		EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile);
 
 		enemyManager.Init();
+
+		enemies.Add(enemyId, enemyManager);
 	}
 }
