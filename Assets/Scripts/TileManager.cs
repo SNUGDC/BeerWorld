@@ -110,14 +110,4 @@ public class TileManager : MonoBehaviour {
 			tileDictionary.Add(tileKey, tile);
 		}
 	}
-
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
-	}
 }
