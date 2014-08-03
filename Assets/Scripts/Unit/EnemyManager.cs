@@ -71,81 +71,9 @@ public class EnemyManager
 		return TileManager.GetTileDictionaryOfBorderTiles(unitCoordinate);
 	}
 
-	Dictionary<TileManager.TileDirection, Tile> GetTileDictionaryOfMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderDictionary)
-	{
-		Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
-
-		TileManager.TileDirection tempKey;
-		Tile tempTile;
-
-		foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in borderDictionary)
-		{
-			tempKey = pair.Key;
-			tempTile = pair.Value;
-
-			if (tempTile == null)
-			{
-				continue;
-			}
-
-			if (IsPreTile(tempTile) == true)
-			{
-				continue;
-			}
-
-			if (IsPrePreTile(tempTile) == true)
-			{
-				continue;
-			}
-
-			if (tempTile.tileType == Tile.TileType.Start)
-			{
-				continue;
-			}
-
-			movableDictionary.Add(tempKey, tempTile);
-		}
-
-		return movableDictionary;
-	}
-
 	Dictionary<TileManager.TileDirection, Tile> SearchMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderTileDictionary)
 	{
-		return GetTileDictionaryOfMovableTiles(borderTileDictionary);
-	}
-
-	bool IsBranch(Dictionary<TileManager.TileDirection, Tile> movableDictionary)
-	{
-		int numberOfMovableDirection = 0;
-		numberOfMovableDirection = movableDictionary.Count;
-
-		if (numberOfMovableDirection > 1)
-		{
-			return true;
-		}
-
-		if (numberOfMovableDirection == 0)
-		{
-			Debug.Log("There is no movable tile!");
-		}
-
-		return false;
-	}
-
-	bool IsPreTile(Tile tile)
-	{
-		int preTileKey = characterMover.preTileKey;
-		int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
-
-		return preTileKey == tileKeyOfBorderTile;
-	}
-
-	bool IsPrePreTile(Tile tile)
-	{
-		int prePreTileKey = characterMover.prePreTileKey;
-		int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
-
-		return prePreTileKey == tileKeyOfBorderTile;
+		return characterMover.GetTileDictionaryOfMovableTiles(borderTileDictionary);
 	}
 
 	void CreateArrow (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
