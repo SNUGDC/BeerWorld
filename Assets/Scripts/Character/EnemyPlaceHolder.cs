@@ -5,13 +5,13 @@ public class EnemyPlaceHolder
 {
     private Enemy enemyPrefab;
 
-    private List<int> enemyPaces = new List<int>();
+    private List<int> enemyPlaces = new List<int>();
 
     public EnemyPlaceHolder(Enemy enemyPrefab)
     {
         this.enemyPrefab = enemyPrefab;
 
-        enemyPaces.Add(FieldTileUtility.GetKeyFromCoord(5,5));
+        enemyPlaces.Add(FieldTileUtility.GetKeyFromCoord(5,5));
     }
 
     public void PlaceEnemy(Enemy.EnemyType enemyType)
@@ -20,6 +20,6 @@ public class EnemyPlaceHolder
         Enemy enemyInstance = GameObject.Instantiate(enemyPrefab) as Enemy;
         enemyInstance.SetEnemyType(enemyType);
         CharacterMover mover = enemyInstance.GetComponent<CharacterMover>();
-        mover.MoveTo(enemyPaces[0]);
+        mover.MoveTo(enemyPlaces[0]);
     }
 }
