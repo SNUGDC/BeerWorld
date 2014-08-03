@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 4cb4d639b91074ee6b5dc818e3539ff8
+guid: 035d03fb0ea6a461dafd9e661755d299
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Enemy
+    21300000: arrow3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
