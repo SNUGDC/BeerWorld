@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class CharacterMover : MonoBehaviour
 {
@@ -57,4 +57,57 @@ public class CharacterMover : MonoBehaviour
 		int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
 		UpdateTileKey(currentTileKey);
 	}
+
+	bool IsPreTile(Tile tile)
+	{
+		int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
+
+		return preTileKey == tileKeyOfBorderTile;
+	}
+
+	bool IsPrePreTile(Tile tile)
+	{
+		int tileKeyOfBorderTile = FieldTileUtility.GetKeyFromTile(tile);
+
+		return prePreTileKey == tileKeyOfBorderTile;
+	}
+
+	public Dictionary<TileManager.TileDirection, Tile> GetTileDictionaryOfMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderDictionary)
+	{
+		Dictionary<TileManager.TileDirection, Tile> movableDictionary = new Dictionary<TileManager.TileDirection, Tile>();
+
+		TileManager.TileDirection direction;
+		Tile tile;
+
+		foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in borderDictionary)
+		{
+			direction = pair.Key;
+			tile = pair.Value;
+
+			if (tile == null)
+			{
+				continue;
+			}
+
+			if (IsPreTile(tile) == true)
+			{
+				continue;
+			}
+
+			if (IsPrePreTile(tile) == true)
+			{
+				continue;
+			}
+
+			if (tile.tileType == Tile.TileType.Start)
+			{
+				continue;
+			}
+
+			movableDictionary.Add(direction, tile);
+		}
+
+		return movableDictionary;
+	}
+
 }
