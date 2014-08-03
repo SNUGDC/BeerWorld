@@ -18,7 +18,6 @@ namespace Smooth.Platform {
 		Osx = 800,
 		Ps3 = 900,
 		Tizen = 1000,
-		Wii = 1100,
 		Windows = 1200,
 		Wp8 = 1300,
 		Xbox360 = 1400,
@@ -49,8 +48,6 @@ namespace Smooth.Platform {
 				return BasePlatform.Osx;
 			case RuntimePlatform.LinuxPlayer:
 				return BasePlatform.Linux;
-			case RuntimePlatform.WiiPlayer:
-				return BasePlatform.Wii;
 			case RuntimePlatform.XBOX360:
 				return BasePlatform.Xbox360;
 			case RuntimePlatform.PS3:
@@ -83,8 +80,7 @@ namespace Smooth.Platform {
 			return (
 				runtimePlatform != RuntimePlatform.IPhonePlayer &&
 				runtimePlatform != RuntimePlatform.PS3 &&
-				runtimePlatform != RuntimePlatform.XBOX360 &&
-				runtimePlatform != RuntimePlatform.WiiPlayer);
+				runtimePlatform != RuntimePlatform.XBOX360);
 		}
 
 		/// <summary>
@@ -94,8 +90,7 @@ namespace Smooth.Platform {
 			return (
 				basePlatform != BasePlatform.Ios &&
 				basePlatform != BasePlatform.Ps3 &&
-				basePlatform != BasePlatform.Xbox360 &&
-				basePlatform != BasePlatform.Wii);
+				basePlatform != BasePlatform.Xbox360);
 		}
 
 		/// <summary>
