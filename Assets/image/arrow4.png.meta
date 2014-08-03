@@ -1,8 +1,6 @@
 fileFormatVersion: 2
-guid: 035d03fb0ea6a461dafd9e661755d299
+guid: 7e3e4b5772a104b3490d5d066109d304
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: arrow3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,7 +23,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: 1
     mipBias: -1
     wrapMode: 1
@@ -37,7 +35,6 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 300
   alphaIsTransparency: 1
   textureType: 8
