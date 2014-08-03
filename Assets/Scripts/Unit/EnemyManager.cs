@@ -4,21 +4,20 @@ using System.Collections.Generic;
 public class EnemyManager
 {
 	private Tile spawnTile = null;
-	public static EnemyManager CreateInStart(Unit unitPrefab, DirectionArrow arrowPrefab)
+	public static EnemyManager CreateInStart(Unit unitPrefab)
 	{
 		Tile startTile = TileManager.GetStartTile ();
-		return new EnemyManager(unitPrefab, arrowPrefab, startTile);
+		return new EnemyManager(unitPrefab, startTile);
 	}
 
-	public static EnemyManager Create(Unit unitPrefab, DirectionArrow arrowPrefab, Tile spawnTile)
+	public static EnemyManager Create(Unit unitPrefab, Tile spawnTile)
 	{
-		return new EnemyManager(unitPrefab, arrowPrefab, spawnTile);
+		return new EnemyManager(unitPrefab, spawnTile);
 	}
 
-	private EnemyManager(Unit unitPrefab, DirectionArrow arrowPrefab, Tile spawnTile)
+	private EnemyManager(Unit unitPrefab, Tile spawnTile)
 	{
 		this.unitPrefab = unitPrefab;
-		this.arrowPrefeb = arrowPrefab;
 		this.spawnTile = spawnTile;
 	}
 
@@ -28,7 +27,6 @@ public class EnemyManager
 	}
 
 	private Unit unitPrefab;
-	private DirectionArrow arrowPrefeb;
 	private Unit unitInstance;
 	private CharacterMover characterMover;
 
@@ -42,10 +40,8 @@ public class EnemyManager
 	public enum MoveState
 	{
 		Inactive, // other user's turn.
-			Idle,  // diceRoller btn visible.
-			Moving,
-			Waiting,
-			DirectionSelected
+		Idle,  // diceRoller btn visible.
+		Moving
 	}
 
 	[SerializeField]
@@ -62,8 +58,6 @@ public class EnemyManager
 		SetMovement(1);
 	}
 
-	public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
-
 	Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles ()
 	{
 		Vector3 position = unitInstance.transform.position;
@@ -76,43 +70,8 @@ public class EnemyManager
 		return characterMover.GetTileDictionaryOfMovableTiles(borderTileDictionary);
 	}
 
-	void CreateArrow (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
-	{
-		directionArrowList = new List<DirectionArrow>();
-
-		foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
-		{
-			TileManager.TileDirection direction = pair.Key;
-
-			Vector3 unitPosition = unitInstance.transform.position;
-			Vector2 arrowCoordinate = FieldTileUtility.GetCoordOfDirectionByPosition(direction, unitPosition);
-			Vector2 arrowPosition = FieldTileUtility.GetPositionFromCoordinate(arrowCoordinate.x, arrowCoordinate.y);
-			Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, unitPosition.z);
-
-			DirectionArrow directionArrow = null;
-			directionArrow = GameObject.Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
-
-			DirectionArrow directionArrowScript = directionArrow.gameObject.GetComponent<DirectionArrow>();
-			directionArrowScript.SetArrowDirection(direction);
-
-			directionArrowList.Add(directionArrow);
-		}
-	}
-
-	public void DestroyAllDirectionArrows()
-	{
-		moveState = MoveState.DirectionSelected;
-
-		foreach(DirectionArrow arrow in directionArrowList)
-		{
-			GameObject.Destroy(arrow.gameObject);
-		}
-		directionArrowList = new List<DirectionArrow>();
-	}
-
 	void MoveAndNotify(Tile toMoveTile)
 	{
-		var toMoveTileCoord = toMoveTile.GetCoord();
 		Move(toMoveTile);
 	}
 
@@ -137,14 +96,6 @@ public class EnemyManager
 				continue;
 			}
 		}
-	}
-
-	public void SetDestinationByArrow(TileManager.TileDirection direction)
-	{
-		var borderDictionary = SearchBorderTiles();
-		var movableDictionary = SearchMovableTiles(borderDictionary);
-
-		toMoveTile = movableDictionary[direction];
 	}
 
 	void InstantiateUnit()
@@ -175,7 +126,6 @@ public class EnemyManager
 
 	public void SetMovement(int toMove)
 	{
-		Debug.Log("EnemyManager setmovement.");
 		moveState = MoveState.Moving;
 		howManyMove = toMove;
 	}
@@ -192,33 +142,18 @@ public class EnemyManager
 		if (howManyMove <= 0 && moveState == MoveState.Moving)
 		{
 			moveState = MoveState.Inactive;
-			Debug.Log("Enemy tell to gamemanager to pass turn.");
 			GameManager.gameManagerInstance.PassTurnToNextPlayer();
 			return;
 		}
 
 		if (moveState == MoveState.Moving)
 		{
-			//Debug.Log("Enemy move state update.");
 			var borderDictionary = SearchBorderTiles();
 			var movableDictionary = SearchMovableTiles(borderDictionary);
 
 			SetDestination(movableDictionary);
 			Move(toMoveTile);
 			howManyMove--;
-		}
-		else if (moveState == MoveState.Waiting)
-		{
-			// Do nothing, wait user input.
-		}
-		else if (moveState == MoveState.DirectionSelected)
-		{
-			Debug.Log("toMoveTile in Update : " + toMoveTile);
-
-			MoveAndNotify(toMoveTile);
-			howManyMove--;
-
-			moveState = MoveState.Moving;
 		}
 	}
 }

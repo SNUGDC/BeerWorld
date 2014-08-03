@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
 	{
 		Tile startTile = TileManager.GetExistTile(tileKey);
-		enemyManager = EnemyManager.Create(enemyPrefab, null, startTile);
+		enemyManager = EnemyManager.Create(enemyPrefab, startTile);
 
 		enemyManager.Init();
 	}
