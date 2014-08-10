@@ -21,6 +21,11 @@ public class CharacterMover : MonoBehaviour
 		private set;
 	}
 
+    public int GetCurrentTileKey()
+    {
+        return currentTileKey;
+    }
+
 	public void InitializeTileKey(int tileKey)
 	{
 		currentTileKey = tileKey;

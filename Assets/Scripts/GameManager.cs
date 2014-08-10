@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
 	public Enemy enemyPrefab;
 	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
+    public Dictionary<string, EnemyManager> GetEnemies()
+    {
+        return enemies;
+    }
+
 	public static UnitManager GetMyCharacterManager()
 	{
 		return gameManagerInstance.myCharacterManager;

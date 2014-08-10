@@ -3,7 +3,12 @@ using System.Collections.Generic;
 
 public class EnemyManager
 {
-	private Tile spawnTile = null;
+	public int GetCurrentTileKey()
+    {
+        return characterMover.GetCurrentTileKey();
+    }
+
+    private Tile spawnTile = null;
 	public static EnemyManager CreateInStart(Unit unitPrefab)
 	{
 		Tile startTile = TileManager.GetStartTile ();

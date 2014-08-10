@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Slinq;
 
 public class UnitManager
 {
+    public int GetCurrentTileKey()
+    {
+        return characterMover.GetCurrentTileKey();
+    }
+
 	private Tile spawnTile = null;
 	public static UnitManager CreateInStart(Unit unitPrefab, DirectionArrow arrowPrefab)
 	{
@@ -187,6 +193,13 @@ public class UnitManager
 		moveState = MoveState.Moving;
 		howManyMove = toMove;
 	}
+
+    bool isThereEnemy(Tile destinationTile)
+    {
+        return Slinqable.Slinq(GameManager.gameManagerInstance.GetEnemies().Values).Where(
+            enemyManager => enemyManager.GetCurrentTileKey() == GetCurrentTileKey())
+            .Count() > 0;
+    }
 
 	Tile toMoveTile = null;
 
