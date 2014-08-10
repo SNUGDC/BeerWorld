@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
         return enemies;
     }
 
+	public IEnumerable<EnemyManager> GetEnemiesList()
+	{
+		return enemies.Values;
+	}
+
 	public static UnitManager GetMyCharacterManager()
 	{
 		return gameManagerInstance.myCharacterManager;
@@ -54,8 +59,8 @@ public class GameManager : MonoBehaviour
 		}
 		else if (turnState == TurnManager.State.Enemy)
 		{
-			Slinqable.Slinq(enemies.Values).FirstOrNone()
-				.ForEach(enemyManager => enemyManager.ChangeMoveStateToIdle());
+			EnemyManager turnEnemy = TurnManager.Get().GetTurnEnemy();
+			turnEnemy.ChangeMoveStateToIdle();
 		}
 	}
 
@@ -75,8 +80,12 @@ public class GameManager : MonoBehaviour
 
 	public void GameStart()
 	{
-		int enemyStartTileKey = enemyHolder.getEnemyStartTileKey();
-		NetworkManager.MakeEnemy(enemyStartTileKey);
+		var enemyPlaces = enemyHolder.GetEnemyPlaces();
+		Slinqable.Slinq(enemyPlaces).ForEach(
+				(tileKey) => {
+					NetworkManager.MakeEnemy(tileKey);
+				}
+			);
 		NetworkManager.SendGameStartMessage();
 	}
 

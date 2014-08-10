@@ -16,4 +16,9 @@ public class EnemyPlaceHolder
   {
     return enemyPlaces[0];
   }
+
+  public List<int> GetEnemyPlaces()
+  {
+    return enemyPlaces;
+  }
 }

@@ -37,25 +37,26 @@ public class TurnManager : MonoBehaviour
 		this.otherPlayers = otherPlayers;
 	}
 
-	private void EnemyTurn()
+	Queue<EnemyManager> waitingEnemies;
+	private void EnemyTurnStart()
 	{
-		Debug.LogWarning("Enemy Turn Start");
-		//PassTurn();
+		var enemies = GameManager.gameManagerInstance.GetEnemiesList();
+		waitingEnemies = new Queue<EnemyManager>(enemies);
 	}
 
 	public void PassTurn()
 	{
 		if (state == State.Player)
 		{
+			currentTurnIndex = 0;
 			if (otherPlayers.Count == 0)
 			{
 				state = State.Enemy;
-				EnemyTurn();
+				EnemyTurnStart();
 			}
 			else
 			{
 				state = State.OtherPlayer;
-				currentTurnIndex = 0;
 			}
 		}
 		else if (state == State.OtherPlayer)
@@ -63,14 +64,21 @@ public class TurnManager : MonoBehaviour
 			currentTurnIndex += 1;
 			if (currentTurnIndex >= otherPlayers.Count)
 			{
-				state = State.Enemy;
 				currentTurnIndex = 0;
-				EnemyTurn();
+				state = State.Enemy;
+				EnemyTurnStart();
 			}
 		}
 		else
 		{
-			state = State.Player;
+			if (waitingEnemies.Count > 0)
+			{
+				return;
+			}
+			else
+			{
+				state = State.Player;
+			}
 		}
 	}
 
@@ -82,5 +90,11 @@ public class TurnManager : MonoBehaviour
 	public NetworkViewID GetTurnPlayer()
 	{
 		return otherPlayers[currentTurnIndex];
+	}
+
+	public EnemyManager GetTurnEnemy()
+	{
+		var enemy = waitingEnemies.Dequeue();
+		return enemy;
 	}
 }
