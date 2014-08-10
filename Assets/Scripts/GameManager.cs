@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour
 		}
 		else if (turnState == TurnManager.State.Enemy)
 		{
-            Slinqable.Slinq(enemies.Values).FirstOrNone()
-                .ForEach(enemyManager => enemyManager.ChangeMoveStateToIdle());
+			Slinqable.Slinq(enemies.Values).FirstOrNone()
+				.ForEach(enemyManager => enemyManager.ChangeMoveStateToIdle());
 		}
 	}
 
