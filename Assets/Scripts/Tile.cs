@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Tile : MonoBehaviour {
@@ -37,6 +37,11 @@ public class Tile : MonoBehaviour {
 	public void SetTileKey(int key)
 	{
 		tileKey = key;
+	}
+
+	public int GetTileKey()
+	{
+		return tileKey;
 	}
 
 	public Vector2 GetCoord()

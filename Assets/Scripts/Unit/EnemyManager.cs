@@ -1,24 +1,32 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class EnemyManager
 {
 	private Tile spawnTile = null;
-	public static EnemyManager CreateInStart(Unit unitPrefab)
+
+	public string enemyId
+	{
+		get;
+		private set;
+	}
+
+	public static EnemyManager CreateInStart(Unit unitPrefab, string enemyId)
 	{
 		Tile startTile = TileManager.GetStartTile ();
-		return new EnemyManager(unitPrefab, startTile);
+		return new EnemyManager(unitPrefab, startTile, enemyId);
 	}
 
-	public static EnemyManager Create(Unit unitPrefab, Tile spawnTile)
+	public static EnemyManager Create(Unit unitPrefab, Tile spawnTile, string enemyId)
 	{
-		return new EnemyManager(unitPrefab, spawnTile);
+		return new EnemyManager(unitPrefab, spawnTile, enemyId);
 	}
 
-	private EnemyManager(Unit unitPrefab, Tile spawnTile)
+	private EnemyManager(Unit unitPrefab, Tile spawnTile, string enemyId)
 	{
 		this.unitPrefab = unitPrefab;
 		this.spawnTile = spawnTile;
+		this.enemyId = enemyId;
 	}
 
 	public void Init()
@@ -73,11 +81,18 @@ public class EnemyManager
 	void MoveAndNotify(Tile toMoveTile)
 	{
 		Move(toMoveTile);
+		NetworkManager.MoveEnemy(toMoveTile.GetTileKey(), enemyId);
 	}
 
 	public void Move(int coordX, int coordY)
 	{
 		Tile tile = TileManager.GetTileByCoord(coordX, coordY);
+		Move(tile);
+	}
+
+	public void Move(int tileKey)
+	{
+		Tile tile = TileManager.GetExistTile(tileKey);
 		Move(tile);
 	}
 
@@ -152,7 +167,7 @@ public class EnemyManager
 			var movableDictionary = SearchMovableTiles(borderDictionary);
 
 			SetDestination(movableDictionary);
-			Move(toMoveTile);
+			MoveAndNotify(toMoveTile);
 			howManyMove--;
 		}
 	}
