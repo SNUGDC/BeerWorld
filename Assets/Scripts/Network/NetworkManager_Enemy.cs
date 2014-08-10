@@ -16,4 +16,16 @@ public partial class NetworkManager : MonoBehaviour
 	{
 		GameManager.gameManagerInstance.InstantiateEnemyByNetwork(enemyId, tileKey);
 	}
+
+	public static void MoveEnemy(int moveTileKey, string enemyId)
+	{
+		networkInstance.networkView.RPC("ReceiveMoveEnemy",
+				RPCMode.Others, moveTileKey, enemyId);
+	}
+
+	[RPC]
+	private void ReceiveMoveEnemy(int moveTileKey, string enemyId)
+	{
+		GameManager.gameManagerInstance.MoveEnemy(moveTileKey, enemyId);
+	}
 }

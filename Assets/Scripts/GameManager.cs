@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Algebraics;
+using Smooth.Collections;
 using Smooth.Slinq;
 using Smooth;
 
@@ -100,10 +102,26 @@ public class GameManager : MonoBehaviour
 	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
 	{
 		Tile startTile = TileManager.GetExistTile(tileKey);
-		EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile);
+		EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile, enemyId);
 
 		enemyManager.Init();
 
 		enemies.Add(enemyId, enemyManager);
+	}
+
+	public void MoveEnemy(int tileKey, string enemyId)
+	{
+		Debug.Log("Move enemy " + enemyId + ", to " + tileKey);
+		enemies[enemyId].Move(tileKey);
+	}
+
+	public Option<string> GetFirstEnemyId()
+	{
+		return Slinqable.Slinq(enemies.Keys).FirstOrNone();
+	}
+
+	public Option<EnemyManager> GetEnemy(string id)
+	{
+		return enemies.TryGet(id);
 	}
 }
