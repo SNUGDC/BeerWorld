@@ -109,4 +109,14 @@ public class GameManager : MonoBehaviour
 		Debug.Log("Move enemy " + enemyId + ", to " + tileKey);
 		enemies[enemyId].Move(tileKey);
 	}
+
+	public Option<string> GetFirstEnemyId()
+	{
+		return Slinqable.Slinq(enemies.Keys).FirstOrNone();
+	}
+
+	public Option<EnemyManager> GetEnemy(string id)
+	{
+		return enemies.TryGet(id);
+	}
 }

@@ -46,11 +46,18 @@ public class BattleManager : MonoBehaviour
     CalculationResult playerCalcResult = null;
     CalculationResult enemyCalcResult = null;
     public Camera battleCamera;
+		public bool isMine {
+			get;
+			private set;
+		}
 
-    public void ShowBattle()
+    public void ShowBattle(UnitManager playerManager, EnemyManager enemyManager, bool isMine)
     {
         battleCamera.enabled = true;
         state = State.Start;
+				player = BattleUtil.GetPlayer(playerManager.GetUnitInstance());
+				enemy = BattleUtil.GetDummyEnemy();
+				this.isMine = isMine;
     }
 
     public void EndBattle()
@@ -87,10 +94,6 @@ public class BattleManager : MonoBehaviour
 
         if (state == State.Start)
         {
-            //CharacterManager myCharacterManagerOnBattle = GameManager.GetMyCharacterManager();
-            player = BattleUtil.GetPlayer(GameManager.GetMyCharacterManager().GetUnitInstance());
-            //player = BattleUtil.GetDummyPlayer();
-            enemy = BattleUtil.GetDummyEnemy();
             state = State.WaitingRoll;
 
             UpdateRemainHP();
@@ -116,9 +119,6 @@ public class BattleManager : MonoBehaviour
             playerCalcResult = calculator.GetDefenseDiceResult(player);
             enemyCalcResult = calculator.GetAttackDiceResult(player);
         }
-
-        //Debug.Log("Player result is " + playerCalcResult.ToString());
-        //Debug.Log("Enemy result is " + enemyCalcResult.ToString());
 
         state = State.ShowRoll;
         AnimateDice();

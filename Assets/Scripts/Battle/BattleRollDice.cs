@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
 using System.Collections;
 
 public class BattleRollDice : MonoBehaviour
@@ -7,23 +8,39 @@ public class BattleRollDice : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		battleManager.OnRollClicked();
+		NetworkManager.BattleRoleDice();
+	}
+
+	void On()
+	{
+		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+		spriteRenderer.enabled = true;
+		collider2D.enabled = true;
+	}
+
+	void Off()
+	{
+		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+		spriteRenderer.enabled = false;
+		collider2D.enabled = false;
 	}
 
 	void Update()
 	{
+		if (!BattleManager.battleManagerInstance.isMine) {
+			Off();
+			return;
+		}
+
 		BattleManager.State battleState = BattleManager.battleManagerInstance.GetBattleState();
-		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
 		if (battleState == BattleManager.State.WaitingRoll)
 		{
-			spriteRenderer.enabled = true;
-			collider2D.enabled = true;
-		}		
+			On();
+		}
 		else
 		{
-			spriteRenderer.enabled = false;
-			collider2D.enabled = false;
+			Off();
 		}
 	}
 }
