@@ -3,15 +3,15 @@ using System.Collections;
 
 public class BattleRollDice : MonoBehaviour
 {
-    public BattleManager battleManager;
+	public BattleManager battleManager;
 
-    void OnMouseDown()
-    {
-        battleManager.OnRollClicked();
-    }
+	void OnMouseDown()
+	{
+		battleManager.OnRollClicked();
+	}
 
-    void Update()
-    {
+	void Update()
+	{
 		BattleManager.State battleState = BattleManager.battleManagerInstance.GetBattleState();
 		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
@@ -25,5 +25,5 @@ public class BattleRollDice : MonoBehaviour
 			spriteRenderer.enabled = false;
 			collider2D.enabled = false;
 		}
-    }
+	}
 }
