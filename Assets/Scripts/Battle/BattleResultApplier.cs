@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BattleResultApplier
@@ -13,50 +13,36 @@ public class BattleResultApplier
 
 	public static BattleResultState state = BattleResultState.None;
 
-	public static void EnemyDelete(BattlePlayer enemy)
+	public static void EnemyDelete(EnemyManager enemy)
 	{
-		Debug.LogWarning("(FIXME: Not implemented yet) Enemy is dead.");
+		GameManager.gameManagerInstance.KillEnemy(enemy.enemyId);
 	}
 
-	public static void PlayerRespawn(BattlePlayer player)
+	public static void PlayerRespawn(UnitManager playerManager)
 	{
-		Unit characterInstance = GameManager.GetMyCharacterManager().GetUnitInstance();
-
-		characterInstance.currentHp = characterInstance.maxHp;
-		Debug.Log("currentHp : " + characterInstance.currentHp + " maxHp : " + characterInstance.maxHp);
-
-		GameManager.GetMyCharacterManager().InitializeUnit();
-		Debug.Log("Player return to startTile.");
+		playerManager.Die();
 	}
 
-	public static void ApplyBattleResult(BattlePlayer player, BattlePlayer enemy)
+	public static void ApplyBattleResult(BattlePlayer player, BattlePlayer enemy, UnitManager playerManager, EnemyManager enemyManager)
 	{
-		GameManager.GetMyCharacterManager().GetUnitInstance().currentHp = player.GetHp();
+		playerManager.GetUnitInstance().currentHp = player.GetHp();
+		enemyManager.GetUnitInstance().currentHp = enemy.GetHp();
 
 		if(state == BattleResultState.PlayerWin)
 		{
-			EnemyDelete(enemy);
+			EnemyDelete(enemyManager);
+			playerManager.BattleWin();
 		}
 		else if(state == BattleResultState.EnemyWin)
 		{
-			PlayerRespawn(player);
+			PlayerRespawn(playerManager);
 		}
 		else if (state == BattleResultState.Draw)
 		{
-			EnemyDelete(enemy);
-			PlayerRespawn(player);
+			EnemyDelete(enemyManager);
+			PlayerRespawn(playerManager);
 		}
 
 		state = BattleResultState.None;
-	}
-
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
 	}
 }

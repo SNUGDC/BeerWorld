@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using Smooth.Algebraics;
 using Smooth.Collections;
@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
 			Debug.LogError("Cannot find user of " + id);
 		}
 		return gameManagerInstance.otherCharacterManagers[id];
+	}
+
+	public bool isMyCharacterManager(UnitManager unitManager)
+	{
+		return myCharacterManager == unitManager;
 	}
 
 	public void PassTurnToNextPlayer()
@@ -132,5 +137,12 @@ public class GameManager : MonoBehaviour
 	public Option<EnemyManager> GetEnemy(string id)
 	{
 		return enemies.TryGet(id);
+	}
+
+	public void KillEnemy(string enemyId)
+	{
+		var enemy = enemies[enemyId];
+		enemies.Remove(enemyId);
+		enemy.Kill();
 	}
 }

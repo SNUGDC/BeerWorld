@@ -24,10 +24,10 @@ public class BattleUtil
         List<BDice.Species> defenseDices = new List<BDice.Species>();
 
         attackDices.Add(BDice.Species.Six);
-        attackDices.Add(BDice.Species.Six);
+        //attackDices.Add(BDice.Species.Six);
 
         defenseDices.Add(BDice.Species.Six);
-        defenseDices.Add(BDice.Species.Six);
+        //defenseDices.Add(BDice.Species.Six);
 
         return new BattlePlayer(attackDices, defenseDices,
                 5, 5);

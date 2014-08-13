@@ -1,18 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public partial class NetworkManager : MonoBehaviour
 {
-
-	public static void StartBattle(NetworkViewID user, string enemy, int seed)
+	public static void StartBattle(string enemy)
 	{
-		networkInstance.networkView.RPC("ReceiveStartBattle", RPCMode.All, user, enemy, seed);
+		int seed = UnityEngine.Random.Range(Int32.MinValue, Int32.MaxValue);
+		var userId = NetworkManager.networkInstance.Id;
+		networkInstance.networkView.RPC("ReceiveStartBattle", RPCMode.All, userId, enemy, seed);
 	}
 
 	[RPC]
 	private void ReceiveStartBattle(NetworkViewID user, string enemyId, int seed)
 	{
-		Random.seed = seed;
+		UnityEngine.Random.seed = seed;
 
 		UnitManager player = null;
 		if (user.isMine)

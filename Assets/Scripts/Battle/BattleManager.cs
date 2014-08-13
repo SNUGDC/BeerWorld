@@ -51,18 +51,23 @@ public class BattleManager : MonoBehaviour
 			private set;
 		}
 
+		private UnitManager playerManager;
+		private EnemyManager enemyManager;
     public void ShowBattle(UnitManager playerManager, EnemyManager enemyManager, bool isMine)
     {
         battleCamera.enabled = true;
         state = State.Start;
 				player = BattleUtil.GetPlayer(playerManager.GetUnitInstance());
 				enemy = BattleUtil.GetDummyEnemy();
+
+				this.playerManager = playerManager;
+				this.enemyManager = enemyManager;
 				this.isMine = isMine;
     }
 
     public void EndBattle()
     {
-        BattleResultApplier.ApplyBattleResult(player, enemy);
+        BattleResultApplier.ApplyBattleResult(player, enemy, playerManager, enemyManager);
         battleCamera.enabled = false;
     }
 

@@ -176,4 +176,9 @@ public class EnemyManager
 			howManyMove--;
 		}
 	}
+
+	public void Kill()
+	{
+		GameObject.Destroy(unitInstance.gameObject);
+	}
 }

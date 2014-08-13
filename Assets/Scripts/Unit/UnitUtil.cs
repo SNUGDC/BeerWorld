@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Slinq;
 
 public static class UnitUtil
 {
@@ -19,5 +20,23 @@ public static class UnitUtil
 		}
 
 		return false;
+	}
+
+	public static bool IsEnemyEncounter(int tileKey)
+	{
+		var enemies = GameManager.gameManagerInstance.GetEnemiesList();
+
+		return Slinqable.Slinq(enemies).Where(
+				(enemyManager) => enemyManager.GetCurrentTileKey() == tileKey
+			).FirstOrNone().isSome;
+	}
+
+	public static string GetEnemyIdOnTile(int tileKey)
+	{
+		var enemies = GameManager.gameManagerInstance.GetEnemiesList();
+
+		return Slinqable.Slinq(enemies).Where(
+				(enemyManager) => enemyManager.GetCurrentTileKey() == tileKey
+			).First().enemyId;
 	}
 }

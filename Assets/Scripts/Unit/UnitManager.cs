@@ -50,6 +50,7 @@ public class UnitManager
 		Inactive, // other user's turn.
 		Idle,  // diceRoller btn visible.
 		Moving,
+		Battle,
 		Waiting,
 		DirectionSelected
 	}
@@ -210,20 +211,25 @@ public class UnitManager
 			unitInstance.SendMessage("OnCmaeraFollow", unitInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
-		if (howManyMove <= 0 && moveState == MoveState.Moving)
+		if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter(GetCurrentTileKey()))
+		{
+				Debug.LogWarning("Encounter enemy.");
+				NetworkManager.StartBattle(UnitUtil.GetEnemyIdOnTile(GetCurrentTileKey()));
+				moveState = MoveState.Battle;
+		}
+		else if (howManyMove <= 0 && moveState == MoveState.Moving)
 		{
 			moveState = MoveState.Inactive;
+
+			//FIXME we now always need network.
 			if (NetworkManager.isConnected())
 			{
 				NetworkManager.SendTurnEndMessage();
 			} else {
 				GameManager.gameManagerInstance.PassTurnToNextPlayer();
 			}
-
-			return;
 		}
-
-		if (moveState == MoveState.Moving)
+		else if (moveState == MoveState.Moving)
 		{
 			var borderDictionary = SearchBorderTiles();
 			var movableDictionary = SearchMovableTiles(borderDictionary);
@@ -235,10 +241,24 @@ public class UnitManager
 			}
 			else
 			{
+				var currentTileKey = GetCurrentTileKey();
 				SetDestination(movableDictionary);
+				var toMoveTileKey = toMoveTile.GetTileKey();
 				MoveAndNotify(toMoveTile);
 				howManyMove--;
+
+				var currentTileKeyOfNext = GetCurrentTileKey();
+
+				Debug.LogWarning("TileKeys : " + currentTileKey + ", " + toMoveTileKey + ", " + currentTileKeyOfNext);
+				Debug.LogWarning("TileKey enemy? : " +
+						UnitUtil.IsEnemyEncounter(currentTileKey) + ", " +
+						UnitUtil.IsEnemyEncounter(toMoveTileKey) + ", " +
+						UnitUtil.IsEnemyEncounter(currentTileKeyOfNext));
 			}
+		}
+		else if (moveState == MoveState.Battle)
+		{
+			// Do nothing, wait battle end.
 		}
 		else if (moveState == MoveState.Waiting)
 		{
@@ -253,5 +273,23 @@ public class UnitManager
 
 			moveState = MoveState.Moving;
 		}
+	}
+
+	// Called from all users.
+	public void Die()
+	{
+		unitInstance.currentHp = unitInstance.maxHp;
+		Move(spawnTile);
+		moveState = MoveState.Inactive;
+		if (GameManager.gameManagerInstance.isMyCharacterManager(this))
+		{
+			NetworkManager.SendTurnEndMessage();
+		}
+	}
+
+	// Called from all users.
+	public void BattleWin()
+	{
+		moveState = MoveState.Moving;
 	}
 }
