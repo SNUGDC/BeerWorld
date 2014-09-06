@@ -52,8 +52,10 @@ public class UnitManager
 		Moving,
 		Battle,
 		Waiting,
-		DirectionSelected
+		DirectionSelected,
+        CheckingTileOption
 	}
+
 	[SerializeField]
 	private MoveState moveState = MoveState.Inactive;
 
@@ -195,12 +197,14 @@ public class UnitManager
 		howManyMove = toMove;
 	}
 
-	bool isThereEnemy(Tile destinationTile)
-	{
-		return Slinqable.Slinq(GameManager.gameManagerInstance.GetEnemies().Values).Where(
-				enemyManager => enemyManager.GetCurrentTileKey() == GetCurrentTileKey())
-			.Count() > 0;
-	}
+    void InterectionWithTile()
+    {
+        int tileKey = GetCurrentTileKey();
+        Tile tile = TileManager.GetExistTile(tileKey);
+        Tile.TileType tileType = tile.tileType;
+
+        Debug.Log("tilekey : " + tileKey + ", tileType : " + tileType);
+    }
 
 	Tile toMoveTile = null;
 
@@ -211,24 +215,31 @@ public class UnitManager
 			unitInstance.SendMessage("OnCmaeraFollow", unitInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
-		if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter (GetCurrentTileKey ()))
-		{
-			Debug.LogWarning ("Encounter enemy.");
-			NetworkManager.StartBattle (UnitUtil.GetEnemyIdOnTile (GetCurrentTileKey ()));
-			moveState = MoveState.Battle;
-		}
-		else if (howManyMove <= 0 && moveState == MoveState.Moving)
-		{
-			moveState = MoveState.Inactive;
+		if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter(GetCurrentTileKey()))
+        {
+            Debug.LogWarning("Encounter enemy.");
+            NetworkManager.StartBattle(UnitUtil.GetEnemyIdOnTile(GetCurrentTileKey()));
+            moveState = MoveState.Battle;
+        } 
+        else if (howManyMove <= 0 && moveState == MoveState.Moving)
+        {
+            moveState = MoveState.CheckingTileOption;
+        } 
+        else if (moveState == MoveState.CheckingTileOption)
+        {
+            moveState = MoveState.Inactive;
 
-			//FIXME we now always need network.
-			if (NetworkManager.isConnected())
-			{
-				NetworkManager.SendTurnEndMessage();
-			} else {
-				GameManager.gameManagerInstance.PassTurnToNextPlayer();
-			}
-		}
+            InterectionWithTile();
+            
+            //FIXME we now always need network.
+            if (NetworkManager.isConnected())
+            {
+                NetworkManager.SendTurnEndMessage();
+            } else
+            {
+                GameManager.gameManagerInstance.PassTurnToNextPlayer();
+            }
+        }
 		else if (moveState == MoveState.Moving)
 		{
 			var borderDictionary = SearchBorderTiles();
