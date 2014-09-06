@@ -22,7 +22,6 @@ public class Dice {
 	public static int Roll()
 	{		        
         int diceResult = Random.Range(1, 6);
-        return 1;
-        //return diceResult;
+        return diceResult;
 	}
 }
