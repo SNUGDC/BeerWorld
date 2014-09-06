@@ -11,7 +11,6 @@ public class Enemy : Unit
 
    	EnemyType enemyType;
 
-
     public void SetEnemyType(EnemyType enemyType)
 	{
 		this.enemyType = enemyType;

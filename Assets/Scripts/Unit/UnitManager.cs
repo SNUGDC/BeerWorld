@@ -211,11 +211,11 @@ public class UnitManager
 			unitInstance.SendMessage("OnCmaeraFollow", unitInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
-		if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter(GetCurrentTileKey()))
+		if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter (GetCurrentTileKey ()))
 		{
-				Debug.LogWarning("Encounter enemy.");
-				NetworkManager.StartBattle(UnitUtil.GetEnemyIdOnTile(GetCurrentTileKey()));
-				moveState = MoveState.Battle;
+			Debug.LogWarning ("Encounter enemy.");
+			NetworkManager.StartBattle (UnitUtil.GetEnemyIdOnTile (GetCurrentTileKey ()));
+			moveState = MoveState.Battle;
 		}
 		else if (howManyMove <= 0 && moveState == MoveState.Moving)
 		{
