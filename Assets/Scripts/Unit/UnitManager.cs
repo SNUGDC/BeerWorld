@@ -166,7 +166,8 @@ public class UnitManager
 
 	public void InitializeUnit()
 	{
-		Vector3 spawnTilePosition = spawnTile.gameObject.transform.position;
+        Vector3 spawnTilePosition = spawnTile.gameObject.transform.position;
+            //characterInstance.GetSpawnTile().gameObject.transform.position; 
 		Vector3 spawnPositionOfUnit = new Vector3(spawnTilePosition.x, spawnTilePosition.y, Unit.Depth);
 
 		unitInstance.transform.position = spawnPositionOfUnit;
