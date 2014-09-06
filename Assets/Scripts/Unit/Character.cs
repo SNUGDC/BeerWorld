@@ -12,12 +12,16 @@ public class Character : Unit {
     public void InJail()
     {
         remainJailTurn = 3;
+        Debug.Log("In Jail during 3 turn...");
     }
 
     public bool IsUnitInJail()
     {
         if (remainJailTurn != 0)
+        {
+            Debug.Log("Remain " + remainJailTurn + " turn in Jail...");
             return true;
+        }
         else 
             return false;
     }
@@ -43,8 +47,9 @@ public class Character : Unit {
         return spawnTile;
     }
 
-    public void CheckSaveTile(Tile saveTile)
+    public void CheckSaveTile(int tileKeyOfSaveTile)
     {
+        Tile saveTile = TileManager.GetExistTile(tileKeyOfSaveTile);
         spawnTile = saveTile;
         Debug.Log("Save at this check point!");
     }

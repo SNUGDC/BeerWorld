@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class DiceRollerButton : MonoBehaviour
 {	
-	UnitManager characterManager = null;
+	CharacterManager characterManager = null;
 	void Start()
 	{
 		characterManager  = GameManager.GetMyCharacterManager();
@@ -11,9 +11,9 @@ public class DiceRollerButton : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{		
-		UnitManager.MoveState moveState = characterManager.GetMoveState();
+		CharacterManager.MoveState moveState = characterManager.GetMoveState();
 		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-		if (moveState == UnitManager.MoveState.Idle)
+		if (moveState == CharacterManager.MoveState.Idle)
 		{
 			spriteRenderer.enabled = true;
 			collider2D.enabled = true;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -16,7 +16,7 @@ public partial class NetworkManager : MonoBehaviour
 	{
 		UnityEngine.Random.seed = seed;
 
-		UnitManager player = null;
+		CharacterManager player = null;
 		if (user.isMine)
 		{
 			player = GameManager.GetMyCharacterManager();

@@ -2,30 +2,28 @@ using UnityEngine;
 using System.Collections.Generic;
 using Smooth.Slinq;
 
-public class UnitManager
+public class CharacterManager
 {
 	public int GetCurrentTileKey()
 	{
 		return characterMover.GetCurrentTileKey();
 	}
 
-	private Tile spawnTile = null;
-	public static UnitManager CreateInStart(Unit unitPrefab, DirectionArrow arrowPrefab)
+	public static CharacterManager CreateInStart(Character characterPrefab, DirectionArrow arrowPrefab)
 	{
 		Tile startTile = TileManager.GetStartTile ();
-		return new UnitManager(unitPrefab, arrowPrefab, startTile);
+		return new CharacterManager(characterPrefab, arrowPrefab);
 	}
 
-	public static UnitManager Create(Unit unitPrefab, DirectionArrow arrowPrefab, Tile spawnTile)
+	public static CharacterManager Create(Character characterPrefab, DirectionArrow arrowPrefab)
 	{
-		return new UnitManager(unitPrefab, arrowPrefab, spawnTile);
+		return new CharacterManager(characterPrefab, arrowPrefab);
 	}
 
-	private UnitManager(Unit unitPrefab, DirectionArrow arrowPrefab, Tile spawnTile)
+	private CharacterManager(Character characterPrefab, DirectionArrow arrowPrefab)
 	{
-		this.unitPrefab = unitPrefab;
+		this.characterPrefab = characterPrefab;
 		this.arrowPrefeb = arrowPrefab;
-		this.spawnTile = spawnTile;
 	}
 
 	public void Init()
@@ -33,16 +31,16 @@ public class UnitManager
 		Start();
 	}
 
-	private Unit unitPrefab;
+	private Character characterPrefab;
 	private DirectionArrow arrowPrefeb;
-	private Unit unitInstance;
+	private Character characterInstance;
 	private CharacterMover characterMover;
 
 	private int howManyMove = 0;
 
-	public Unit GetUnitInstance()
+	public Character GetCharacterInstance()
 	{
-		return unitInstance;
+		return characterInstance;
 	}
 
 	public enum MoveState
@@ -59,7 +57,7 @@ public class UnitManager
 	[SerializeField]
 	private MoveState moveState = MoveState.Inactive;
 
-	public UnitManager.MoveState GetMoveState()
+	public CharacterManager.MoveState GetMoveState()
 	{
 		return moveState;
 	}
@@ -74,9 +72,9 @@ public class UnitManager
 
 	Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles ()
 	{
-		Vector3 position = unitInstance.transform.position;
-		Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
-		return TileManager.GetTileDictionaryOfBorderTiles(unitCoordinate);
+		Vector3 position = characterInstance.transform.position;
+		Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
+		return TileManager.GetTileDictionaryOfBorderTiles(characterCoordinate);
 	}
 
 	Dictionary<TileManager.TileDirection, Tile> SearchMovableTiles(Dictionary<TileManager.TileDirection, Tile> borderTileDictionary)
@@ -92,10 +90,10 @@ public class UnitManager
 		{
 			TileManager.TileDirection direction = pair.Key;
 
-			Vector3 unitPosition = unitInstance.transform.position;
-			Vector2 arrowCoordinate = FieldTileUtility.GetCoordOfDirectionByPosition(direction, unitPosition);
+			Vector3 characterPosition = characterInstance.transform.position;
+			Vector2 arrowCoordinate = FieldTileUtility.GetCoordOfDirectionByPosition(direction, characterPosition);
 			Vector2 arrowPosition = FieldTileUtility.GetPositionFromCoordinate(arrowCoordinate.x, arrowCoordinate.y);
-			Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, unitPosition.z);
+			Vector3 arrowPositionWithZ = new Vector3 (arrowPosition.x, arrowPosition.y, characterPosition.z);
 
 			DirectionArrow directionArrow = null;
 			directionArrow = GameObject.Instantiate(arrowPrefeb, arrowPositionWithZ, Quaternion.identity) as DirectionArrow;
@@ -159,31 +157,30 @@ public class UnitManager
 		toMoveTile = movableDictionary[direction];
 	}
 
-	void InstantiateUnit()
+	void InstantiateCharacter()
 	{
-		unitInstance = GameObject.Instantiate(unitPrefab) as Unit;
+		characterInstance = GameObject.Instantiate(characterPrefab) as Character;
 	}
 
-	public void InitializeUnit()
+	public void InitializeCharacter()
 	{
-        Vector3 spawnTilePosition = spawnTile.gameObject.transform.position;
-            //characterInstance.GetSpawnTile().gameObject.transform.position; 
-		Vector3 spawnPositionOfUnit = new Vector3(spawnTilePosition.x, spawnTilePosition.y, Unit.Depth);
+        Vector3 spawnTilePosition = characterInstance.GetSpawnTile().gameObject.transform.position; 
+		Vector3 spawnPositionOfCharacter = new Vector3(spawnTilePosition.x, spawnTilePosition.y, Unit.Depth);
 
-		unitInstance.transform.position = spawnPositionOfUnit;
-		Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(spawnPositionOfUnit.x, spawnPositionOfUnit.y);
+		characterInstance.transform.position = spawnPositionOfCharacter;
+		Vector2 characterCoordinate = FieldTileUtility.GetCoordFromPosition(spawnPositionOfCharacter.x, spawnPositionOfCharacter.y);
 
-		CharacterMover mover = unitInstance.GetComponent<CharacterMover>();
-		mover.InitializeTileKey((int)(unitCoordinate.x * 100 + unitCoordinate.y));
+		CharacterMover mover = characterInstance.GetComponent<CharacterMover>();
+		mover.InitializeTileKey((int)(characterCoordinate.x * 100 + characterCoordinate.y));
 
-		Camera.main.transform.position = new Vector3(spawnPositionOfUnit.x, spawnPositionOfUnit.y, Camera.main.transform.position.z);
+		Camera.main.transform.position = new Vector3(spawnPositionOfCharacter.x, spawnPositionOfCharacter.y, Camera.main.transform.position.z);
 	}
 
 	// Use this for initialization
 	void Start () {
-		InstantiateUnit();
-		InitializeUnit();
-		characterMover = unitInstance.GetComponent<CharacterMover>();
+		InstantiateCharacter();
+		InitializeCharacter();
+		characterMover = characterInstance.GetComponent<CharacterMover>();
 
 		if (Network.isClient == false)
 		{
@@ -204,7 +201,18 @@ public class UnitManager
         Tile tile = TileManager.GetExistTile(tileKey);
         Tile.TileType tileType = tile.tileType;
 
-        Debug.Log("tilekey : " + tileKey + ", tileType : " + tileType);
+        if (tileType == Tile.TileType.Buff)
+            characterInstance.SetBuffOrDeBuff();
+        else if (tileType == Tile.TileType.Item)
+            Debug.Log("Get Item!");
+        else if (tileType == Tile.TileType.Jail)
+            characterInstance.InJail();
+        else if (tileType == Tile.TileType.Save)
+            characterInstance.CheckSaveTile(characterMover.GetCurrentTileKey());
+        else if (tileType == Tile.TileType.Warp)
+            Debug.Log("This Tile is Portal!");
+        else
+            Debug.Log("Default Tile.");
     }
 
 	Tile toMoveTile = null;
@@ -213,7 +221,7 @@ public class UnitManager
 	{
 		if (moveState != MoveState.Inactive)
 		{
-			unitInstance.SendMessage("OnCmaeraFollow", unitInstance, SendMessageOptions.DontRequireReceiver);
+			characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
 		if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter(GetCurrentTileKey()))
@@ -290,8 +298,8 @@ public class UnitManager
 	// Called from all users.
 	public void BattleLose()
 	{
-		unitInstance.currentHp = unitInstance.maxHp;
-		Move(spawnTile);
+		characterInstance.currentHp = characterInstance.maxHp;
+		Move(characterInstance.GetSpawnTile());
 		if (moveState == MoveState.Battle && GameManager.gameManagerInstance.isMyCharacterManager(this))
 		{
 			NetworkManager.SendTurnEndMessage();

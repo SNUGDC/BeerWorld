@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BattleManager : MonoBehaviour
@@ -51,13 +51,13 @@ public class BattleManager : MonoBehaviour
 		private set;
 	}
 
-	private UnitManager playerManager;
+	private CharacterManager playerManager;
 	private EnemyManager enemyManager;
-	public void ShowBattle(UnitManager playerManager, EnemyManager enemyManager, bool isMine, AttackOrDefense attackOrDefense)
+	public void ShowBattle(CharacterManager playerManager, EnemyManager enemyManager, bool isMine, AttackOrDefense attackOrDefense)
 	{
 		battleCamera.enabled = true;
 		state = State.Start;
-		player = BattleUtil.GetPlayer(playerManager.GetUnitInstance());
+		player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance());
 		enemy = BattleUtil.GetDummyEnemy();
 
 		this.playerManager = playerManager;

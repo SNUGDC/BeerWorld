@@ -10,7 +10,7 @@ public class Dice {
         }
         else if (diceSpecies == BDice.Species.Six)
         {
-        	return Random.Range(1, 6);
+            return Random.Range(1, 6);
         }
         else 
         {
@@ -22,6 +22,7 @@ public class Dice {
 	public static int Roll()
 	{		        
         int diceResult = Random.Range(1, 6);
-        return diceResult;
+        return 1;
+        //return diceResult;
 	}
 }
