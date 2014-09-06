@@ -44,6 +44,22 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	public static NetworkViewID GetNetworkViewID(CharacterManager player)
+	{
+		if (gameManagerInstance.isMyCharacterManager(player))
+		{
+			return NetworkManager.networkInstance.Id;
+		}
+		else
+		{
+			return Slinqable.Slinq(gameManagerInstance.otherPlayers).Where(
+				(playerId) => {
+					var otherPlayer = gameManagerInstance.otherCharacterManagers[playerId];
+					return otherPlayer == player;
+				}).First();
+		}
+	}
+
 	public static CharacterManager GetCharacterManager(NetworkViewID id)
 	{
 		if (null == gameManagerInstance.otherCharacterManagers[id])

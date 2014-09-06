@@ -11,6 +11,12 @@ public partial class NetworkManager : MonoBehaviour
 		networkInstance.networkView.RPC("ReceiveStartBattle", RPCMode.All, userId, enemy, seed, (int)BattleManager.AttackOrDefense.Attack);
 	}
 
+	public static void StartBattleFromEnemy(string enemy, NetworkViewID player)
+	{
+		int seed = UnityEngine.Random.Range(Int32.MinValue, Int32.MaxValue);
+		networkInstance.networkView.RPC("ReceiveStartBattle", RPCMode.All, player, enemy, seed, (int)BattleManager.AttackOrDefense.Defense);
+	}
+
 	[RPC]
 	private void ReceiveStartBattle(NetworkViewID user, string enemyId, int seed, int attackOrDefense)
 	{

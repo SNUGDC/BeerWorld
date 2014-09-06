@@ -48,4 +48,15 @@ public static class UnitUtil
 				(enemyManager) => enemyManager.GetCurrentTileKey() == tileKey
 			).First().enemyId;
 	}
+
+	public static NetworkViewID GetPlayerIdOnTile(int tileKey)
+	{
+		var players = GameManager.GetAllPlayersEnumerator();
+
+		var player = Slinqable.Slinq (players).Where(
+			(characterManager) => characterManager.GetCurrentTileKey () == tileKey
+		).First();
+
+		return GameManager.GetNetworkViewID(player);
+	}
 }

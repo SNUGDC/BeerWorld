@@ -163,7 +163,8 @@ public class EnemyManager
 		if (moveState == MoveState.Moving && UnitUtil.IsPlayerEncounter(GetCurrentTileKey()))
 		{
 			// FIXME: Battle with only room owner.
-			NetworkManager.StartBattle(enemyId);
+			var playerId = UnitUtil.GetPlayerIdOnTile(GetCurrentTileKey());
+			NetworkManager.StartBattleFromEnemy(enemyId, playerId);
 			moveState = MoveState.Battle;
 		}
 
