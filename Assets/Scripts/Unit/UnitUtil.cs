@@ -31,6 +31,15 @@ public static class UnitUtil
 			).FirstOrNone().isSome;
 	}
 
+	public static bool IsPlayerEncounter(int tileKey)
+	{
+		var players = GameManager.GetAllPlayersEnumerator();
+
+		return Slinqable.Slinq(players).Where(
+				(characterManager) => characterManager.GetCurrentTileKey() == tileKey
+			).FirstOrNone().isSome;
+	}
+
 	public static string GetEnemyIdOnTile(int tileKey)
 	{
 		var enemies = GameManager.gameManagerInstance.GetEnemiesList();

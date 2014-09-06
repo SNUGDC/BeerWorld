@@ -8,11 +8,11 @@ public partial class NetworkManager : MonoBehaviour
 	{
 		int seed = UnityEngine.Random.Range(Int32.MinValue, Int32.MaxValue);
 		var userId = NetworkManager.networkInstance.Id;
-		networkInstance.networkView.RPC("ReceiveStartBattle", RPCMode.All, userId, enemy, seed);
+		networkInstance.networkView.RPC("ReceiveStartBattle", RPCMode.All, userId, enemy, seed, (int)BattleManager.AttackOrDefense.Attack);
 	}
 
 	[RPC]
-	private void ReceiveStartBattle(NetworkViewID user, string enemyId, int seed)
+	private void ReceiveStartBattle(NetworkViewID user, string enemyId, int seed, int attackOrDefense)
 	{
 		UnityEngine.Random.seed = seed;
 
@@ -28,7 +28,7 @@ public partial class NetworkManager : MonoBehaviour
 
 		EnemyManager enemy = GameManager.gameManagerInstance.GetEnemy(enemyId).ValueOr((EnemyManager)null);
 
-		BattleManager.battleManagerInstance.ShowBattle(player, enemy, user.isMine);
+		BattleManager.battleManagerInstance.ShowBattle(player, enemy, user.isMine, (BattleManager.AttackOrDefense)attackOrDefense);
 	}
 
 	public static void BattleRoleDice()

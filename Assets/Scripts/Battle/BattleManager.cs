@@ -13,7 +13,7 @@ public class BattleManager : MonoBehaviour
 		BattleEnd
 	}
 
-	enum AttackOrDefense
+	public enum AttackOrDefense
 	{
 		Attack,
 		Defense
@@ -53,7 +53,7 @@ public class BattleManager : MonoBehaviour
 
 	private UnitManager playerManager;
 	private EnemyManager enemyManager;
-	public void ShowBattle(UnitManager playerManager, EnemyManager enemyManager, bool isMine)
+	public void ShowBattle(UnitManager playerManager, EnemyManager enemyManager, bool isMine, AttackOrDefense attackOrDefense)
 	{
 		battleCamera.enabled = true;
 		state = State.Start;

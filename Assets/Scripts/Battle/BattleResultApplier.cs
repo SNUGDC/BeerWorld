@@ -13,16 +13,6 @@ public class BattleResultApplier
 
 	public static BattleResultState state = BattleResultState.None;
 
-	public static void EnemyDelete(EnemyManager enemy)
-	{
-		GameManager.gameManagerInstance.KillEnemy(enemy.enemyId);
-	}
-
-	public static void PlayerRespawn(UnitManager playerManager)
-	{
-		playerManager.Die();
-	}
-
 	public static void ApplyBattleResult(BattlePlayer player, BattlePlayer enemy, UnitManager playerManager, EnemyManager enemyManager)
 	{
 		playerManager.GetUnitInstance().currentHp = player.GetHp();
@@ -30,17 +20,18 @@ public class BattleResultApplier
 
 		if(state == BattleResultState.PlayerWin)
 		{
-			EnemyDelete(enemyManager);
+			enemyManager.BattleLose();
 			playerManager.BattleWin();
 		}
 		else if(state == BattleResultState.EnemyWin)
 		{
-			PlayerRespawn(playerManager);
+			enemyManager.BattleWin();
+			playerManager.BattleLose();
 		}
 		else if (state == BattleResultState.Draw)
 		{
-			EnemyDelete(enemyManager);
-			PlayerRespawn(playerManager);
+			enemyManager.BattleLose();
+			playerManager.BattleLose();
 		}
 
 		state = BattleResultState.None;

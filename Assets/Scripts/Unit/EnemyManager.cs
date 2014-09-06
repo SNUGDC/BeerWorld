@@ -54,7 +54,8 @@ public class EnemyManager
 	{
 		Inactive, // other user's turn.
 		Idle,  // diceRoller btn visible.
-		Moving
+		Moving,
+		Battle
 	}
 
 	[SerializeField]
@@ -159,6 +160,13 @@ public class EnemyManager
 			unitInstance.SendMessage("OnCmaeraFollow", unitInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
+		if (moveState == MoveState.Moving && UnitUtil.IsPlayerEncounter(GetCurrentTileKey()))
+		{
+			// FIXME: Battle with only room owner.
+			NetworkManager.StartBattle(enemyId);
+			moveState = MoveState.Battle;
+		}
+
 		if (howManyMove <= 0 && moveState == MoveState.Moving)
 		{
 			moveState = MoveState.Inactive;
@@ -180,5 +188,21 @@ public class EnemyManager
 	public void Kill()
 	{
 		GameObject.Destroy(unitInstance.gameObject);
+	}
+
+	// Called from all users.
+	public void BattleWin()
+	{
+		moveState = MoveState.Moving;
+	}
+
+	// Called from all users.
+	public void BattleLose()
+	{
+		if (moveState == MoveState.Battle)
+		{
+			GameManager.gameManagerInstance.PassTurnToNextPlayer();
+		}
+		GameManager.gameManagerInstance.KillEnemy(enemyId);
 	}
 }

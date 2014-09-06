@@ -276,20 +276,23 @@ public class UnitManager
 	}
 
 	// Called from all users.
-	public void Die()
+	public void BattleLose()
 	{
 		unitInstance.currentHp = unitInstance.maxHp;
 		Move(spawnTile);
-		moveState = MoveState.Inactive;
-		if (GameManager.gameManagerInstance.isMyCharacterManager(this))
+		if (moveState == MoveState.Battle && GameManager.gameManagerInstance.isMyCharacterManager(this))
 		{
 			NetworkManager.SendTurnEndMessage();
 		}
+		moveState = MoveState.Inactive;
 	}
 
 	// Called from all users.
 	public void BattleWin()
 	{
-		moveState = MoveState.Moving;
+		if (moveState == MoveState.Battle)
+		{
+			moveState = MoveState.Moving;
+		}
 	}
 }

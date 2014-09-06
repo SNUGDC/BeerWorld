@@ -34,6 +34,16 @@ public class GameManager : MonoBehaviour
 
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
 
+	public static IEnumerable<UnitManager> GetAllPlayersEnumerator()
+	{
+		yield return gameManagerInstance.myCharacterManager;
+
+		foreach (var player in gameManagerInstance.otherCharacterManagers.Values)
+		{
+			yield return player;
+		}
+	}
+
 	public static UnitManager GetCharacterManager(NetworkViewID id)
 	{
 		if (null == gameManagerInstance.otherCharacterManagers[id])
