@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DevTestStart : MonoBehaviour
 {
+	public string sceneName = "Battle";
+
 	void Start()
 	{
 		Network.InitializeServer(3, 25008, false);
@@ -10,6 +12,6 @@ public class DevTestStart : MonoBehaviour
 
 	void OnServerInitialized()
 	{
-		Application.LoadLevel("Battle");
+		Application.LoadLevel(sceneName);
 	}
 }
