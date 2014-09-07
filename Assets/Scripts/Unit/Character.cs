@@ -7,7 +7,7 @@ public class Character : Unit {
     int remainBuffOrDebuffTurn = 0;
     int bonusStat = 0;
     int remainJailTurn = 0;
-    Tile spawnTile = TileManager.GetStartTile();
+    Tile spawnTile  = null;
 
     public void InJail()
     {
@@ -42,10 +42,15 @@ public class Character : Unit {
         }
     }
 
-    public Tile GetSpawnTile()
-    {
-        return spawnTile;
-    }
+	public Tile GetSpawnTile()
+	{
+		return spawnTile;
+	}
+
+	public void SetStartTile(Tile startTile)
+	{
+		this.spawnTile = startTile;
+	}
 
     public void CheckSaveTile(int tileKeyOfSaveTile)
     {
