@@ -31,13 +31,16 @@ public class BattleManager : MonoBehaviour
 		return state;
 	}
 
-	public GameObject[] playerAttackDices = new GameObject[3];
-	public GameObject[] playerDefenseDices = new GameObject[3];
-	public GameObject[] enemyAttackDices = new GameObject[3];
-	public GameObject[] enemyDefenseDices = new GameObject[3];
+	[System.Serializable]
+	public class BattlePlayerUI
+	{
+		public GameObject[] attackDices = new GameObject[3];
+		public GameObject[] defenseDices = new GameObject[3];
+		public GameObject[] hearts = new GameObject[4];
+	}
 
-	public GameObject[] playerHearts = new GameObject[4];
-	public GameObject[] enemyHearts = new GameObject[4];
+	public BattlePlayerUI leftPlayerUI;
+	public BattlePlayerUI rightPlayerUI;
 
 	State state = State.Inactive;
 	AttackOrDefense attackOrDefense = AttackOrDefense.Attack;
@@ -139,13 +142,13 @@ public class BattleManager : MonoBehaviour
 			for (int i = 0; i < playerDiceNum; i++)
 			{
 				int diceResult = playerCalcResult.diceResults[i];
-				playerAttackDices[i].SendMessage("rollByNumber", diceResult);
+				leftPlayerUI.attackDices[i].SendMessage("rollByNumber", diceResult);
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
-				enemyDefenseDices[i].SendMessage("rollByNumber", diceResult);
+				rightPlayerUI.defenseDices[i].SendMessage("rollByNumber", diceResult);
 			}
 		}
 		else
@@ -153,13 +156,13 @@ public class BattleManager : MonoBehaviour
 			for (int i = 0; i < playerDiceNum; i++)
 			{
 				int diceResult = playerCalcResult.diceResults[i];
-				playerDefenseDices[i].SendMessage("rollByNumber", diceResult);
+				leftPlayerUI.defenseDices[i].SendMessage("rollByNumber", diceResult);
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
-				enemyAttackDices[i].SendMessage("rollByNumber", diceResult);
+				rightPlayerUI.attackDices[i].SendMessage("rollByNumber", diceResult);
 			}
 
 		}
@@ -257,27 +260,27 @@ public class BattleManager : MonoBehaviour
 				" EnemyHP ratio : " + remainEnemyHPRatio
 				);
 
-		for (int i = 0; i < playerHearts.Length; i++)
+		for (int i = 0; i < leftPlayerUI.hearts.Length; i++)
 		{
-			if (remainPlayerHPRatio <= ((float)i / (float)playerHearts.Length))
+			if (remainPlayerHPRatio <= ((float)i / (float)leftPlayerUI.hearts.Length))
 			{
-				playerHearts[i].SetActive(false);
+				leftPlayerUI.hearts[i].SetActive(false);
 			}
 			else
 			{
-				playerHearts[i].SetActive(true);
+				leftPlayerUI.hearts[i].SetActive(true);
 			}
 		}
 
-		for (int i = 0; i < enemyHearts.Length; i++)
+		for (int i = 0; i < rightPlayerUI.hearts.Length; i++)
 		{
-			if (remainEnemyHPRatio <= ((float)i / (float)enemyHearts.Length))
+			if (remainEnemyHPRatio <= ((float)i / (float)rightPlayerUI.hearts.Length))
 			{
-				enemyHearts[i].SetActive(false);
+				rightPlayerUI.hearts[i].SetActive(false);
 			}
 			else
 			{
-				enemyHearts[i].SetActive(true);
+				rightPlayerUI.hearts[i].SetActive(true);
 			}
 		}
 	}
