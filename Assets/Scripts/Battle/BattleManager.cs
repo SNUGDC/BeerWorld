@@ -31,14 +31,6 @@ public class BattleManager : MonoBehaviour
 		return state;
 	}
 
-	[System.Serializable]
-	public class BattlePlayerUI
-	{
-		public GameObject[] attackDices = new GameObject[3];
-		public GameObject[] defenseDices = new GameObject[3];
-		public GameObject[] hearts = new GameObject[4];
-	}
-
 	public BattlePlayerUI leftPlayerUI;
 	public BattlePlayerUI rightPlayerUI;
 
@@ -60,8 +52,18 @@ public class BattleManager : MonoBehaviour
 	{
 		battleCamera.enabled = true;
 		state = State.Start;
-		player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance());
-		enemy = BattleUtil.GetDummyEnemy();
+		this.attackOrDefense = attackOrDefense;
+
+		if (attackOrDefense == AttackOrDefense.Attack)
+		{
+			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), leftPlayerUI);
+			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), rightPlayerUI);
+		}
+		else
+		{
+			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), rightPlayerUI);
+			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), leftPlayerUI);
+		}
 
 		this.playerManager = playerManager;
 		this.enemyManager = enemyManager;
@@ -142,13 +144,13 @@ public class BattleManager : MonoBehaviour
 			for (int i = 0; i < playerDiceNum; i++)
 			{
 				int diceResult = playerCalcResult.diceResults[i];
-				leftPlayerUI.attackDices[i].SendMessage("rollByNumber", diceResult);
+				player.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
-				rightPlayerUI.defenseDices[i].SendMessage("rollByNumber", diceResult);
+				enemy.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
 			}
 		}
 		else
@@ -156,13 +158,13 @@ public class BattleManager : MonoBehaviour
 			for (int i = 0; i < playerDiceNum; i++)
 			{
 				int diceResult = playerCalcResult.diceResults[i];
-				leftPlayerUI.defenseDices[i].SendMessage("rollByNumber", diceResult);
+				player.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
-				rightPlayerUI.attackDices[i].SendMessage("rollByNumber", diceResult);
+				enemy.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
 			}
 
 		}
@@ -260,27 +262,27 @@ public class BattleManager : MonoBehaviour
 				" EnemyHP ratio : " + remainEnemyHPRatio
 				);
 
-		for (int i = 0; i < leftPlayerUI.hearts.Length; i++)
+		for (int i = 0; i < player.ui.hearts.Length; i++)
 		{
-			if (remainPlayerHPRatio <= ((float)i / (float)leftPlayerUI.hearts.Length))
+			if (remainPlayerHPRatio <= ((float)i / (float)player.ui.hearts.Length))
 			{
-				leftPlayerUI.hearts[i].SetActive(false);
+				player.ui.hearts[i].SetActive(false);
 			}
 			else
 			{
-				leftPlayerUI.hearts[i].SetActive(true);
+				player.ui.hearts[i].SetActive(true);
 			}
 		}
 
-		for (int i = 0; i < rightPlayerUI.hearts.Length; i++)
+		for (int i = 0; i < enemy.ui.hearts.Length; i++)
 		{
-			if (remainEnemyHPRatio <= ((float)i / (float)rightPlayerUI.hearts.Length))
+			if (remainEnemyHPRatio <= ((float)i / (float)enemy.ui.hearts.Length))
 			{
-				rightPlayerUI.hearts[i].SetActive(false);
+				enemy.ui.hearts[i].SetActive(false);
 			}
 			else
 			{
-				rightPlayerUI.hearts[i].SetActive(true);
+				enemy.ui.hearts[i].SetActive(true);
 			}
 		}
 	}
