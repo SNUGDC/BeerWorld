@@ -146,4 +146,15 @@ public partial class NetworkManager : MonoBehaviour {
 			Debug.Log("Not My turn");
 		}
 	}
+
+	public static void MoveToBossBatte()
+	{
+		networkInstance.networkView.RPC("ReceiveMoveToBossBattle", RPCMode.All);
+	}
+
+	[RPC]
+	private void ReceiveMoveToBossBattle()
+	{
+		Application.LoadLevel("BossBattle");
+	}
 }
