@@ -11,7 +11,6 @@ public class CharacterManager
 
 	public static CharacterManager CreateInStart(Character characterPrefab, DirectionArrow arrowPrefab)
 	{
-		Tile startTile = TileManager.GetStartTile ();
 		return new CharacterManager(characterPrefab, arrowPrefab);
 	}
 
