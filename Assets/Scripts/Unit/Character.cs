@@ -9,6 +9,11 @@ public class Character : Unit {
     int remainJailTurn = 0;
     Tile spawnTile  = null;
 
+    public int GetBonusStat()
+    {
+        return bonusStat;
+    }
+
     public void UpdateRemainBuffTime()
     {
         if (remainBuffOrDebuffTurn != 0)
