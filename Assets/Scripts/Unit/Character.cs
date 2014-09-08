@@ -9,9 +9,28 @@ public class Character : Unit {
     int remainJailTurn = 0;
     Tile spawnTile  = null;
 
+    public void UpdateRemainBuffTime()
+    {
+        if (remainBuffOrDebuffTurn != 0)
+        {
+            remainBuffOrDebuffTurn--;
+            Debug.Log("Remain (de)buff turn : " + remainBuffOrDebuffTurn);
+        } else
+        {
+            bonusStat = 0;
+        }
+
+        if (remainJailTurn != 0)
+        {
+            remainJailTurn--;
+            Debug.Log("Remain jail turn : " + remainJailTurn);
+        }
+    }
+
     public void InJail()
     {
-        remainJailTurn = 3;
+        //FIXME : After implement turn counting system. 
+        remainJailTurn = 3+1;
         Debug.Log("In Jail during 3 turn...");
     }
 
@@ -28,7 +47,8 @@ public class Character : Unit {
 
     public void SetBuffOrDeBuff()
     {
-        remainBuffOrDebuffTurn = 3;
+        //FIXME : After implement turn counting system.
+        remainBuffOrDebuffTurn = 3+1;
         int rollResult = Dice.Roll();
         if (rollResult <= 3)
         {
