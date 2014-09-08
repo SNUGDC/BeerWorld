@@ -5,6 +5,7 @@ public class BDice
 {
   public enum Species
   {
+    One,
     Four,
     Six
   }
