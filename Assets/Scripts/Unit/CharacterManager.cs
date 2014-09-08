@@ -206,15 +206,22 @@ public class CharacterManager
         if (tileType == Tile.TileType.Buff)
             characterInstance.SetBuffOrDeBuff();
         else if (tileType == Tile.TileType.Item)
+            //FIXME : Add get item code!
             Debug.Log("Get Item!");
         else if (tileType == Tile.TileType.Jail)
             characterInstance.InJail();
         else if (tileType == Tile.TileType.Save)
             characterInstance.CheckSaveTile(characterMover.GetCurrentTileKey());
         else if (tileType == Tile.TileType.Warp)
+            //FIXME : Add warp code!
             Debug.Log("This Tile is Portal!");
         else
             Debug.Log("Default Tile.");
+    }
+
+    void UpdateRemainBuffTime()
+    {
+        characterInstance.UpdateRemainBuffTime();
     }
 
 	Tile toMoveTile = null;
@@ -241,6 +248,8 @@ public class CharacterManager
             moveState = MoveState.Inactive;
 
             InterectionWithTile();
+
+            UpdateRemainBuffTime();
             
             //FIXME we now always need network.
             if (NetworkManager.isConnected())
