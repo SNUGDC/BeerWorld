@@ -6,6 +6,7 @@ public class Enemy : Unit
 	public enum EnemyType
     {
         Smallest,
+        Middle,
         None
     }
 
@@ -20,18 +21,35 @@ public class Enemy : Unit
 	{
 		Debug.Log("Set Values : Smallest");
 		//temporary values.
-		maxHp = 5;
+		maxHp = 2;
 		currentHp = maxHp;
 
 		numberOfAttackDice = 2;
 		speciesOfAttackDice = BDice.Species.Four;
 
-		numberOfDefenseDice = 1;
+		numberOfDefenseDice = 2;
 		speciesOfDefenseDice = BDice.Species.Four;
 
 		numberOfMoveDice = 1;
-		speciesOfMoveDice = BDice.Species.Six;
+		speciesOfMoveDice = BDice.Species.One;
 	}
+
+    void SetMiddleEnemyStats()
+    {
+        Debug.Log("Set Values : Middle");
+        //temporary values.
+        maxHp = 3;
+        currentHp = maxHp;
+        
+        numberOfAttackDice = 3;
+        speciesOfAttackDice = BDice.Species.Four;
+        
+        numberOfDefenseDice = 3;
+        speciesOfDefenseDice = BDice.Species.Four;
+        
+        numberOfMoveDice = 0;
+        speciesOfMoveDice = BDice.Species.Six;
+    }
 
 	void Start ()
 	{
