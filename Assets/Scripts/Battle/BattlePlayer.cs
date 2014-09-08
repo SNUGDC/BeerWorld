@@ -25,6 +25,7 @@ public class BattlePlayer
   public readonly List<BDice.Species> defenseDices;
   public readonly int maxHp;
   public readonly BattlePlayerUI ui;
+  public readonly int bonusStat;
   private int currentHp;
 
   //using Test.
@@ -35,13 +36,14 @@ public class BattlePlayer
 
   public BattlePlayer(List<BDice.Species> attackDices,
       List<BDice.Species> defenseDices,
-      int maxHp, int currentHp,
+      int maxHp, int currentHp, int bonusStat,
       BattlePlayerUI ui)
   {
     this.attackDices = attackDices;
     this.defenseDices = defenseDices;
     this.maxHp = maxHp;
     this.ui = ui;
+    this.bonusStat = bonusStat;
     this.currentHp = currentHp;
   }
 

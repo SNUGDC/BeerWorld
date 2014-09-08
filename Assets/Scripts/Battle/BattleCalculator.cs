@@ -43,6 +43,12 @@ public class BattleCalculator
             totalDiceResult += diceResult;
         }
 
+        totalDiceResult += player.bonusStat;
+        if (player.bonusStat != 0)
+        {
+            Debug.Log("bonus stat " + player.bonusStat + " added");
+        }
+
         return new CalculationResult(diceResults, totalDiceResult);
     }
 
@@ -59,6 +65,12 @@ public class BattleCalculator
 
             diceResults.Add(diceResult);
             totalDiceResult += diceResult;
+        }
+
+        totalDiceResult += player.bonusStat;
+        if (player.bonusStat != 0)
+        {
+            Debug.Log("bonus stat " + player.bonusStat + " added");
         }
 
         return new CalculationResult(diceResults, totalDiceResult);
