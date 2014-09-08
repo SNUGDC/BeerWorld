@@ -54,8 +54,12 @@ public class Enemy : Unit
 	void Start ()
 	{
 		if (enemyType == EnemyType.Smallest)
-		{
-			SetSmallestEnemyStats();
-		}
+        {
+            SetSmallestEnemyStats();
+        } 
+        else if (enemyType == EnemyType.Middle)
+        {
+            SetMiddleEnemyStats();
+        }
 	}
 }
