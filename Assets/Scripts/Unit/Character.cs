@@ -54,7 +54,7 @@ public class Character : Unit {
     {
         //FIXME : After implement turn counting system.
         remainBuffOrDebuffTurn = 3+1;
-        int rollResult = Dice.Roll();
+        int rollResult = Dice.Roll(BDice.Species.Six);
         if (rollResult <= 3)
         {
             bonusStat = rollResult;
