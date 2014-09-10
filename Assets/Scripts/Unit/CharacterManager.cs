@@ -274,7 +274,8 @@ public class CharacterManager
             if (NetworkManager.isConnected())
             {
                 NetworkManager.SendTurnEndMessage();
-            } else
+            } 
+            else
             {
                 GameManager.gameManagerInstance.PassTurnToNextPlayer();
             }
@@ -306,12 +307,6 @@ public class CharacterManager
 				remainMoveCount--;
 
 				var currentTileKeyOfNext = GetCurrentTileKey();
-
-				Debug.LogWarning("TileKeys : " + currentTileKey + ", " + toMoveTileKey + ", " + currentTileKeyOfNext);
-				Debug.LogWarning("TileKey enemy? : " +
-						UnitUtil.IsEnemyEncounter(currentTileKey) + ", " +
-						UnitUtil.IsEnemyEncounter(toMoveTileKey) + ", " +
-						UnitUtil.IsEnemyEncounter(currentTileKeyOfNext));
 
                 moveState = MoveState.CheckingSaveTile;
 			}
