@@ -10,7 +10,14 @@ public class Enemy : Unit
         None
     }
 
-   	EnemyType enemyType;
+    public Sprite redMiddle;
+    public Sprite whiteMiddle;
+    public Sprite redSmallest;
+    public Sprite whiteSmallest;
+
+    public Sprite EnemySprite;
+
+    EnemyType enemyType;
 
     public void SetEnemyType(EnemyType enemyType)
 	{
