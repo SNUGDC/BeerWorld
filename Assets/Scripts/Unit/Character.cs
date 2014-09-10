@@ -35,8 +35,8 @@ public class Character : Unit {
     public void InJail()
     {
         //FIXME : After implement turn counting system. 
-        remainJailTurn = 3+1;
-        Debug.Log("In Jail during 3 turn...");
+        remainJailTurn = 1+1;
+        Debug.Log("In Jail during 1 turn...");
     }
 
     public bool IsUnitInJail()
