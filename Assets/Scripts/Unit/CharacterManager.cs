@@ -35,7 +35,7 @@ public class CharacterManager
 	private Character characterInstance;
 	private CharacterMover characterMover;
 
-	private int howManyMove = 0;
+	private int remainMoveCount = 0;
 
 	public Character GetCharacterInstance()
 	{
@@ -50,7 +50,8 @@ public class CharacterManager
 		Battle,
 		Waiting,
 		DirectionSelected,
-        CheckingTileOption
+        CheckingTileOption,
+        CheckingSaveTile //checking @each frame.
 	}
 
 	[SerializeField]
@@ -194,7 +195,7 @@ public class CharacterManager
 	public void SetMovement(int toMove)
 	{
 		moveState = MoveState.Moving;
-		howManyMove = toMove;
+		remainMoveCount = toMove;
 	}
 
     void InterectionWithTile()
@@ -203,20 +204,38 @@ public class CharacterManager
         Tile tile = TileManager.GetExistTile(tileKey);
         Tile.TileType tileType = tile.tileType;
 
-        if (tileType == Tile.TileType.Buff)
-            characterInstance.SetBuffOrDeBuff();
-        else if (tileType == Tile.TileType.Item)
-            //FIXME : Add get item code!
-            Debug.Log("Get Item!");
-        else if (tileType == Tile.TileType.Jail)
-            characterInstance.InJail();
-        else if (tileType == Tile.TileType.Save)
-            characterInstance.CheckSaveTile(characterMover.GetCurrentTileKey());
-        else if (tileType == Tile.TileType.Warp)
-            //FIXME : Add warp code!
-            Debug.Log("This Tile is Portal!");
+        if (moveState == MoveState.CheckingSaveTile)
+        {
+            if (tileType == Tile.TileType.Save)
+            {
+                characterInstance.CheckSaveTile(characterMover.GetCurrentTileKey());
+            }
+        } 
         else
-            Debug.Log("Default Tile.");
+        {
+            if (tileType == Tile.TileType.Buff)
+            {
+                characterInstance.SetBuffOrDeBuff();
+            }
+            else if (tileType == Tile.TileType.Item)
+            {   
+                //FIXME : Add get item code!
+                Debug.Log("Get Item!");
+            }
+            else if (tileType == Tile.TileType.Jail)
+            {   
+                characterInstance.InJail();
+            }
+            else if (tileType == Tile.TileType.Warp)
+            {
+                //FIXME : Add warp code!
+                Debug.Log("This Tile is Portal!");
+            }
+            else
+            {
+                Debug.Log("Default Tile.");
+            }
+        }
     }
 
     void UpdateRemainBuffTime()
@@ -239,7 +258,7 @@ public class CharacterManager
             NetworkManager.StartBattle(UnitUtil.GetEnemyIdOnTile(GetCurrentTileKey()));
             moveState = MoveState.Battle;
         } 
-        else if (howManyMove <= 0 && moveState == MoveState.Moving)
+        else if (remainMoveCount <= 0 && moveState == MoveState.Moving)
         {
             moveState = MoveState.CheckingTileOption;
         } 
@@ -250,7 +269,7 @@ public class CharacterManager
             InterectionWithTile();
 
             UpdateRemainBuffTime();
-            
+
             //FIXME we now always need network.
             if (NetworkManager.isConnected())
             {
@@ -259,7 +278,15 @@ public class CharacterManager
             {
                 GameManager.gameManagerInstance.PassTurnToNextPlayer();
             }
+        } 
+
+        else if (moveState == MoveState.CheckingSaveTile)
+        {
+            InterectionWithTile();
+
+            moveState = MoveState.Moving;
         }
+
 		else if (moveState == MoveState.Moving)
 		{
 			var borderDictionary = SearchBorderTiles();
@@ -276,7 +303,7 @@ public class CharacterManager
 				SetDestination(movableDictionary);
 				var toMoveTileKey = toMoveTile.GetTileKey();
 				MoveAndNotify(toMoveTile);
-				howManyMove--;
+				remainMoveCount--;
 
 				var currentTileKeyOfNext = GetCurrentTileKey();
 
@@ -285,6 +312,8 @@ public class CharacterManager
 						UnitUtil.IsEnemyEncounter(currentTileKey) + ", " +
 						UnitUtil.IsEnemyEncounter(toMoveTileKey) + ", " +
 						UnitUtil.IsEnemyEncounter(currentTileKeyOfNext));
+
+                moveState = MoveState.CheckingSaveTile;
 			}
 		}
 		else if (moveState == MoveState.Battle)
@@ -300,7 +329,7 @@ public class CharacterManager
 			Debug.Log("toMoveTile in Update : " + toMoveTile);
 
 			MoveAndNotify(toMoveTile);
-			howManyMove--;
+			remainMoveCount--;
 
 			moveState = MoveState.Moving;
 		}
