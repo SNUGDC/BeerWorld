@@ -15,10 +15,10 @@ public class GameManager : MonoBehaviour
 	public Enemy enemyPrefab;
 	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
-    public Dictionary<string, EnemyManager> GetEnemies()
-    {
-        return enemies;
-    }
+	public Dictionary<string, EnemyManager> GetEnemies()
+	{
+		return enemies;
+	}
 
 	public IEnumerable<EnemyManager> GetEnemiesList()
 	{
@@ -53,10 +53,10 @@ public class GameManager : MonoBehaviour
 		else
 		{
 			return Slinqable.Slinq(gameManagerInstance.otherPlayers).Where(
-				(playerId) => {
+					(playerId) => {
 					var otherPlayer = gameManagerInstance.otherCharacterManagers[playerId];
 					return otherPlayer == player;
-				}).First();
+					}).First();
 		}
 	}
 
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 		}
 
 		otherCharacterManagers.Add(id,
-			CharacterManager.CreateInStart(characterPrefab, arrowPrefab));
+				CharacterManager.CreateInStart(characterPrefab, arrowPrefab));
 		otherCharacterManagers[id].Init();
 		otherPlayers.Add(id);
 		TurnManager.Get().AddPlayerTEMP(id);
@@ -114,9 +114,9 @@ public class GameManager : MonoBehaviour
 		var enemyPlaces = enemyHolder.GetEnemyPlaces();
 		Slinqable.Slinq(enemyPlaces).ForEach(
 				(tileKey) => {
-					NetworkManager.MakeEnemy(tileKey);
+				NetworkManager.MakeEnemy(tileKey);
 				}
-			);
+				);
 		NetworkManager.SendGameStartMessage();
 	}
 
@@ -136,8 +136,8 @@ public class GameManager : MonoBehaviour
 	void Update () {
 		myCharacterManager.Update();
 		Slinqable.Slinq(enemies.Values).ForEach(
-            enemyManager => enemyManager.Update());
-    }
+				enemyManager => enemyManager.Update());
+	}
 
 	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
 	{
