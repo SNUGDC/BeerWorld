@@ -7,6 +7,11 @@ UnityGenerated/
 Library/
 build/
 
+# ================== #
+# Sunblime generated #
+# ================== #
+*.sublime-workspace
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #

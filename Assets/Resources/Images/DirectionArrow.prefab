@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb965f75f05ee4a4f8271591714ae0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upLeftArrow: {fileID: 21300000, guid: 3785b1dbe129e49248cadd189c01c953, type: 3}
-  midLeftArrow: {fileID: 21300000, guid: 2ebc59cf22de94ec490b630501cdea4e, type: 3}
-  downLeftArrow: {fileID: 21300000, guid: e17721752e9a740a5b3d1c955df176e0, type: 3}
-  upRightArrow: {fileID: 21300000, guid: cf28b0423d3624ab98a6c0602a81a20a, type: 3}
-  midRightArrow: {fileID: 21300000, guid: 6297a10ffc33f4555a3644136a4a7ef8, type: 3}
-  downRightArrow: {fileID: 21300000, guid: ffa3b9e8a6372487c860171276387a89, type: 3}
+  upLeftArrow: {fileID: 21300000, guid: 3f5ea3c360c1f4d238a977ae7916fdd5, type: 3}
+  midLeftArrow: {fileID: 21300000, guid: 035d03fb0ea6a461dafd9e661755d299, type: 3}
+  downLeftArrow: {fileID: 21300000, guid: cf748fc2b6da84a9baefc268410f8b15, type: 3}
+  upRightArrow: {fileID: 21300000, guid: 7e3e4b5772a104b3490d5d066109d304, type: 3}
+  midRightArrow: {fileID: 21300000, guid: 27c9ed8703ffc4a0496f473719161f16, type: 3}
+  downRightArrow: {fileID: 21300000, guid: fddf9ac55c13b45fa90d18814e5410b8, type: 3}
   setDirection: 0
 --- !u!212 &21200000
 SpriteRenderer:

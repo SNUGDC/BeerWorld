@@ -99,12 +99,57 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
-  resolutionDialogBanner: {fileID: 0}
+  resolutionDialogBanner: {fileID: 2800000, guid: 700d76c8fa2fd428d9ce3351b62b3751,
+    type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 700d76c8fa2fd428d9ce3351b62b3751, type: 3}
+      m_Size: 128
+  - m_BuildTarget: Standalone
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 700d76c8fa2fd428d9ce3351b62b3751, type: 3}
+      m_Size: 1024
+    - m_Icon: {fileID: 0}
+      m_Size: 512
+    - m_Icon: {fileID: 0}
+      m_Size: 256
     - m_Icon: {fileID: 0}
       m_Size: 128
+    - m_Icon: {fileID: 0}
+      m_Size: 48
+    - m_Icon: {fileID: 0}
+      m_Size: 32
+    - m_Icon: {fileID: 0}
+      m_Size: 16
+  - m_BuildTarget: iPhone
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 1f8ead9c50e724545bf2c03840f421b3, type: 3}
+      m_Size: 152
+    - m_Icon: {fileID: 2800000, guid: b1418840d3bcf48378fdaae633c4ae14, type: 3}
+      m_Size: 144
+    - m_Icon: {fileID: 2800000, guid: c73c88fc7b88a436d9692d67c707570c, type: 3}
+      m_Size: 120
+    - m_Icon: {fileID: 2800000, guid: 8ba175e49cbbf49769f10a95c2e927e5, type: 3}
+      m_Size: 114
+    - m_Icon: {fileID: 2800000, guid: dead8ece888dd460d99c2af46a0f1311, type: 3}
+      m_Size: 76
+    - m_Icon: {fileID: 2800000, guid: eb2fedd5887f7467c8a2e7935f9a1a80, type: 3}
+      m_Size: 72
+    - m_Icon: {fileID: 2800000, guid: 7649d05930dbc4587acdabf233e18431, type: 3}
+      m_Size: 57
+  - m_BuildTarget: Android
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 700d76c8fa2fd428d9ce3351b62b3751, type: 3}
+      m_Size: 144
+    - m_Icon: {fileID: 0}
+      m_Size: 96
+    - m_Icon: {fileID: 0}
+      m_Size: 72
+    - m_Icon: {fileID: 0}
+      m_Size: 48
+    - m_Icon: {fileID: 0}
+      m_Size: 36
   m_BuildTargetBatching: []
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}

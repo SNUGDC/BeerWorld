@@ -1,277 +1,289 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BattleManager : MonoBehaviour
 {
-    public enum State
-    {
-        Inactive,
-        Start,
-        WaitingRoll,
-        ShowRoll,
-        ShowDamage,
-        BattleEnd
-    }
+	public enum State
+	{
+		Inactive,
+		Start,
+		WaitingRoll,
+		ShowRoll,
+		ShowDamage,
+		BattleEnd
+	}
 
-    enum AttackOrDefense
-    {
-        Attack,
-        Defense
-    }
+	public enum AttackOrDefense
+	{
+		Attack,
+		Defense
+	}
 
-    public static BattleManager battleManagerInstance = null;
+	public static BattleManager battleManagerInstance = null;
 
-    void Awake()
-    {
-        battleManagerInstance = this;
-    }
+	void Awake()
+	{
+		battleManagerInstance = this;
+	}
 
-    public State GetBattleState()
-    {
-        return state;
-    } 
+	public State GetBattleState()
+	{
+		return state;
+	}
 
-    public GameObject[] playerAttackDices = new GameObject[3];
-    public GameObject[] playerDefenseDices = new GameObject[3];
-    public GameObject[] enemyAttackDices = new GameObject[3];
-    public GameObject[] enemyDefenseDices = new GameObject[3]; 
+	public BattlePlayerUI leftPlayerUI;
+	public BattlePlayerUI rightPlayerUI;
 
-    public GameObject[] playerHearts = new GameObject[4];
-    public GameObject[] enemyHearts = new GameObject[4];
+	State state = State.Inactive;
+	AttackOrDefense attackOrDefense = AttackOrDefense.Attack;
+	BattlePlayer player;
+	BattlePlayer enemy;
+	CalculationResult playerCalcResult = null;
+	CalculationResult enemyCalcResult = null;
+	public Camera battleCamera;
+	public bool isMine {
+		get;
+		private set;
+	}
 
-    State state = State.Inactive;
-    AttackOrDefense attackOrDefense = AttackOrDefense.Attack;
-    BattlePlayer player;
-    BattlePlayer enemy;
-    CalculationResult playerCalcResult = null;
-    CalculationResult enemyCalcResult = null;
-    public Camera battleCamera;
+	private CharacterManager playerManager;
+	private EnemyManager enemyManager;
+	public void ShowBattle(CharacterManager playerManager, EnemyManager enemyManager, bool isMine, AttackOrDefense attackOrDefense)
+	{
+		battleCamera.enabled = true;
+		state = State.Start;
+		this.attackOrDefense = attackOrDefense;
 
-    public void ShowBattle()
-    {
-        battleCamera.enabled = true;
-        state = State.Start;
-    }
+		if (attackOrDefense == AttackOrDefense.Attack)
+		{
+			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), leftPlayerUI);
+			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), rightPlayerUI);
+		}
+		else
+		{
+			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), rightPlayerUI);
+			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), leftPlayerUI);
+		}
 
-    public void EndBattle()
-    {
-        battleCamera.enabled = false;
-    }
+		this.playerManager = playerManager;
+		this.enemyManager = enemyManager;
+		this.isMine = isMine;
+	}
 
-    void ChangeAttackOrDefense()
-    {
-        if (attackOrDefense == AttackOrDefense.Attack)
-        {
-            attackOrDefense = AttackOrDefense.Defense;
-        }
-        else 
-        {
-            attackOrDefense = AttackOrDefense.Attack;
-        }
-    }
+	public void EndBattle()
+	{
+		BattleResultApplier.ApplyBattleResult(player, enemy, playerManager, enemyManager);
+		battleCamera.enabled = false;
+	}
 
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            if (state == State.WaitingRoll)
-            {
-                OnRollClicked();
-            }
-        }
-        else if (Input.GetKeyUp(KeyCode.S))
-        {
-            state = State.Start;
-        }
+	void ChangeAttackOrDefense()
+	{
+		if (attackOrDefense == AttackOrDefense.Attack)
+		{
+			attackOrDefense = AttackOrDefense.Defense;
+		}
+		else
+		{
+			attackOrDefense = AttackOrDefense.Attack;
+		}
+	}
 
-        if (state == State.Start)
-        {
-            player = BattleUtil.GetDummyPlayer();
-            enemy = BattleUtil.GetDummyEnemy();
-            state = State.WaitingRoll;
+	void Update()
+	{
+		if (Input.GetKeyUp(KeyCode.A))
+		{
+			if (state == State.WaitingRoll)
+			{
+				OnRollClicked();
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.S))
+		{
+			state = State.Start;
+		}
 
-            UpdateRemainHP();
-        }
-        else if (state == State.BattleEnd)
-        {
-            Debug.Log("BattleEnd.");
-            state = State.Inactive;
-            EndBattle();
-        }
-    }
+		if (state == State.Start)
+		{
+			state = State.WaitingRoll;
 
-    public void OnRollClicked()
-    {
-        BattleCalculator calculator = new BattleCalculator();
-        if (attackOrDefense == AttackOrDefense.Attack)
-        {
-            playerCalcResult = calculator.GetAttackDiceResult(player);
-            enemyCalcResult = calculator.GetDefenseDiceResult(enemy);
-        }
-        else
-        {
-            playerCalcResult = calculator.GetDefenseDiceResult(player);
-            enemyCalcResult = calculator.GetAttackDiceResult(player);
-        }
+			UpdateRemainHP();
+		}
+		else if (state == State.BattleEnd)
+		{
+			Debug.Log("BattleEnd.");
+			state = State.Inactive;
+			EndBattle();
+		}
+	}
 
-        Debug.Log("Player result is " + playerCalcResult.ToString());
-        Debug.Log("Enemy result is " + enemyCalcResult.ToString());
+	public void OnRollClicked()
+	{
+		BattleCalculator calculator = new BattleCalculator();
+		if (attackOrDefense == AttackOrDefense.Attack)
+		{
+			playerCalcResult = calculator.GetAttackDiceResult(player);
+			enemyCalcResult = calculator.GetDefenseDiceResult(enemy);
+		}
+		else
+		{
+			playerCalcResult = calculator.GetDefenseDiceResult(player);
+			enemyCalcResult = calculator.GetAttackDiceResult(player);
+		}
 
-        state = State.ShowRoll;
-        AnimateDice();
-    }
+		state = State.ShowRoll;
+		AnimateDice();
+	}
 
-    void AnimateDice()
-    {
-        int playerDiceNum = playerCalcResult.diceResults.Count;
-        int enemyDiceNum = enemyCalcResult.diceResults.Count;
+	void AnimateDice()
+	{
+		int playerDiceNum = playerCalcResult.diceResults.Count;
+		int enemyDiceNum = enemyCalcResult.diceResults.Count;
 
-        if (attackOrDefense == AttackOrDefense.Attack)
-        {
-            for (int i = 0; i < playerDiceNum; i++)
-            {
-                int diceResult = playerCalcResult.diceResults[i];
-                playerAttackDices[i].SendMessage("rollByNumber", diceResult);    
-            }
-                    
-            for (int i = 0; i < enemyDiceNum; i++)
-            {
-                int diceResult = enemyCalcResult.diceResults[i];
-                enemyDefenseDices[i].SendMessage("rollByNumber", diceResult);    
-            }
-        }   
-        else
-        {
-            for (int i = 0; i < playerDiceNum; i++)
-            {
-                int diceResult = playerCalcResult.diceResults[i];
-                playerDefenseDices[i].SendMessage("rollByNumber", diceResult);    
-            }
+		if (attackOrDefense == AttackOrDefense.Attack)
+		{
+			for (int i = 0; i < playerDiceNum; i++)
+			{
+				int diceResult = playerCalcResult.diceResults[i];
+				player.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
+			}
 
-            for (int i = 0; i < enemyDiceNum; i++)
-            {
-                int diceResult = enemyCalcResult.diceResults[i];
-                enemyAttackDices[i].SendMessage("rollByNumber", diceResult);    
-            }
+			for (int i = 0; i < enemyDiceNum; i++)
+			{
+				int diceResult = enemyCalcResult.diceResults[i];
+				enemy.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
+			}
+		}
+		else
+		{
+			for (int i = 0; i < playerDiceNum; i++)
+			{
+				int diceResult = playerCalcResult.diceResults[i];
+				player.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
+			}
 
-        }             
+			for (int i = 0; i < enemyDiceNum; i++)
+			{
+				int diceResult = enemyCalcResult.diceResults[i];
+				enemy.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
+			}
 
-        int totalPlayerDice = playerCalcResult.totalDiceResult;
-        int totalEnemyDice = enemyCalcResult.totalDiceResult;
-        //show animation with calculation result.
-        state = State.ShowDamage;
-        AnimateDamage(totalPlayerDice, totalEnemyDice);
-    }
+		}
 
-    BattlePlayer CompareDamageAndSelectTarget(int totalPlayerDice, int totalEnemyDice)
-    {
-        if (totalPlayerDice > totalEnemyDice)
-        {
-            return enemy;
-        }
-        else if (totalPlayerDice < totalEnemyDice) 
-        {
-            return player;
-        }
-        else
-        {
-            Debug.Log("Dice is same.");
-            return null;
-        }
-    }
+		int totalPlayerDice = playerCalcResult.totalDiceResult;
+		int totalEnemyDice = enemyCalcResult.totalDiceResult;
+		//show animation with calculation result.
+		state = State.ShowDamage;
+		AnimateDamage(totalPlayerDice, totalEnemyDice);
+	}
 
-    int CalculateDamage(int totalPlayerDice, int totalEnemyDice)
-    {
-        return System.Math.Abs(totalPlayerDice - totalEnemyDice);
-    }
+	BattlePlayer CompareDamageAndSelectTarget(int totalPlayerDice, int totalEnemyDice)
+	{
+		if (totalPlayerDice > totalEnemyDice)
+		{
+			return enemy;
+		}
+		else if (totalPlayerDice < totalEnemyDice)
+		{
+			return player;
+		}
+		else
+		{
+			Debug.Log("Dice is same.");
+			return null;
+		}
+	}
 
-    void AnimateDamage(int totalPlayerDice, int totalEnemyDice)
-    {
-        BattlePlayer target = null;
-        int damage = 0;
-        
-//        CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
-        damage = CalculateDamage(totalPlayerDice, totalEnemyDice);
-        target = CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
+	int CalculateDamage(int totalPlayerDice, int totalEnemyDice)
+	{
+		return System.Math.Abs(totalPlayerDice - totalEnemyDice);
+	}
 
-        Debug.Log("PlayerDice : " + totalPlayerDice + ", EnemyDice : " + totalEnemyDice);
-        //show animation with calculation result.
-        //apply damage.
-        state = State.WaitingRoll;
-        
-        if (target != null)
-        {
-            target.ApplyDamage(damage);
-        }
-        else
-        {
-            player.ApplyDamage(1);
-            enemy.ApplyDamage(1);
-            Debug.Log("Each player is Damaged 1");
-        }
+	void AnimateDamage(int totalPlayerDice, int totalEnemyDice)
+	{
+		BattlePlayer target = null;
+		int damage = 0;
 
-        if (target == enemy)
-        {
-            Debug.Log("Enemy is Damaged " + damage);
-        }
-        else if (target == player)
-        {
-            Debug.Log("Player is Damaged " + damage);
-        }
-        
-        if (enemy.IsDie())
-        {
-            state = State.BattleEnd;
-            //EnemyDelete(enemy);
-        }
-        else if (player.IsDie())
-        {
-            state = State.BattleEnd;
-            //PlayerRespawn(player);
-        }
+		damage = CalculateDamage(totalPlayerDice, totalEnemyDice);
+		target = CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
 
-        UpdateRemainHP();
+		Debug.Log("PlayerDice : " + totalPlayerDice + ", EnemyDice : " + totalEnemyDice);
+		//show animation with calculation result.
+		//apply damage.
+		state = State.WaitingRoll;
 
-        Debug.Log(
-            "PlayerHP : " + player.GetHp() + "/" + player.maxHp +
-            " EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
-            );
-        
-        ChangeAttackOrDefense();
-    }
+		if (target != null)
+		{
+			target.ApplyDamage(damage);
+		}
+		else
+		{
+			player.ApplyDamage(1);
+			enemy.ApplyDamage(1);
+			Debug.Log("Each player is Damaged 1");
+		}
 
-    void UpdateRemainHP()
-    {
-        float remainPlayerHPRatio = (float)player.GetHp() / (float)player.maxHp;
-        float remainEnemyHPRatio = (float)enemy.GetHp() / (float)enemy.maxHp;
+		if (target == enemy)
+		{
+			Debug.Log("Enemy is Damaged " + damage);
+		}
+		else if (target == player)
+		{
+			Debug.Log("Player is Damaged " + damage);
+		}
 
-        Debug.Log(
-            "PlayerHP ratio : " + remainPlayerHPRatio +
-            " EnemyHP ratio : " + remainEnemyHPRatio
-            );
+		if (enemy.IsDie())
+		{
+			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
+			state = State.BattleEnd;
+		}
+		else if (player.IsDie())
+		{
+			BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
+			state = State.BattleEnd;
+		}
 
-        for (int i = 0; i < playerHearts.Length; i++)
-        {
-            if (remainPlayerHPRatio <= ((float)i / (float)playerHearts.Length))
-            {
-                playerHearts[i].SetActive(false);
-            }
-            else
-            {
-                playerHearts[i].SetActive(true);
-            }
-        }
+		UpdateRemainHP();
 
-        for (int i = 0; i < enemyHearts.Length; i++)
-        {
-            if (remainEnemyHPRatio <= ((float)i / (float)enemyHearts.Length))
-            {
-                enemyHearts[i].SetActive(false);
-            }
-            else 
-            {
-                enemyHearts[i].SetActive(true);
-            }
-        }
-    }
+		Debug.Log(
+				"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
+				" EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
+				);
+
+		ChangeAttackOrDefense();
+	}
+
+	void UpdateRemainHP()
+	{
+		float remainPlayerHPRatio = (float)player.GetHp() / (float)player.maxHp;
+		float remainEnemyHPRatio = (float)enemy.GetHp() / (float)enemy.maxHp;
+
+		Debug.Log(
+				"PlayerHP ratio : " + remainPlayerHPRatio +
+				" EnemyHP ratio : " + remainEnemyHPRatio
+				);
+
+		for (int i = 0; i < player.ui.hearts.Length; i++)
+		{
+			if (remainPlayerHPRatio <= ((float)i / (float)player.ui.hearts.Length))
+			{
+				player.ui.hearts[i].SetActive(false);
+			}
+			else
+			{
+				player.ui.hearts[i].SetActive(true);
+			}
+		}
+
+		for (int i = 0; i < enemy.ui.hearts.Length; i++)
+		{
+			if (remainEnemyHPRatio <= ((float)i / (float)enemy.ui.hearts.Length))
+			{
+				enemy.ui.hearts[i].SetActive(false);
+			}
+			else
+			{
+				enemy.ui.hearts[i].SetActive(true);
+			}
+		}
+	}
 }

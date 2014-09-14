@@ -3,33 +3,51 @@ using System.Collections.Generic;
 
 public class BattleUtil
 {
-    public static BattlePlayer GetDummyPlayer()
+    public static BattlePlayer GetPlayer(Unit unit, BattlePlayerUI ui)
     {
         List<BDice.Species> attackDices = new List<BDice.Species>();
         List<BDice.Species> defenseDices = new List<BDice.Species>();
 
-        attackDices.Add(BDice.Species.Six);
-        attackDices.Add(BDice.Species.Six);
-        attackDices.Add(BDice.Species.Six);
+        for(int i = 0; i < unit.numberOfAttackDice; i++)
+        {
+            attackDices.Add(unit.speciesOfAttackDice);
+        }
 
-        defenseDices.Add(BDice.Species.Six);
+        for(int i = 0; i < unit.numberOfDefenseDice; i++)
+        {
+            defenseDices.Add(unit.speciesOfDefenseDice);
+        }
+
+        int maxHp = unit.maxHp;
+        int currentHp = unit.currentHp;
+
+        int bounsStat = 0;
 
         return new BattlePlayer(attackDices, defenseDices,
-                10);
+                maxHp, currentHp, bounsStat, ui);
     }
 
-    public static BattlePlayer GetDummyEnemy()
+    public static BattlePlayer GetPlayer(Character unit, BattlePlayerUI ui)
     {
         List<BDice.Species> attackDices = new List<BDice.Species>();
         List<BDice.Species> defenseDices = new List<BDice.Species>();
+        
+        for(int i = 0; i < unit.numberOfAttackDice; i++)
+        {
+            attackDices.Add(unit.speciesOfAttackDice);
+        }
+        
+        for(int i = 0; i < unit.numberOfDefenseDice; i++)
+        {
+            defenseDices.Add(unit.speciesOfDefenseDice);
+        }
+        
+        int maxHp = unit.maxHp;
+        int currentHp = unit.currentHp;
 
-        attackDices.Add(BDice.Species.Six);
-        attackDices.Add(BDice.Species.Six);
-
-        defenseDices.Add(BDice.Species.Six);
-        defenseDices.Add(BDice.Species.Six);
-
+        int bonusStat = unit.GetBonusStat();
+        
         return new BattlePlayer(attackDices, defenseDices,
-                5);
+                                maxHp, currentHp, bonusStat, ui);
     }
 }

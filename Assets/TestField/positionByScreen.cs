@@ -11,7 +11,7 @@ public class positionByScreen : MonoBehaviour {
 	private Camera cam;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		cam = transform.parent.camera;
 		widthByPixel = Screen.width;
 		pixelPerUnit = Screen.height/(cam.orthographicSize*2);

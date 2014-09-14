@@ -12,7 +12,7 @@ public class CalculationResult
         this.totalDiceResult = totalDiceResult;
     }
 
-    public string ToString()
+    public override string ToString()
     {
         string ret = string.Empty;
         foreach(var result in diceResults)
@@ -43,17 +43,14 @@ public class BattleCalculator
             totalDiceResult += diceResult;
         }
 
+        totalDiceResult += player.bonusStat;
+        if (player.bonusStat != 0)
+        {
+            Debug.Log("bonus stat " + player.bonusStat + " added");
+        }
+
         return new CalculationResult(diceResults, totalDiceResult);
-        /*int firstDiceResult = 3;
-        int secondDiceResult = 5;
-
-        List<int> diceResults = new List<int>();
-        diceResults.Add(firstDiceResult);
-        diceResults.Add(secondDiceResult);
-
-        return new CalculationResult(
-                diceResults, 3 + 5);
-*/    }
+    }
 
     public CalculationResult GetDefenseDiceResult(BattlePlayer player)
     {
@@ -70,16 +67,12 @@ public class BattleCalculator
             totalDiceResult += diceResult;
         }
 
+        totalDiceResult += player.bonusStat;
+        if (player.bonusStat != 0)
+        {
+            Debug.Log("bonus stat " + player.bonusStat + " added");
+        }
+
         return new CalculationResult(diceResults, totalDiceResult);
-
-/*        int firstDiceResult = 4;
-        int secondDiceResult = 2;
-
-        List<int> diceResults = new List<int>();
-        diceResults.Add(firstDiceResult);
-        diceResults.Add(secondDiceResult);
-
-        return new CalculationResult(
-                diceResults, 4 + 2);
-*/    }
+    }
 }

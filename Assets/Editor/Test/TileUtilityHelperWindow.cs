@@ -24,14 +24,14 @@ public class TileUtilityHelperWindow : EditorWindow {
 
         if (GUILayout.Button("Move TIle to upright."))
         {
-            var tileManager = FindObjectOfType(typeof(TileManager)) as TileManager;
+            //var tileManager = FindObjectOfType(typeof(TileManager)) as TileManager;
 
-            foreach(Transform tile in tileManager.transform)
-            {
+            //foreach(Transform tile in tileManager.transform)
+            //{
                 //tile.transform.position = 
                 //    tile.transform.position +
                 //    new Vector3(0.29f, 0);
-            }
+            //}
         }
 
         keyToPositionShower.Show();
@@ -39,17 +39,17 @@ public class TileUtilityHelperWindow : EditorWindow {
         ShowPositionToKey();
     }
 
-    private Vector2 position = Vector2.zero;
+    private Vector2 tilePosition = Vector2.zero;
     private int coordX = 0;
     private int coordY = 0;
     void ShowPositionToKey()
     {
         EditorGUILayout.LabelField("position to tile key.");
-        position = EditorGUILayout.Vector2Field("position", position);
+        tilePosition = EditorGUILayout.Vector2Field("position", tilePosition);
 
         if (GUILayout.Button("Calculate"))
         {
-            Vector2 coordXY = FieldTileUtility.GetTranslatedCoordinate(position.x, position.y);
+            Vector2 coordXY = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
             coordX = (int)coordXY.x;
             coordY = (int)coordXY.y;
         }
@@ -71,7 +71,7 @@ public class TileUtilityHelperWindow : EditorWindow {
 
             if (GUILayout.Button("Calculate"))
             {
-                positionToShow = FieldTileUtility.GetTranslatedPosition(coordX, coordY);
+                positionToShow = FieldTileUtility.GetCoordFromPosition(coordX, coordY);
             }
 
             EditorGUILayout.Vector2Field("position", positionToShow);

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
+using System.Collections.Generic;
 
 public class DiceRollerButton : MonoBehaviour
 {	
@@ -25,9 +25,24 @@ public class DiceRollerButton : MonoBehaviour
 		}
 	}
 
+    List<BDice.Species> GetMoveDices(Character player, List<BDice.Species> moveDices)
+    {
+        for (int i = 0; i < player.numberOfMoveDice; i++)
+        {
+            moveDices.Add(player.speciesOfMoveDice);
+        }
+        return moveDices;
+    }
+
     void OnMouseDown()
     {
-        int diceResult = Dice.Roll();
+        List<BDice.Species> moveDices = new List<BDice.Species>();
+        moveDices = GetMoveDices(characterManager.GetCharacterInstance(), moveDices);
+        int diceResult = 0;
+        for (int i = 0; i < moveDices.Count; i++)
+        {
+            diceResult += Dice.Roll(moveDices [i]);
+        }
         Debug.Log("Dice : " + diceResult);
 
         characterManager.SetMovement(diceResult);

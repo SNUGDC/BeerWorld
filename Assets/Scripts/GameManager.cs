@@ -1,72 +1,63 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Algebraics;
+using Smooth.Collections;
+using Smooth.Slinq;
+using Smooth;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
 	public static GameManager gameManagerInstance = null;
 	public Character characterPrefab;
 	public DirectionArrow arrowPrefab;
 	private CharacterManager myCharacterManager = null;
-    private EnemyPlaceHolder enemyHolder = null;
-    public Enemy enemyPrefab;
+	private EnemyPlaceHolder enemyHolder = null;
+	public Enemy enemyPrefab;
+	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
-	private Dictionary<NetworkViewID, CharacterManager> otherCharacterManagers = new Dictionary<NetworkViewID, CharacterManager>();
-	//private List<NetworkViewID> playerList = new List<NetworkViewID>();
-	private Dictionary<int, NetworkViewID> otherPlayers = new Dictionary<int, NetworkViewID>();
-	private int[] ExistingPlayersArray = new int[4] {1, 0, 0, 0};
-
-	private int turnOfActivePlayer = 0;
-
-	public static int getTurnOfActivePlayer()
+	public Dictionary<string, EnemyManager> GetEnemies()
 	{
-		return gameManagerInstance.turnOfActivePlayer;
+		return enemies;
 	}
 
-	public void PassTurnToNextPlayer()
+	public IEnumerable<EnemyManager> GetEnemiesList()
 	{
-		NetworkViewID nextPlayerId;
-		CharacterManager nextPlayerCharacterManager;
-
-		turnOfActivePlayer = FindNextExistingPlayer(turnOfActivePlayer);
-
-		if (turnOfActivePlayer != 0)
-		{
-			nextPlayerId = otherPlayers[turnOfActivePlayer];
-			
-			Debug.Log("nextTurnIndex : " + turnOfActivePlayer + ", nextPlayerId : " + nextPlayerId);
-		}
-		else 
-		{
-			nextPlayerId = NetworkManager.networkInstance.GetNetworkID();
-
-			Debug.Log("There is no other player.");
-		}
-		NetworkManager.SendTurnStartMessage (nextPlayerId);
-
-	}
-
-	int FindNextExistingPlayer (int currentTurnOfActivePlayer)
-	{
-		if (currentTurnOfActivePlayer == ExistingPlayersArray.Length - 1)
-		{
-			return 0;
-		}
-
-		int nextTurnIndex = currentTurnOfActivePlayer + 1;
-		for(;nextTurnIndex < ExistingPlayersArray.Length; nextTurnIndex += 1)
-		{
-			if (ExistingPlayersArray[nextTurnIndex] != 0)
-			{
-				return nextTurnIndex;
-			}
-		}
-
-		return 0;		
+		return enemies.Values;
 	}
 
 	public static CharacterManager GetMyCharacterManager()
 	{
 		return gameManagerInstance.myCharacterManager;
+	}
+
+	private Dictionary<NetworkViewID, CharacterManager> otherCharacterManagers = new Dictionary<NetworkViewID, CharacterManager>();
+
+	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
+
+	public static IEnumerable<CharacterManager> GetAllPlayersEnumerator()
+	{
+		yield return gameManagerInstance.myCharacterManager;
+
+		foreach (var player in gameManagerInstance.otherCharacterManagers.Values)
+		{
+			yield return player;
+		}
+	}
+
+	public static NetworkViewID GetNetworkViewID(CharacterManager player)
+	{
+		if (gameManagerInstance.isMyCharacterManager(player))
+		{
+			return NetworkManager.networkInstance.Id;
+		}
+		else
+		{
+			return Slinqable.Slinq(gameManagerInstance.otherPlayers).Where(
+					(playerId) => {
+					var otherPlayer = gameManagerInstance.otherCharacterManagers[playerId];
+					return otherPlayer == player;
+					}).First();
+		}
 	}
 
 	public static CharacterManager GetCharacterManager(NetworkViewID id)
@@ -78,64 +69,106 @@ public class GameManager : MonoBehaviour {
 		return gameManagerInstance.otherCharacterManagers[id];
 	}
 
+	public bool isMyCharacterManager(CharacterManager unitManager)
+	{
+		return myCharacterManager == unitManager;
+	}
+
+	public void PassTurnToNextPlayer()
+	{
+		TurnManager.Get().PassTurn();
+		TurnManager.State turnState = TurnManager.Get().GetState();
+
+		if (turnState == TurnManager.State.Player)
+		{
+			GetMyCharacterManager().ChangeMoveStateToIdle();
+		}
+		else if (turnState == TurnManager.State.OtherPlayer)
+		{
+			NetworkViewID turnPlayerViewID = TurnManager.Get().GetTurnPlayer();
+			NetworkManager.SendTurnStartMessage(turnPlayerViewID);
+		}
+		else if (turnState == TurnManager.State.Enemy)
+		{
+			EnemyManager turnEnemy = TurnManager.Get().GetTurnEnemy();
+			turnEnemy.ChangeMoveStateToIdle();
+		}
+	}
+
 	public void AddUser(NetworkViewID id)
 	{
+		if (id == NetworkManager.networkInstance.Id)
+		{
+			return;
+		}
+
 		otherCharacterManagers.Add(id,
-			new CharacterManager(characterPrefab, arrowPrefab));
+				CharacterManager.CreateInStart(characterPrefab, arrowPrefab));
 		otherCharacterManagers[id].Init();
-
-		int userIndex = MakeIndex();
-
-		if (userIndex == 0)
-		{
-			Debug.LogError("This room is full.");
-		}
-		otherPlayers.Add(userIndex, id); 
-
-		//PrintLog();
+		otherPlayers.Add(id);
+		TurnManager.Get().AddPlayerTEMP(id);
 	}
 
-	void PrintLog()
+	public void GameStart()
 	{
-		Debug.Log("ExistingPlayersArray(Array) = { ");
-		for (int i = 0; i < 4; i++)
-		{
-			Debug.Log("ExistingPlayersArray, i th : " + ExistingPlayersArray[i]);
-		}
-		foreach (KeyValuePair<int, NetworkViewID> pair in otherPlayers)
-		{
-			Debug.Log("otherPlayers < Key : " + pair.Key + ", Value : " + pair.Value + " > ");
-		}
-	}
-
-	int MakeIndex()
-	{
-		for (int i = 1; i < 4; i++)
-		{
-			if (ExistingPlayersArray[i] == 0)
-			{
-				ExistingPlayersArray[i] = i;
-				return i;
-			}
-		}
-		return 0;
+		var enemyPlaces = enemyHolder.GetEnemyPlaces();
+		Slinqable.Slinq(enemyPlaces).ForEach(
+				(tileKey) => {
+				NetworkManager.MakeEnemy(tileKey);
+				}
+				);
+		NetworkManager.SendGameStartMessage();
 	}
 
 	void Awake ()
 	{
 		gameManagerInstance = this;
-		myCharacterManager = new CharacterManager(characterPrefab, arrowPrefab);
-        enemyHolder = new EnemyPlaceHolder(enemyPrefab);
+		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab);
+		enemyHolder = new EnemyPlaceHolder();
 	}
 
 	// Use this for initialization
 	void Start () {
 		myCharacterManager.Init();
-        enemyHolder.PlaceEnemy();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		myCharacterManager.Update();
+		Slinqable.Slinq(enemies.Values).ForEach(
+				enemyManager => enemyManager.Update());
+	}
+
+	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
+	{
+		Tile startTile = TileManager.GetExistTile(tileKey);
+		EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile, enemyId);
+
+		enemyManager.Init();
+
+		enemies.Add(enemyId, enemyManager);
+	}
+
+	public void MoveEnemy(int tileKey, string enemyId)
+	{
+		Debug.Log("Move enemy " + enemyId + ", to " + tileKey);
+		enemies[enemyId].Move(tileKey);
+	}
+
+	public Option<string> GetFirstEnemyId()
+	{
+		return Slinqable.Slinq(enemies.Keys).FirstOrNone();
+	}
+
+	public Option<EnemyManager> GetEnemy(string id)
+	{
+		return enemies.TryGet(id);
+	}
+
+	public void KillEnemy(string enemyId)
+	{
+		var enemy = enemies[enemyId];
+		enemies.Remove(enemyId);
+		enemy.Kill();
 	}
 }

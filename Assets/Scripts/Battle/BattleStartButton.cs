@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class BattleStartButton : MonoBehaviour
 {
-    public BattleManager battleManager;
+	public BattleManager battleManager;
 
-    void OnMouseDown()
-    {
-        battleManager.ShowBattle();
-    }
+	void OnMouseDown()
+	{
+		var enemyId = GameManager.gameManagerInstance.GetFirstEnemyId();
+		enemyId.ForEachOr(
+				enemy => NetworkManager.StartBattle(enemy),
+				() => Debug.Log("There is no enemy"));
+	}
 }
