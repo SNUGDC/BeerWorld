@@ -7,7 +7,7 @@ using System.IO;
 public class RoomManager : MonoBehaviour {
 	
 	public NetworkViewID Id;
-    public string ipAddress = "147.46.241.250";
+    public string ipAddress = "147.46.76.106";
     public int port = 5000;
 
 	void Awake(){

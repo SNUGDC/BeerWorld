@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951b4315ceae64bfda0289e06a05c7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipAddress: 147.46.241.250
+  ipAddress: 147.46.76.106
   port: 5000
 --- !u!148 &918575892
 NetworkView:
@@ -271,7 +271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1619794679
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +282,7 @@ GameObject:
   - 4: {fileID: 1619794682}
   - 61: {fileID: 1619794681}
   - 212: {fileID: 1619794680}
+  - 114: {fileID: 1619794683}
   m_Layer: 0
   m_Name: StageSelect
   m_TagString: Untagged
@@ -333,7 +334,19 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
+--- !u!114 &1619794683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1619794679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a16be3c049464a04a766d59db572d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapName: France
 --- !u!1 &1683681437
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1881118069
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,45 +458,5 @@ Transform:
   m_Children:
   - {fileID: 489215760}
   - {fileID: 241032252}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
---- !u!1 &2047820537
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2047820539}
-  - 114: {fileID: 2047820538}
-  m_Layer: 0
-  m_Name: LobbyGUIView
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2047820538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2047820537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da2574bc940b22948a822968229c5be4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  guiSkin: {fileID: 11400000, guid: 6307a3040fc0a4a01a386dd5fa4006cf, type: 2}
---- !u!4 &2047820539
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2047820537}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.151062, y: 20, z: -19.0692368}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
