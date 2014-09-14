@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class CharacterMover : MonoBehaviour
@@ -40,25 +41,38 @@ public class CharacterMover : MonoBehaviour
 		currentTileKey = tileKey;
 	}
 
-	public void MoveTo(int tileKey)
+	public IEnumerator MoveTo(int tileKey)
 	{
 		Tile tile = TileManager.GetExistTile(tileKey);
-		MoveTo(tile);
+		return MoveTo(tile);
 	}
 
-	public void MoveTo(int tileCoordX, int tileCoordY)
+	public IEnumerator MoveTo(int tileCoordX, int tileCoordY)
 	{
 		Tile tile = TileManager.GetTileByCoord(tileCoordX, tileCoordY);
-		MoveTo(tile);
+		return MoveTo(tile);
 	}
 
-	public void MoveTo(Tile toMoveTile)
+	public IEnumerator MoveTo(Tile toMoveTile)
 	{
-		Vector2 nextTilePosition = new Vector2(
+		Vector3 nextTilePosition = new Vector3(
 				toMoveTile.transform.position.x,
-				toMoveTile.transform.position.y);
+				toMoveTile.transform.position.y,
+				transform.position.z);
 
-		transform.position = new Vector3(nextTilePosition.x, nextTilePosition.y, Character.Depth);
+		while (true)
+		{
+			var diff = nextTilePosition - transform.position;
+			if (diff.magnitude <= float.Epsilon)
+			{
+				break;
+			}
+
+			transform.position = Vector3.MoveTowards(transform.position, nextTilePosition, 0.1f);
+
+			yield return null;
+		}
+
 		int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
 		UpdateTileKey(currentTileKey);
 	}
@@ -114,5 +128,4 @@ public class CharacterMover : MonoBehaviour
 
 		return movableDictionary;
 	}
-
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class EnemyManager
@@ -70,6 +71,7 @@ public class EnemyManager
 	{
 		moveState = MoveState.Idle;
 		SetMovement(1);
+		Run.Coroutine(StartTurn());
 	}
 
 	Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles ()
@@ -84,27 +86,27 @@ public class EnemyManager
 		return characterMover.GetTileDictionaryOfMovableTiles(borderTileDictionary);
 	}
 
-	void MoveAndNotify(Tile toMoveTile)
+	IEnumerator MoveAndNotify(Tile toMoveTile)
 	{
-		Move(toMoveTile);
 		NetworkManager.MoveEnemy(toMoveTile.GetTileKey(), enemyId);
+		return Move(toMoveTile);
 	}
 
-	public void Move(int coordX, int coordY)
+	public IEnumerator Move(int coordX, int coordY)
 	{
 		Tile tile = TileManager.GetTileByCoord(coordX, coordY);
-		Move(tile);
+		return Move(tile);
 	}
 
-	public void Move(int tileKey)
+	public IEnumerator Move(int tileKey)
 	{
 		Tile tile = TileManager.GetExistTile(tileKey);
-		Move(tile);
+		return Move(tile);
 	}
 
-	public void Move(Tile toMoveTile)
+	public IEnumerator Move(Tile toMoveTile)
 	{
-		characterMover.MoveTo(toMoveTile);
+		return characterMover.MoveTo(toMoveTile);
 	}
 
 	void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
@@ -153,7 +155,17 @@ public class EnemyManager
 
 	Tile toMoveTile = null;
 
-	public void Update ()
+	IEnumerator StartTurn()
+	{
+		// check Enemy is deleted.
+		while (unitInstance != null && moveState != MoveState.Inactive)
+		{
+			var stateUpdate = Run.Coroutine(StateUpdate());
+			yield return stateUpdate.WaitFor;
+		}
+	}
+
+	public IEnumerator StateUpdate ()
 	{
 		if (moveState != MoveState.Inactive)
 		{
@@ -172,16 +184,16 @@ public class EnemyManager
 		{
 			moveState = MoveState.Inactive;
 			GameManager.gameManagerInstance.PassTurnToNextPlayer();
-			return;
 		}
-
-		if (moveState == MoveState.Moving)
+		else if (moveState == MoveState.Moving)
 		{
 			var borderDictionary = SearchBorderTiles();
 			var movableDictionary = SearchMovableTiles(borderDictionary);
 
 			SetDestination(movableDictionary);
-			MoveAndNotify(toMoveTile);
+			var moveAndNotify = Run.Coroutine(MoveAndNotify(toMoveTile));
+			yield return moveAndNotify.WaitFor;
+
 			howManyMove--;
 		}
 	}

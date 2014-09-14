@@ -132,13 +132,6 @@ public class GameManager : MonoBehaviour
 		myCharacterManager.Init();
 	}
 
-	// Update is called once per frame
-	void Update () {
-		myCharacterManager.Update();
-		Slinqable.Slinq(enemies.Values).ForEach(
-				enemyManager => enemyManager.Update());
-	}
-
 	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
 	{
 		Tile startTile = TileManager.GetExistTile(tileKey);
@@ -152,7 +145,7 @@ public class GameManager : MonoBehaviour
 	public void MoveEnemy(int tileKey, string enemyId)
 	{
 		Debug.Log("Move enemy " + enemyId + ", to " + tileKey);
-		enemies[enemyId].Move(tileKey);
+		Run.Coroutine(enemies[enemyId].Move(tileKey));
 	}
 
 	public Option<string> GetFirstEnemyId()
