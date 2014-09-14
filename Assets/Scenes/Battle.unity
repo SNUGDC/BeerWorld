@@ -4743,10 +4743,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftPlayerUI:
+    attackDiceParent: {fileID: 2113582166}
     attackDices:
     - {fileID: 656547755}
     - {fileID: 2072238893}
     - {fileID: 1685932314}
+    defenseDiceParent: {fileID: 2082333098}
     defenseDices:
     - {fileID: 1914139536}
     - {fileID: 1334652148}
@@ -4757,10 +4759,12 @@ MonoBehaviour:
     - {fileID: 372056436}
     - {fileID: 2058185930}
   rightPlayerUI:
+    attackDiceParent: {fileID: 1537644833}
     attackDices:
     - {fileID: 945317814}
     - {fileID: 419099343}
     - {fileID: 109716809}
+    defenseDiceParent: {fileID: 1841527241}
     defenseDices:
     - {fileID: 1456708861}
     - {fileID: 721417332}

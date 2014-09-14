@@ -58,11 +58,13 @@ public class BattleManager : MonoBehaviour
 		{
 			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), leftPlayerUI);
 			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), rightPlayerUI);
+			enemy.SwitchDice();
 		}
 		else
 		{
 			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), rightPlayerUI);
 			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), leftPlayerUI);
+			player.SwitchDice();
 		}
 
 		this.playerManager = playerManager;
@@ -86,6 +88,9 @@ public class BattleManager : MonoBehaviour
 		{
 			attackOrDefense = AttackOrDefense.Attack;
 		}
+
+		player.SwitchDice();
+		enemy.SwitchDice();
 	}
 
 	void Update()

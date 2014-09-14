@@ -14,7 +14,9 @@ public class BDice
 [System.Serializable]
 public class BattlePlayerUI
 {
+	public GameObject attackDiceParent;
   public GameObject[] attackDices = new GameObject[3];
+	public GameObject defenseDiceParent;
   public GameObject[] defenseDices = new GameObject[3];
   public GameObject[] hearts = new GameObject[4];
 }
@@ -61,4 +63,23 @@ public class BattlePlayer
   {
     return IsLive() == false;
   }
+
+	public void SwitchDice()
+	{
+		var attackDicePosition = ui.attackDiceParent.transform.position;
+		var attackDiceScale = ui.attackDiceParent.transform.localScale;
+
+		var defenseDicePosition = ui.defenseDiceParent.transform.position;
+		var defenseDiceScale = ui.defenseDiceParent.transform.localScale;
+
+		Run.Lerp(0.3f, (ratio) => {
+			ui.attackDiceParent.transform.position = Vector3.Slerp(attackDicePosition, defenseDicePosition, ratio);
+			ui.attackDiceParent.transform.localScale = Vector3.Slerp(attackDiceScale, defenseDiceScale, ratio);
+		});
+
+		Run.Lerp(0.3f, (ratio) => {
+			ui.defenseDiceParent.transform.position = Vector3.Slerp(defenseDicePosition, attackDicePosition, ratio);
+			ui.defenseDiceParent.transform.localScale = Vector3.Slerp(defenseDiceScale, attackDiceScale, ratio);
+		});
+	}
 }
