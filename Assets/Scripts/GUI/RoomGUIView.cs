@@ -24,7 +24,6 @@ public class RoomGUIView : MonoBehaviour {
 
 			if(GUI.Button(new Rect(210*Const.GUI_WIDTH_UNIT,10*Const.GUI_HEIGHT_UNIT,200*Const.GUI_WIDTH_UNIT,40*Const.GUI_HEIGHT_UNIT), "Out")){
 				Network.Disconnect(250);
-                FindObjectOfType<ChatGUIView>().ClearTextToRead();
 				Application.LoadLevel("Lobby");
 				Destroy(this.gameObject);
 			}
@@ -35,7 +34,6 @@ public class RoomGUIView : MonoBehaviour {
 
 			if(GUI.Button(new Rect(210*Const.GUI_WIDTH_UNIT,10*Const.GUI_HEIGHT_UNIT,100*Const.GUI_WIDTH_UNIT,60*Const.GUI_HEIGHT_UNIT),"Out")){
 				Network.Disconnect(250);
-                FindObjectOfType<ChatGUIView>().ClearTextToRead();
 				Application.LoadLevel("Lobby");
 				Destroy(this.gameObject);
 			}

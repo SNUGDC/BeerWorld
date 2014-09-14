@@ -29,7 +29,9 @@ public class RoomManager : MonoBehaviour {
     public void UpdateMasterServerInfo()
     {
         MasterServer.ipAddress = ipAddress;
+		Network.natFacilitatorIP = ipAddress;
         MasterServer.port = port;
+		Network.natFacilitatorPort = 5100;
         Id = Network.AllocateViewID();
     }
 
@@ -50,9 +52,7 @@ public class RoomManager : MonoBehaviour {
 		Application.LoadLevel ("Battle");
 	}
 
-    [RPC]
-    private void SendMsg(string id, string msg)
-    {
-        FindObjectOfType<ChatGUIView>().Chat(id, msg);
-    }
+	void OnFailedToConnect(NetworkConnectionError error){
+		Debug.Log ("Failed to Connect : " + error);
+	}
 }
