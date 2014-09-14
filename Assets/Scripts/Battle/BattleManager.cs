@@ -149,18 +149,21 @@ public class BattleManager : MonoBehaviour
 		int playerDiceNum = playerCalcResult.diceResults.Count;
 		int enemyDiceNum = enemyCalcResult.diceResults.Count;
 
+		GameObject animationGameObject = null;
 		if (attackOrDefense == AttackOrDefense.Attack)
 		{
 			for (int i = 0; i < playerDiceNum; i++)
 			{
 				int diceResult = playerCalcResult.diceResults[i];
 				player.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = player.ui.attackDices[i];
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
 				enemy.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = enemy.ui.defenseDices[i];
 			}
 		}
 		else
@@ -169,21 +172,28 @@ public class BattleManager : MonoBehaviour
 			{
 				int diceResult = playerCalcResult.diceResults[i];
 				player.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = player.ui.defenseDices[i];
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
 				enemy.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = enemy.ui.attackDices[i];
 			}
-
 		}
 
-		int totalPlayerDice = playerCalcResult.totalDiceResult;
-		int totalEnemyDice = enemyCalcResult.totalDiceResult;
-		//show animation with calculation result.
-		state = State.ShowDamage;
-		AnimateDamage(totalPlayerDice, totalEnemyDice);
+		var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
+		Run.After(0.1f, () => {
+			Run.WaitWhile(diceAnimation.IsRollAnimating)
+				.ExecuteWhenDone(() => {
+					int totalPlayerDice = playerCalcResult.totalDiceResult;
+					int totalEnemyDice = enemyCalcResult.totalDiceResult;
+					//show animation with calculation result.
+					state = State.ShowDamage;
+					AnimateDamage(totalPlayerDice, totalEnemyDice);
+			});
+		});
 	}
 
 	BattlePlayer CompareDamageAndSelectTarget(int totalPlayerDice, int totalEnemyDice)

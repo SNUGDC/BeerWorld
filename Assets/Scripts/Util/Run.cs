@@ -248,4 +248,21 @@ public class Run
 		}
 		aRun.isDone = true;
 	}
+
+	public static Run WaitWhile(Func<bool> predicate)
+	{
+		var tmp = new Run();
+		tmp.action = _WaitWhile(tmp, predicate);
+		tmp.Start();
+		return tmp;
+	}
+
+	private static IEnumerator _WaitWhile(Run aRun, Func<bool> predicate)
+	{
+		while (predicate())
+		{
+			yield return null;
+		}
+		aRun.isDone = true;
+	}
 }
