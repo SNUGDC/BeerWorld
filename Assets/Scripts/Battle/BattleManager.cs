@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
@@ -76,9 +77,11 @@ public class BattleManager : MonoBehaviour
 	{
 		BattleResultApplier.ApplyBattleResult(player, enemy, playerManager, enemyManager);
 		battleCamera.enabled = false;
+		player.ResetDiceTransform();
+		enemy.ResetDiceTransform();
 	}
 
-	void ChangeAttackOrDefense()
+	Run ChangeAttackOrDefense()
 	{
 		if (attackOrDefense == AttackOrDefense.Attack)
 		{
@@ -89,8 +92,10 @@ public class BattleManager : MonoBehaviour
 			attackOrDefense = AttackOrDefense.Attack;
 		}
 
-		player.SwitchDice();
-		enemy.SwitchDice();
+		var playerSwitch = player.SwitchDice();
+		var enemySwitch = enemy.SwitchDice();
+
+		return Run.Join(new List<Run>{ playerSwitch, enemySwitch });
 	}
 
 	void Update()
@@ -214,7 +219,6 @@ public class BattleManager : MonoBehaviour
 		Debug.Log("PlayerDice : " + totalPlayerDice + ", EnemyDice : " + totalEnemyDice);
 		//show animation with calculation result.
 		//apply damage.
-		state = State.WaitingRoll;
 
 		if (target != null)
 		{
@@ -236,25 +240,30 @@ public class BattleManager : MonoBehaviour
 			Debug.Log("Player is Damaged " + damage);
 		}
 
-		if (enemy.IsDie())
-		{
-			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
-			state = State.BattleEnd;
-		}
-		else if (player.IsDie())
-		{
-			BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
-			state = State.BattleEnd;
-		}
+		var changeAnimation = ChangeAttackOrDefense();
+		changeAnimation.ExecuteWhenDone(() => {
+			if (enemy.IsDie())
+			{
+				BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
+				state = State.BattleEnd;
+			}
+			else if (player.IsDie())
+			{
+				BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
+				state = State.BattleEnd;
+			}
+			else
+			{
+				state = State.WaitingRoll;
+			}
 
-		UpdateRemainHP();
+			UpdateRemainHP();
 
-		Debug.Log(
-				"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
-				" EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
-				);
-
-		ChangeAttackOrDefense();
+			Debug.Log(
+					"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
+					" EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
+					);
+		});
 	}
 
 	void UpdateRemainHP()

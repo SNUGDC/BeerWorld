@@ -64,7 +64,7 @@ public class BattlePlayer
     return IsLive() == false;
   }
 
-	public void SwitchDice()
+	public Run SwitchDice()
 	{
 		var attackDicePosition = ui.attackDiceParent.transform.position;
 		var attackDiceScale = ui.attackDiceParent.transform.localScale;
@@ -72,14 +72,35 @@ public class BattlePlayer
 		var defenseDicePosition = ui.defenseDiceParent.transform.position;
 		var defenseDiceScale = ui.defenseDiceParent.transform.localScale;
 
-		Run.Lerp(0.3f, (ratio) => {
+		var attackLerp = Run.Lerp(0.3f, (ratio) => {
 			ui.attackDiceParent.transform.position = Vector3.Slerp(attackDicePosition, defenseDicePosition, ratio);
 			ui.attackDiceParent.transform.localScale = Vector3.Slerp(attackDiceScale, defenseDiceScale, ratio);
 		});
 
-		Run.Lerp(0.3f, (ratio) => {
+		var defenseLerp = Run.Lerp(0.3f, (ratio) => {
 			ui.defenseDiceParent.transform.position = Vector3.Slerp(defenseDicePosition, attackDicePosition, ratio);
 			ui.defenseDiceParent.transform.localScale = Vector3.Slerp(defenseDiceScale, attackDiceScale, ratio);
 		});
+
+		return Run.Join(new List<Run>{ attackLerp, defenseLerp });
+	}
+
+	public void ResetDiceTransform()
+	{
+		Debug.LogWarning("Reset dice transform");
+		var attackDicePosition = ui.attackDiceParent.transform.position;
+		var attackDiceScale = ui.attackDiceParent.transform.localScale;
+
+		var defenseDicePosition = ui.defenseDiceParent.transform.position;
+		var defenseDiceScale = ui.defenseDiceParent.transform.localScale;
+
+		if (attackDicePosition.y < defenseDicePosition.y)
+		{
+			Debug.Log("Change attack and defense in reset dice");
+			ui.attackDiceParent.transform.position = defenseDicePosition;
+			ui.attackDiceParent.transform.localScale = defenseDiceScale;
+			ui.defenseDiceParent.transform.position = attackDicePosition;
+			ui.defenseDiceParent.transform.localScale = attackDiceScale;
+		}
 	}
 }
