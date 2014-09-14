@@ -5,7 +5,7 @@ public class Login : MonoBehaviour {
 	string username="";
 	float height_unit = Screen.height / 720f * 1.4f;
 	float width_unit =  Screen.width / 1280f * 1.4f;
-	string url = "http://localhost:8880/";
+	string url = "http://147.46.76.106:8000/";
 	string response;
 	bool can_login = false;
 	bool sign_in = false;
@@ -27,7 +27,7 @@ public class Login : MonoBehaviour {
 			//Application.LoadLevel("Lobby");
 		}
 		if(sign_in){
-			can_login = false;
+			sign_in = false;
 			StartCoroutine(Request2Web("signin"));
 		}
 	
