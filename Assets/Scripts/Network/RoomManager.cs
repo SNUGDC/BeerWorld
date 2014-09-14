@@ -55,10 +55,4 @@ public class RoomManager : MonoBehaviour {
 	void OnFailedToConnect(NetworkConnectionError error){
 		Debug.Log ("Failed to Connect : " + error);
 	}
-
-    [RPC]
-    private void SendMsg(string id, string msg)
-    {
-        FindObjectOfType<ChatGUIView>().Chat(id, msg);
-    }
 }
