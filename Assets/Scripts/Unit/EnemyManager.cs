@@ -43,7 +43,7 @@ public class EnemyManager
 	private Unit unitInstance;
 	private CharacterMover characterMover;
 
-	private int howManyMove = 0;
+	private int remainMoveCount = 0;
 
 	public Unit GetUnitInstance()
 	{
@@ -148,7 +148,7 @@ public class EnemyManager
 	public void SetMovement(int toMove)
 	{
 		moveState = MoveState.Moving;
-		howManyMove = toMove;
+		remainMoveCount = toMove;
 	}
 
 	Tile toMoveTile = null;
@@ -168,7 +168,7 @@ public class EnemyManager
 			moveState = MoveState.Battle;
 		}
 
-		if (howManyMove <= 0 && moveState == MoveState.Moving)
+		if (remainMoveCount <= 0 && moveState == MoveState.Moving)
 		{
 			moveState = MoveState.Inactive;
 			GameManager.gameManagerInstance.PassTurnToNextPlayer();
@@ -182,7 +182,7 @@ public class EnemyManager
 
 			SetDestination(movableDictionary);
 			MoveAndNotify(toMoveTile);
-			howManyMove--;
+			remainMoveCount--;
 		}
 	}
 
