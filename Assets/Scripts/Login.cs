@@ -61,7 +61,7 @@ public class Login : MonoBehaviour {
 			Application.LoadLevel("Lobby");
 		}
 		else{
-			Debug.Log(response);
+			StartCoroutine(Request2Web("signin"));
 		}
 	}
 
