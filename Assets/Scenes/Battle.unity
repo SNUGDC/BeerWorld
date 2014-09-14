@@ -6157,7 +6157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isVisible: 1
   tileKey: 0
-  tileType: 4
+  tileType: 2
   defaultTile: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   startTile: {fileID: 21300000, guid: 59e68d659144d4338921f0c7595d20fa, type: 3}
   itemTile: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
@@ -6186,7 +6186,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &501183893
 GameObject:
@@ -19596,7 +19596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isVisible: 1
   tileKey: 0
-  tileType: 4
+  tileType: 2
   defaultTile: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   startTile: {fileID: 21300000, guid: 59e68d659144d4338921f0c7595d20fa, type: 3}
   itemTile: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
@@ -19625,7 +19625,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1590114802
 GameObject:
@@ -19867,7 +19867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isVisible: 1
   tileKey: 0
-  tileType: 4
+  tileType: 2
   defaultTile: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   startTile: {fileID: 21300000, guid: 59e68d659144d4338921f0c7595d20fa, type: 3}
   itemTile: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
@@ -19896,7 +19896,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1598610298
 GameObject:
@@ -21019,7 +21019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isVisible: 1
   tileKey: 0
-  tileType: 4
+  tileType: 2
   defaultTile: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   startTile: {fileID: 21300000, guid: 59e68d659144d4338921f0c7595d20fa, type: 3}
   itemTile: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
@@ -21048,7 +21048,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1724968986
 GameObject:
