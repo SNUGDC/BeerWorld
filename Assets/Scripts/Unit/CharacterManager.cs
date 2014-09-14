@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using Smooth.Slinq;
 
@@ -66,6 +67,7 @@ public class CharacterManager
 	{
 		moveState = MoveState.Idle;
 		Debug.Log("Changed MoveState to Idle @" + NetworkManager.networkInstance.GetNetworkID());
+		Run.Coroutine(StartTurn());
 	}
 
 	public List<DirectionArrow> directionArrowList = new List<DirectionArrow>();
@@ -116,25 +118,25 @@ public class CharacterManager
 		directionArrowList = new List<DirectionArrow>();
 	}
 
-	void MoveAndNotify(Tile toMoveTile)
+	IEnumerator MoveAndNotify(Tile toMoveTile)
 	{
 		var toMoveTileCoord = toMoveTile.GetCoord();
 		NetworkManager.SendMoveTile(
 				(int)toMoveTileCoord.x,
 				(int)toMoveTileCoord.y);
 
-		Move(toMoveTile);
+		return Move(toMoveTile);
 	}
 
-	public void Move(int coordX, int coordY)
+	public IEnumerator Move(int coordX, int coordY)
 	{
 		Tile tile = TileManager.GetTileByCoord(coordX, coordY);
-		Move(tile);
+		return Move(tile);
 	}
 
-	public void Move(Tile toMoveTile)
+	public IEnumerator Move(Tile toMoveTile)
 	{
-		characterMover.MoveTo(toMoveTile);
+		return characterMover.MoveTo(toMoveTile);
 	}
 
 	void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
@@ -189,6 +191,7 @@ public class CharacterManager
 		{
 			moveState = MoveState.Idle;
 			Debug.Log("MoveState of server : Idle");
+			Run.Coroutine(StartTurn());
 		}
 	}
 
@@ -245,7 +248,16 @@ public class CharacterManager
 
 	Tile toMoveTile = null;
 
-	public void Update ()
+	IEnumerator StartTurn()
+	{
+		while (moveState != MoveState.Inactive)
+		{
+			var stateUpdate = Run.Coroutine(StateUpdate());
+			yield return stateUpdate.WaitFor;
+		}
+	}
+
+	public IEnumerator StateUpdate ()
 	{
 		if (moveState != MoveState.Inactive)
 		{
@@ -303,7 +315,9 @@ public class CharacterManager
 				var currentTileKey = GetCurrentTileKey();
 				SetDestination(movableDictionary);
 				var toMoveTileKey = toMoveTile.GetTileKey();
-				MoveAndNotify(toMoveTile);
+
+				var moveAndNotify = Run.Coroutine(MoveAndNotify(toMoveTile));
+				yield return moveAndNotify.WaitFor;
 				remainMoveCount--;
 
 				var currentTileKeyOfNext = GetCurrentTileKey();
@@ -323,7 +337,8 @@ public class CharacterManager
 		{
 			Debug.Log("toMoveTile in Update : " + toMoveTile);
 
-			MoveAndNotify(toMoveTile);
+			var moveAndNotify = Run.Coroutine(MoveAndNotify(toMoveTile));
+			yield return moveAndNotify.WaitFor;
 			remainMoveCount--;
 
 			moveState = MoveState.Moving;
@@ -334,12 +349,16 @@ public class CharacterManager
 	public void BattleLose()
 	{
 		characterInstance.currentHp = characterInstance.maxHp;
-		Move(characterInstance.GetSpawnTile());
-		if (moveState == MoveState.Battle && GameManager.gameManagerInstance.isMyCharacterManager(this))
-		{
-			NetworkManager.SendTurnEndMessage();
-		}
-		moveState = MoveState.Inactive;
+		var move = Run.Coroutine(Move(characterInstance.GetSpawnTile()));
+		Debug.LogWarning(moveState.ToString());
+
+		move.ExecuteWhenDone(() => {
+			if (moveState == MoveState.Battle && GameManager.gameManagerInstance.isMyCharacterManager(this))
+			{
+				NetworkManager.SendTurnEndMessage();
+			}
+			moveState = MoveState.Inactive;
+		});
 	}
 
 	// Called from all users.

@@ -10,7 +10,22 @@ public class Enemy : Unit
         None
     }
 
-   	EnemyType enemyType;
+    public enum EnemyColor
+    {
+        Red,
+        White,
+        None
+    }
+
+    public Sprite redMiddle;
+    public Sprite whiteMiddle;
+    public Sprite redSmallest;
+    public Sprite whiteSmallest;
+
+    public Sprite enemySprite;
+
+    EnemyType enemyType;
+    EnemyColor enemyColor;
 
     public void SetEnemyType(EnemyType enemyType)
 	{
@@ -20,7 +35,10 @@ public class Enemy : Unit
 	void SetSmallestEnemyStats()
 	{
 		Debug.Log("Set Values : Smallest");
-		//temporary values.
+		
+        //FIXME : temporary color.
+        enemyColor = EnemyColor.Red;
+
 		maxHp = 2;
 		currentHp = maxHp;
 
@@ -37,7 +55,10 @@ public class Enemy : Unit
     void SetMiddleEnemyStats()
     {
         Debug.Log("Set Values : Middle");
-        //temporary values.
+
+        //FIXME : temporary color.
+        enemyColor = EnemyColor.Red;
+
         maxHp = 3;
         currentHp = maxHp;
         
@@ -56,10 +77,28 @@ public class Enemy : Unit
 		if (enemyType == EnemyType.Smallest)
         {
             SetSmallestEnemyStats();
+
+            if (enemyColor == EnemyColor.Red)
+            {
+                enemySprite = redSmallest;
+            }
+            else if (enemyColor == EnemyColor.White)
+            {
+                enemySprite = whiteSmallest;
+            }
         } 
         else if (enemyType == EnemyType.Middle)
         {
             SetMiddleEnemyStats();
+
+            if (enemyColor == EnemyColor.Red)
+            {
+                enemySprite = redMiddle;
+            }
+            else if (enemyColor == EnemyColor.White)
+            {
+                enemySprite = whiteMiddle;
+            }
         }
 	}
 }
