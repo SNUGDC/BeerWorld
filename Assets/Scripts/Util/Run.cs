@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using Smooth.Slinq;
 
 public class Run
 {
@@ -218,5 +221,48 @@ public class Run
 		tmp.action = _WaitFor(aAction);
 		tmp.Start();
 		return tmp;
+	}
+
+	public static Run Join(List<Run> runs)
+	{
+		var tmp = new Run();
+		tmp.action = _WaitForRuns(tmp, runs);
+		tmp.Start();
+		return tmp;
+	}
+
+	private static IEnumerator _WaitForRuns(Run aRun, List<Run> runs)
+	{
+		var remainCount = runs.Count;
+
+		runs.ForEach((run) => {
+			run.ExecuteWhenDone(() => {
+				remainCount -= 1;
+			});
+		});
+
+		Func<bool> isComplete = () => remainCount != 0;
+		while (isComplete())
+		{
+			yield return null;
+		}
+		aRun.isDone = true;
+	}
+
+	public static Run WaitWhile(Func<bool> predicate)
+	{
+		var tmp = new Run();
+		tmp.action = _WaitWhile(tmp, predicate);
+		tmp.Start();
+		return tmp;
+	}
+
+	private static IEnumerator _WaitWhile(Run aRun, Func<bool> predicate)
+	{
+		while (predicate())
+		{
+			yield return null;
+		}
+		aRun.isDone = true;
 	}
 }

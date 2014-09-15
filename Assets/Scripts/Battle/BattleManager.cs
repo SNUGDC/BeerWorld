@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
@@ -58,11 +59,13 @@ public class BattleManager : MonoBehaviour
 		{
 			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), leftPlayerUI);
 			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), rightPlayerUI);
+			enemy.SwitchDice();
 		}
 		else
 		{
 			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), rightPlayerUI);
 			enemy = BattleUtil.GetPlayer(enemyManager.GetUnitInstance(), leftPlayerUI);
+			player.SwitchDice();
 		}
 
 		this.playerManager = playerManager;
@@ -74,9 +77,11 @@ public class BattleManager : MonoBehaviour
 	{
 		BattleResultApplier.ApplyBattleResult(player, enemy, playerManager, enemyManager);
 		battleCamera.enabled = false;
+		player.ResetDiceTransform();
+		enemy.ResetDiceTransform();
 	}
 
-	void ChangeAttackOrDefense()
+	Run ChangeAttackOrDefense()
 	{
 		if (attackOrDefense == AttackOrDefense.Attack)
 		{
@@ -86,6 +91,11 @@ public class BattleManager : MonoBehaviour
 		{
 			attackOrDefense = AttackOrDefense.Attack;
 		}
+
+		var playerSwitch = player.SwitchDice();
+		var enemySwitch = enemy.SwitchDice();
+
+		return Run.Join(new List<Run>{ playerSwitch, enemySwitch });
 	}
 
 	void Update()
@@ -139,18 +149,21 @@ public class BattleManager : MonoBehaviour
 		int playerDiceNum = playerCalcResult.diceResults.Count;
 		int enemyDiceNum = enemyCalcResult.diceResults.Count;
 
+		GameObject animationGameObject = null;
 		if (attackOrDefense == AttackOrDefense.Attack)
 		{
 			for (int i = 0; i < playerDiceNum; i++)
 			{
 				int diceResult = playerCalcResult.diceResults[i];
 				player.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = player.ui.attackDices[i];
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
 				enemy.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = enemy.ui.defenseDices[i];
 			}
 		}
 		else
@@ -159,21 +172,28 @@ public class BattleManager : MonoBehaviour
 			{
 				int diceResult = playerCalcResult.diceResults[i];
 				player.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = player.ui.defenseDices[i];
 			}
 
 			for (int i = 0; i < enemyDiceNum; i++)
 			{
 				int diceResult = enemyCalcResult.diceResults[i];
 				enemy.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
+				animationGameObject = enemy.ui.attackDices[i];
 			}
-
 		}
 
-		int totalPlayerDice = playerCalcResult.totalDiceResult;
-		int totalEnemyDice = enemyCalcResult.totalDiceResult;
-		//show animation with calculation result.
-		state = State.ShowDamage;
-		AnimateDamage(totalPlayerDice, totalEnemyDice);
+		var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
+		Run.After(0.1f, () => {
+			Run.WaitWhile(diceAnimation.IsRollAnimating)
+				.ExecuteWhenDone(() => {
+					int totalPlayerDice = playerCalcResult.totalDiceResult;
+					int totalEnemyDice = enemyCalcResult.totalDiceResult;
+					//show animation with calculation result.
+					state = State.ShowDamage;
+					AnimateDamage(totalPlayerDice, totalEnemyDice);
+			});
+		});
 	}
 
 	BattlePlayer CompareDamageAndSelectTarget(int totalPlayerDice, int totalEnemyDice)
@@ -209,7 +229,6 @@ public class BattleManager : MonoBehaviour
 		Debug.Log("PlayerDice : " + totalPlayerDice + ", EnemyDice : " + totalEnemyDice);
 		//show animation with calculation result.
 		//apply damage.
-		state = State.WaitingRoll;
 
 		if (target != null)
 		{
@@ -231,25 +250,30 @@ public class BattleManager : MonoBehaviour
 			Debug.Log("Player is Damaged " + damage);
 		}
 
-		if (enemy.IsDie())
-		{
-			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
-			state = State.BattleEnd;
-		}
-		else if (player.IsDie())
-		{
-			BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
-			state = State.BattleEnd;
-		}
+		var changeAnimation = ChangeAttackOrDefense();
+		changeAnimation.ExecuteWhenDone(() => {
+			if (enemy.IsDie())
+			{
+				BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
+				state = State.BattleEnd;
+			}
+			else if (player.IsDie())
+			{
+				BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
+				state = State.BattleEnd;
+			}
+			else
+			{
+				state = State.WaitingRoll;
+			}
 
-		UpdateRemainHP();
+			UpdateRemainHP();
 
-		Debug.Log(
-				"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
-				" EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
-				);
-
-		ChangeAttackOrDefense();
+			Debug.Log(
+					"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
+					" EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
+					);
+		});
 	}
 
 	void UpdateRemainHP()
