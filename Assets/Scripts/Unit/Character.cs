@@ -9,6 +9,15 @@ public class Character : Unit {
     int remainJailTurn = 0;
     Tile spawnTile  = null;
 
+    enum Job
+    {
+        Novice,
+        Warrior,
+        Tanker,
+        Attacker,
+        Thief
+    }
+
     public int GetBonusStat()
     {
         return bonusStat;
@@ -84,20 +93,51 @@ public class Character : Unit {
         Debug.Log("Save at this check point!");
     }
 
+    void SetWarriorStats()
+    {
+        maxHp = 3;
+        
+        numberOfAttackDice = 2;
+        speciesOfAttackDice = BDice.Species.Six;
+        
+        numberOfDefenseDice = 2;
+        speciesOfDefenseDice = BDice.Species.Six;
+        
+        numberOfMoveDice = 1;
+        speciesOfMoveDice = BDice.Species.Six;
+    }
+
+    void SeTankerStats()
+    {
+        maxHp = 3;
+        
+        numberOfAttackDice = 1;
+        speciesOfAttackDice = BDice.Species.Six;
+        
+        numberOfDefenseDice = 3;
+        speciesOfDefenseDice = BDice.Species.Six;
+        
+        numberOfMoveDice = 1;
+        speciesOfMoveDice = BDice.Species.Six;
+    }
+
+    void SetAttackerStats()
+    {
+        maxHp = 3;
+        
+        numberOfAttackDice = 3;
+        speciesOfAttackDice = BDice.Species.Six;
+        
+        numberOfDefenseDice = 1;
+        speciesOfDefenseDice = BDice.Species.Six;
+        
+        numberOfMoveDice = 1;
+        speciesOfMoveDice = BDice.Species.Six;
+    }
+
 	// Use this for initialization = BDice.Species.Six;
 	void Start ()
 	{
-		//temporary values.
-		maxHp = 10;
 		currentHp = maxHp;
-
-		numberOfAttackDice = 1;
-		speciesOfAttackDice = BDice.Species.Six;
-
-		numberOfDefenseDice = 1;
-		speciesOfDefenseDice = BDice.Species.Six;
-
-		numberOfMoveDice = 1;
-		speciesOfMoveDice = BDice.Species.Six;
 	}
 }
