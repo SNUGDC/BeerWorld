@@ -9,7 +9,12 @@ public class Character : Unit {
     int remainJailTurn = 0;
     Tile spawnTile  = null;
 
-    public CharClass charClass = CharClass.Novice; 
+    CharClass charClass = CharClass.Novice; 
+
+    public void SetCharClass(CharClass charClass)
+    {
+        this.charClass = charClass;
+    }
 
     public enum CharClass
     {
