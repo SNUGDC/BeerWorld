@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class NetworkManager : MonoBehaviour {
 	public GameObject target;
@@ -51,6 +52,50 @@ public partial class NetworkManager : MonoBehaviour {
 	{
 		Debug.Log("Dice of another player : " + diceResult);
 		GameManager.GetMyCharacterManager().SetMovement(diceResult);
+	}
+
+	public static void SetTurnOrder(NetworkViewID ownerId, List<NetworkViewID> otherPlayers)
+	{
+		if (otherPlayers.Count == 0)
+		{
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId);
+		}
+		else if (otherPlayers.Count == 1)
+		{
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId, otherPlayers[0]);
+		}
+		else if (otherPlayers.Count == 2)
+		{
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId, otherPlayers[0], otherPlayers[1]);
+		}
+		else
+		{
+			Debug.LogError("Invalid Player Count : " + (1 + otherPlayers.Count));
+		}
+	}
+
+	[RPC]
+	private void ReceiveSetTurnOrder_1(NetworkViewID firstPlayer)
+	{
+		GameManager.gameManagerInstance.SetTurnOrder(new List<NetworkViewID>{
+			firstPlayer
+		});
+	}
+
+	[RPC]
+	private void ReceiveSetTurnOrder_2(NetworkViewID firstPlayer, NetworkViewID secondPlayer)
+	{
+		GameManager.gameManagerInstance.SetTurnOrder(new List<NetworkViewID>{
+			firstPlayer, secondPlayer
+		});
+	}
+
+	[RPC]
+	private void ReceiveSetTurnOrder_3(NetworkViewID firstPlayer, NetworkViewID secondPlayer, NetworkViewID thirdPlayer)
+	{
+		GameManager.gameManagerInstance.SetTurnOrder(new List<NetworkViewID>{
+			firstPlayer, secondPlayer, thirdPlayer
+		});
 	}
 
 	public static void SendGameStartMessage ()

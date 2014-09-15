@@ -109,6 +109,11 @@ public class GameManager : MonoBehaviour
 		TurnManager.Get().AddPlayerTEMP(id);
 	}
 
+	public void SetTurnOrder(List<NetworkViewID> playerOrder)
+	{
+		Debug.LogError("Not Implemented Yet.");
+	}
+
 	public void GameStart()
 	{
 		var enemyPlaces = enemyHolder.GetEnemyPlaces();
@@ -117,6 +122,8 @@ public class GameManager : MonoBehaviour
 				NetworkManager.MakeEnemy(tileKey);
 				}
 				);
+		NetworkManager.SetTurnOrder(
+				NetworkManager.networkInstance.Id, otherPlayers);
 		NetworkManager.SendGameStartMessage();
 	}
 
