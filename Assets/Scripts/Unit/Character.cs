@@ -9,7 +9,9 @@ public class Character : Unit {
     int remainJailTurn = 0;
     Tile spawnTile  = null;
 
-    enum Job
+    public CharClass charClass = CharClass.Novice; 
+
+    public enum CharClass
     {
         Novice,
         Warrior,
@@ -107,7 +109,7 @@ public class Character : Unit {
         speciesOfMoveDice = BDice.Species.Six;
     }
 
-    void SeTankerStats()
+    void SetTankerStats()
     {
         maxHp = 3;
         
@@ -135,9 +137,44 @@ public class Character : Unit {
         speciesOfMoveDice = BDice.Species.Six;
     }
 
+    void SetDefaultStats()
+    {
+        maxHp = 3;
+        
+        numberOfAttackDice = 1;
+        speciesOfAttackDice = BDice.Species.Six;
+        
+        numberOfDefenseDice = 1;
+        speciesOfDefenseDice = BDice.Species.Six;
+        
+        numberOfMoveDice = 1;
+        speciesOfMoveDice = BDice.Species.Six;
+    }
+
+    void SetStats()
+    {
+        if (charClass == CharClass.Warrior)
+        {
+            SetWarriorStats();
+        } 
+        else if (charClass == CharClass.Tanker)
+        {
+            SetTankerStats();
+        } 
+        else if (charClass == CharClass.Attacker)
+        {
+            SetAttackerStats();
+        } 
+        else
+        {
+            SetDefaultStats();
+        }
+    }
+
 	// Use this for initialization = BDice.Species.Six;
 	void Start ()
 	{
-		currentHp = maxHp;
+        SetStats();
+        currentHp = maxHp;
 	}
 }
