@@ -56,15 +56,15 @@ public partial class NetworkManager : MonoBehaviour {
 	{
 		if (otherPlayers.Count == 0)
 		{
-			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId);
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.AllBuffered, ownerId);
 		}
 		else if (otherPlayers.Count == 1)
 		{
-			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId, otherPlayers[0]);
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_2", RPCMode.AllBuffered, ownerId, otherPlayers[0]);
 		}
 		else if (otherPlayers.Count == 2)
 		{
-			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId, otherPlayers[0], otherPlayers[1]);
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_3", RPCMode.AllBuffered, ownerId, otherPlayers[0], otherPlayers[1]);
 		}
 		else
 		{
