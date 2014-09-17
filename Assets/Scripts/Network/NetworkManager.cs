@@ -40,8 +40,6 @@ public partial class NetworkManager : MonoBehaviour {
 		//implement if func when started
 	}
 
-	//public static void Send
-
 	public static void SendRollDice(int diceResult)
 	{
 		networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.Others, networkInstance.Id, diceResult);
