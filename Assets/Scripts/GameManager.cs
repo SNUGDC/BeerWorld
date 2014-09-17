@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
 	public void SetTurnOrder(List<NetworkViewID> playerOrder)
 	{
-		Debug.LogError("Not Implemented Yet.");
+		BattleUIManager.Get().SetPlayers(playerOrder);
 	}
 
 	public void GameStart()
