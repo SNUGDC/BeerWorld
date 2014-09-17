@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 	public Character characterPrefab;
 	public DirectionArrow arrowPrefab;
 	private CharacterManager myCharacterManager = null;
-	private EnemyPlaceHolder enemyHolder = null;
+    private EnemyInfoHolder enemyInfoList = null;
 	public Enemy enemyPrefab;
 	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
@@ -116,10 +116,10 @@ public class GameManager : MonoBehaviour
 
 	public void GameStart()
 	{
-		var enemyPlaces = enemyHolder.GetEnemyPlaces();
-		Slinqable.Slinq(enemyPlaces).ForEach(
-				(tileKey) => {
-				NetworkManager.MakeEnemy(tileKey);
+		var enemyInfos = enemyInfoList.GetEnemyInfoList();
+		Slinqable.Slinq(enemyInfos).ForEach(
+				(enemyInfo) => {
+				NetworkManager.MakeEnemy(enemyInfo);
 				}
 				);
 		NetworkManager.SetTurnOrder(
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
 	{
 		gameManagerInstance = this;
 		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab);
-		enemyHolder = new EnemyPlaceHolder();
+		enemyInfoList = new EnemyInfoHolder();
 	}
 
 	// Use this for initialization
@@ -139,10 +139,10 @@ public class GameManager : MonoBehaviour
 		myCharacterManager.Init();
 	}
 
-	public void InstantiateEnemyByNetwork(string enemyId, int tileKey)
+	public void InstantiateEnemyByNetwork(string enemyId, int tileKey, Enemy.EnemyType type)
 	{
 		Tile startTile = TileManager.GetExistTile(tileKey);
-		EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile, enemyId);
+		EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile, type, enemyId);
 
 		enemyManager.Init();
 

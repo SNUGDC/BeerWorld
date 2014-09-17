@@ -1,18 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
-public class EnemyInfoHolder : MonoBehaviour {
+public class EnemyInfoHolder {
 
-/*    private List<EnemyInfo> enemyInfoList = new List<EnemyInfo>();
+    private List<EnemyInfo> enemyInfoList = new List<EnemyInfo>();
 
     public int enemyPlaceTileKey;
     public Enemy.EnemyType enemyType; 
-    
-    public EnemyInfo (int tileKey, Enemy.EnemyType type)
-    {
-        enemyPlaceTileKey = tileKey;
-        enemyType = type;
-    }
 
     public EnemyInfoHolder()
     {
@@ -35,5 +29,5 @@ public class EnemyInfoHolder : MonoBehaviour {
     public List<EnemyInfo> GetEnemyInfoList()
     {
         return enemyInfoList;
-    }*/
+    }
 }

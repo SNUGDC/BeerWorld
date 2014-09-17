@@ -4,18 +4,46 @@ using System.Collections;
 
 public partial class NetworkManager : MonoBehaviour
 {
-	public static void MakeEnemy(int startTileKey)
-	{
-		Guid enemyGuid = Guid.NewGuid();
-		networkInstance.networkView.RPC("ReceiveMakeEnemy",
-				RPCMode.All, enemyGuid.ToString(), startTileKey);
-	}
+    public static void MakeEnemy(EnemyInfo enemyInfo)
+    {
+        Guid enemyGuid = Guid.NewGuid();
+        if (enemyInfo.enemyType == Enemy.EnemyType.Smallest)
+        {
+            networkInstance.networkView.RPC("ReceiveMakeSmallestEnemy",
+                    RPCMode.All, enemyGuid.ToString(), enemyInfo.enemyPlaceTileKey);
+        } 
+        else if (enemyInfo.enemyType == Enemy.EnemyType.Middle)
+        {
+            networkInstance.networkView.RPC("ReceiveMakeMiddleEnemy",
+                    RPCMode.All, enemyGuid.ToString(), enemyInfo.enemyPlaceTileKey);
+        }
+        else {
+            networkInstance.networkView.RPC("ReceiveMakeNonetypeEnemy",
+                    RPCMode.All, enemyGuid.ToString(), enemyInfo.enemyPlaceTileKey);
+        }
+    }
 
 	[RPC]
-	private void ReceiveMakeEnemy(string enemyId, int tileKey)
+	private void ReceiveMakeSmallestEnemy(string enemyId, int tileKey)
 	{
-		GameManager.gameManagerInstance.InstantiateEnemyByNetwork(enemyId, tileKey);
+        Enemy.EnemyType type = Enemy.EnemyType.Smallest;
+        GameManager.gameManagerInstance.InstantiateEnemyByNetwork(enemyId, tileKey, type);
 	}
+
+    [RPC]
+    private void ReceiveMakeMiddleEnemy(string enemyId, int tileKey)
+    {
+        Enemy.EnemyType type = Enemy.EnemyType.Middle;
+        GameManager.gameManagerInstance.InstantiateEnemyByNetwork(enemyId, tileKey, type);
+    }
+
+    [RPC]
+    private void ReceiveMakeNonetypeEnemy(string enemyId, int tileKey)
+    {
+        Enemy.EnemyType type = Enemy.EnemyType.None;
+        GameManager.gameManagerInstance.InstantiateEnemyByNetwork(enemyId, tileKey, type);
+    }
+
 
 	public static void MoveEnemy(int moveTileKey, string enemyId)
 	{

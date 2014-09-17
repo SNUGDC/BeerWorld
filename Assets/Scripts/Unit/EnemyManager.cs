@@ -10,6 +10,7 @@ public class EnemyManager
     }
 
 	private Tile spawnTile = null;
+    private Enemy.EnemyType enemyType = Enemy.EnemyType.None;
 
 	public string enemyId
 	{
@@ -20,18 +21,20 @@ public class EnemyManager
 	public static EnemyManager CreateInStart(Unit unitPrefab, string enemyId)
 	{
 		Tile startTile = TileManager.GetStartTile ();
-		return new EnemyManager(unitPrefab, startTile, enemyId);
+        Enemy.EnemyType type = Enemy.EnemyType.None;
+		return new EnemyManager(unitPrefab, startTile, type, enemyId);
 	}
 
-	public static EnemyManager Create(Unit unitPrefab, Tile spawnTile, string enemyId)
+	public static EnemyManager Create(Unit unitPrefab, Tile spawnTile, Enemy.EnemyType type, string enemyId)
 	{
-		return new EnemyManager(unitPrefab, spawnTile, enemyId);
+		return new EnemyManager(unitPrefab, spawnTile, type, enemyId);
 	}
 
-	private EnemyManager(Unit unitPrefab, Tile spawnTile, string enemyId)
+	private EnemyManager(Unit unitPrefab, Tile spawnTile, Enemy.EnemyType type, string enemyId)
 	{
 		this.unitPrefab = unitPrefab;
 		this.spawnTile = spawnTile;
+        this.enemyType = type;
 		this.enemyId = enemyId;
 	}
 
@@ -41,7 +44,7 @@ public class EnemyManager
 	}
 
 	private Unit unitPrefab;
-	private Unit unitInstance;
+	private Enemy unitInstance;
 	private CharacterMover characterMover;
 
 	private int remainMoveCount = 0;
@@ -67,10 +70,29 @@ public class EnemyManager
 		return moveState;
 	}
 
+    List<BDice.Species> GetMoveDices(Enemy enemy, List<BDice.Species> moveDices)
+    {
+        for (int i = 0; i < enemy.numberOfMoveDice; i++)
+        {
+            moveDices.Add(enemy.speciesOfMoveDice);
+        }
+        return moveDices;
+    }
+
 	public void ChangeMoveStateToIdle()
 	{
 		moveState = MoveState.Idle;
-		SetMovement(1);
+
+        List<BDice.Species> moveDices = new List<BDice.Species>();
+        moveDices = GetMoveDices(unitInstance, moveDices);
+        int diceResult = 0;
+        for (int i = 0; i < moveDices.Count; i++)
+        {
+            diceResult += Dice.Roll(moveDices [i]);
+        }
+		
+        SetMovement(diceResult);
+
 		Run.Coroutine(StartTurn());
 	}
 
@@ -123,12 +145,14 @@ public class EnemyManager
 
 	void InstantiateUnit()
 	{
-		unitInstance = GameObject.Instantiate(unitPrefab) as Unit;
+		unitInstance = GameObject.Instantiate(unitPrefab) as Enemy;
 	}
 
 	public void InitializeUnit()
 	{
-		Vector3 spawnTilePosition = spawnTile.gameObject.transform.position;
+        unitInstance.SetEnemyType(this.enemyType);
+
+        Vector3 spawnTilePosition = spawnTile.gameObject.transform.position;
 		Vector3 spawnPositionOfUnit = new Vector3(spawnTilePosition.x, spawnTilePosition.y, Unit.Depth);
 
 		unitInstance.transform.position = spawnPositionOfUnit;
