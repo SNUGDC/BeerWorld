@@ -107,6 +107,14 @@ public class GameManager : MonoBehaviour
 		otherCharacterManagers[id].Init();
 		otherPlayers.Add(id);
 		TurnManager.Get().AddPlayerTEMP(id);
+
+		if (otherPlayers.Count == Network.connections.Length && Network.isServer)
+		{
+			NetworkManager.SendUsersNetworkViewID();
+			Run.After(0.3f, () => {
+				GameStart();
+			});
+		}
 	}
 
 	public void SetTurnOrder(List<NetworkViewID> playerOrder)
@@ -118,12 +126,13 @@ public class GameManager : MonoBehaviour
 	{
 		var enemyInfos = enemyInfoList.GetEnemyInfoList();
 		Slinqable.Slinq(enemyInfos).ForEach(
-				(enemyInfo) => {
+			(enemyInfo) => {
 				NetworkManager.MakeEnemy(enemyInfo);
 				}
-				);
+			);
 		NetworkManager.SetTurnOrder(
 				NetworkManager.networkInstance.Id, otherPlayers);
+		GetMyCharacterManager().ChangeMoveStateToIdle();
 		NetworkManager.SendGameStartMessage();
 	}
 
@@ -135,8 +144,13 @@ public class GameManager : MonoBehaviour
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		myCharacterManager.Init();
+		if (Network.isClient)
+		{
+			NetworkManager.SendUsersNetworkViewID();
+		}
 	}
 
 	public void InstantiateEnemyByNetwork(string enemyId, int tileKey, Enemy.EnemyType type)

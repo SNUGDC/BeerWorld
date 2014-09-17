@@ -187,12 +187,12 @@ public class CharacterManager
 		InitializeCharacter();
 		characterMover = characterInstance.GetComponent<CharacterMover>();
 
-		if (Network.isClient == false)
-		{
-			moveState = MoveState.Idle;
-			Debug.Log("MoveState of server : Idle");
-			Run.Coroutine(StartTurn());
-		}
+		//if (Network.isClient == false)
+		//{
+			//moveState = MoveState.Idle;
+			//Debug.Log("MoveState of server : Idle");
+			//Run.Coroutine(StartTurn());
+		//}
 	}
 
 	public void SetMovement(int toMove)
@@ -279,18 +279,8 @@ public class CharacterManager
             moveState = MoveState.Inactive;
 
             InterectionWithTile();
-
             UpdateRemainBuffTime();
-
-            //FIXME we now always need network.
-            if (NetworkManager.isConnected())
-            {
-                NetworkManager.SendTurnEndMessage();
-            } 
-            else
-            {
-                GameManager.gameManagerInstance.PassTurnToNextPlayer();
-            }
+						NetworkManager.SendTurnEndMessage();
         } 
 
         else if (moveState == MoveState.CheckingSaveTile)

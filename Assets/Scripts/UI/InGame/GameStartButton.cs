@@ -2,15 +2,13 @@
 using System.Collections;
 
 public class GameStartButton : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		if (Network.isClient == true)
+		{
+			gameObject.SetActive(false);
+		}
+		else if (Network.connections.Length > 0)
 		{
 			gameObject.SetActive(false);
 		}
@@ -19,8 +17,6 @@ public class GameStartButton : MonoBehaviour {
 	void OnMouseDown ()
 	{
 		GameManager.gameManagerInstance.GameStart();
-
-		NetworkManager.SendUsersNetworkViewID();
 		gameObject.SetActive(false);
 	}
 }

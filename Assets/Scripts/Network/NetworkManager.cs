@@ -27,12 +27,12 @@ public partial class NetworkManager : MonoBehaviour {
 	void Awake ()
 	{
 		networkInstance = this;
+		Id = Network.AllocateViewID ();
 	}
 
 	// Use this for initialization
 	void Start () {
 		username = PlayerPrefs.GetString ("id");
-		Id = Network.AllocateViewID ();
 	}
 
 	[RPC]
@@ -106,12 +106,11 @@ public partial class NetworkManager : MonoBehaviour {
 	private void ReceiveGameStartMessage(NetworkViewID id)
 	{
 		Debug.Log("Game Start! @Cilent");
-		SendUsersNetworkViewID();
 	}
 
 	public static void SendUsersNetworkViewID ()
 	{
-		networkInstance.networkView.RPC("ReceiveUsersNetworkViewID", RPCMode.Others, networkInstance.Id);
+		networkInstance.networkView.RPC("ReceiveUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
 	}
 
 	[RPC]
