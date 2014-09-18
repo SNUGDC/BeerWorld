@@ -48,6 +48,7 @@ public class EnemyManager
 	private CharacterMover characterMover;
 
 	private int remainMoveCount = 0;
+    int makeCooldown = 2;
 
 	public Enemy GetEnemyInstance()
 	{
@@ -119,8 +120,6 @@ public class EnemyManager
         NetworkManager.MakeEnemy(newEnemyInfo);
 
         Debug.Log("Make smallest enemy @" + placeEnemyTile.GetTileKey());
-
-        moveState = MoveState.MakingComplete;
     }
 
 	public void ChangeMoveStateToIdle()
@@ -135,7 +134,13 @@ public class EnemyManager
         } 
         else if (enemyType == Enemy.EnemyType.Middle)
         {
-            MakeSmallestEnemy();
+            if (makeCooldown == 0)
+            {
+                MakeSmallestEnemy();
+                makeCooldown = 2;
+            }
+            makeCooldown--;
+            moveState = MoveState.MakingComplete;
         } 
         else
         {
