@@ -32,6 +32,11 @@ public class Enemy : Unit
 		this.enemyType = enemyType;
 	}
 
+    public EnemyType GetEnemyType()
+    {
+        return enemyType;
+    }
+
 	void SetSmallestEnemyStats()
 	{
 		Debug.Log("Set Values : Smallest");

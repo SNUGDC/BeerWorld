@@ -28,6 +28,29 @@ public class GameManager : MonoBehaviour
 		return enemies.Values;
 	}
 
+    public IEnumerable<EnemyManager> GetEnemiesListSizeOrdered()
+    {
+        List<EnemyManager> enemiesListSizeOrdered = new List<EnemyManager>();
+        EnemyManager enemy;
+        foreach (KeyValuePair<string, EnemyManager> pair in enemies)
+        {
+            enemy = pair.Value;
+            if (enemy.GetEnemyInstance().GetEnemyType() == Enemy.EnemyType.Smallest)
+            {
+                enemiesListSizeOrdered.Add(enemy);
+            }
+        }
+        foreach (KeyValuePair<string, EnemyManager> pair in enemies)
+        {
+            enemy = pair.Value;
+            if (enemy.GetEnemyInstance().GetEnemyType() == Enemy.EnemyType.Middle)
+            {
+                enemiesListSizeOrdered.Add(enemy);
+            }
+        }
+        return enemiesListSizeOrdered;
+    }
+
 	public static CharacterManager GetMyCharacterManager()
 	{
 		return gameManagerInstance.myCharacterManager;
