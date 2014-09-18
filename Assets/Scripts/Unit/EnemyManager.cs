@@ -59,7 +59,8 @@ public class EnemyManager
 		Inactive, // other user's turn.
 		Idle,  // diceRoller btn visible.
 		Moving,
-		Battle
+		Battle,
+        MakingComplete
 	}
 
 	[SerializeField]
@@ -79,10 +80,8 @@ public class EnemyManager
         return moveDices;
     }
 
-	public void ChangeMoveStateToIdle()
-	{
-		moveState = MoveState.Idle;
-
+    int CalculateMoveDicesResult()
+    {
         List<BDice.Species> moveDices = new List<BDice.Species>();
         moveDices = GetMoveDices(enemyInstance, moveDices);
         int diceResult = 0;
@@ -90,10 +89,60 @@ public class EnemyManager
         {
             diceResult += Dice.Roll(moveDices [i]);
         }
-		
-        SetMovement(diceResult);
 
-		Run.Coroutine(StartTurn());
+        return diceResult;
+    }
+
+    Tile SelectRandomTile(Dictionary<TileManager.TileDirection, Tile> emptyTiles)
+    {
+        int size = emptyTiles.Count;
+        int randomKey = Random.Range(0, size - 1);
+
+        List<Tile> targetTiles = new List<Tile>();
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in emptyTiles)
+        {
+            targetTiles.Add(pair.Value);
+        }
+
+        Tile selectedTile = targetTiles[randomKey];
+        return selectedTile;
+    }
+
+    void MakeSmallestEnemy()
+    {
+        var borderTiles = SearchBorderTiles();
+        var emptyTiles = SearchMovableTiles(borderTiles);
+        //FIXME : CANNOT except tile including character or other smallest enemy.
+        Tile placeEnemyTile = SelectRandomTile(emptyTiles);
+        EnemyInfo newEnemyInfo = new EnemyInfo(placeEnemyTile.GetTileKey(), Enemy.EnemyType.Smallest);
+
+        NetworkManager.MakeEnemy(newEnemyInfo);
+
+        Debug.Log("Make smallest enemy @" + placeEnemyTile.GetTileKey());
+
+        moveState = MoveState.MakingComplete;
+    }
+
+	public void ChangeMoveStateToIdle()
+	{
+        Enemy.EnemyType enemyType = enemyInstance.GetEnemyType();
+        moveState = MoveState.Idle;
+
+        if (enemyType == Enemy.EnemyType.Smallest)
+        {
+            int diceResult = CalculateMoveDicesResult();
+            SetMovement(diceResult);
+        } 
+        else if (enemyType == Enemy.EnemyType.Middle)
+        {
+            MakeSmallestEnemy();
+        } 
+        else
+        {
+            //none.
+        }
+		
+        Run.Coroutine(StartTurn());
 	}
 
 	Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles ()
@@ -204,7 +253,7 @@ public class EnemyManager
 			moveState = MoveState.Battle;
 		}
 
-		if (remainMoveCount <= 0 && moveState == MoveState.Moving)
+		if ((remainMoveCount <= 0 && moveState == MoveState.Moving)||(moveState == MoveState.MakingComplete))
 		{
 			moveState = MoveState.Inactive;
 			GameManager.gameManagerInstance.PassTurnToNextPlayer();
