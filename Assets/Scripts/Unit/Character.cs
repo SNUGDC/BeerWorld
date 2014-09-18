@@ -11,9 +11,40 @@ public class Character : Unit {
 
     CharClass charClass = CharClass.Novice; 
 
+    List<Item> inventory = new List<Item>();
+
+    public enum Item
+    {
+        DiceChange,
+        DiceResultChange,
+        Dodge,
+        Berserk,
+        Block,
+        Adding,
+//        Revive, //this item can be used only boss battle.
+        None
+    }
+
     public void SetCharClass(CharClass charClass)
     {
         this.charClass = charClass;
+    }
+
+    public int GetNumberOfItems()
+    {
+        return inventory.Count;
+    }
+
+    public void GetItem(Character.Item newItem)
+    {
+        inventory.Add(newItem);
+        Debug.Log("Get " + newItem);
+    }
+
+    public void UseItem(Character.Item item)
+    {
+        inventory.Remove(item);
+        Debug.Log("Using " + item);
     }
 
     public enum CharClass

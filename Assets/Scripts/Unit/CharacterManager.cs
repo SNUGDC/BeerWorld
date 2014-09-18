@@ -207,6 +207,29 @@ public class CharacterManager
 		remainMoveCount = toMove;
 	}
 
+    Character.Item SelectRandomItem()
+    {
+        int random = Random.Range(1, 6); //There are 6 kind of items.
+
+        switch (random)
+        {
+            case 1:
+                return Character.Item.DiceChange;
+            case 2:
+                return Character.Item.DiceResultChange;
+            case 3:
+                return Character.Item.Dodge;
+            case 4:
+                return Character.Item.Berserk;
+            case 5:
+                return Character.Item.Block;
+            case 6:
+                return Character.Item.Adding;
+            default:
+                return Character.Item.None;
+        }
+    }
+
     void InterectionWithTile()
     {
         int tileKey = GetCurrentTileKey();
@@ -228,8 +251,16 @@ public class CharacterManager
             }
             else if (tileType == Tile.TileType.Item)
             {   
-                //FIXME : Add get item code!
-                Debug.Log("Get Item!");
+                if (characterInstance.GetNumberOfItems() < 4)
+                {
+                    Character.Item newItem = SelectRandomItem();
+                    characterInstance.GetItem(newItem);
+                    Debug.Log("Get Item!");
+                }
+                else
+                {
+                    Debug.Log("Inventory is full...");
+                }
             }
             else if (tileType == Tile.TileType.Jail)
             {   
@@ -238,11 +269,12 @@ public class CharacterManager
             else if (tileType == Tile.TileType.Warp)
             {
                 //FIXME : Add warp code!
+                //warp tiles are NOT used.
                 Debug.Log("This Tile is Portal!");
             }
             else
             {
-                Debug.Log("Default Tile.");
+//                Debug.Log("Default Tile.");
             }
         }
     }
