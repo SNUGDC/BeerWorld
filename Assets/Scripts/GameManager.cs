@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 	public Enemy enemyPrefab;
 	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
+    //temp
+    private Character.CharClass charClass = Character.CharClass.Novice;
+
 	public Dictionary<string, EnemyManager> GetEnemies()
 	{
 		return enemies;
@@ -95,7 +98,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void AddUser(NetworkViewID id)
+	public void AddUser(NetworkViewID id, Character.CharClass charClass)
 	{
 		if (id == NetworkManager.networkInstance.Id)
 		{
@@ -103,7 +106,7 @@ public class GameManager : MonoBehaviour
 		}
 
 		otherCharacterManagers.Add(id,
-				CharacterManager.CreateInStart(characterPrefab, arrowPrefab));
+				CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass));
 		otherCharacterManagers[id].Init();
 		otherPlayers.Add(id);
 		TurnManager.Get().AddPlayerTEMP(id);
@@ -127,10 +130,30 @@ public class GameManager : MonoBehaviour
 		NetworkManager.SendGameStartMessage();
 	}
 
-	void Awake ()
-	{
+    //temp
+    Character.CharClass RandomSelectClass()
+    {
+        int temp = Random.Range(1,3);
+        switch (temp)
+        {
+            case 1:
+                return Character.CharClass.Warrior;
+            case 2:
+                return Character.CharClass.Tanker;
+            case 3:
+                return Character.CharClass.Attacker;
+            default:
+                return Character.CharClass.Novice;
+        }
+    }
+    
+    void Awake ()
+    {
+        //temp
+        charClass = RandomSelectClass();
+
 		gameManagerInstance = this;
-		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab);
+		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass);
 		enemyInfoList = new EnemyInfoHolder();
 	}
 

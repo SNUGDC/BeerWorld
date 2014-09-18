@@ -10,20 +10,23 @@ public class CharacterManager
 		return characterMover.GetCurrentTileKey();
 	}
 
-	public static CharacterManager CreateInStart(Character characterPrefab, DirectionArrow arrowPrefab)
+    Character.CharClass charClass = Character.CharClass.Novice;
+
+	public static CharacterManager CreateInStart(Character characterPrefab, DirectionArrow arrowPrefab, Character.CharClass charClass)
 	{
-		return new CharacterManager(characterPrefab, arrowPrefab);
+		return new CharacterManager(characterPrefab, arrowPrefab, charClass);
 	}
 
-	public static CharacterManager Create(Character characterPrefab, DirectionArrow arrowPrefab)
+    public static CharacterManager Create(Character characterPrefab, DirectionArrow arrowPrefab, Character.CharClass charClass)
 	{
-		return new CharacterManager(characterPrefab, arrowPrefab);
+		return new CharacterManager(characterPrefab, arrowPrefab, charClass);
 	}
 
-	private CharacterManager(Character characterPrefab, DirectionArrow arrowPrefab)
+    private CharacterManager(Character characterPrefab, DirectionArrow arrowPrefab, Character.CharClass charClass)
 	{
 		this.characterPrefab = characterPrefab;
 		this.arrowPrefeb = arrowPrefab;
+        this.charClass = charClass;
 	}
 
 	public void Init()
@@ -166,6 +169,9 @@ public class CharacterManager
 
 	public void InitializeCharacter()
 	{
+        characterInstance.SetCharClass(this.charClass);
+        Debug.Log("Create : " + charClass);
+
 		Tile startTile = TileManager.GetStartTile();
 		characterInstance.SetStartTile(startTile);
 
