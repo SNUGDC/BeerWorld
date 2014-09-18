@@ -27,12 +27,12 @@ public partial class NetworkManager : MonoBehaviour {
 	void Awake ()
 	{
 		networkInstance = this;
+		Id = Network.AllocateViewID ();
 	}
 
 	// Use this for initialization
 	void Start () {
 		username = PlayerPrefs.GetString ("id");
-		Id = Network.AllocateViewID ();
 	}
 
 	[RPC]
@@ -56,15 +56,15 @@ public partial class NetworkManager : MonoBehaviour {
 	{
 		if (otherPlayers.Count == 0)
 		{
-			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId);
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.AllBuffered, ownerId);
 		}
 		else if (otherPlayers.Count == 1)
 		{
-			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId, otherPlayers[0]);
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_2", RPCMode.AllBuffered, ownerId, otherPlayers[0]);
 		}
 		else if (otherPlayers.Count == 2)
 		{
-			networkInstance.networkView.RPC("ReceiveSetTurnOrder_1", RPCMode.All, ownerId, otherPlayers[0], otherPlayers[1]);
+			networkInstance.networkView.RPC("ReceiveSetTurnOrder_3", RPCMode.AllBuffered, ownerId, otherPlayers[0], otherPlayers[1]);
 		}
 		else
 		{
@@ -106,7 +106,6 @@ public partial class NetworkManager : MonoBehaviour {
 	private void ReceiveGameStartMessage(NetworkViewID id)
 	{
 		Debug.Log("Game Start! @Cilent");
-		SendUsersNetworkViewID();
 	}
 
     //temp
@@ -131,21 +130,21 @@ public partial class NetworkManager : MonoBehaviour {
         Character.CharClass charClass = RandomSelectClass();
         if (charClass == Character.CharClass.Warrior)
         {
-            networkInstance.networkView.RPC("ReceiveWarriorUsersNetworkViewID", RPCMode.Others, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveWarriorUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
         }
         else if (charClass == Character.CharClass.Tanker)
         {
-            networkInstance.networkView.RPC("ReceiveTankerUsersNetworkViewID", RPCMode.Others, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveTankerUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
         }
         else if (charClass == Character.CharClass.Attacker)
         {
-            networkInstance.networkView.RPC("ReceiveAttackerUsersNetworkViewID", RPCMode.Others, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveAttackerUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
         }
         else
         {
-            networkInstance.networkView.RPC("ReceiveNoviceUsersNetworkViewID", RPCMode.Others, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveNoviceUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
         }
-    }
+    }	
 
 	[RPC]
 	private void ReceiveNoviceUsersNetworkViewID(NetworkViewID id)
