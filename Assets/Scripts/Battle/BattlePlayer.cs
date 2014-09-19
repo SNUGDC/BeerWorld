@@ -15,10 +15,11 @@ public class BDice
 public class BattlePlayerUI
 {
 	public GameObject attackDiceParent;
-  public GameObject[] attackDices = new GameObject[3];
+    public GameObject[] attackDices = new GameObject[3];
 	public GameObject defenseDiceParent;
-  public GameObject[] defenseDices = new GameObject[3];
-  public GameObject[] hearts = new GameObject[4];
+    public GameObject[] defenseDices = new GameObject[3];
+    public GameObject[] hearts = new GameObject[4];
+    public SpriteRenderer unitRenderer;
 }
 
 public class BattlePlayer
