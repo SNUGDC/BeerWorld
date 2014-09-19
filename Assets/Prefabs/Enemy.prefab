@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   redSmallest: {fileID: 21300000, guid: 6090b0cbfe9ff4dc3bd76d71251670fb, type: 3}
   whiteSmallest: {fileID: 21300000, guid: a13f30c4f6e37495f8e47d39fff306a4, type: 3}
   enemySprite: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +121,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c63b2a6dd9c44e4b9c95843a48d5020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32bdeab1c00554639866b74df4b88928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000
