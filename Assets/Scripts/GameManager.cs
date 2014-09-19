@@ -128,9 +128,6 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 
-		otherCharacterManagers.Add(id,
-				CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass));
-		otherCharacterManagers[id].Init();
 		otherPlayers.Add(id);
 		TurnManager.Get().AddPlayerTEMP(id);
 
@@ -148,6 +145,20 @@ public class GameManager : MonoBehaviour
 		BattleUIManager.Get().SetPlayers(playerOrder);
 	}
 
+	public void CreateCharacters()
+	{
+		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass);
+		myCharacterManager.Init();
+
+		Slinqable.Slinq(otherPlayers).ForEach(
+			(otherPlayerId) => {
+				otherCharacterManagers.Add(otherPlayerId,
+						CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass));
+				otherCharacterManagers[otherPlayerId].Init();
+			}
+		);
+	}
+
 	public void GameStart()
 	{
 		var enemyInfos = enemyInfoList.GetEnemyInfoList();
@@ -156,9 +167,13 @@ public class GameManager : MonoBehaviour
 				NetworkManager.MakeEnemy(enemyInfo);
 				}
 			);
+
 		NetworkManager.SetTurnOrder(
 				NetworkManager.networkInstance.Id, otherPlayers);
-		GetMyCharacterManager().ChangeMoveStateToIdle();
+
+		CreateCharacters();
+
+		myCharacterManager.ChangeMoveStateToIdle();
 		NetworkManager.SendGameStartMessage();
 	}
 
@@ -185,14 +200,12 @@ public class GameManager : MonoBehaviour
         charClass = RandomSelectClass();
 
 		gameManagerInstance = this;
-		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass);
 		enemyInfoList = new EnemyInfoHolder();
 	}
 
 	// Use this for initialization
 	void Start ()
 	{
-		myCharacterManager.Init();
 		if (Network.isClient)
 		{
 			NetworkManager.SendUsersNetworkViewID();

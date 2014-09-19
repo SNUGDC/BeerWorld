@@ -1,6 +1,8 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Smooth.Algebraics;
 using Smooth.Slinq;
 
 public class BattleUIManager : MonoBehaviour
@@ -33,5 +35,14 @@ public class BattleUIManager : MonoBehaviour
 		});
 
 		this.players = players.ToList();
+	}
+
+	public LeftUIComps.Player GetPlayerUI(NetworkViewID playerId)
+	{
+		Option<LeftUIComps.Player> optionalPlayer = Slinqable.Slinq(players).FirstOrNone((player) => player.GetId() == playerId);
+
+		return optionalPlayer.ValueOr(() => {
+			throw new Exception("CannotGetUI");
+		});
 	}
 }
