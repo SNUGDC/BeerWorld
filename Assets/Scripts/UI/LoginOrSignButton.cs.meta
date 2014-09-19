@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 27ecbe3da882948e5a06b579d97cec38
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - idleButton: {fileID: 21300000, guid: 52c560a8eb4e844ee841a494c5b0c306, type: 3}
+  - pushedButton: {fileID: 21300000, guid: 7534f72c9058b4a759249de02850f848, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
