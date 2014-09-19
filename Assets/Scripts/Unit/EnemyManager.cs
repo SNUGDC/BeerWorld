@@ -109,11 +109,33 @@ public class EnemyManager
         return selectedTile;
     }
 
+    Dictionary<TileManager.TileDirection, Tile> ExceptTileWithUnit(Dictionary<TileManager.TileDirection, Tile> movableTiles)
+    {
+        Dictionary<TileManager.TileDirection, Tile> emptyTiles = new Dictionary<TileManager.TileDirection, Tile>();
+
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableTiles)
+        {
+            int tileKey = pair.Value.GetTileKey();
+            if (UnitUtil.IsPlayerEncounter(tileKey) && UnitUtil.IsEnemyEncounter(tileKey))
+            {
+                emptyTiles.Add(pair.Key, pair.Value);
+            }
+        }
+
+        return emptyTiles;
+    }
+
     void MakeSmallestEnemy()
     {
         var borderTiles = SearchBorderTiles();
-        var emptyTiles = SearchMovableTiles(borderTiles);
+        var movableTiles = SearchMovableTiles(borderTiles);
         //FIXME : CANNOT except tile including character or other smallest enemy.
+        var emptyTiles = ExceptTileWithUnit(movableTiles);
+        if (emptyTiles.Count == 0)
+        {
+            Debug.Log("No empty tile");
+            return;
+        }
         Tile placeEnemyTile = SelectRandomTile(emptyTiles);
         EnemyInfo newEnemyInfo = new EnemyInfo(placeEnemyTile.GetTileKey(), Enemy.EnemyType.Smallest);
 
