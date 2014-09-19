@@ -9840,6 +9840,11 @@ MonoBehaviour:
     - {fileID: 1939756267}
     - {fileID: 879332337}
   players: []
+  heartSprites:
+  - {fileID: 21300000, guid: 2b6df6422da2041a9812fd898256cc23, type: 3}
+  - {fileID: 21300000, guid: 700765d7640e84f5388638cf7ae0fd02, type: 3}
+  - {fileID: 21300000, guid: c8c26afde30814708ad834bbd5e1187f, type: 3}
+  - {fileID: 21300000, guid: 03f42fa77232b4a3e94a32257f6fdc71, type: 3}
 --- !u!1 &738904869
 GameObject:
   m_ObjectHideFlags: 0
