@@ -10350,7 +10350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isVisible: 1
   tileKey: 0
-  tileType: 6
+  tileType: 0
   defaultTile: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   startTile: {fileID: 21300000, guid: 59e68d659144d4338921f0c7595d20fa, type: 3}
   itemTile: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
@@ -10378,7 +10378,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &767956298
 GameObject:
@@ -14654,7 +14654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1166872800
 Transform:
   m_ObjectHideFlags: 0
@@ -14679,9 +14679,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c485ed3300eb647be8d7db0f9409014f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isVisible: 0
+  isVisible: 1
   tileKey: 0
-  tileType: 0
+  tileType: 6
   defaultTile: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   startTile: {fileID: 21300000, guid: 59e68d659144d4338921f0c7595d20fa, type: 3}
   itemTile: {fileID: 21300000, guid: d30a8a5dad294473784475c8f9ee4fd3, type: 3}
@@ -14709,7 +14709,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1168680146
 GameObject:
