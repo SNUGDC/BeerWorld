@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Smooth.Slinq;
 
+//For debug in unity ui.
+[System.Serializable]
 public class CharacterManager
 {
 	public int GetCurrentTileKey()
