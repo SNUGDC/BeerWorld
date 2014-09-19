@@ -3,7 +3,20 @@ using System.Collections.Generic;
 
 public class Character : Unit {
 
-	int remainBuffOrDebuffTurn = 0;
+	int _remainBuffOrDebuffTurn;
+	int remainBuffOrDebuffTurn
+	{
+		get
+		{
+			return _remainBuffOrDebuffTurn;
+		}
+		set
+		{
+			ui.SetBuff(bonusStat > 0, _remainBuffOrDebuffTurn);
+			_remainBuffOrDebuffTurn = value;
+		}
+	}
+
     int bonusStat = 0;
     int remainJailTurn = 0;
 	bool isMine = false;
@@ -128,7 +141,6 @@ public class Character : Unit {
     public void SetBuffOrDeBuff()
     {
         //FIXME : After implement turn counting system.
-        remainBuffOrDebuffTurn = 3+1;
         int rollResult = Dice.Roll(BDice.Species.Six);
         if (rollResult <= 3)
         {
@@ -140,6 +152,7 @@ public class Character : Unit {
             bonusStat = (-1) * (rollResult - 3);
             Debug.Log("Get Debuff! Bonus stat " + bonusStat);
         }
+        remainBuffOrDebuffTurn = 3+1;
     }
 
 	public Tile GetSpawnTile()

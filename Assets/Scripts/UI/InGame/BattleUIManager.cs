@@ -10,6 +10,8 @@ public class BattleUIManager : MonoBehaviour
 	public LeftUI leftUI;
 	public List<LeftUIComps.Player> players;
 	public List <Sprite> heartSprites;
+	public List <Sprite> buffSprites;
+	public List <Sprite> deBuffSprites;
 
 	private static BattleUIManager instance = null;
 	public static BattleUIManager Get()
