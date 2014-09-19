@@ -251,7 +251,7 @@ public class CharacterManager
             }
             else if (tileType == Tile.TileType.Item)
             {   
-                if (characterInstance.GetNumberOfItems() < 4)
+                if (characterInstance.GetNumberOfItems() < Character.MaxInventorySize)
                 {
                     Character.Item newItem = SelectRandomItem();
                     characterInstance.GetItem(newItem);

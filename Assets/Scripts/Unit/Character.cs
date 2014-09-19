@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class Character : Unit {
 
-	//public List<Item> itemList = new List<Item>();
-    int remainBuffOrDebuffTurn = 0;
+	int remainBuffOrDebuffTurn = 0;
     int bonusStat = 0;
     int remainJailTurn = 0;
     Tile spawnTile  = null;
@@ -12,6 +11,7 @@ public class Character : Unit {
     CharClass charClass = CharClass.Novice; 
 
     List<Item> inventory = new List<Item>();
+    public static int MaxInventorySize = 3;
 
     public enum Item
     {
@@ -38,7 +38,7 @@ public class Character : Unit {
     public void GetItem(Character.Item newItem)
     {
         inventory.Add(newItem);
-        Debug.Log("Get " + newItem);
+        Debug.Log("Get " + newItem + " / Inventory : " + GetNumberOfItems() + " / 3");
     }
 
     public void UseItem(Character.Item item)
