@@ -13,6 +13,16 @@ public class Character : Unit {
     List<Item> inventory = new List<Item>();
     public static int MaxInventorySize = 3;
 
+    public Sprite warriorImg;
+    public Sprite tankerImg;
+    public Sprite attackerImg;
+    public Sprite thiefImg;
+    public Sprite noviceImg;
+
+    public Sprite charImg;
+
+    public SpriteRenderer renderer;
+
     public enum Item
     {
         DiceChange,
@@ -133,6 +143,8 @@ public class Character : Unit {
 
     void SetWarriorStats()
     {
+        charImg = warriorImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 2;
@@ -147,6 +159,8 @@ public class Character : Unit {
 
     void SetTankerStats()
     {
+        charImg = tankerImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 1;
@@ -161,6 +175,8 @@ public class Character : Unit {
 
     void SetAttackerStats()
     {
+        charImg = attackerImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 3;
@@ -175,6 +191,8 @@ public class Character : Unit {
 
     void SetDefaultStats()
     {
+        charImg = noviceImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 1;
@@ -212,5 +230,8 @@ public class Character : Unit {
 	{
         SetStats();
         currentHp = maxHp;
+
+        renderer = GetComponentInChildren<SpriteRenderer>();
+        renderer.sprite = charImg;
 	}
 }
