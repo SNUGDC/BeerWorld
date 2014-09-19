@@ -44,14 +44,15 @@ public class EnemyManager
 	}
 
 	private Unit unitPrefab;
-	private Enemy unitInstance;
+	private Enemy enemyInstance;
 	private CharacterMover characterMover;
 
 	private int remainMoveCount = 0;
+    int makeCooldown = 2;
 
-	public Unit GetUnitInstance()
+	public Enemy GetEnemyInstance()
 	{
-		return unitInstance;
+		return enemyInstance;
 	}
 
 	public enum MoveState
@@ -59,7 +60,8 @@ public class EnemyManager
 		Inactive, // other user's turn.
 		Idle,  // diceRoller btn visible.
 		Moving,
-		Battle
+		Battle,
+        MakingComplete
 	}
 
 	[SerializeField]
@@ -79,26 +81,76 @@ public class EnemyManager
         return moveDices;
     }
 
-	public void ChangeMoveStateToIdle()
-	{
-		moveState = MoveState.Idle;
-
+    int CalculateMoveDicesResult()
+    {
         List<BDice.Species> moveDices = new List<BDice.Species>();
-        moveDices = GetMoveDices(unitInstance, moveDices);
+        moveDices = GetMoveDices(enemyInstance, moveDices);
         int diceResult = 0;
         for (int i = 0; i < moveDices.Count; i++)
         {
             diceResult += Dice.Roll(moveDices [i]);
         }
-		
-        SetMovement(diceResult);
 
-		Run.Coroutine(StartTurn());
+        return diceResult;
+    }
+
+    Tile SelectRandomTile(Dictionary<TileManager.TileDirection, Tile> emptyTiles)
+    {
+        int size = emptyTiles.Count;
+        int randomKey = Random.Range(0, size - 1);
+
+        List<Tile> targetTiles = new List<Tile>();
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in emptyTiles)
+        {
+            targetTiles.Add(pair.Value);
+        }
+
+        Tile selectedTile = targetTiles[randomKey];
+        return selectedTile;
+    }
+
+    void MakeSmallestEnemy()
+    {
+        var borderTiles = SearchBorderTiles();
+        var emptyTiles = SearchMovableTiles(borderTiles);
+        //FIXME : CANNOT except tile including character or other smallest enemy.
+        Tile placeEnemyTile = SelectRandomTile(emptyTiles);
+        EnemyInfo newEnemyInfo = new EnemyInfo(placeEnemyTile.GetTileKey(), Enemy.EnemyType.Smallest);
+
+        NetworkManager.MakeEnemy(newEnemyInfo);
+    }
+
+	public void ChangeMoveStateToIdle()
+	{
+        Enemy.EnemyType enemyType = enemyInstance.GetEnemyType();
+        moveState = MoveState.Idle;
+
+        if (enemyType == Enemy.EnemyType.Smallest)
+        {
+            int diceResult = CalculateMoveDicesResult();
+            SetMovement(diceResult);
+        } 
+        else if (enemyType == Enemy.EnemyType.Middle)
+        {
+            if (makeCooldown == 0)
+            {
+                MakeSmallestEnemy();
+                makeCooldown = 2;
+            }
+            makeCooldown--;
+            moveState = MoveState.MakingComplete;
+        } 
+        else
+        {
+            //none.
+        }
+		
+        Run.Coroutine(StartTurn());
 	}
 
 	Dictionary<TileManager.TileDirection, Tile> SearchBorderTiles ()
 	{
-		Vector3 position = unitInstance.transform.position;
+		Vector3 position = enemyInstance.transform.position;
 		Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(position.x, position.y);
 		return TileManager.GetTileDictionaryOfBorderTiles(unitCoordinate);
 	}
@@ -145,20 +197,20 @@ public class EnemyManager
 
 	void InstantiateUnit()
 	{
-		unitInstance = GameObject.Instantiate(unitPrefab) as Enemy;
+		enemyInstance = GameObject.Instantiate(unitPrefab) as Enemy;
 	}
 
 	public void InitializeUnit()
 	{
-        unitInstance.SetEnemyType(this.enemyType);
+        enemyInstance.SetEnemyType(this.enemyType);
 
         Vector3 spawnTilePosition = spawnTile.gameObject.transform.position;
 		Vector3 spawnPositionOfUnit = new Vector3(spawnTilePosition.x, spawnTilePosition.y, Unit.Depth);
 
-		unitInstance.transform.position = spawnPositionOfUnit;
+		enemyInstance.transform.position = spawnPositionOfUnit;
 		Vector2 unitCoordinate = FieldTileUtility.GetCoordFromPosition(spawnPositionOfUnit.x, spawnPositionOfUnit.y);
 
-		CharacterMover mover = unitInstance.GetComponent<CharacterMover>();
+		CharacterMover mover = enemyInstance.GetComponent<CharacterMover>();
 		mover.InitializeTileKey((int)(unitCoordinate.x * 100 + unitCoordinate.y));
 
 		Camera.main.transform.position = new Vector3(spawnPositionOfUnit.x, spawnPositionOfUnit.y, Camera.main.transform.position.z);
@@ -168,7 +220,7 @@ public class EnemyManager
 	void Start () {
 		InstantiateUnit();
 		InitializeUnit();
-		characterMover = unitInstance.GetComponent<CharacterMover>();
+		characterMover = enemyInstance.GetComponent<CharacterMover>();
 	}
 
 	public void SetMovement(int toMove)
@@ -182,7 +234,7 @@ public class EnemyManager
 	IEnumerator StartTurn()
 	{
 		// check Enemy is deleted.
-		while (unitInstance != null && moveState != MoveState.Inactive)
+		while (enemyInstance != null && moveState != MoveState.Inactive)
 		{
 			var stateUpdate = Run.Coroutine(StateUpdate());
 			yield return stateUpdate.WaitFor;
@@ -193,7 +245,7 @@ public class EnemyManager
 	{
 		if (moveState != MoveState.Inactive)
 		{
-			unitInstance.SendMessage("OnCmaeraFollow", unitInstance, SendMessageOptions.DontRequireReceiver);
+			enemyInstance.SendMessage("OnCmaeraFollow", enemyInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
 		if (moveState == MoveState.Moving && UnitUtil.IsPlayerEncounter(GetCurrentTileKey()))
@@ -204,7 +256,7 @@ public class EnemyManager
 			moveState = MoveState.Battle;
 		}
 
-		if (remainMoveCount <= 0 && moveState == MoveState.Moving)
+		if ((remainMoveCount <= 0 && moveState == MoveState.Moving)||(moveState == MoveState.MakingComplete))
 		{
 			moveState = MoveState.Inactive;
 			GameManager.gameManagerInstance.PassTurnToNextPlayer();
@@ -225,7 +277,7 @@ public class EnemyManager
 
 	public void Kill()
 	{
-		GameObject.Destroy(unitInstance.gameObject);
+		GameObject.Destroy(enemyInstance.gameObject);
 	}
 
 	// Called from all users.

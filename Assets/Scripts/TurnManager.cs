@@ -40,7 +40,8 @@ public class TurnManager : MonoBehaviour
 	Queue<EnemyManager> waitingEnemies;
 	private void EnemyTurnStart()
 	{
-		var enemies = GameManager.gameManagerInstance.GetEnemiesList();
+//		var enemies = GameManager.gameManagerInstance.GetEnemiesList();
+        var enemies = GameManager.gameManagerInstance.GetEnemiesListSizeOrdered();
 		waitingEnemies = new Queue<EnemyManager>(enemies);
 	}
 

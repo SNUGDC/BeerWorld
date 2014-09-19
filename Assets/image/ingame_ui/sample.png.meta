@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 035d03fb0ea6a461dafd9e661755d299
+guid: ccaeae5f00d4e47b0bec6bb66d13ffd0
 TextureImporter:
   fileIDToRecycleName:
-    21300000: arrow3
-    21300002: arrow2
+    21300000: sample
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -39,7 +38,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []

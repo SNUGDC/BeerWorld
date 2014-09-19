@@ -24,6 +24,8 @@ public class Enemy : Unit
 
     public Sprite enemySprite;
 
+    public SpriteRenderer renderer;
+
     EnemyType enemyType;
     EnemyColor enemyColor;
 
@@ -32,12 +34,16 @@ public class Enemy : Unit
 		this.enemyType = enemyType;
 	}
 
+    public EnemyType GetEnemyType()
+    {
+        return enemyType;
+    }
+
 	void SetSmallestEnemyStats()
 	{
-		Debug.Log("Set Values : Smallest");
-		
         //FIXME : temporary color.
         enemyColor = EnemyColor.Red;
+        enemySprite = redSmallest;
 
 		maxHp = 2;
 		currentHp = maxHp;
@@ -54,10 +60,9 @@ public class Enemy : Unit
 
     void SetMiddleEnemyStats()
     {
-        Debug.Log("Set Values : Middle");
-
         //FIXME : temporary color.
         enemyColor = EnemyColor.Red;
+        enemySprite = redMiddle;
 
         maxHp = 3;
         currentHp = maxHp;
@@ -100,5 +105,8 @@ public class Enemy : Unit
                 enemySprite = whiteMiddle;
             }
         }
+
+        renderer = GetComponentInChildren<SpriteRenderer>();
+        renderer.sprite = enemySprite;
 	}
 }

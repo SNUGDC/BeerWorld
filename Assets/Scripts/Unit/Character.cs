@@ -3,17 +3,58 @@ using System.Collections.Generic;
 
 public class Character : Unit {
 
-	//public List<Item> itemList = new List<Item>();
-    int remainBuffOrDebuffTurn = 0;
+	int remainBuffOrDebuffTurn = 0;
     int bonusStat = 0;
     int remainJailTurn = 0;
     Tile spawnTile  = null;
 
     CharClass charClass = CharClass.Novice; 
 
+    List<Item> inventory = new List<Item>();
+    public static int MaxInventorySize = 3;
+
+    public Sprite warriorImg;
+    public Sprite tankerImg;
+    public Sprite attackerImg;
+    public Sprite thiefImg;
+    public Sprite noviceImg;
+
+    public Sprite charImg;
+
+    public SpriteRenderer renderer;
+
+    public enum Item
+    {
+        DiceChange,
+        DiceResultChange,
+        Dodge,
+        Berserk,
+        Block,
+        Adding,
+//        Revive, //this item can be used only boss battle.
+        None
+    }
+
     public void SetCharClass(CharClass charClass)
     {
         this.charClass = charClass;
+    }
+
+    public int GetNumberOfItems()
+    {
+        return inventory.Count;
+    }
+
+    public void GetItem(Character.Item newItem)
+    {
+        inventory.Add(newItem);
+        Debug.Log("Get " + newItem + " / Inventory : " + GetNumberOfItems() + " / 3");
+    }
+
+    public void UseItem(Character.Item item)
+    {
+        inventory.Remove(item);
+        Debug.Log("Using " + item);
     }
 
     public enum CharClass
@@ -102,6 +143,8 @@ public class Character : Unit {
 
     void SetWarriorStats()
     {
+        charImg = warriorImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 2;
@@ -116,6 +159,8 @@ public class Character : Unit {
 
     void SetTankerStats()
     {
+        charImg = tankerImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 1;
@@ -130,6 +175,8 @@ public class Character : Unit {
 
     void SetAttackerStats()
     {
+        charImg = attackerImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 3;
@@ -144,6 +191,8 @@ public class Character : Unit {
 
     void SetDefaultStats()
     {
+        charImg = noviceImg;
+
         maxHp = 3;
         
         numberOfAttackDice = 1;
@@ -181,5 +230,8 @@ public class Character : Unit {
 	{
         SetStats();
         currentHp = maxHp;
+
+        renderer = GetComponentInChildren<SpriteRenderer>();
+        renderer.sprite = charImg;
 	}
 }

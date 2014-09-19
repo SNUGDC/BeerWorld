@@ -26,7 +26,6 @@ public class DirectionArrow : MonoBehaviour {
 
 	public void SetArrowImage()
 	{
-		Debug.Log("Set Arrow Img, ArrowDirection : " + arrowDirection);
 		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
 		if (arrowDirection == TileManager.TileDirection.UpLeft)

@@ -108,17 +108,78 @@ public partial class NetworkManager : MonoBehaviour {
 		Debug.Log("Game Start! @Cilent");
 	}
 
+    //temp
+    static Character.CharClass RandomSelectClass()
+    {
+        int temp = Random.Range(1,3);
+        switch (temp)
+        {
+            case 1:
+                return Character.CharClass.Warrior;
+            case 2:
+                return Character.CharClass.Tanker;
+            case 3:
+                return Character.CharClass.Attacker;
+            default:
+                return Character.CharClass.Novice;
+        }
+    }
+
 	public static void SendUsersNetworkViewID ()
 	{
-		networkInstance.networkView.RPC("ReceiveUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
-	}
+        Character.CharClass charClass = RandomSelectClass();
+        if (charClass == Character.CharClass.Warrior)
+        {
+            networkInstance.networkView.RPC("ReceiveWarriorUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+        }
+        else if (charClass == Character.CharClass.Tanker)
+        {
+            networkInstance.networkView.RPC("ReceiveTankerUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+        }
+        else if (charClass == Character.CharClass.Attacker)
+        {
+            networkInstance.networkView.RPC("ReceiveAttackerUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+        }
+        else
+        {
+            networkInstance.networkView.RPC("ReceiveNoviceUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+        }
+    }	
 
 	[RPC]
-	private void ReceiveUsersNetworkViewID(NetworkViewID id)
+	private void ReceiveNoviceUsersNetworkViewID(NetworkViewID id)
 	{
-		GameManager.gameManagerInstance.AddUser(id);
-		//
+        Character.CharClass charClass = Character.CharClass.Novice;
+		GameManager.gameManagerInstance.AddUser(id, charClass);
 	}
+
+    [RPC]
+    private void ReceiveWarriorUsersNetworkViewID(NetworkViewID id)
+    {
+        Character.CharClass charClass = Character.CharClass.Warrior;
+        GameManager.gameManagerInstance.AddUser(id, charClass);
+    }
+
+    [RPC]
+    private void ReceiveTankerUsersNetworkViewID(NetworkViewID id)
+    {
+        Character.CharClass charClass = Character.CharClass.Tanker;
+        GameManager.gameManagerInstance.AddUser(id, charClass);
+    }
+
+    [RPC]
+    private void ReceiveAttackerUsersNetworkViewID(NetworkViewID id)
+    {
+        Character.CharClass charClass = Character.CharClass.Attacker;
+        GameManager.gameManagerInstance.AddUser(id, charClass);
+    }
+
+    [RPC]
+    private void ReceiveThiefUsersNetworkViewID(NetworkViewID id)
+    {
+        Character.CharClass charClass = Character.CharClass.Thief;
+        GameManager.gameManagerInstance.AddUser(id, charClass);
+    }
 
 	public static void SendMoveTile(int coordX, int coordY)
 	{

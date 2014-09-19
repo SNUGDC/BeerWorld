@@ -16,7 +16,7 @@ public class BattleResultApplier
 	public static void ApplyBattleResult(BattlePlayer player, BattlePlayer enemy, CharacterManager playerManager, EnemyManager enemyManager)
 	{
 		playerManager.GetCharacterInstance().currentHp = player.GetHp();
-		enemyManager.GetUnitInstance().currentHp = enemy.GetHp();
+		enemyManager.GetEnemyInstance().currentHp = enemy.GetHp();
 
 		if(state == BattleResultState.PlayerWin)
 		{
