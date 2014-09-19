@@ -4,6 +4,8 @@ using System.Collections;
 public partial class StageMatchingButton : MonoBehaviour {
 	RoomManager rmManager;
 	public string mapName = "France"; 
+	public GameObject loadingImage;
+	GameObject loading;
 
 	// Use this for initialization
 	void Start () {
@@ -15,15 +17,16 @@ public partial class StageMatchingButton : MonoBehaviour {
 	
 	}
 
-	void OnMouseDown(){
-		Debug.Log ("Clicked");
+	void OnMouseUp(){
 		rmManager.UpdateMasterServerInfo();
 		SearchRoom ("France");
+		//loading = Instantiate (loadingImage) as GameObject;
 	}
 
 	void OnQueue(){
 		HostData[] roomList = MasterServer.PollHostList();
 		if(roomList.Length == 0){
+			Destroy(loading);
 			CreateRoom(SystemInfo.deviceUniqueIdentifier, mapName);
 			Debug.Log("No Room in Server. So Create the Room.");
 			return;
@@ -31,11 +34,13 @@ public partial class StageMatchingButton : MonoBehaviour {
 		else{
 			foreach (HostData room in roomList){
 				if(room.connectedPlayers<3){
+					Destroy(loading);
 					JoinRoom(room);
 					Debug.Log("Find Room. So Enter the Room.");
 					return;
 				}
 			}
+			Destroy(loading);
 			CreateRoom(SystemInfo.deviceUniqueIdentifier, mapName);
 			Debug.Log("There Are No Room Available. So Create the Room.");
 			return;

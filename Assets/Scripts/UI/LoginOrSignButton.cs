@@ -7,10 +7,16 @@ public class LoginOrSignButton : MonoBehaviour {
 	float width_unit =  Screen.width / 1280f * 1.4f;
 	string url = "http://147.46.76.106:8000/";
 	string response;
+	SpriteRenderer spRender;
+	public Sprite idleButton;
+	public Sprite pushedButton;
 
 	// Use this for initialization
 	void Start () {
 		username = SystemInfo.deviceUniqueIdentifier;
+		idleButton = Resources.Load ("Images/mainUI/components/login_idle", typeof(Sprite)) as Sprite;
+		pushedButton = Resources.Load ("Images/mainUI/components/login_touch", typeof(Sprite)) as Sprite;
+		spRender = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +25,14 @@ public class LoginOrSignButton : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		Debug.Log (pushedButton);
+		spRender.sprite = pushedButton;
+		audio.Play ();
+	}
+
+	void OnMouseUp(){
 		StartCoroutine( Request2Web("login"));
+		spRender.sprite = idleButton;
 	}
 
 	IEnumerator Request2Web(string req){

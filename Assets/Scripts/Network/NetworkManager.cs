@@ -105,6 +105,7 @@ public partial class NetworkManager : MonoBehaviour {
 	[RPC]
 	private void ReceiveGameStartMessage(NetworkViewID id)
 	{
+		GameManager.gameManagerInstance.CreateCharacters();
 		Debug.Log("Game Start! @Cilent");
 	}
 
