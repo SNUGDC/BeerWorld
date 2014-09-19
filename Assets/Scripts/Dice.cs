@@ -7,11 +7,11 @@ public class Dice
 	{
 		if (diceSpecies == BDice.Species.Four)
 		{
-			return Random.Range(1, 4);
+			return BattleManager.random.Next(1, 5);
 		}
 		else if (diceSpecies == BDice.Species.Six)
 		{
-			return Random.Range(1, 6);
+			return BattleManager.random.Next(1, 7);
 		}
 		else if (diceSpecies == BDice.Species.One)
 		{

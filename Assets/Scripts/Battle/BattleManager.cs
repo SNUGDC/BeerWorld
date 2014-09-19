@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
+	public static System.Random random = new System.Random();
+
 	public enum State
 	{
 		Inactive,
