@@ -182,6 +182,21 @@ public class EnemyManager
 		return characterMover.GetTileDictionaryOfMovableTiles(borderTileDictionary);
 	}
 
+    Dictionary<TileManager.TileDirection, Tile> SearchMovableTilesWithoutSaveTiles(Dictionary<TileManager.TileDirection, Tile> movableTiles)
+    {
+        Dictionary<TileManager.TileDirection, Tile> movableTilesWithoutSaveTiles = new Dictionary<TileManager.TileDirection, Tile>();
+
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableTiles)
+        {
+            if (pair.Value.tileType != Tile.TileType.Save)
+            {
+                movableTilesWithoutSaveTiles.Add(pair.Key, pair.Value);
+            }
+        }
+
+        return movableTilesWithoutSaveTiles;
+    }
+
 	IEnumerator MoveAndNotify(Tile toMoveTile)
 	{
 		NetworkManager.MoveEnemy(toMoveTile.GetTileKey(), enemyId);
@@ -205,9 +220,9 @@ public class EnemyManager
 		return characterMover.MoveTo(toMoveTile);
 	}
 
-	void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionary)
+	void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionaryWithoutSaveTiles)
 	{
-		foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionary)
+        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionaryWithoutSaveTiles)
 		{
 			toMoveTile = pair.Value;
 			if (toMoveTile == null)
@@ -287,8 +302,9 @@ public class EnemyManager
 		{
 			var borderDictionary = SearchBorderTiles();
 			var movableDictionary = SearchMovableTiles(borderDictionary);
+            var movableDictionaryWithoutSaveTiles = SearchMovableTilesWithoutSaveTiles(movableDictionary);
 
-			SetDestination(movableDictionary);
+            SetDestination(movableDictionaryWithoutSaveTiles);
 
 			var moveAndNotify = Run.Coroutine(MoveAndNotify(toMoveTile));
 			yield return moveAndNotify.WaitFor;
