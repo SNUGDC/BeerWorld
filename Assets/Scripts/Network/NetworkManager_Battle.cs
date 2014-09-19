@@ -20,7 +20,7 @@ public partial class NetworkManager : MonoBehaviour
 	[RPC]
 	private void ReceiveStartBattle(NetworkViewID user, string enemyId, int seed, int attackOrDefense)
 	{
-		UnityEngine.Random.seed = seed;
+		BattleManager.random = new System.Random(seed);
 
 		CharacterManager player = null;
 		if (user.isMine)

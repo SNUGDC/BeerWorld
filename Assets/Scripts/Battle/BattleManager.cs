@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
+	public static System.Random random = new System.Random();
+
 	public enum State
 	{
 		Inactive,
@@ -49,23 +51,39 @@ public class BattleManager : MonoBehaviour
 
 	private CharacterManager playerManager;
 	private EnemyManager enemyManager;
+
+    void SetBattleUnitImg(Sprite leftUnitImg, Sprite rightUnitImg)
+    {
+        leftPlayerUI.unitRenderer.sprite = leftUnitImg;
+        rightPlayerUI.unitRenderer.sprite = rightUnitImg;
+    }
+
 	public void ShowBattle(CharacterManager playerManager, EnemyManager enemyManager, bool isMine, AttackOrDefense attackOrDefense)
 	{
 		battleCamera.enabled = true;
 		state = State.Start;
 		this.attackOrDefense = attackOrDefense;
 
+        Sprite playerImg = playerManager.GetCharacterInstance().charImg;
+        Sprite enemyImg = enemyManager.GetEnemyInstance().enemySprite;
+
 		if (attackOrDefense == AttackOrDefense.Attack)
 		{
 			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), leftPlayerUI);
-			enemy = BattleUtil.GetPlayer(enemyManager.GetEnemyInstance(), rightPlayerUI);
+            enemy = BattleUtil.GetPlayer(enemyManager.GetEnemyInstance(), rightPlayerUI);
+
+            SetBattleUnitImg(playerImg, enemyImg);
+
 			enemy.SwitchDice();
 		}
 		else
 		{
 			player = BattleUtil.GetPlayer(playerManager.GetCharacterInstance(), rightPlayerUI);
 			enemy = BattleUtil.GetPlayer(enemyManager.GetEnemyInstance(), leftPlayerUI);
-			player.SwitchDice();
+            
+            SetBattleUnitImg(enemyImg, playerImg);
+       
+            player.SwitchDice();
 		}
 
 		this.playerManager = playerManager;

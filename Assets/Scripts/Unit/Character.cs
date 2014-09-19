@@ -6,7 +6,10 @@ public class Character : Unit {
 	int remainBuffOrDebuffTurn = 0;
     int bonusStat = 0;
     int remainJailTurn = 0;
+	bool isMine = false;
     Tile spawnTile  = null;
+	NetworkViewID playerId;
+	LeftUIComps.Player ui;
 
     CharClass charClass = CharClass.Novice; 
 
@@ -34,6 +37,19 @@ public class Character : Unit {
 //        Revive, //this item can be used only boss battle.
         None
     }
+
+	public new int currentHp {
+		get {
+			return base.currentHp;
+		}
+		set {
+			if (isMine)
+			{
+			}
+			ui.SetHp(value);
+			base.currentHp = value;
+		}
+	}
 
     public void SetCharClass(CharClass charClass)
     {
@@ -132,6 +148,21 @@ public class Character : Unit {
 	public void SetStartTile(Tile startTile)
 	{
 		this.spawnTile = startTile;
+	}
+
+	public void SetIsMine(bool isMine)
+	{
+		this.isMine = isMine;
+	}
+
+	public void SetPlayerId(NetworkViewID playerId)
+	{
+		this.playerId = playerId;
+	}
+
+	public void Initialize()
+	{
+		ui = BattleUIManager.Get().GetPlayerUI(playerId);
 	}
 
     public void CheckSaveTile(int tileKeyOfSaveTile)

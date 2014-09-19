@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 public class DiceRollerButton : MonoBehaviour
 {	
-	CharacterManager characterManager = null;
-	void Start()
-	{
-		characterManager  = GameManager.GetMyCharacterManager();
-	}
-	// Update is called once per frame
 	void Update ()
 	{		
+		var characterManager = GameManager.GetMyCharacterManager();
+		if (characterManager == null)
+		{
+			return;
+		}
+
 		CharacterManager.MoveState moveState = characterManager.GetMoveState();
 		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		if (moveState == CharacterManager.MoveState.Idle)
@@ -36,6 +36,7 @@ public class DiceRollerButton : MonoBehaviour
 
     void OnMouseDown()
     {
+				var characterManager = GameManager.GetMyCharacterManager();
         List<BDice.Species> moveDices = new List<BDice.Species>();
 		audio.Play();
         moveDices = GetMoveDices(characterManager.GetCharacterInstance(), moveDices);
