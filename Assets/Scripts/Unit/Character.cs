@@ -43,11 +43,13 @@ public class Character : Unit {
 			return base.currentHp;
 		}
 		set {
-			if (isMine)
+			var hp = value;
+			if (hp < 0)
 			{
+				hp = 0;
 			}
-			ui.SetHp(value);
-			base.currentHp = value;
+			ui.SetHp(hp);
+			base.currentHp = hp;
 		}
 	}
 
