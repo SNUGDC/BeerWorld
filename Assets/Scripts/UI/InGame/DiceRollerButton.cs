@@ -37,6 +37,7 @@ public class DiceRollerButton : MonoBehaviour
     void OnMouseDown()
     {
         List<BDice.Species> moveDices = new List<BDice.Species>();
+		audio.Play();
         moveDices = GetMoveDices(characterManager.GetCharacterInstance(), moveDices);
         int diceResult = 0;
         for (int i = 0; i < moveDices.Count; i++)

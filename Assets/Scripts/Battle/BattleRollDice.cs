@@ -9,6 +9,7 @@ public class BattleRollDice : MonoBehaviour
 	void OnMouseDown()
 	{
 		NetworkManager.BattleRoleDice();
+		audio.Play();
 	}
 
 	void On()
