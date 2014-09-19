@@ -17,14 +17,14 @@ namespace LeftUIComps
 		private GameObject playerUI;
 		[SerializeField]
 		private NetworkViewID playerId;
-		//[SerializeField]
-		//private TextMesh hpText;
+		[SerializeField]
+		private SpriteRenderer life;
 
 		public Player(GameObject playerUI, NetworkViewID playerId)
 		{
 			this.playerUI = playerUI;
 			this.playerId = playerId;
-			//this.hpText = FindGameObjectByName.FindChild(playerUI, "hp").GetComponent<TextMesh>();
+			this.life = FindGameObjectByName.FindChild(playerUI, "life").GetComponent<SpriteRenderer>();
 
 			EnableUI();
 		}
@@ -41,7 +41,7 @@ namespace LeftUIComps
 
 		public void SetHp(int currentHp)
 		{
-			Debug.Log("Set hp to " + currentHp);
+			life.sprite = BattleUIManager.Get().heartSprites[currentHp];
 		}
 	}
 }
