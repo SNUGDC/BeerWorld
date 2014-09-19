@@ -9845,6 +9845,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 700765d7640e84f5388638cf7ae0fd02, type: 3}
   - {fileID: 21300000, guid: c8c26afde30814708ad834bbd5e1187f, type: 3}
   - {fileID: 21300000, guid: 03f42fa77232b4a3e94a32257f6fdc71, type: 3}
+  buffSprites:
+  - {fileID: 21300000, guid: 75bdb8da3258b47bebad0952e8ff4971, type: 3}
+  - {fileID: 21300000, guid: 9e7dbde92f7d34887b5d687255e62390, type: 3}
+  - {fileID: 21300000, guid: 7ccd0fe979abf497c8fb5a10c1f9eb81, type: 3}
+  - {fileID: 21300000, guid: 4dabdeb5f782e49cba6c6ea8e71c0f8c, type: 3}
+  deBuffSprites:
+  - {fileID: 21300000, guid: ee3c7eedf28504e0e9ec37e25196c06a, type: 3}
+  - {fileID: 21300000, guid: c2365c81db8fc46d7b4a0912eb641383, type: 3}
+  - {fileID: 21300000, guid: 339912b2ea1514a5aab490d47edf75ea, type: 3}
+  - {fileID: 21300000, guid: 6942b85ea60f243119fc4a799b77787d, type: 3}
 --- !u!1 &738904869
 GameObject:
   m_ObjectHideFlags: 0
