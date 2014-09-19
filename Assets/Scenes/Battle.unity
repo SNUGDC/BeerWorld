@@ -8009,7 +8009,7 @@ GameObject:
   - 4: {fileID: 605828338}
   - 212: {fileID: 605828339}
   m_Layer: 0
-  m_Name: life4
+  m_Name: life
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20426,7 +20426,7 @@ GameObject:
   - 4: {fileID: 1567237332}
   - 212: {fileID: 1567237333}
   m_Layer: 0
-  m_Name: life4
+  m_Name: life
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21030,7 +21030,7 @@ GameObject:
   - 4: {fileID: 1603366660}
   - 212: {fileID: 1603366661}
   m_Layer: 0
-  m_Name: life4
+  m_Name: life
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
