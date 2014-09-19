@@ -174,6 +174,10 @@ public class CharacterManager
 
 		Tile startTile = TileManager.GetStartTile();
 		characterInstance.SetStartTile(startTile);
+		characterInstance.SetIsMine(GameManager.gameManagerInstance.isMyCharacterManager(this));
+		characterInstance.SetPlayerId(GameManager.GetNetworkViewID(this));
+
+		characterInstance.Initialize();
 
 		Vector3 spawnTilePosition = characterInstance.GetSpawnTile().gameObject.transform.position;
 		Vector3 spawnPositionOfCharacter = new Vector3(spawnTilePosition.x, spawnTilePosition.y, Unit.Depth);
