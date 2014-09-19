@@ -4902,7 +4902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &368207988
 Transform:
   m_ObjectHideFlags: 0
@@ -10576,6 +10576,7 @@ GameObject:
   - 114: {fileID: 794175830}
   - 95: {fileID: 794175828}
   - 114: {fileID: 794175831}
+  - 114: {fileID: 794175832}
   m_Layer: 0
   m_Name: ui_L
   m_TagString: Untagged
@@ -10648,6 +10649,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee36f6182b744dcfb0635d2aa2ab3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &794175832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 794175826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e65c6a3362ec4995a3148c1189f28dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuffIcons:
+  - {fileID: 371183678}
+  - {fileID: 595309587}
+  - {fileID: 1849580881}
 --- !u!1 &797638465
 GameObject:
   m_ObjectHideFlags: 0
@@ -19858,7 +19874,7 @@ GameObject:
   - 20: {fileID: 1545091976}
   m_Layer: 0
   m_Name: UICamera
-  m_TagString: Untagged
+  m_TagString: UICamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
