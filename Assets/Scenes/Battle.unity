@@ -10290,6 +10290,18 @@ Prefab:
       propertyPath: m_Name
       value: Heart2
       objectReference: {fileID: 0}
+    - target: {fileID: 400032, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -1.62920685e-07
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
   m_RootGameObject: {fileID: 1184511811}
@@ -17408,7 +17420,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
   m_PrefabInternal: {fileID: 760839129}
   m_GameObject: {fileID: 1343030818}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
   m_LocalPosition: {x: -2.38418579e-07, y: -.454701424, z: -.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

@@ -363,9 +363,7 @@ public class CharacterManager
 		}
 		else if (moveState == MoveState.DirectionSelected)
 		{
-			Debug.Log("toMoveTile in Update : " + toMoveTile);
-
-			var moveAndNotify = Run.Coroutine(MoveAndNotify(toMoveTile));
+ 			var moveAndNotify = Run.Coroutine(MoveAndNotify(toMoveTile));
 			yield return moveAndNotify.WaitFor;
 			remainMoveCount--;
 

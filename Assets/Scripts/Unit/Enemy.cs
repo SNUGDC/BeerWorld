@@ -41,8 +41,6 @@ public class Enemy : Unit
 
 	void SetSmallestEnemyStats()
 	{
-		Debug.Log("Set Values : Smallest");
-		
         //FIXME : temporary color.
         enemyColor = EnemyColor.Red;
         enemySprite = redSmallest;
@@ -62,8 +60,6 @@ public class Enemy : Unit
 
     void SetMiddleEnemyStats()
     {
-        Debug.Log("Set Values : Middle");
-
         //FIXME : temporary color.
         enemyColor = EnemyColor.Red;
         enemySprite = redMiddle;

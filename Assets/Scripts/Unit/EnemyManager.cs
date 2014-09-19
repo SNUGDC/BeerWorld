@@ -118,8 +118,6 @@ public class EnemyManager
         EnemyInfo newEnemyInfo = new EnemyInfo(placeEnemyTile.GetTileKey(), Enemy.EnemyType.Smallest);
 
         NetworkManager.MakeEnemy(newEnemyInfo);
-
-        Debug.Log("Make smallest enemy @" + placeEnemyTile.GetTileKey());
     }
 
 	public void ChangeMoveStateToIdle()
