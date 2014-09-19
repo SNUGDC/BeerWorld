@@ -8742,7 +8742,7 @@ GameObject:
   - 4: {fileID: 662329120}
   - 212: {fileID: 662329121}
   m_Layer: 0
-  m_Name: buff1
+  m_Name: buff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14717,7 +14717,7 @@ GameObject:
   - 4: {fileID: 1161737601}
   - 212: {fileID: 1161737602}
   m_Layer: 0
-  m_Name: buff1
+  m_Name: buff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18648,7 +18648,7 @@ GameObject:
   - 4: {fileID: 1423932696}
   - 212: {fileID: 1423932697}
   m_Layer: 0
-  m_Name: buff1
+  m_Name: buff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
