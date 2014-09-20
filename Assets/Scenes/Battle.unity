@@ -10054,6 +10054,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c2365c81db8fc46d7b4a0912eb641383, type: 3}
   - {fileID: 21300000, guid: 339912b2ea1514a5aab490d47edf75ea, type: 3}
   - {fileID: 21300000, guid: 6942b85ea60f243119fc4a799b77787d, type: 3}
+  itemSprites:
+  - item: 0
+    sprite: {fileID: 21300000, guid: e7c886f7fc4c549f693392a67dc4406a, type: 3}
+  - item: 1
+    sprite: {fileID: 21300000, guid: c18f3c49e658d4caf8004ed7d552a6d8, type: 3}
+  - item: 2
+    sprite: {fileID: 21300000, guid: d1f005339ee2e4dc5ac8f8ec4a53d378, type: 3}
+  - item: 3
+    sprite: {fileID: 21300000, guid: fe5fc1385d66247a6a8267fcdcf9da2d, type: 3}
+  - item: 4
+    sprite: {fileID: 21300000, guid: b46242fab63f7497daec7b76b0c93757, type: 3}
+  - item: 5
+    sprite: {fileID: 21300000, guid: 5ef250a9731c549c4afb99ef520b3a6d, type: 3}
 --- !u!1 &738904869
 GameObject:
   m_ObjectHideFlags: 0

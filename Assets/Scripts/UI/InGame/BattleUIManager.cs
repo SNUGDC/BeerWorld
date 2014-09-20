@@ -13,6 +13,14 @@ public class BattleUIManager : MonoBehaviour
 	public List <Sprite> heartSprites;
 	public List <Sprite> buffSprites;
 	public List <Sprite> deBuffSprites;
+	public List <ItemSpriteSet> itemSprites;
+
+	[System.Serializable]
+	public class ItemSpriteSet
+	{
+		public Character.Item item;
+		public Sprite sprite;
+	}
 
 	private static BattleUIManager instance = null;
 	public static BattleUIManager Get()
