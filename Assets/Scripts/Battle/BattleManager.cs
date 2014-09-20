@@ -158,8 +158,10 @@ public class BattleManager : MonoBehaviour
 			enemyCalcResult = calculator.GetAttackDiceResult(player);
 		}
 
-		state = State.ShowRoll;
-		AnimateDice();
+		Run.After(DelayManager.Get().battleDiceRollToDiceResultDelay, () => {
+			state = State.ShowRoll;
+			AnimateDice();
+		});
 	}
 
 	void AnimateDice()

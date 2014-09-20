@@ -7,6 +7,7 @@ public class DelayManager : MonoBehaviour
 	public float playerMoveSpeed = 5f;
 	public float battleDiceResultToAttackDelay = 0.2f;
 	public float battleHpMinusDelay = 0.3f;
+	public float battleDiceRollToDiceResultDelay = 0.2f;
 
 	public static DelayManager instance;
 
