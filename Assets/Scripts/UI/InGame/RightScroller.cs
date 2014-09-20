@@ -27,6 +27,7 @@ public class RightScroller : MonoBehaviour
 
 	void Open()
 	{
+		audio.Play ();
 		Vector3 toMoveLocalPos = new Vector3(openedXPos, transform.localPosition.y, transform.localPosition.z);
 		Vector3 toMoveWorldPos = transform.parent.TransformPoint(toMoveLocalPos);
 		waitingAnimation = Run.WaitSeconds(0.5f);
@@ -35,6 +36,7 @@ public class RightScroller : MonoBehaviour
 
 	void Close()
 	{
+		audio.Play ();
 		Vector3 toMoveLocalPos = new Vector3(closedXPos, transform.localPosition.y, transform.localPosition.z);
 		Vector3 toMoveWorldPos = transform.parent.TransformPoint(toMoveLocalPos);
 		waitingAnimation = Run.WaitSeconds(0.5f);

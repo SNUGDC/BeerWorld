@@ -70,6 +70,14 @@ public class DirectionArrow : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+		GameObject player = GameObject.Find ("/aes");
+		if (player == null) {
+			player = new GameObject ("aes");
+			player.AddComponent<AudioSource> ();
+		}
+		player.audio.clip = audio.clip;
+		player.audio.Play ();
+
 		GameManager.GetMyCharacterManager().SetDestinationByArrow(arrowDirection);
 		GameManager.GetMyCharacterManager().DestroyAllDirectionArrows();
 	}
