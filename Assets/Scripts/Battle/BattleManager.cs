@@ -289,7 +289,8 @@ public class BattleManager : MonoBehaviour
 		//show animation with calculation result.
 		//apply damage.
 		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
-
+		leftPlayerUI.unitRenderer.gameObject.SendMessage("Attack");
+	
 		yield return new WaitForSeconds(DelayManager.Get().battleDiceResultToAttackDelay);
 
 		if (target != null)
