@@ -81,7 +81,7 @@ public class BattleManager : MonoBehaviour
     void SetBattleUnitImg(Sprite leftUnitImg, Sprite rightUnitImg)
     {
         leftPlayerUI.unitRenderer.sprite = leftUnitImg;
-        rightPlayerUI.unitRenderer.sprite = rightUnitImg;
+		rightPlayerUI.unitRenderer.sprite = rightUnitImg;
     }
 
 	public void ShowBattle(CharacterManager playerManager, EnemyManager enemyManager, bool isMine, AttackOrDefense attackOrDefense)
@@ -300,7 +300,6 @@ public class BattleManager : MonoBehaviour
 		//show animation with calculation result.
 		//apply damage.
 		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
-		leftPlayerUI.unitRenderer.gameObject.SendMessage("Attack");
 	
 		yield return new WaitForSeconds(DelayManager.Get().battleDiceResultToAttackDelay);
 
@@ -320,6 +319,10 @@ public class BattleManager : MonoBehaviour
 
 			for(int i=1; i<=damage; i++)
 			{
+				if(target.ui == leftPlayerUI)
+					rightPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
+				if(target.ui == rightPlayerUI)
+					leftPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
 				multiAudioClip.audioSources[0].Play ();
 				target.ApplyDamage (1);
 				UpdateRemainHP();
