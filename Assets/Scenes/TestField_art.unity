@@ -27928,6 +27928,7 @@ GameObject:
   - 95: {fileID: 2095933415}
   - 114: {fileID: 2095933414}
   - 61: {fileID: 2095933417}
+  - 114: {fileID: 2095933418}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -28007,6 +28008,21 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: 2.23000002, y: 2.25}
   m_Center: {x: 0, y: 0}
+--- !u!114 &2095933418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb859c2f37dbc64695cd48d8e4ac63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clips:
+  - {fileID: 8300000, guid: 7d790fec164173340809e38b6e20339f, type: 3}
+  - {fileID: 8300000, guid: 737592f95c4463e4f948a6f8cdfca1ef, type: 3}
+  audioSources: []
 --- !u!1 &2100617232
 GameObject:
   m_ObjectHideFlags: 0
@@ -28116,7 +28132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: d08fc82c43ea14018a80afe6a718b40f, type: 3}
   - {fileID: 8300000, guid: bb05a5b49bc8ddf459b1cc91aa72f3f7, type: 3}
   - {fileID: 8300000, guid: 2142152993b86144099ac00ae78fc469, type: 3}
   - {fileID: 8300000, guid: b0192871dc7acfb48b6c68628c640031, type: 3}
