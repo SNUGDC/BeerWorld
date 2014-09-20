@@ -25,7 +25,7 @@ public class RightScroller : MonoBehaviour
 		return transform.localPosition.x > openedXPos + 1;
 	}
 
-	void Open()
+	public void Open()
 	{
 		audio.Play ();
 		Vector3 toMoveLocalPos = new Vector3(openedXPos, transform.localPosition.y, transform.localPosition.z);
@@ -34,7 +34,7 @@ public class RightScroller : MonoBehaviour
 		iTween.MoveTo(gameObject, iTween.Hash("position", toMoveWorldPos, "easetype", iTween.EaseType.easeOutCubic, "time", 0.5f));
 	}
 
-	void Close()
+	public void Close()
 	{
 		audio.Play ();
 		Vector3 toMoveLocalPos = new Vector3(closedXPos, transform.localPosition.y, transform.localPosition.z);

@@ -157,6 +157,9 @@ public class BattleUIManager : MonoBehaviour
 
 	public void UseItemCard(Character.Item item)
 	{
+		var inventoryScoroll = inventoryUI.GetComponent<RightScroller>();
+		inventoryScoroll.Close();
+
 		ShowItemUseAnimation(item)
 			.ExecuteWhenDone(() => {
 				Debug.Log("Not delete item");
