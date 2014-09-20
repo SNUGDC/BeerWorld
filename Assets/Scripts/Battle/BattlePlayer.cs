@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Slinq;
 
 public class BDice
 {
@@ -56,6 +57,10 @@ public class BattlePlayer
     this.ui = ui;
     this.bonusStat = bonusStat;
     this.currentHp = currentHp;
+
+		ui.battleBuffUIs.ForEach((buffUI) => {
+			buffUI.spriteRenderer.enabled = false;
+		});
   }
 
   public void ApplyDamage(int damage)
@@ -111,5 +116,19 @@ public class BattlePlayer
 			ui.defenseDiceParent.transform.position = attackDicePosition;
 			ui.defenseDiceParent.transform.localScale = attackDiceScale;
 		}
+	}
+
+	public void DisableAllBuffUI()
+	{
+		ui.battleBuffUIs.ForEach((buffUI) => {
+				buffUI.spriteRenderer.enabled = false;
+		});
+	}
+
+	public void EnableBuffUI(Character.Item item)
+	{
+		Slinqable.Slinq(ui.battleBuffUIs)
+			.Where((buffUI) => buffUI.item == item)
+			.ForEach((buffUI) => buffUI.spriteRenderer.enabled = true);
 	}
 }
