@@ -29,7 +29,6 @@ public class RightScroller : MonoBehaviour
 	{
 		Vector3 toMoveLocalPos = new Vector3(openedXPos, transform.localPosition.y, transform.localPosition.z);
 		Vector3 toMoveWorldPos = transform.parent.TransformPoint(toMoveLocalPos);
-		//transform.position = toMoveWorldPos;
 		waitingAnimation = Run.WaitSeconds(0.5f);
 		iTween.MoveTo(gameObject, iTween.Hash("position", toMoveWorldPos, "easetype", iTween.EaseType.easeOutCubic, "time", 0.5f));
 	}
@@ -38,7 +37,6 @@ public class RightScroller : MonoBehaviour
 	{
 		Vector3 toMoveLocalPos = new Vector3(closedXPos, transform.localPosition.y, transform.localPosition.z);
 		Vector3 toMoveWorldPos = transform.parent.TransformPoint(toMoveLocalPos);
-		//transform.position = toMoveWorldPos;
 		waitingAnimation = Run.WaitSeconds(0.5f);
 		iTween.MoveTo(gameObject, iTween.Hash("position", toMoveWorldPos, "easetype", iTween.EaseType.easeOutCubic, "time", 0.5f));
 	}
@@ -60,14 +58,11 @@ public class RightScroller : MonoBehaviour
 
 	void OnMouseUpAsButton()
 	{
-		Debug.Log("OnMouseUpAsButton Start");
 		if (waitingAnimation != null && !waitingAnimation.isDone)
 		{
 			return;
 		}
 		SetInitialState();
-
-		Debug.Log("OnMouseUpAsButton Middle");
 
 		if (state == State.Closing)
 		{
@@ -93,13 +88,10 @@ public class RightScroller : MonoBehaviour
 		Vector3 screenPoint = BattleUIManager.Get().uiCamera.WorldToScreenPoint(transform.position);
 		Vector3 mousePoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 
-		Debug.Log("Startdrag " + state);
-
 		yield return null;
 
 		while(Input.GetMouseButton(0))
 		{
-			Debug.Log("Dragging");
 			if (state == State.Closing)
 			{
 				if (CheckDraggedEnoughToClose())
@@ -116,7 +108,6 @@ public class RightScroller : MonoBehaviour
 					yield break;
 				}
 			}
-			Debug.Log("OnMouseDrag while");
 
 			Vector3 curMousePoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 			Vector3 diffScreenPoint = curMousePoint - mousePoint;
