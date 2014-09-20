@@ -124,9 +124,6 @@ public class GameManager : MonoBehaviour
 	public void GameStartButtonClicked()
 	{
 		NetworkManager.SendUsersNetworkViewID();
-		Run.After(0.3f, () => {
-			GameStart();
-		});
 	}
 
 	public void AddUser(NetworkViewID id, Character.CharClass charClass)
@@ -134,6 +131,14 @@ public class GameManager : MonoBehaviour
 		if (id == NetworkManager.networkInstance.Id)
 		{
 			playerClasses.Add(id, charClass);
+
+			//for localtest.
+			if (Network.connections.Length == 0)
+			{
+				Run.After(0.3f, () => {
+					GameStart();
+				});
+			}
 			return;
 		}
 
