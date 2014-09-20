@@ -155,6 +155,22 @@ public class BattleUIManager : MonoBehaviour
 			);
 	}
 
+	void RearrangeInventory()
+	{
+		var items = Slinqable.Slinq(inventoryUI.itemCardComps)
+			.Select((itemCard) => itemCard.GetItem())
+			.Where((item) => item != Character.Item.None)
+			.ToList();
+
+		Slinqable.Slinq(inventoryUI.itemCardComps)
+			.ForEach((itemCard) => itemCard.SetItem(Character.Item.None, null));
+
+		Debug.Log("First of items is " + items[0] + ", " + items.Count);
+		items.ForEach(
+			(item) => { AddItemCard(item); }
+		);
+	}
+
 	public void UseItemCard(Character.Item item)
 	{
 		var inventoryScoroll = inventoryUI.GetComponent<RightScroller>();
@@ -167,6 +183,7 @@ public class BattleUIManager : MonoBehaviour
 				var character = characterManager.GetCharacterInstance();
 				character.UseItem(item);
 				RemoveItem(item);
+				RearrangeInventory();
 			});
 	}
 }
