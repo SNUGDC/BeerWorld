@@ -19,6 +19,20 @@ namespace InventoryComps
 		[SerializeField]
 		private GameObject itemCardGO;
 
+		public Character.Item GetItem()
+		{
+			return item;
+		}
+
+		public void SetItem(Character.Item item)
+		{
+			this.item = item;
+			if (item != Character.Item.None)
+			{
+				itemCardGO.SetActive(true);
+			}
+		}
+
 		public ItemCard(Character.Item item, GameObject itemCardGO)
 		{
 			this.item = item;

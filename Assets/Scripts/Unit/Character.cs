@@ -271,6 +271,12 @@ public class Character : Unit {
         }
     }
 
+	void AddItem(Item item)
+	{
+		inventory.Add(item);
+		BattleUIManager.Get().AddItemCard(item);
+	}
+
 	// Use this for initialization = BDice.Species.Six;
 	void Start ()
 	{
@@ -279,5 +285,10 @@ public class Character : Unit {
 
         renderer = GetComponentInChildren<SpriteRenderer>();
         renderer.sprite = charImg;
+
+				AddItem(Item.DiceChange);
+				AddItem(Item.DiceResultChange);
+				AddItem(Item.Dodge);
+				AddItem(Item.Berserk);
 	}
 }

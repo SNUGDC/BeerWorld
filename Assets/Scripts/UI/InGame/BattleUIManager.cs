@@ -96,4 +96,14 @@ public class BattleUIManager : MonoBehaviour
 		var buffAnimation = leftUI.leftUIGO.GetComponent<BuffAnimation>();
 		buffAnimation.PlayBuffAt(tilePos, playerIndex);
 	}
+
+	public void AddItemCard(Character.Item item)
+	{
+		Slinqable.Slinq(inventoryUI.itemCardComps).FirstOrNone(
+			(itemCard) => itemCard.GetItem() == Character.Item.None
+		).ForEachOr(
+			(itemCard) => itemCard.SetItem(item),
+			() => Debug.Log("There is no empty imte.")
+		);
+	}
 }
