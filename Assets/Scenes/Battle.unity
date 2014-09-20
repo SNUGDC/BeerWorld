@@ -9839,6 +9839,7 @@ MonoBehaviour:
     - {fileID: 1557273241}
     - {fileID: 1939756267}
     - {fileID: 879332337}
+    leftUIGO: {fileID: 1370185154}
   players: []
   heartSprites:
   - {fileID: 21300000, guid: 2b6df6422da2041a9812fd898256cc23, type: 3}

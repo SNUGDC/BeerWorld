@@ -48,4 +48,24 @@ public class BattleUIManager : MonoBehaviour
 			throw new Exception("CannotGetUI");
 		});
 	}
+
+	public void SetPlayerTurn(NetworkViewID playerId)
+	{
+		var playTurnAnimation = leftUI.leftUIGO.GetComponent<PlayerTurnAnimation>();
+		var turnIndex = players.FindIndex((player) => player.GetId() == playerId);
+		if (turnIndex == -1)
+		{
+			Debug.LogError("Cannot find plyaer");
+		}
+		else
+		{
+			playTurnAnimation.SetTurn(turnIndex);
+		}
+	}
+
+	public void SetEnemyTrn()
+	{
+		var playTurnAnimation = leftUI.leftUIGO.GetComponent<PlayerTurnAnimation>();
+		playTurnAnimation.SetTurn(3);
+	}
 }

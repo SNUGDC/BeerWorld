@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class LeftUI
 {
 	public List<GameObject> playerUIs;
+	public GameObject leftUIGO;
 }
 
 namespace LeftUIComps

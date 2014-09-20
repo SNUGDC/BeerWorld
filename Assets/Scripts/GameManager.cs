@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 
 		if (turnState == TurnManager.State.Player)
 		{
-			GetMyCharacterManager().ChangeMoveStateToIdle();
+			NetworkManager.SendTurnStartMessage(NetworkManager.networkInstance.Id);
 		}
 		else if (turnState == TurnManager.State.OtherPlayer)
 		{
@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
 		}
 		else if (turnState == TurnManager.State.Enemy)
 		{
+			NetworkManager.StartEnemyTurn();
 			EnemyManager turnEnemy = TurnManager.Get().GetTurnEnemy();
 			turnEnemy.ChangeMoveStateToIdle();
 		}
@@ -173,8 +174,8 @@ public class GameManager : MonoBehaviour
 
 		CreateCharacters();
 
-		myCharacterManager.ChangeMoveStateToIdle();
 		NetworkManager.SendGameStartMessage();
+		NetworkManager.SendTurnStartMessage(NetworkManager.networkInstance.Id);
 	}
 
     //temp
