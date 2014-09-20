@@ -229,6 +229,9 @@ public class BattleManager : MonoBehaviour
 			totalPlayerDice = playerCalcResult.totalDiceResult;
 			totalEnemyDice = enemyCalcResult.totalDiceResult;
 
+			player.SetTotalDiceResult(totalPlayerDice);
+			enemy.SetTotalDiceResult(totalEnemyDice);
+
 			Run useItem = Run.WaitSeconds(0);
 //------------------DiceChange
 			if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
@@ -252,6 +255,12 @@ public class BattleManager : MonoBehaviour
 
 			useItem.ExecuteWhenDone(() => {
 				//show animation with calculation result.
+				totalPlayerDice = playerCalcResult.totalDiceResult;
+				totalEnemyDice = enemyCalcResult.totalDiceResult;
+
+				player.SetTotalDiceResult(totalPlayerDice);
+				enemy.SetTotalDiceResult(totalEnemyDice);
+
 				state = State.ShowDamage;
 				Run.Coroutine(AnimateDamage(totalPlayerDice, totalEnemyDice));
 			});

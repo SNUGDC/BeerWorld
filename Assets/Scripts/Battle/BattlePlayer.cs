@@ -64,6 +64,8 @@ public class BattlePlayer
 		});
 
 		ShowDiceCount();
+
+		ui.damageCount.text = "0";
   }
 
 	void ShowDiceCount()
@@ -160,5 +162,10 @@ public class BattlePlayer
 		Slinqable.Slinq(ui.battleBuffUIs)
 			.Where((buffUI) => buffUI.item == item)
 			.ForEach((buffUI) => buffUI.spriteRenderer.enabled = true);
+	}
+
+	public void SetTotalDiceResult(int diceResult)
+	{
+		ui.damageCount.text = diceResult.ToString();
 	}
 }
