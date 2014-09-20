@@ -250,11 +250,17 @@ public class BattleManager : MonoBehaviour
 		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
 
 		yield return new WaitForSeconds(DelayManager.Get().battleDiceResultToAttackDelay);
+
 		if (target != null)
 		{
+			if (damage > target.GetHp())
+			{
+				damage = target.GetHp();
+			}
 			for(int i=1; i<=damage; i++)
 			{
 				multiAudioClip.audioSources[0].Play ();
+				UpdateRemainHP();
 				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 				target.ApplyDamage (1);
 			}
@@ -262,6 +268,7 @@ public class BattleManager : MonoBehaviour
 		else
 		{
 			multiAudioClip.audioSources[1].Play ();
+			UpdateRemainHP();
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			player.ApplyDamage(1);
 			enemy.ApplyDamage(1);
@@ -277,63 +284,52 @@ public class BattleManager : MonoBehaviour
 			Debug.Log("Player is Damaged " + damage);
 		}
 
-		var changeAnimation = ChangeAttackOrDefense();
-		changeAnimation.ExecuteWhenDone(() => {
-			if (enemy.IsDie())
-			{
-				BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
-				state = State.BattleEnd;
-			}
-			else if (player.IsDie())
-			{
-				BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
-				state = State.BattleEnd;
-			}
-			else
-			{
+		if (enemy.IsDie())
+		{
+			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
+			state = State.BattleEnd;
+		}
+		else if (player.IsDie())
+		{
+			BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
+			state = State.BattleEnd;
+		}
+		else
+		{
+			var changeAnimation = ChangeAttackOrDefense();
+			changeAnimation.ExecuteWhenDone(() => {
 				state = State.WaitingRoll;
-			}
-
-			UpdateRemainHP();
-
-			Debug.Log(
-					"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
-					" EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
-					);
-		});
+				Debug.Log(
+						"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
+						" EnemyHP : " + enemy.GetHp() + "/" + enemy.maxHp
+						);
+			});
+		}
 	}
 
 	void UpdateRemainHP()
 	{
-		float remainPlayerHPRatio = (float)player.GetHp() / (float)player.maxHp;
-		float remainEnemyHPRatio = (float)enemy.GetHp() / (float)enemy.maxHp;
-
-		Debug.Log(
-				"PlayerHP ratio : " + remainPlayerHPRatio +
-				" EnemyHP ratio : " + remainEnemyHPRatio
-				);
-
 		for (int i = 0; i < player.ui.hearts.Length; i++)
 		{
-			if (remainPlayerHPRatio <= ((float)i / (float)player.ui.hearts.Length))
+			if (i < player.GetHp())
 			{
-				player.ui.hearts[i].SetActive(false);
+				player.ui.hearts[i].SetActive(true);
 			}
 			else
 			{
-				player.ui.hearts[i].SetActive(true);
+				player.ui.hearts[i].SetActive(false);
 			}
 		}
 
 		for (int i = 0; i < enemy.ui.hearts.Length; i++)
 		{
-			if (remainEnemyHPRatio <= ((float)i / (float)enemy.ui.hearts.Length))
+			if (i < enemy.GetHp())
 			{
-				enemy.ui.hearts[i].SetActive(false);
+				enemy.ui.hearts[i].SetActive(true);
 			}
 			else
 			{
-				enemy.ui.hearts[i].SetActive(true);
+				enemy.ui.hearts[i].SetActive(false);
 			}
 		}
 	}
