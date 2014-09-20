@@ -55,4 +55,10 @@ public class RoomManager : MonoBehaviour {
 	void OnFailedToConnect(NetworkConnectionError error){
 		Debug.Log ("Failed to Connect : " + error);
 	}
+
+	public void DisconnectFromServer(){
+		Network.Disconnect (250);
+		Application.LoadLevel ("Lobby");
+		Destroy (this.gameObject);
+	}
 }
