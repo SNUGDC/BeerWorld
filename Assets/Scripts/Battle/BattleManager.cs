@@ -65,6 +65,11 @@ public class BattleManager : MonoBehaviour
 //--Item Trigger
     List<Character.Item> useItemsInBattle = new List<Character.Item>();
 
+	public bool IsPlayerTurn(CharacterManager characterManager)
+	{
+		return characterManager == playerManager;
+	}
+
 		void UpdateBuffUI()
 		{
 			player.DisableAllBuffUI();
