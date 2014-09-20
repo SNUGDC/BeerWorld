@@ -3,11 +3,13 @@ using System.Collections;
 
 public class BigDiceAnimation : MonoBehaviour {
 	Animator anim;
+	int resultNum;
+	public delegate void DiceGetter(int diceResult);
+	public DiceGetter diceGetter;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
-
 	}
 
 	public void setNumber(int num){
@@ -41,7 +43,10 @@ public class BigDiceAnimation : MonoBehaviour {
 				yield return new WaitForSeconds(0.1f*j);
 			}
 		}
-		setNumber((int)(Random.value*6)+1);
+		resultNum = (int)(Random.value*6)+1;
+		setNumber(resultNum);
+		if(diceGetter.Method!=null)
+			diceGetter(resultNum);
 		multiAudioClip.audioSources [1].Play ();
 	}
 }

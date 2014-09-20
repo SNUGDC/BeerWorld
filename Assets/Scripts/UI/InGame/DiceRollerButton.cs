@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class DiceRollerButton : MonoBehaviour
 {	
+	public GameObject BigDice;
 	void Update ()
 	{		
 		var characterManager = GameManager.GetMyCharacterManager();
@@ -15,13 +16,15 @@ public class DiceRollerButton : MonoBehaviour
 		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		if (moveState == CharacterManager.MoveState.Idle)
 		{
-			spriteRenderer.enabled = true;
-			collider2D.enabled = true;
-		}		
-		else
-		{
-			spriteRenderer.enabled = false;
-			collider2D.enabled = false;
+			BigDice.SetActive(true);
+			BigDice.GetComponent<BigDiceAnimation>().diceGetter = getDice;
+//			spriteRenderer.enabled = true;
+//			collider2D.enabled = true;
+//		}		
+//		else
+//		{
+//			spriteRenderer.enabled = false;
+//			collider2D.enabled = false;
 		}
 
 		if (Input.GetKeyUp(KeyCode.Alpha1))
@@ -39,9 +42,19 @@ public class DiceRollerButton : MonoBehaviour
         return moveDices;
     }
 
+	void getDice(int diceResult){
+		var characterManager = GameManager.GetMyCharacterManager();
+		characterManager.SetMovement(diceResult);
+		Invoke("setOffDice",0.5f);
+	}
+
+	void setOffDice(){
+		BigDice.SetActive(false);
+	}
+
     void OnMouseDown()
     {
-				var characterManager = GameManager.GetMyCharacterManager();
+			var characterManager = GameManager.GetMyCharacterManager();
         List<BDice.Species> moveDices = new List<BDice.Species>();
 		audio.Play();
         moveDices = GetMoveDices(characterManager.GetCharacterInstance(), moveDices);
