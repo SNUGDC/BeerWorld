@@ -9824,6 +9824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2f7de41c4bb4fbf957617279c17845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiCamera: {fileID: 1545091976}
   leftUI:
     playerUIs:
     - {fileID: 1557273241}

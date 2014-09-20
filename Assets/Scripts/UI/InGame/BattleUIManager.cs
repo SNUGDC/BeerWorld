@@ -7,6 +7,7 @@ using Smooth.Slinq;
 
 public class BattleUIManager : MonoBehaviour
 {
+	public Camera uiCamera;
 	public LeftUI leftUI;
 	public List<LeftUIComps.Player> players;
 	public List <Sprite> heartSprites;
