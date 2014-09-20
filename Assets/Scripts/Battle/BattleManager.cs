@@ -260,18 +260,18 @@ public class BattleManager : MonoBehaviour
 			for(int i=1; i<=damage; i++)
 			{
 				multiAudioClip.audioSources[0].Play ();
+				target.ApplyDamage (1);
 				UpdateRemainHP();
 				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
-				target.ApplyDamage (1);
 			}
 		}
 		else
 		{
 			multiAudioClip.audioSources[1].Play ();
-			UpdateRemainHP();
-			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			player.ApplyDamage(1);
 			enemy.ApplyDamage(1);
+			UpdateRemainHP();
+			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			Debug.Log("Each player is Damaged 1");
 		}
 
