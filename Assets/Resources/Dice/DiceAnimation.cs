@@ -9,11 +9,6 @@ public class DiceAnimation : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public void rollByNumber(int num){
 		anim.SetInteger("num",num);
 		anim.SetTrigger("roll");
