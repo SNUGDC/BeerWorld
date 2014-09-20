@@ -7,6 +7,7 @@ using Smooth.Slinq;
 [System.Serializable]
 public class CharacterManager
 {
+
 	public int GetCurrentTileKey()
 	{
 		return characterMover.GetCurrentTileKey();
@@ -197,7 +198,7 @@ public class CharacterManager
 	void Start () {
 		InstantiateCharacter();
 		InitializeCharacter();
-		characterMover = characterInstance.GetComponent<CharacterMover>();
+		characterMover = characterInstance.GetComponent<CharacterMover> ();
 
 		//if (Network.isClient == false)
 		//{
@@ -253,8 +254,12 @@ public class CharacterManager
         {
             if (tileType == Tile.TileType.Buff)
             {
-							BattleUIManager.Get().ShowBuffStartAnimation(GameManager.GetNetworkViewID(this), tile.transform.position);
+
+				BattleUIManager.Get().ShowBuffStartAnimation(GameManager.GetNetworkViewID(this), tile.transform.position);
                 characterInstance.SetBuffOrDeBuff();
+				TileAudioClip tileAudioClip = characterInstance.GetComponent<TileAudioClip>();
+				tileAudioClip.audioSources[0].Play ();
+				
             }
             else if (tileType == Tile.TileType.Item)
             {   
