@@ -16,6 +16,14 @@ public class BattleUIManager : MonoBehaviour
 	public List <Sprite> buffSprites;
 	public List <Sprite> deBuffSprites;
 	public List <ItemSpriteSet> itemSprites;
+	public TurnUI turnUI;
+
+	[System.Serializable]
+	public class TurnUI
+	{
+		public GameObject turnAlarm;
+		public TextMesh turnText;
+	}
 
 	[System.Serializable]
 	public class ItemSpriteSet
@@ -193,5 +201,16 @@ public class BattleUIManager : MonoBehaviour
 
 				BattleManager.Get().AddUseItemInBattle(item);
 			});
+	}
+
+	public void ShowEnemyTurn()
+	{
+		turnUI.turnAlarm.SendMessage("turnEnemy");
+	}
+
+	public void SetTurnCount(int turnCount)
+	{
+		turnUI.turnAlarm.SendMessage("turnPlayer");
+		turnUI.turnText.text = turnCount + "/15";
 	}
 }

@@ -10816,6 +10816,9 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: b46242fab63f7497daec7b76b0c93757, type: 3}
   - item: 5
     sprite: {fileID: 21300000, guid: 5ef250a9731c549c4afb99ef520b3a6d, type: 3}
+  turnUI:
+    turnAlarm: {fileID: 1607179280}
+    turnText: {fileID: 1510785562}
 --- !u!1 &738904869
 GameObject:
   m_ObjectHideFlags: 0

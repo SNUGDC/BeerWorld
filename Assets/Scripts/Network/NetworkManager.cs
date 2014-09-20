@@ -251,4 +251,26 @@ public partial class NetworkManager : MonoBehaviour {
 	{
 		Application.LoadLevel("BossBattle");
 	}
+
+	public static void SyncTurnCount(int turnCount)
+	{
+		networkInstance.networkView.RPC("ReceiveSyncTurnCount", RPCMode.All, turnCount);
+	}
+
+	[RPC]
+	private void ReceiveSyncTurnCount(int turnCount)
+	{
+		BattleUIManager.Get().SetTurnCount(turnCount);
+	}
+
+	public static void ShowEnemyTurn()
+	{
+		networkInstance.networkView.RPC("ReceiveShowEnemyTurn", RPCMode.All);
+	}
+
+	[RPC]
+	private void ReceiveShowEnemyTurn()
+	{
+		BattleUIManager.Get().ShowEnemyTurn();
+	}
 }
