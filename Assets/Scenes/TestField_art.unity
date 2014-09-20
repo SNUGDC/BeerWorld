@@ -5237,7 +5237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &368207988
 Transform:
   m_ObjectHideFlags: 0
@@ -10676,6 +10676,7 @@ Transform:
   m_LocalPosition: {x: 15.6300001, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2095933413}
   - {fileID: 928110187}
   - {fileID: 928562028}
   - {fileID: 1545091972}
@@ -12546,7 +12547,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 733254571}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &928110188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12620,7 +12621,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 733254571}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!61 &928562029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20746,7 +20747,7 @@ Transform:
   - {fileID: 682961649}
   - {fileID: 1106747334}
   m_Father: {fileID: 733254571}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!20 &1545091976
 Camera:
   m_ObjectHideFlags: 0
@@ -27143,6 +27144,56 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b50bb312f6a8c4ee294697a634801e45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &2066033531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2066033532}
+  - 212: {fileID: 2066033533}
+  m_Layer: 0
+  m_Name: bigDice_point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2066033532
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066033531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.00236225, y: -1.51158786, z: -.100000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2095933413}
+  m_RootOrder: 0
+--- !u!212 &2066033533
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066033531}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f58de7e8a91874caca88b2af91f58cc3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2067977575
 GameObject:
   m_ObjectHideFlags: 0
@@ -27865,6 +27916,113 @@ Transform:
   m_Children: []
   m_Father: {fileID: 250003659}
   m_RootOrder: 0
+--- !u!1 &2095933412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2095933413}
+  - 212: {fileID: 2095933416}
+  - 95: {fileID: 2095933415}
+  - 114: {fileID: 2095933414}
+  - 61: {fileID: 2095933417}
+  - 114: {fileID: 2095933418}
+  m_Layer: 0
+  m_Name: Dice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095933413
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2066033532}
+  m_Father: {fileID: 733254571}
+  m_RootOrder: 0
+--- !u!114 &2095933414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d436a33c9e9724e1f957969acb46ab17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2095933415
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a034ac20a25f94409803f6b8a30d1eeb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!212 &2095933416
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300002, guid: c0887b0a478434da3bfdf7067a6d08ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &2095933417
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 2.23000002, y: 2.25}
+  m_Center: {x: 0, y: 0}
+--- !u!114 &2095933418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb859c2f37dbc64695cd48d8e4ac63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clips:
+  - {fileID: 8300000, guid: 7d790fec164173340809e38b6e20339f, type: 3}
+  - {fileID: 8300000, guid: 737592f95c4463e4f948a6f8cdfca1ef, type: 3}
+  audioSources: []
 --- !u!1 &2100617232
 GameObject:
   m_ObjectHideFlags: 0
@@ -27974,7 +28132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 39db6a283c56c8e4da76ffca26bedf16, type: 3}
+  - {fileID: 8300000, guid: d08fc82c43ea14018a80afe6a718b40f, type: 3}
   - {fileID: 8300000, guid: bb05a5b49bc8ddf459b1cc91aa72f3f7, type: 3}
   - {fileID: 8300000, guid: 2142152993b86144099ac00ae78fc469, type: 3}
   - {fileID: 8300000, guid: b0192871dc7acfb48b6c68628c640031, type: 3}

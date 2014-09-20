@@ -68,7 +68,7 @@ public class CharacterMover : MonoBehaviour
 				break;
 			}
 
-			transform.position = Vector3.MoveTowards(transform.position, nextTilePosition, 0.1f);
+			transform.position = Vector3.MoveTowards(transform.position, nextTilePosition, DelayManager.Get().playerMoveSpeed * Time.deltaTime);
 
 			yield return null;
 		}
