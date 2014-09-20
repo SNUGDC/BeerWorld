@@ -136,12 +136,6 @@ public class BattleUIManager : MonoBehaviour
 		return Run.After(0.3f, () => { })
 		.Then(
 			Run.WaitWhile(() => effectSpriteRenderer.enabled, false)
-		)
-		.ExecuteWhenDone(
-			() => Debug.Log("Use item effect done.")
-		)
-		.ExecuteWhenDone(
-			() => Debug.Log("JEWIOJIOEJFW")
 		);
 	}
 
@@ -155,15 +149,38 @@ public class BattleUIManager : MonoBehaviour
 			);
 	}
 
+	void RearrangeInventory()
+	{
+		var items = Slinqable.Slinq(inventoryUI.itemCardComps)
+			.Select((itemCard) => itemCard.GetItem())
+			.Where((item) => item != Character.Item.None)
+			.ToList();
+
+		Slinqable.Slinq(inventoryUI.itemCardComps)
+			.ForEach((itemCard) => itemCard.SetItem(Character.Item.None, null));
+
+		items.ForEach(
+			(item) => { AddItemCard(item); }
+		);
+	}
+
 	public void UseItemCard(Character.Item item)
 	{
+		if (BattleManager.Get().GetBattleState() == BattleManager.State.Inactive)
+		{
+			return;
+		}
+
+		var inventoryScoroll = inventoryUI.GetComponent<RightScroller>();
+		inventoryScoroll.Close();
+
 		ShowItemUseAnimation(item)
 			.ExecuteWhenDone(() => {
-				Debug.Log("Not delete item");
 				var characterManager = GameManager.GetMyCharacterManager();
 				var character = characterManager.GetCharacterInstance();
 				character.UseItem(item);
 				RemoveItem(item);
+				RearrangeInventory();
 			});
 	}
 }

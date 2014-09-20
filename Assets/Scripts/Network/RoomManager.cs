@@ -16,6 +16,7 @@ public class RoomManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Network.minimumAllocatableViewIDs = 500;
         MasterServer.ipAddress = ipAddress;
         MasterServer.port = port;
         Id = Network.AllocateViewID();
@@ -44,12 +45,12 @@ public class RoomManager : MonoBehaviour {
 	void OnConnectedToServer(){
         Debug.Log("Connected");
 		Network.SetLevelPrefix (1);
-		Application.LoadLevel ("Battle"); // revise after complete Ready scene.
+		Application.LoadLevel ("Ready"); // revise after complete Ready scene.
 	}
 	
 	void OnServerInitialized(){
 		Network.SetLevelPrefix (1);
-		Application.LoadLevel ("Battle"); // revise after complete Ready scene.
+		Application.LoadLevel ("Ready"); // revise after complete Ready scene.
 	}
 
 	void OnFailedToConnect(NetworkConnectionError error){
