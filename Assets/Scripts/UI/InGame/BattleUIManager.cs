@@ -97,21 +97,28 @@ public class BattleUIManager : MonoBehaviour
 		buffAnimation.PlayBuffAt(tilePos, playerIndex);
 	}
 
+	Sprite GetSpriteOfItem(Character.Item item)
+	{
+		var sprite = Slinqable.Slinq(itemSprites).FirstOrNone(
+				(itemSprite) => itemSprite.item == item
+				)
+			.Select(
+					(itemSprite) => itemSprite.sprite
+					)
+			.ValueOr(
+					() => { throw new System.Exception("cannot get item sprite"); }
+					);
+
+		return sprite;
+	}
+
 	public void AddItemCard(Character.Item item)
 	{
 		Slinqable.Slinq(inventoryUI.itemCardComps).FirstOrNone(
 			(itemCard) => itemCard.GetItem() == Character.Item.None
 		).ForEachOr(
 			(itemCard) => {
-				var sprite = Slinqable.Slinq(itemSprites).FirstOrNone(
-					(itemSprite) => itemSprite.item == item
-				)
-				.Select(
-					(itemSprite) => itemSprite.sprite
-				)
-				.ValueOr(
-					() => { throw new System.Exception("cannot get item sprite"); }
-				);
+				var sprite = GetSpriteOfItem(item);
 				itemCard.SetItem(item, sprite);
 			},
 			() => Debug.Log("There is no empty imte.")
@@ -121,6 +128,8 @@ public class BattleUIManager : MonoBehaviour
 	public void UseItemCard(Character.Item item)
 	{
 		inventoryUI.itemCardUseEffect.SetActive(true);
+		var effectSpriteRenderer = inventoryUI.itemCardUseEffect.GetComponent<SpriteRenderer>();
+		effectSpriteRenderer.sprite = GetSpriteOfItem(item);
 		var animator = inventoryUI.itemCardUseEffect.GetComponent<Animator>();
 		animator.SetTrigger("ShowItemUseEffect");
 	}
