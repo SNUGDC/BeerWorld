@@ -317,6 +317,7 @@ public class BattleManager : MonoBehaviour
 					rightPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
 				else if(target.ui == rightPlayerUI)
 					leftPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
+				target.ui.unitRenderer.transform.parent.gameObject.SendMessage("Hit");
 				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 				multiAudioClip.audioSources[0].Play ();
 			}
