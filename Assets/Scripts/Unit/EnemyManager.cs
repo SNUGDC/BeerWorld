@@ -250,7 +250,7 @@ public class EnemyManager
 		CharacterMover mover = enemyInstance.GetComponent<CharacterMover>();
 		mover.InitializeTileKey((int)(unitCoordinate.x * 100 + unitCoordinate.y));
 
-		Camera.main.transform.position = new Vector3(spawnPositionOfUnit.x, spawnPositionOfUnit.y, Camera.main.transform.position.z);
+		//Camera.main.transform.position = new Vector3(spawnPositionOfUnit.x, spawnPositionOfUnit.y, Camera.main.transform.position.z);
 	}
 
 	// Use this for initialization
