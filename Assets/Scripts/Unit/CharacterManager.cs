@@ -259,7 +259,7 @@ public class CharacterManager
                 if (characterInstance.GetNumberOfItems() < Character.MaxInventorySize)
                 {
                     Character.Item newItem = SelectRandomItem();
-                    characterInstance.GetItem(newItem);
+                    characterInstance.AddItem(newItem);
                     Debug.Log("Get Item!");
                 }
                 else

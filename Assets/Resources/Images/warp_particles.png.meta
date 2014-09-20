@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: d01c0412ceef447698963a152709ca37
+guid: 7d9bf9a559e394d3ca92a4eb1f9d339c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: select_bg
+    21300000: warp_particles
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +38,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
