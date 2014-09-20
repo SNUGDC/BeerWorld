@@ -281,11 +281,11 @@ public class BattleManager : MonoBehaviour
 		return System.Math.Abs(totalPlayerDice - totalEnemyDice);
 	}
 
-	IEnumerator AnimateDamage(int totalPlayerDice, int totalEnemyDice)
-	{
-		BattlePlayer target = null;
-		int damage = 0;
+    BattlePlayer target = null;
+    int damage = 0;
 
+    IEnumerator AnimateDamage(int totalPlayerDice, int totalEnemyDice)
+	{
 		damage = CalculateDamage(totalPlayerDice, totalEnemyDice);
 		target = CompareDamageAndSelectTarget(totalPlayerDice, totalEnemyDice);
 
@@ -301,9 +301,9 @@ public class BattleManager : MonoBehaviour
 //----------Dodge item.
             if (useItemsInBattle.Contains(Character.Item.Dodge))
             {
-                   
+                Dodge();
+                useItemsInBattle.Remove(Character.Item.Dodge);
             }
-            
 
             if (damage > target.GetHp())
 			{
@@ -320,8 +320,16 @@ public class BattleManager : MonoBehaviour
 		else
 		{
 			multiAudioClip.audioSources[1].Play ();
-//            player.ApplyDamage(0);
-            player.ApplyDamage(1);
+
+            if (useItemsInBattle.Contains(Character.Item.Dodge))
+            {
+                Dodge();
+                useItemsInBattle.Remove(Character.Item.Dodge);
+            }
+            else
+            {
+                player.ApplyDamage(1);
+            }
  			enemy.ApplyDamage(1);
 			UpdateRemainHP();
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
@@ -419,9 +427,18 @@ public class BattleManager : MonoBehaviour
         
     void Dodge()
     {
+        //Add dodge effect.
+        if (target == player)
+        {
+            damage = 0;
+        } 
+        else if (target == null)
+        {
+            player.ApplyDamage(0);
+        }
     }
-
-    void Berserk()
+        
+        void Berserk()
     {
     }
 
