@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class TurnManager : MonoBehaviour
 {
 	private static TurnManager instance;
+	private GameObject turnAlarm;
 
 	public static TurnManager Get()
 	{
@@ -13,6 +14,7 @@ public class TurnManager : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
+		turnAlarm = FindObjectOfType<EnemyTurnAnimation>().gameObject;
 	}
 
 	//private List<NetworkViewID> playerList = new List<NetworkViewID>();
@@ -52,6 +54,7 @@ public class TurnManager : MonoBehaviour
 			currentTurnIndex = 0;
 			if (otherPlayers.Count == 0)
 			{
+				turnAlarm.SendMessage("turnEnemy");
 				state = State.Enemy;
 				EnemyTurnStart();
 			}
@@ -65,6 +68,7 @@ public class TurnManager : MonoBehaviour
 			currentTurnIndex += 1;
 			if (currentTurnIndex >= otherPlayers.Count)
 			{
+				turnAlarm.SendMessage("turnEnemy");
 				currentTurnIndex = 0;
 				state = State.Enemy;
 				EnemyTurnStart();
@@ -78,6 +82,7 @@ public class TurnManager : MonoBehaviour
 			}
 			else
 			{
+				turnAlarm.SendMessage("turnPlayer");
 				state = State.Player;
 			}
 		}
