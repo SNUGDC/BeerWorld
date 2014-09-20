@@ -76,7 +76,7 @@ public class Character : Unit {
         return inventory.Count;
     }
 
-    public void GetItem(Character.Item newItem)
+    public void AddItem(Character.Item newItem)
     {
         inventory.Add(newItem);
         Debug.Log("Get " + newItem.ToString() + " / Inventory : " + GetNumberOfItems() + " / 3");
