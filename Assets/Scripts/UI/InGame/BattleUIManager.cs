@@ -100,14 +100,14 @@ public class BattleUIManager : MonoBehaviour
 	Sprite GetSpriteOfItem(Character.Item item)
 	{
 		var sprite = Slinqable.Slinq(itemSprites).FirstOrNone(
-				(itemSprite) => itemSprite.item == item
-				)
-			.Select(
-					(itemSprite) => itemSprite.sprite
-					)
-			.ValueOr(
-					() => { throw new System.Exception("cannot get item sprite"); }
-					);
+			(itemSprite) => itemSprite.item == item
+			)
+		.Select(
+			(itemSprite) => itemSprite.sprite
+			)
+		.ValueOr(
+			() => { throw new System.Exception("cannot get item sprite"); }
+			);
 
 		return sprite;
 	}
