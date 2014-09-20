@@ -209,7 +209,7 @@ public class BattleManager : MonoBehaviour
 					int totalEnemyDice = enemyCalcResult.totalDiceResult;
 					//show animation with calculation result.
 					state = State.ShowDamage;
-					AnimateDamage(totalPlayerDice, totalEnemyDice);
+					Run.Coroutine(AnimateDamage(totalPlayerDice, totalEnemyDice));
 			});
 		});
 	}
@@ -236,7 +236,7 @@ public class BattleManager : MonoBehaviour
 		return System.Math.Abs(totalPlayerDice - totalEnemyDice);
 	}
 
-	void AnimateDamage(int totalPlayerDice, int totalEnemyDice)
+	IEnumerator AnimateDamage(int totalPlayerDice, int totalEnemyDice)
 	{
 		BattlePlayer target = null;
 		int damage = 0;
@@ -249,17 +249,20 @@ public class BattleManager : MonoBehaviour
 		//apply damage.
 		TileAudioClip tileAudioClip = GetComponent<TileAudioClip>();
 
+		yield return new WaitForSeconds(DelayManager.Get().battleDiceResultToAttackDelay);
 		if (target != null)
 		{
 			for(int i=1; i<=damage; i++)
 			{
 				tileAudioClip.audioSources[0].Play ();
+				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 				target.ApplyDamage (1);
 			}
 		}
 		else
 		{
 			tileAudioClip.audioSources[1].Play ();
+			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			player.ApplyDamage(1);
 			enemy.ApplyDamage(1);
 			Debug.Log("Each player is Damaged 1");
