@@ -6,6 +6,7 @@ public class InventoryUI : MonoBehaviour
 {
 	public List<GameObject> itemCards;
 	public List<InventoryComps.ItemCard> itemCardComps;
+	public GameObject itemCardUseEffect;
 }
 
 namespace InventoryComps
@@ -44,6 +45,7 @@ namespace InventoryComps
 
 		public void OnButtonClicked()
 		{
+			BattleUIManager.Get().UseItemCard(item);
 			Debug.Log("Item card cicked.");
 		}
 	}

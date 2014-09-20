@@ -106,4 +106,11 @@ public class BattleUIManager : MonoBehaviour
 			() => Debug.Log("There is no empty imte.")
 		);
 	}
+
+	public void UseItemCard(Character.Item item)
+	{
+		inventoryUI.itemCardUseEffect.SetActive(true);
+		var animator = inventoryUI.itemCardUseEffect.GetComponent<Animator>();
+		animator.SetTrigger("ShowItemUseEffect");
+	}
 }
