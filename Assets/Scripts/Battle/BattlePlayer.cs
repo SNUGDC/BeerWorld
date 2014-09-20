@@ -61,7 +61,36 @@ public class BattlePlayer
 		ui.battleBuffUIs.ForEach((buffUI) => {
 			buffUI.spriteRenderer.enabled = false;
 		});
+
+		ShowDiceCount();
   }
+
+	void ShowDiceCount()
+	{
+		Slinqable.Slinq(ui.attackDices)
+			.ForEach((attackDice) => {
+				attackDice.SetActive(false);
+			});
+
+		Slinqable.Slinq(ui.attackDices)
+			.Reverse()
+			.Take(attackDices.Count)
+			.ForEach((attackDice) => {
+				attackDice.SetActive(true);
+			});
+
+		Slinqable.Slinq(ui.defenseDices)
+			.ForEach((defenseDice) => {
+				defenseDice.SetActive(false);
+			});
+
+		Slinqable.Slinq(ui.defenseDices)
+			.Reverse()
+			.Take(defenseDices.Count)
+			.ForEach((defenseDice) => {
+				defenseDice.SetActive(true);
+			});
+	}
 
   public void ApplyDamage(int damage)
   {
