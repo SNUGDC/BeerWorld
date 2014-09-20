@@ -2,14 +2,20 @@
 using System.Collections;
 
 public class MyCharacter : MonoBehaviour {
+	ReadyManager readyManager;
 	string m_currCharacter = "Warrior";
 	SpriteRenderer spRender;
-	bool ready;
-	int myID;
+	public bool ready{
+		get;
+		private set;
+	}
+	public int myID = 0;
 
 	// Use this for initialization
 	void Start () {
 		spRender = GetComponent<SpriteRenderer> ();
+		readyManager = FindObjectOfType<ReadyManager> ();
+		readyManager.ApplyChange ();
 	}
 	
 	// Update is called once per frame
@@ -17,7 +23,7 @@ public class MyCharacter : MonoBehaviour {
 	
 	}
 
-	string currCharacter{ 
+	public string currCharacter{ 
 		get{ 
 			return m_currCharacter;
 		} 
@@ -34,9 +40,10 @@ public class MyCharacter : MonoBehaviour {
 		m_currCharacter = ((Character.CharClass) currState).ToString();
 		Sprite sprite = Resources.Load("Images/mainUI/components/lobby_char_"+m_currCharacter,typeof(Sprite)) as Sprite;
 		spRender.sprite = sprite;
+		readyManager.ApplyChange ();
 	}
 
-	public void Ready(bool _ready){
+	public void GetReady(bool _ready){
 		ready = _ready;
 	}
 }

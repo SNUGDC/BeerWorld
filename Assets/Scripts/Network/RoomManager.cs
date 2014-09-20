@@ -44,12 +44,12 @@ public class RoomManager : MonoBehaviour {
 	void OnConnectedToServer(){
         Debug.Log("Connected");
 		Network.SetLevelPrefix (1);
-		Application.LoadLevel ("Battle");
+		Application.LoadLevel ("Battle"); // revise after complete Ready scene.
 	}
 	
 	void OnServerInitialized(){
 		Network.SetLevelPrefix (1);
-		Application.LoadLevel ("Battle");
+		Application.LoadLevel ("Battle"); // revise after complete Ready scene.
 	}
 
 	void OnFailedToConnect(NetworkConnectionError error){
