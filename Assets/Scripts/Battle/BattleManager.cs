@@ -362,9 +362,10 @@ public class BattleManager : MonoBehaviour
     void DiceChange()
     {
         //Add DiceChange effect.
+			// FIXME: Is diceResults also swapped?
         int temp = playerCalcResult.totalDiceResult;
         playerCalcResult.totalDiceResult = enemyCalcResult.totalDiceResult;
-        enemyCalcResult = temp;
+        enemyCalcResult.totalDiceResult = temp;
 
         Debug.Log("Changed player diceResult and enemy diceResult");
     }

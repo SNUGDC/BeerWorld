@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class CalculationResult
 {
     public readonly List<int> diceResults;
-    public readonly int totalDiceResult;
+    public int totalDiceResult;
 
     public CalculationResult(List<int> diceResults, int totalDiceResult)
     {
