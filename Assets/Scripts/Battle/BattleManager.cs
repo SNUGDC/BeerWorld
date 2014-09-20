@@ -250,11 +250,18 @@ public class BattleManager : MonoBehaviour
 		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
 
 		yield return new WaitForSeconds(DelayManager.Get().battleDiceResultToAttackDelay);
+
+		if (damage > target.GetHp())
+		{
+			damage = target.GetHp();
+		}
+
 		if (target != null)
 		{
 			for(int i=1; i<=damage; i++)
 			{
 				multiAudioClip.audioSources[0].Play ();
+				UpdateRemainHP();
 				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 				target.ApplyDamage (1);
 			}
@@ -262,6 +269,7 @@ public class BattleManager : MonoBehaviour
 		else
 		{
 			multiAudioClip.audioSources[1].Play ();
+			UpdateRemainHP();
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			player.ApplyDamage(1);
 			enemy.ApplyDamage(1);
@@ -293,8 +301,6 @@ public class BattleManager : MonoBehaviour
 			{
 				state = State.WaitingRoll;
 			}
-
-			UpdateRemainHP();
 
 			Debug.Log(
 					"PlayerHP : " + player.GetHp() + "/" + player.maxHp +
