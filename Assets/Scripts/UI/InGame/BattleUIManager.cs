@@ -68,4 +68,11 @@ public class BattleUIManager : MonoBehaviour
 		var playTurnAnimation = leftUI.leftUIGO.GetComponent<PlayerTurnAnimation>();
 		playTurnAnimation.SetTurn(3);
 	}
+
+	public void ShowBuffStartAnimation(NetworkViewID playerId, Vector3 tilePos)
+	{
+		var playerIndex = players.FindIndex((player) => player.GetId() == playerId);
+		var buffAnimation = leftUI.leftUIGO.GetComponent<BuffAnimation>();
+		buffAnimation.PlayBuffAt(tilePos, playerIndex);
+	}
 }

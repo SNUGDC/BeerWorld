@@ -253,6 +253,7 @@ public class CharacterManager
         {
             if (tileType == Tile.TileType.Buff)
             {
+							BattleUIManager.Get().ShowBuffStartAnimation(GameManager.GetNetworkViewID(this), tile.transform.position);
                 characterInstance.SetBuffOrDeBuff();
             }
             else if (tileType == Tile.TileType.Item)
