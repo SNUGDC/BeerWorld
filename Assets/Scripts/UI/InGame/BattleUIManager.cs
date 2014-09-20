@@ -9,6 +9,8 @@ public class BattleUIManager : MonoBehaviour
 {
 	public Camera uiCamera;
 	public LeftUI leftUI;
+	public InventoryUI inventoryUI;
+
 	public List<LeftUIComps.Player> players;
 	public List <Sprite> heartSprites;
 	public List <Sprite> buffSprites;
@@ -31,6 +33,16 @@ public class BattleUIManager : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
+	}
+
+	void Start()
+	{
+		inventoryUI.itemCardComps = new List<InventoryComps.ItemCard>();
+
+		inventoryUI.itemCards.ForEach((itemCardGO) => {
+			var newItemCardComp = new InventoryComps.ItemCard(Character.Item.None, itemCardGO);
+			inventoryUI.itemCardComps.Add(newItemCardComp);
+		});
 	}
 
 	public void SetPlayers(List<NetworkViewID> playerIds)
