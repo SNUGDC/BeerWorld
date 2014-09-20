@@ -311,14 +311,14 @@ public class BattleManager : MonoBehaviour
 
 			for(int i=1; i<=damage; i++)
 			{
-				if(target.ui == leftPlayerUI)
-					rightPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
-				if(target.ui == rightPlayerUI)
-					leftPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
-				multiAudioClip.audioSources[0].Play ();
 				target.ApplyDamage (1);
 				UpdateRemainHP();
+				if(target.ui == leftPlayerUI)
+					rightPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
+				else if(target.ui == rightPlayerUI)
+					leftPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
 				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
+				multiAudioClip.audioSources[0].Play ();
 			}
 		}
 		else
