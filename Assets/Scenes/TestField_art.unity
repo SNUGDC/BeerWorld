@@ -27927,6 +27927,7 @@ GameObject:
   - 212: {fileID: 2095933416}
   - 95: {fileID: 2095933415}
   - 114: {fileID: 2095933414}
+  - 61: {fileID: 2095933417}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -27995,6 +27996,17 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: c0887b0a478434da3bfdf7067a6d08ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &2095933417
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095933412}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 2.23000002, y: 2.25}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &2100617232
 GameObject:
   m_ObjectHideFlags: 0
@@ -28104,7 +28116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clips:
-  - {fileID: 8300000, guid: 39db6a283c56c8e4da76ffca26bedf16, type: 3}
+  - {fileID: 0}
   - {fileID: 8300000, guid: bb05a5b49bc8ddf459b1cc91aa72f3f7, type: 3}
   - {fileID: 8300000, guid: 2142152993b86144099ac00ae78fc469, type: 3}
   - {fileID: 8300000, guid: b0192871dc7acfb48b6c68628c640031, type: 3}
