@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class DiceRollerButton : MonoBehaviour
 {	
 	public GameObject BigDice;
+	private int result;
 	void Update ()
 	{		
 		var characterManager = GameManager.GetMyCharacterManager();
@@ -43,13 +44,14 @@ public class DiceRollerButton : MonoBehaviour
     }
 
 	void getDice(int diceResult){
-		var characterManager = GameManager.GetMyCharacterManager();
-		characterManager.SetMovement(diceResult);
-		Invoke("setOffDice",1f);
+		result = diceResult;
+		Invoke("setOffDice",0.5f);
 	}
 
 	void setOffDice(){
 		BigDice.SetActive(false);
+		var characterManager = GameManager.GetMyCharacterManager();
+		characterManager.SetMovement(result);
 	}
 
     void OnMouseDown()

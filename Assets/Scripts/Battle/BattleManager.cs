@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Smooth.Slinq;
@@ -196,37 +197,28 @@ public class BattleManager : MonoBehaviour
 		int enemyDiceNum = enemyCalcResult.diceResults.Count;
 
 		GameObject animationGameObject = null;
+
+		Action<List<int>, GameObject[]> render = (diceResults, uiDices) => {
+			Queue<int> diceResultQueue = new Queue<int>(diceResults);
+			Slinqable.Slinq(uiDices)
+				.Reverse()
+				.Take(diceResults.Count)
+				.ForEach((attackDice) => {
+					var diceResult = diceResultQueue.Dequeue();
+					attackDice.SendMessage("rollByNumber", diceResult);
+					animationGameObject = attackDice;
+				});
+		};
+
 		if (attackOrDefense == AttackOrDefense.Attack)
 		{
-			for (int i = 0; i < playerDiceNum; i++)
-			{
-				int diceResult = playerCalcResult.diceResults[i];
-				player.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
-				animationGameObject = player.ui.attackDices[i];
-			}
-
-			for (int i = 0; i < enemyDiceNum; i++)
-			{
-				int diceResult = enemyCalcResult.diceResults[i];
-				enemy.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
-				animationGameObject = enemy.ui.defenseDices[i];
-			}
+			render(playerCalcResult.diceResults, player.ui.attackDices);
+			render(enemyCalcResult.diceResults, enemy.ui.defenseDices);
 		}
 		else
 		{
-			for (int i = 0; i < playerDiceNum; i++)
-			{
-				int diceResult = playerCalcResult.diceResults[i];
-				player.ui.defenseDices[i].SendMessage("rollByNumber", diceResult);
-				animationGameObject = player.ui.defenseDices[i];
-			}
-
-			for (int i = 0; i < enemyDiceNum; i++)
-			{
-				int diceResult = enemyCalcResult.diceResults[i];
-				enemy.ui.attackDices[i].SendMessage("rollByNumber", diceResult);
-				animationGameObject = enemy.ui.attackDices[i];
-			}
+			render(playerCalcResult.diceResults, player.ui.defenseDices);
+			render(enemyCalcResult.diceResults, enemy.ui.attackDices);
 		}
 
 		//Wait for animation end.
