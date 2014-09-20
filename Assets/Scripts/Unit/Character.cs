@@ -76,10 +76,11 @@ public class Character : Unit {
         return inventory.Count;
     }
 
-    public void GetItem(Character.Item newItem)
+    public void AddItem(Character.Item newItem)
     {
         inventory.Add(newItem);
-        Debug.Log("Get " + newItem + " / Inventory : " + GetNumberOfItems() + " / 3");
+				BattleUIManager.Get().AddItemCard(newItem);
+        Debug.Log("Get " + newItem.ToString() + " / Inventory : " + GetNumberOfItems() + " / 3");
     }
 
     public void UseItem(Character.Item item)
@@ -111,6 +112,7 @@ public class Character : Unit {
         } else
         {
             bonusStat = 0;
+            Debug.Log("(De)buff removed");
         }
 
         if (remainJailTurn != 0)

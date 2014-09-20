@@ -199,13 +199,6 @@ public class CharacterManager
 		InstantiateCharacter();
 		InitializeCharacter();
 		characterMover = characterInstance.GetComponent<CharacterMover> ();
-
-		//if (Network.isClient == false)
-		//{
-			//moveState = MoveState.Idle;
-			//Debug.Log("MoveState of server : Idle");
-			//Run.Coroutine(StartTurn());
-		//}
 	}
 
 	public void SetMovement(int toMove)
@@ -266,7 +259,7 @@ public class CharacterManager
                 if (characterInstance.GetNumberOfItems() < Character.MaxInventorySize)
                 {
                     Character.Item newItem = SelectRandomItem();
-                    characterInstance.GetItem(newItem);
+                    characterInstance.AddItem(newItem);
                     Debug.Log("Get Item!");
                 }
                 else
