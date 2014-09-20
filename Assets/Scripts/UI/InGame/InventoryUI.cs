@@ -25,6 +25,12 @@ namespace InventoryComps
 			this.itemCardGO = itemCardGO;
 
 			itemCardGO.SetActive(false);
+			itemCardGO.GetComponent<UIButtonMessage>().buttonClickEvent = OnButtonClicked;
+		}
+
+		public void OnButtonClicked()
+		{
+			Debug.Log("Item card cicked.");
 		}
 	}
 }
