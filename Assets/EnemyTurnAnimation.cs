@@ -13,4 +13,7 @@ public class EnemyTurnAnimation : MonoBehaviour {
 	void turnEnemy(){
 		anim.SetTrigger("TurnEnemy");
 	}
+	void engaged(){
+		anim.SetTrigger("Engaged");
+	}
 }
