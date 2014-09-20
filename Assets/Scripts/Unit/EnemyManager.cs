@@ -116,7 +116,7 @@ public class EnemyManager
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableTiles)
         {
             int tileKey = pair.Value.GetTileKey();
-            if (UnitUtil.IsPlayerEncounter(tileKey) && UnitUtil.IsEnemyEncounter(tileKey))
+            if (UnitUtil.IsPlayerEncounter(tileKey) == false || UnitUtil.IsEnemyEncounter(tileKey) == false)
             {
                 emptyTiles.Add(pair.Key, pair.Value);
             }
