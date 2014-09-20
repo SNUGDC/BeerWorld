@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Smooth.Slinq;
 
+//For debug in unity ui.
+[System.Serializable]
 public class CharacterManager
 {
 	public int GetCurrentTileKey()
@@ -251,6 +253,7 @@ public class CharacterManager
         {
             if (tileType == Tile.TileType.Buff)
             {
+							BattleUIManager.Get().ShowBuffStartAnimation(GameManager.GetNetworkViewID(this), tile.transform.position);
                 characterInstance.SetBuffOrDeBuff();
             }
             else if (tileType == Tile.TileType.Item)

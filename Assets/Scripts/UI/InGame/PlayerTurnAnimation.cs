@@ -7,7 +7,7 @@ public class PlayerTurnAnimation : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 	
-	void SetTurn(int turn){
+	public void SetTurn(int turn){
 		anim.SetInteger("Turn",turn);
 	}
 }

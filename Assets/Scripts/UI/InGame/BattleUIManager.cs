@@ -10,6 +10,8 @@ public class BattleUIManager : MonoBehaviour
 	public LeftUI leftUI;
 	public List<LeftUIComps.Player> players;
 	public List <Sprite> heartSprites;
+	public List <Sprite> buffSprites;
+	public List <Sprite> deBuffSprites;
 
 	private static BattleUIManager instance = null;
 	public static BattleUIManager Get()
@@ -45,5 +47,32 @@ public class BattleUIManager : MonoBehaviour
 		return optionalPlayer.ValueOr(() => {
 			throw new Exception("CannotGetUI");
 		});
+	}
+
+	public void SetPlayerTurn(NetworkViewID playerId)
+	{
+		var playTurnAnimation = leftUI.leftUIGO.GetComponent<PlayerTurnAnimation>();
+		var turnIndex = players.FindIndex((player) => player.GetId() == playerId);
+		if (turnIndex == -1)
+		{
+			Debug.LogError("Cannot find plyaer");
+		}
+		else
+		{
+			playTurnAnimation.SetTurn(turnIndex);
+		}
+	}
+
+	public void SetEnemyTrn()
+	{
+		var playTurnAnimation = leftUI.leftUIGO.GetComponent<PlayerTurnAnimation>();
+		playTurnAnimation.SetTurn(3);
+	}
+
+	public void ShowBuffStartAnimation(NetworkViewID playerId, Vector3 tilePos)
+	{
+		var playerIndex = players.FindIndex((player) => player.GetId() == playerId);
+		var buffAnimation = leftUI.leftUIGO.GetComponent<BuffAnimation>();
+		buffAnimation.PlayBuffAt(tilePos, playerIndex);
 	}
 }

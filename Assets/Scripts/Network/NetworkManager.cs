@@ -218,6 +218,7 @@ public partial class NetworkManager : MonoBehaviour {
 	[RPC]
 	private void ReceiveTurnStartMessage(NetworkViewID nextPlayerId)
 	{
+		BattleUIManager.Get().SetPlayerTurn(nextPlayerId);
 		if (NetworkManager.networkInstance.Id == nextPlayerId)
 		{
 			GameManager.GetMyCharacterManager().ChangeMoveStateToIdle();
@@ -227,6 +228,17 @@ public partial class NetworkManager : MonoBehaviour {
 		{
 			Debug.Log("Not My turn");
 		}
+	}
+
+	public static void StartEnemyTurn()
+	{
+		networkInstance.networkView.RPC("ReceiveStartEnemyTurn", RPCMode.All);
+	}
+
+	[RPC]
+	private void ReceiveStartEnemyTurn()
+	{
+		BattleUIManager.Get().SetEnemyTrn();
 	}
 
 	public static void MoveToBossBatte()
