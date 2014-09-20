@@ -131,19 +131,19 @@ public partial class NetworkManager : MonoBehaviour {
         Character.CharClass charClass = RandomSelectClass();
         if (charClass == Character.CharClass.Warrior)
         {
-            networkInstance.networkView.RPC("ReceiveWarriorUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveWarriorUsersNetworkViewID", RPCMode.AllBuffered, networkInstance.Id);
         }
         else if (charClass == Character.CharClass.Tanker)
         {
-            networkInstance.networkView.RPC("ReceiveTankerUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveTankerUsersNetworkViewID", RPCMode.AllBuffered, networkInstance.Id);
         }
         else if (charClass == Character.CharClass.Attacker)
         {
-            networkInstance.networkView.RPC("ReceiveAttackerUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveAttackerUsersNetworkViewID", RPCMode.AllBuffered, networkInstance.Id);
         }
         else
         {
-            networkInstance.networkView.RPC("ReceiveNoviceUsersNetworkViewID", RPCMode.OthersBuffered, networkInstance.Id);
+            networkInstance.networkView.RPC("ReceiveNoviceUsersNetworkViewID", RPCMode.AllBuffered, networkInstance.Id);
         }
     }	
 
