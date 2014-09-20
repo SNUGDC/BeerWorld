@@ -45,7 +45,7 @@ public class DiceRollerButton : MonoBehaviour
 	void getDice(int diceResult){
 		var characterManager = GameManager.GetMyCharacterManager();
 		characterManager.SetMovement(diceResult);
-		Invoke("setOffDice",0.5f);
+		Invoke("setOffDice",1f);
 	}
 
 	void setOffDice(){
