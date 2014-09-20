@@ -29,20 +29,20 @@ public class BattleUtil
 
     public static BattlePlayer GetPlayer(Character unit, BattlePlayerUI ui)
     {
-        if (unit.GetBonusStat() != 0)
+        if (unit.GetBonusDice() != 0)
         {
-            Debug.Log("BounsStat : " + unit.GetBonusStat());
+            Debug.Log("BounsStat : " + unit.GetBonusDice());
         }
 
         List<BDice.Species> attackDices = new List<BDice.Species>();
         List<BDice.Species> defenseDices = new List<BDice.Species>();
         
-        for(int i = 0; i < unit.numberOfAttackDice + unit.GetBonusStat(); i++)
+        for(int i = 0; i < unit.numberOfAttackDice + unit.GetBonusDice(); i++)
         {
             attackDices.Add(unit.speciesOfAttackDice);
         }
         
-        for(int i = 0; i < unit.numberOfDefenseDice + unit.GetBonusStat(); i++)
+        for(int i = 0; i < unit.numberOfDefenseDice + unit.GetBonusDice(); i++)
         {
             defenseDices.Add(unit.speciesOfDefenseDice);
         }
@@ -50,7 +50,7 @@ public class BattleUtil
         int maxHp = unit.maxHp;
         int currentHp = unit.currentHp;
 
-        int bonusStat = unit.GetBonusStat();
+        int bonusStat = unit.GetBonusDice();
         
         return new BattlePlayer(attackDices, defenseDices,
                                 maxHp, currentHp, bonusStat, ui);
