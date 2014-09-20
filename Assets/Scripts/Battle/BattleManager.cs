@@ -52,6 +52,14 @@ public class BattleManager : MonoBehaviour
 	private CharacterManager playerManager;
 	private EnemyManager enemyManager;
 
+//--Item Trigger
+    List<Character.Item> useItemsInBattle = new List<Character.Item>();
+
+    public void AddUseItemInBattle(Character.Item item)
+    {
+        useItemsInBattle.Add(item);
+    }
+
     void SetBattleUnitImg(Sprite leftUnitImg, Sprite rightUnitImg)
     {
         leftPlayerUI.unitRenderer.sprite = leftUnitImg;
@@ -209,6 +217,21 @@ public class BattleManager : MonoBehaviour
 				.ExecuteWhenDone(() => {
 					int totalPlayerDice = playerCalcResult.totalDiceResult;
 					int totalEnemyDice = enemyCalcResult.totalDiceResult;
+
+//------------------DiceChange
+                    if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
+                    {
+                        DiceChange();
+                        useItemsInBattle.Remove(Character.Item.DiceChange);
+                    }
+
+//------------------DiceResultChange
+                    if (useItemsInBattle.Contains(Character.Item.DiceResultChange) == true)
+                    {
+                        DiceResultChange();
+                        useItemsInBattle.Remove(Character.Item.DiceResultChange);
+                    }
+
 					//show animation with calculation result.
 					state = State.ShowDamage;
 					Run.Coroutine(AnimateDamage(totalPlayerDice, totalEnemyDice));
@@ -335,4 +358,38 @@ public class BattleManager : MonoBehaviour
 			}
 		}
 	}
+
+    void DiceChange()
+    {
+        //Add DiceChange effect.
+			// FIXME: Is diceResults also swapped?
+        int temp = playerCalcResult.totalDiceResult;
+        playerCalcResult.totalDiceResult = enemyCalcResult.totalDiceResult;
+        enemyCalcResult.totalDiceResult = temp;
+
+        Debug.Log("Changed player diceResult and enemy diceResult");
+    }
+
+    void DiceResultChange()
+    {
+
+        GameObject lowDice;
+    }
+
+    void Dodge()
+    {
+    }
+
+    void Berserk()
+    {
+    }
+
+    void Block()
+    {
+    }
+
+    void Adding()
+    {
+    }
 }
+

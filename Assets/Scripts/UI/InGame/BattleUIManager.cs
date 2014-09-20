@@ -125,12 +125,45 @@ public class BattleUIManager : MonoBehaviour
 		);
 	}
 
-	public void UseItemCard(Character.Item item)
+	Run ShowItemUseAnimation(Character.Item item)
 	{
 		inventoryUI.itemCardUseEffect.SetActive(true);
 		var effectSpriteRenderer = inventoryUI.itemCardUseEffect.GetComponent<SpriteRenderer>();
 		effectSpriteRenderer.sprite = GetSpriteOfItem(item);
 		var animator = inventoryUI.itemCardUseEffect.GetComponent<Animator>();
 		animator.SetTrigger("ShowItemUseEffect");
+
+		return Run.After(0.3f, () => { })
+		.Then(
+			Run.WaitWhile(() => effectSpriteRenderer.enabled, false)
+		)
+		.ExecuteWhenDone(
+			() => Debug.Log("Use item effect done.")
+		)
+		.ExecuteWhenDone(
+			() => Debug.Log("JEWIOJIOEJFW")
+		);
+	}
+
+	void RemoveItem(Character.Item item)
+	{
+		Slinqable.Slinq(inventoryUI.itemCardComps)
+			.FirstOrNone((itemCard) => itemCard.GetItem() == item)
+			.ForEachOr(
+				(itemCard) => itemCard.SetItem(Character.Item.None, null),
+				() => { throw new Exception("Cannot get item"); }
+			);
+	}
+
+	public void UseItemCard(Character.Item item)
+	{
+		ShowItemUseAnimation(item)
+			.ExecuteWhenDone(() => {
+				Debug.Log("Not delete item");
+				var characterManager = GameManager.GetMyCharacterManager();
+				var character = characterManager.GetCharacterInstance();
+				character.UseItem(item);
+				RemoveItem(item);
+			});
 	}
 }

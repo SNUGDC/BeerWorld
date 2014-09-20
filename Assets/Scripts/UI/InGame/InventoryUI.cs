@@ -35,6 +35,10 @@ namespace InventoryComps
 				itemCardGO.SetActive(true);
 				spriteRenderer.sprite = sprite;
 			}
+			else
+			{
+				itemCardGO.SetActive(false);
+			}
 		}
 
 		public ItemCard(Character.Item item, GameObject itemCardGO)

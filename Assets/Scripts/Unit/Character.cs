@@ -12,12 +12,12 @@ public class Character : Unit {
 		}
 		set
 		{
-			ui.SetBuff(bonusStat > 0, _remainBuffOrDebuffTurn);
+			ui.SetBuff(bonusDice > 0, _remainBuffOrDebuffTurn);
 			_remainBuffOrDebuffTurn = value;
 		}
 	}
 
-    int bonusStat = 0;
+    int bonusDice = 0;
     int remainJailTurn = 0;
 	bool isMine = false;
     Tile spawnTile  = null;
@@ -98,9 +98,9 @@ public class Character : Unit {
         Thief
     }
 
-    public int GetBonusStat()
+    public int GetBonusDice()
     {
-        return bonusStat;
+        return bonusDice;
     }
 
     public void UpdateRemainBuffTime()
@@ -111,7 +111,7 @@ public class Character : Unit {
             Debug.Log("Remain (de)buff turn : " + remainBuffOrDebuffTurn);
         } else
         {
-            bonusStat = 0;
+            bonusDice = 0;
             Debug.Log("(De)buff removed");
         }
 
@@ -146,12 +146,12 @@ public class Character : Unit {
         int rollResult = Dice.Roll(BDice.Species.Six);
         if (rollResult <= 3)
         {
-            bonusStat = 1;
+            bonusDice = 1;
             Debug.Log("Get buff! Dice +1 during 3 turns");
         } 
         else
         {
-            bonusStat = -1;
+            bonusDice = -1;
             Debug.Log("Get Debuff! Dice -1 durint 3 turns");
         }
         remainBuffOrDebuffTurn = 3+1;
