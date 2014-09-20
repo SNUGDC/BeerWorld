@@ -25,6 +25,11 @@ public class BattleManager : MonoBehaviour
 
 	public static BattleManager battleManagerInstance = null;
 
+	public static BattleManager Get()
+	{
+		return battleManagerInstance;
+	}
+
 	void Awake()
 	{
 		battleManagerInstance = this;
@@ -59,9 +64,18 @@ public class BattleManager : MonoBehaviour
 //--Item Trigger
     List<Character.Item> useItemsInBattle = new List<Character.Item>();
 
+		void UpdateBuffUI()
+		{
+			player.DisableAllBuffUI();
+			useItemsInBattle.ForEach((item) => {
+				player.EnableBuffUI(item);
+			});
+		}
+
     public void AddUseItemInBattle(Character.Item item)
     {
         useItemsInBattle.Add(item);
+				UpdateBuffUI();
     }
 
     void SetBattleUnitImg(Sprite leftUnitImg, Sprite rightUnitImg)
@@ -227,6 +241,7 @@ public class BattleManager : MonoBehaviour
                     {
                         DiceChange();
                         useItemsInBattle.Remove(Character.Item.DiceChange);
+												UpdateBuffUI();
                     }
 
 //------------------DiceResultChange
@@ -234,6 +249,7 @@ public class BattleManager : MonoBehaviour
                     {
                         DiceResultChange();
                         useItemsInBattle.Remove(Character.Item.DiceResultChange);
+												UpdateBuffUI();
                     }
 
 					//show animation with calculation result.

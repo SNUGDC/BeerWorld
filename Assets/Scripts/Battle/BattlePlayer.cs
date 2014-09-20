@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Slinq;
 
 public class BDice
 {
@@ -12,6 +13,13 @@ public class BDice
 }
 
 [System.Serializable]
+public class BattleBuffUI
+{
+	public Character.Item item;
+	public SpriteRenderer spriteRenderer;
+}
+
+[System.Serializable]
 public class BattlePlayerUI
 {
 	public GameObject attackDiceParent;
@@ -20,6 +28,7 @@ public class BattlePlayerUI
     public GameObject[] defenseDices = new GameObject[4];
     public GameObject[] hearts = new GameObject[4];
     public SpriteRenderer unitRenderer;
+	public List<BattleBuffUI> battleBuffUIs = new List<BattleBuffUI>();
 }
 
 public class BattlePlayer
@@ -48,6 +57,10 @@ public class BattlePlayer
     this.ui = ui;
     this.bonusStat = bonusStat;
     this.currentHp = currentHp;
+
+		ui.battleBuffUIs.ForEach((buffUI) => {
+			buffUI.spriteRenderer.enabled = false;
+		});
   }
 
   public void ApplyDamage(int damage)
@@ -103,5 +116,19 @@ public class BattlePlayer
 			ui.defenseDiceParent.transform.position = attackDicePosition;
 			ui.defenseDiceParent.transform.localScale = attackDiceScale;
 		}
+	}
+
+	public void DisableAllBuffUI()
+	{
+		ui.battleBuffUIs.ForEach((buffUI) => {
+				buffUI.spriteRenderer.enabled = false;
+		});
+	}
+
+	public void EnableBuffUI(Character.Item item)
+	{
+		Slinqable.Slinq(ui.battleBuffUIs)
+			.Where((buffUI) => buffUI.item == item)
+			.ForEach((buffUI) => buffUI.spriteRenderer.enabled = true);
 	}
 }

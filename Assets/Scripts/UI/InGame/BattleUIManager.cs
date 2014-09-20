@@ -136,12 +136,6 @@ public class BattleUIManager : MonoBehaviour
 		return Run.After(0.3f, () => { })
 		.Then(
 			Run.WaitWhile(() => effectSpriteRenderer.enabled, false)
-		)
-		.ExecuteWhenDone(
-			() => Debug.Log("Use item effect done.")
-		)
-		.ExecuteWhenDone(
-			() => Debug.Log("JEWIOJIOEJFW")
 		);
 	}
 
@@ -165,7 +159,6 @@ public class BattleUIManager : MonoBehaviour
 		Slinqable.Slinq(inventoryUI.itemCardComps)
 			.ForEach((itemCard) => itemCard.SetItem(Character.Item.None, null));
 
-		Debug.Log("First of items is " + items[0] + ", " + items.Count);
 		items.ForEach(
 			(item) => { AddItemCard(item); }
 		);
@@ -173,17 +166,23 @@ public class BattleUIManager : MonoBehaviour
 
 	public void UseItemCard(Character.Item item)
 	{
+		if (BattleManager.Get().GetBattleState() == BattleManager.State.Inactive)
+		{
+			return;
+		}
+
 		var inventoryScoroll = inventoryUI.GetComponent<RightScroller>();
 		inventoryScoroll.Close();
 
 		ShowItemUseAnimation(item)
 			.ExecuteWhenDone(() => {
-				Debug.Log("Not delete item");
 				var characterManager = GameManager.GetMyCharacterManager();
 				var character = characterManager.GetCharacterInstance();
 				character.UseItem(item);
 				RemoveItem(item);
 				RearrangeInventory();
+
+				BattleManager.Get().AddUseItemInBattle(item);
 			});
 	}
 }

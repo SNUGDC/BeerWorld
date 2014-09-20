@@ -5147,6 +5147,13 @@ MonoBehaviour:
     - {fileID: 372056436}
     - {fileID: 2058185930}
     unitRenderer: {fileID: 125477886}
+    battleBuffUIs:
+    - item: 2
+      spriteRenderer: {fileID: 1994663653}
+    - item: 1
+      spriteRenderer: {fileID: 146116537}
+    - item: 0
+      spriteRenderer: {fileID: 345101248}
   rightPlayerUI:
     attackDiceParent: {fileID: 1537644833}
     attackDices:
@@ -5166,6 +5173,13 @@ MonoBehaviour:
     - {fileID: 938989213}
     - {fileID: 1397580791}
     unitRenderer: {fileID: 1343030820}
+    battleBuffUIs:
+    - item: 2
+      spriteRenderer: {fileID: 1013342171}
+    - item: 1
+      spriteRenderer: {fileID: 411738954}
+    - item: 0
+      spriteRenderer: {fileID: 1497246785}
   battleCamera: {fileID: 1523686541}
 --- !u!114 &368207990
 MonoBehaviour:

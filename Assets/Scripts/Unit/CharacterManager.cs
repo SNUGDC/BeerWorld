@@ -346,6 +346,8 @@ public class CharacterManager
 			else
 			{
 				var currentTileKey = GetCurrentTileKey();
+				characterInstance.gameObject.SendMessage("Move");
+
 				SetDestination(movableDictionary);
 				var toMoveTileKey = toMoveTile.GetTileKey();
 
