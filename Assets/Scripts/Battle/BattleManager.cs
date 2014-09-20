@@ -247,13 +247,19 @@ public class BattleManager : MonoBehaviour
 		Debug.Log("PlayerDice : " + totalPlayerDice + ", EnemyDice : " + totalEnemyDice);
 		//show animation with calculation result.
 		//apply damage.
+		TileAudioClip tileAudioClip = GetComponent<TileAudioClip>();
 
 		if (target != null)
 		{
-			target.ApplyDamage(damage);
+			for(int i=1; i<=damage; i++)
+			{
+				tileAudioClip.audioSources[0].Play ();
+				target.ApplyDamage (1);
+			}
 		}
 		else
 		{
+			tileAudioClip.audioSources[1].Play ();
 			player.ApplyDamage(1);
 			enemy.ApplyDamage(1);
 			Debug.Log("Each player is Damaged 1");

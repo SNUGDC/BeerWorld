@@ -4933,6 +4933,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 368207988}
   - 114: {fileID: 368207989}
+  - 114: {fileID: 368207990}
   m_Layer: 0
   m_Name: BattleView
   m_TagString: Untagged
@@ -5007,6 +5008,21 @@ MonoBehaviour:
     - {fileID: 1397580791}
     unitRenderer: {fileID: 1343030820}
   battleCamera: {fileID: 1523686541}
+--- !u!114 &368207990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 368207987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb859c2f37dbc64695cd48d8e4ac63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clips:
+  - {fileID: 8300000, guid: b8ba9115709b68c44bbd0ca123cdb152, type: 3}
+  - {fileID: 8300000, guid: e38447c5c663fb44289d49707902d274, type: 3}
+  audioSources: []
 --- !u!1 &371080943
 GameObject:
   m_ObjectHideFlags: 0
