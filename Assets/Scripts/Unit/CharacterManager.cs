@@ -257,8 +257,8 @@ public class CharacterManager
 
 				BattleUIManager.Get().ShowBuffStartAnimation(GameManager.GetNetworkViewID(this), tile.transform.position);
                 characterInstance.SetBuffOrDeBuff();
-				TileAudioClip tileAudioClip = characterInstance.GetComponent<TileAudioClip>();
-				tileAudioClip.audioSources[0].Play ();
+				MultiAudioClip multiAudioClip = characterInstance.GetComponent<MultiAudioClip>();
+				multiAudioClip.audioSources[0].Play ();
 				
             }
             else if (tileType == Tile.TileType.Item)

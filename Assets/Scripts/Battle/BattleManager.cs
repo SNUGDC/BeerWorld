@@ -247,21 +247,21 @@ public class BattleManager : MonoBehaviour
 		Debug.Log("PlayerDice : " + totalPlayerDice + ", EnemyDice : " + totalEnemyDice);
 		//show animation with calculation result.
 		//apply damage.
-		TileAudioClip tileAudioClip = GetComponent<TileAudioClip>();
+		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
 
 		yield return new WaitForSeconds(DelayManager.Get().battleDiceResultToAttackDelay);
 		if (target != null)
 		{
 			for(int i=1; i<=damage; i++)
 			{
-				tileAudioClip.audioSources[0].Play ();
+				multiAudioClip.audioSources[0].Play ();
 				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 				target.ApplyDamage (1);
 			}
 		}
 		else
 		{
-			tileAudioClip.audioSources[1].Play ();
+			multiAudioClip.audioSources[1].Play ();
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			player.ApplyDamage(1);
 			enemy.ApplyDamage(1);
