@@ -102,7 +102,18 @@ public class BattleUIManager : MonoBehaviour
 		Slinqable.Slinq(inventoryUI.itemCardComps).FirstOrNone(
 			(itemCard) => itemCard.GetItem() == Character.Item.None
 		).ForEachOr(
-			(itemCard) => itemCard.SetItem(item),
+			(itemCard) => {
+				var sprite = Slinqable.Slinq(itemSprites).FirstOrNone(
+					(itemSprite) => itemSprite.item == item
+				)
+				.Select(
+					(itemSprite) => itemSprite.sprite
+				)
+				.ValueOr(
+					() => { throw new System.Exception("cannot get item sprite"); }
+				);
+				itemCard.SetItem(item, sprite);
+			},
 			() => Debug.Log("There is no empty imte.")
 		);
 	}
