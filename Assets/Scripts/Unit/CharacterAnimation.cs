@@ -16,4 +16,10 @@ public class CharacterAnimation : MonoBehaviour {
 	void Hit(){
 		anim.SetTrigger("Hit");
 	}
+	void setReturn(bool returning){
+		anim.SetTrigger("Return",returning);
+	}
+	void Fade(){
+		anim.SetTrigger("Fade");
+	}
 }
