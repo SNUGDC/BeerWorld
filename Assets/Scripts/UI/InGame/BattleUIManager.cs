@@ -181,6 +181,8 @@ public class BattleUIManager : MonoBehaviour
 				character.UseItem(item);
 				RemoveItem(item);
 				RearrangeInventory();
+
+				BattleManager.Get().AddUseItemInBattle(item);
 			});
 	}
 }

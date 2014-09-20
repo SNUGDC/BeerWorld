@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Smooth.Slinq;
 
 public class BattleManager : MonoBehaviour
 {
@@ -57,12 +58,24 @@ public class BattleManager : MonoBehaviour
 	private CharacterManager playerManager;
 	private EnemyManager enemyManager;
 
+    int totalPlayerDice = 0;
+    int totalEnemyDice = 0;
+
 //--Item Trigger
     List<Character.Item> useItemsInBattle = new List<Character.Item>();
+
+		void UpdateBuffUI()
+		{
+			player.DisableAllBuffUI();
+			useItemsInBattle.ForEach((item) => {
+				player.EnableBuffUI(item);
+			});
+		}
 
     public void AddUseItemInBattle(Character.Item item)
     {
         useItemsInBattle.Add(item);
+				UpdateBuffUI();
     }
 
     void SetBattleUnitImg(Sprite leftUnitImg, Sprite rightUnitImg)
@@ -220,14 +233,15 @@ public class BattleManager : MonoBehaviour
 		Run.After(0.1f, () => {
 			Run.WaitWhile(diceAnimation.IsRollAnimating)
 				.ExecuteWhenDone(() => {
-					int totalPlayerDice = playerCalcResult.totalDiceResult;
-					int totalEnemyDice = enemyCalcResult.totalDiceResult;
+					totalPlayerDice = playerCalcResult.totalDiceResult;
+					totalEnemyDice = enemyCalcResult.totalDiceResult;
 
 //------------------DiceChange
                     if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
                     {
                         DiceChange();
                         useItemsInBattle.Remove(Character.Item.DiceChange);
+												UpdateBuffUI();
                     }
 
 //------------------DiceResultChange
@@ -235,6 +249,7 @@ public class BattleManager : MonoBehaviour
                     {
                         DiceResultChange();
                         useItemsInBattle.Remove(Character.Item.DiceResultChange);
+												UpdateBuffUI();
                     }
 
 					//show animation with calculation result.
@@ -283,7 +298,14 @@ public class BattleManager : MonoBehaviour
 
 		if (target != null)
 		{
-			if (damage > target.GetHp())
+//----------Dodge item.
+            if (useItemsInBattle.Contains(Character.Item.Dodge))
+            {
+                   
+            }
+            
+
+            if (damage > target.GetHp())
 			{
 				damage = target.GetHp();
 			}
@@ -298,8 +320,9 @@ public class BattleManager : MonoBehaviour
 		else
 		{
 			multiAudioClip.audioSources[1].Play ();
-			player.ApplyDamage(1);
-			enemy.ApplyDamage(1);
+//            player.ApplyDamage(0);
+            player.ApplyDamage(1);
+ 			enemy.ApplyDamage(1);
 			UpdateRemainHP();
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			Debug.Log("Each player is Damaged 1");
@@ -377,10 +400,23 @@ public class BattleManager : MonoBehaviour
 
     void DiceResultChange()
     {
+        //Add effect.
 
-        GameObject lowDice;
+        int minDiceValue = Slinqable.Slinq(playerCalcResult.diceResults).Min();
+        int indexOfLowestDice = playerCalcResult.diceResults.FindIndex(
+            (diceResult) => diceResult == minDiceValue);
+
+        if (attackOrDefense == AttackOrDefense.Attack)
+        {        
+            //Add re-roll effect playerDice @player.ui.attackDices[i]
+
+            int diceResult = playerCalcResult.diceResults [indexOfLowestDice];
+            player.ui.attackDices [indexOfLowestDice].SendMessage("rollByNumber", diceResult);
+
+            totalPlayerDice += (diceResult - minDiceValue);
+        }
     }
-
+        
     void Dodge()
     {
     }
