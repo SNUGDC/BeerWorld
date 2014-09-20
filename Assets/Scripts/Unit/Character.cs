@@ -79,7 +79,7 @@ public class Character : Unit {
     public void GetItem(Character.Item newItem)
     {
         inventory.Add(newItem);
-        Debug.Log("Get " + newItem + " / Inventory : " + GetNumberOfItems() + " / 3");
+        Debug.Log("Get " + newItem.ToString() + " / Inventory : " + GetNumberOfItems() + " / 3");
     }
 
     public void UseItem(Character.Item item)
