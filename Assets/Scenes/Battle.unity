@@ -18779,6 +18779,7 @@ GameObject:
   - 95: {fileID: 1406857175}
   - 114: {fileID: 1406857174}
   - 61: {fileID: 1406857177}
+  - 114: {fileID: 1406857178}
   m_Layer: 0
   m_Name: items
   m_TagString: Untagged
@@ -18819,7 +18820,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1406857172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4591d8d9a30fa475bba58cd6cac5a1c4, type: 2}
   m_CullingMode: 0
@@ -18860,6 +18861,17 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1.01999998, y: 3.76999974}
   m_Center: {x: .560000002, y: 1.88499987}
+--- !u!114 &1406857178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1406857172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1078f8005544f70b7eb1f6daf1d4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1414175535
 GameObject:
   m_ObjectHideFlags: 0

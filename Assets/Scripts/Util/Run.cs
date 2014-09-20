@@ -265,4 +265,18 @@ public class Run
 		}
 		aRun.isDone = true;
 	}
+
+	public static Run WaitSeconds(float seconds)
+	{
+		var tmp = new Run();
+		tmp.action = _WaitSeconds(tmp, seconds);
+		tmp.Start();
+		return tmp;
+	}
+
+	private static IEnumerator _WaitSeconds(Run aRun, float seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		aRun.isDone = true;
+	}
 }
