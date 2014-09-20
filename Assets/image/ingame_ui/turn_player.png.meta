@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 9e7dbde92f7d34887b5d687255e62390
+guid: 8c759f9ae83254822836e94c0bd8adbc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: buff1_2
+    21300000: turn_player
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
