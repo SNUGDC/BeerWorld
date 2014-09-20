@@ -304,4 +304,24 @@ public class Run
 
 		aRun.isDone = true;
 	}
+
+	public Run Then(Func<Run> nextRun)
+	{
+		var tmp = new Run();
+		tmp.action = _Then(tmp, nextRun);
+		tmp.Start();
+		return tmp;
+	}
+
+	private IEnumerator _Then(Run aRun, Func<Run> nextRunGetter)
+	{
+		while(!isDone)
+			yield return null;
+
+		var nRun = nextRunGetter();
+		nRun.Start();
+		yield return nRun.WaitFor;
+
+		aRun.isDone = true;
+	}
 }
