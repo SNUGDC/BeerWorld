@@ -173,6 +173,11 @@ public class BattleUIManager : MonoBehaviour
 
 	public void UseItemCard(Character.Item item)
 	{
+		if (BattleManager.Get().GetBattleState() == BattleManager.State.Inactive)
+		{
+			return;
+		}
+
 		var inventoryScoroll = inventoryUI.GetComponent<RightScroller>();
 		inventoryScoroll.Close();
 

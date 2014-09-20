@@ -24,6 +24,11 @@ public class BattleManager : MonoBehaviour
 
 	public static BattleManager battleManagerInstance = null;
 
+	public static BattleManager Get()
+	{
+		return battleManagerInstance;
+	}
+
 	void Awake()
 	{
 		battleManagerInstance = this;
