@@ -4812,11 +4812,13 @@ MonoBehaviour:
   leftPlayerUI:
     attackDiceParent: {fileID: 2113582166}
     attackDices:
+    - {fileID: 1316610551}
     - {fileID: 656547755}
     - {fileID: 2072238893}
     - {fileID: 1685932314}
     defenseDiceParent: {fileID: 2082333098}
     defenseDices:
+    - {fileID: 947951955}
     - {fileID: 1914139536}
     - {fileID: 1334652148}
     - {fileID: 686071721}
@@ -4830,11 +4832,13 @@ MonoBehaviour:
     attackDiceParent: {fileID: 1537644833}
     attackDices:
     - {fileID: 945317814}
+    - {fileID: 1997130675}
     - {fileID: 419099343}
     - {fileID: 109716809}
     defenseDiceParent: {fileID: 1841527241}
     defenseDices:
     - {fileID: 1456708861}
+    - {fileID: 63575298}
     - {fileID: 721417332}
     - {fileID: 86937802}
     hearts:
@@ -10295,7 +10299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
       propertyPath: m_Name
-      value: miniDice1
+      value: miniDice0
       objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
       propertyPath: m_Name
@@ -10307,7 +10311,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100030, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
       propertyPath: m_Name
-      value: miniDice1
+      value: miniDice0
       objectReference: {fileID: 0}
     - target: {fileID: 100024, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
       propertyPath: m_Name
@@ -12345,7 +12349,7 @@ GameObject:
   - 95: {fileID: 945317818}
   - 114: {fileID: 945317817}
   m_Layer: 0
-  m_Name: miniDice1
+  m_Name: miniDice0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17302,7 +17306,7 @@ GameObject:
   - 95: {fileID: 1316610554}
   - 114: {fileID: 1316610553}
   m_Layer: 0
-  m_Name: miniDice4
+  m_Name: miniDice0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18199,7 +18203,7 @@ Transform:
   - {fileID: 1939756269}
   - {fileID: 879332338}
   m_Father: {fileID: 1545091972}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1370185156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19176,7 +19180,7 @@ GameObject:
   - 95: {fileID: 1456708865}
   - 114: {fileID: 1456708864}
   m_Layer: 0
-  m_Name: miniDice1
+  m_Name: miniDice0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21734,6 +21738,10 @@ Prefab:
     - target: {fileID: 100032, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
       propertyPath: m_Name
       value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
+      propertyPath: m_Name
+      value: miniDice0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aada3f6cb03c84b7b94202b227446ea2, type: 2}
