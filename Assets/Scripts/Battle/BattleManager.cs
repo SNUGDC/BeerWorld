@@ -239,7 +239,7 @@ public class BattleManager : MonoBehaviour
 //------------------DiceChange
                     if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
                     {
-                        DiceChange();
+                        ChangeDiceWithEnemy();
                         useItemsInBattle.Remove(Character.Item.DiceChange);
 												UpdateBuffUI();
                     }
@@ -247,7 +247,7 @@ public class BattleManager : MonoBehaviour
 //------------------DiceResultChange
                     if (useItemsInBattle.Contains(Character.Item.DiceResultChange) == true)
                     {
-                        DiceResultChange();
+                        DiceReroll();
                         useItemsInBattle.Remove(Character.Item.DiceResultChange);
 												UpdateBuffUI();
                     }
@@ -299,16 +299,17 @@ public class BattleManager : MonoBehaviour
 		if (target != null)
 		{
 //----------Dodge item.
-            if (useItemsInBattle.Contains(Character.Item.Dodge))
-            {
-                Dodge();
-                useItemsInBattle.Remove(Character.Item.Dodge);
-            }
+			if (useItemsInBattle.Contains(Character.Item.Dodge))
+			{
+				Dodge();
+				useItemsInBattle.Remove(Character.Item.Dodge);
+			}
 
-            if (damage > target.GetHp())
+			if (damage > target.GetHp())
 			{
 				damage = target.GetHp();
 			}
+
 			for(int i=1; i<=damage; i++)
 			{
 				multiAudioClip.audioSources[0].Play ();
@@ -320,16 +321,15 @@ public class BattleManager : MonoBehaviour
 		else
 		{
 			multiAudioClip.audioSources[1].Play ();
-
-            if (useItemsInBattle.Contains(Character.Item.Dodge))
-            {
-                Dodge();
-                useItemsInBattle.Remove(Character.Item.Dodge);
-            }
-            else
-            {
-                player.ApplyDamage(1);
-            }
+			if (useItemsInBattle.Contains(Character.Item.Dodge))
+			{
+					Dodge();
+					useItemsInBattle.Remove(Character.Item.Dodge);
+			}
+			else
+			{
+					player.ApplyDamage(1);
+			}
  			enemy.ApplyDamage(1);
 			UpdateRemainHP();
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
@@ -395,7 +395,7 @@ public class BattleManager : MonoBehaviour
 		}
 	}
 
-    void DiceChange()
+    void ChangeDiceWithEnemy()
     {
         //Add DiceChange effect.
 			// FIXME: Is diceResults also swapped?
@@ -406,7 +406,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Changed player diceResult and enemy diceResult");
     }
 
-    void DiceResultChange()
+    void DiceReroll()
     {
         //Add effect.
 
