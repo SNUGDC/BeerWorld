@@ -79,6 +79,7 @@ public class Character : Unit {
     public void AddItem(Character.Item newItem)
     {
         inventory.Add(newItem);
+				BattleUIManager.Get().AddItemCard(newItem);
         Debug.Log("Get " + newItem.ToString() + " / Inventory : " + GetNumberOfItems() + " / 3");
     }
 
