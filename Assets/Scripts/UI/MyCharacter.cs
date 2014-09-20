@@ -45,5 +45,10 @@ public class MyCharacter : MonoBehaviour {
 
 	public void GetReady(bool _ready){
 		ready = _ready;
+		readyManager.ApplyChange ();
+		if(Network.isClient)
+			readyManager.networkView.RPC("AmIReady", RPCMode.Server, myID, (ready)?1:0);
+		else
+			readyManager.AmIReady(myID, (ready)?1:0);
 	}
 }
