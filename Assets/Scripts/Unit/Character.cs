@@ -27,7 +27,7 @@ public class Character : Unit {
     CharClass charClass = CharClass.Novice; 
 
     List<Item> inventory = new List<Item>();
-    public static int MaxInventorySize = 3;
+    public static int MaxInventorySize = 4;
 
     public Sprite warriorImg;
     public Sprite tankerImg;
@@ -144,13 +144,13 @@ public class Character : Unit {
         int rollResult = Dice.Roll(BDice.Species.Six);
         if (rollResult <= 3)
         {
-            bonusStat = rollResult;
-            Debug.Log("Get buff! Bonus stat " + bonusStat);
+            bonusStat = 1;
+            Debug.Log("Get buff! Dice +1 during 3 turns");
         } 
         else
         {
-            bonusStat = (-1) * (rollResult - 3);
-            Debug.Log("Get Debuff! Bonus stat " + bonusStat);
+            bonusStat = -1;
+            Debug.Log("Get Debuff! Dice -1 durint 3 turns");
         }
         remainBuffOrDebuffTurn = 3+1;
     }
@@ -271,12 +271,6 @@ public class Character : Unit {
         }
     }
 
-	void AddItem(Item item)
-	{
-		inventory.Add(item);
-		BattleUIManager.Get().AddItemCard(item);
-	}
-
 	// Use this for initialization = BDice.Species.Six;
 	void Start ()
 	{
@@ -285,10 +279,5 @@ public class Character : Unit {
 
         renderer = GetComponentInChildren<SpriteRenderer>();
         renderer.sprite = charImg;
-
-				AddItem(Item.DiceChange);
-				AddItem(Item.DiceResultChange);
-				AddItem(Item.Dodge);
-				AddItem(Item.Berserk);
 	}
 }
