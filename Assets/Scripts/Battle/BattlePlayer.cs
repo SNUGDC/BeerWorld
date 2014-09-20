@@ -29,6 +29,7 @@ public class BattlePlayerUI
     public GameObject[] hearts = new GameObject[4];
     public SpriteRenderer unitRenderer;
 	public List<BattleBuffUI> battleBuffUIs = new List<BattleBuffUI>();
+	public TextMesh damageCount;
 }
 
 public class BattlePlayer

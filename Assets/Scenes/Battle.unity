@@ -5287,6 +5287,7 @@ MonoBehaviour:
       spriteRenderer: {fileID: 146116537}
     - item: 0
       spriteRenderer: {fileID: 345101248}
+    damageCount: {fileID: 1860080210}
   rightPlayerUI:
     attackDiceParent: {fileID: 1537644833}
     attackDices:
@@ -5313,6 +5314,7 @@ MonoBehaviour:
       spriteRenderer: {fileID: 411738954}
     - item: 0
       spriteRenderer: {fileID: 1497246785}
+    damageCount: {fileID: 914661059}
   battleCamera: {fileID: 1523686541}
 --- !u!114 &368207990
 MonoBehaviour:
