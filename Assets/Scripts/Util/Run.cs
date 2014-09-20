@@ -218,7 +218,10 @@ public class Run
 	public Run ExecuteWhenDone(System.Action aAction)
 	{
 		var tmp = new Run();
-		tmp.action = _WaitFor(aAction);
+		tmp.action = _WaitFor(() => {
+			aAction();
+			tmp.isDone = true;
+		});
 		tmp.Start();
 		return tmp;
 	}
@@ -249,11 +252,14 @@ public class Run
 		aRun.isDone = true;
 	}
 
-	public static Run WaitWhile(Func<bool> predicate)
+	public static Run WaitWhile(Func<bool> predicate, bool startImmediately = true)
 	{
 		var tmp = new Run();
 		tmp.action = _WaitWhile(tmp, predicate);
-		tmp.Start();
+		if (startImmediately)
+		{
+			tmp.Start();
+		}
 		return tmp;
 	}
 
@@ -277,6 +283,25 @@ public class Run
 	private static IEnumerator _WaitSeconds(Run aRun, float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
+		aRun.isDone = true;
+	}
+
+	public Run Then(Run nextRun)
+	{
+		var tmp = new Run();
+		tmp.action = _Then(tmp, nextRun);
+		tmp.Start();
+		return tmp;
+	}
+
+	private IEnumerator _Then(Run aRun, Run nextRun)
+	{
+		while(!isDone)
+			yield return null;
+
+		nextRun.Start();
+		yield return nextRun.WaitFor;
+
 		aRun.isDone = true;
 	}
 }
