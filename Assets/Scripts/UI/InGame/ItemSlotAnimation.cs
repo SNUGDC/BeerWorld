@@ -4,10 +4,10 @@ using System.Collections;
 public class ItemSlotAnimation : MonoBehaviour {
 	private Animator anim;
 	void Awake(){
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 	}
 	
-	void PopInventory(bool boolean){
+	void itemCountActive(bool boolean){
 		anim.SetBool("Active",boolean);
 	}
 }
