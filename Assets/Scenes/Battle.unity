@@ -19735,6 +19735,7 @@ MonoBehaviour:
   - {fileID: 1180100851}
   - {fileID: 222498985}
   itemCardComps: []
+  itemCardUseEffect: {fileID: 1598061426}
 --- !u!1 &1414175535
 GameObject:
   m_ObjectHideFlags: 0
