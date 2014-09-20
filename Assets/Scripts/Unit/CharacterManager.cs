@@ -237,7 +237,7 @@ public class CharacterManager
         }
     }
 
-    void InterectionWithTile()
+    void InteractionWithTile()
     {
         int tileKey = GetCurrentTileKey();
         Tile tile = TileManager.GetExistTile(tileKey);
@@ -328,14 +328,14 @@ public class CharacterManager
         {
             moveState = MoveState.Inactive;
 
-            InterectionWithTile();
+            InteractionWithTile();
             UpdateRemainBuffTime();
 						NetworkManager.SendTurnEndMessage();
         } 
 
         else if (moveState == MoveState.CheckingSaveTile)
         {
-            InterectionWithTile();
+            InteractionWithTile();
 
             moveState = MoveState.Moving;
         }
@@ -379,7 +379,7 @@ public class CharacterManager
 			yield return moveAndNotify.WaitFor;
 			remainMoveCount--;
 
-			moveState = MoveState.Moving;
+            moveState = MoveState.CheckingSaveTile;
 		}
 	}
 
