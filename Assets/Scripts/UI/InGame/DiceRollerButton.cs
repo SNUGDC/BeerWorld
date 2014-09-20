@@ -23,6 +23,11 @@ public class DiceRollerButton : MonoBehaviour
 			spriteRenderer.enabled = false;
 			collider2D.enabled = false;
 		}
+
+		if (Input.GetKeyUp(KeyCode.Alpha1))
+		{
+			characterManager.SetMovement(1);
+		}
 	}
 
     List<BDice.Species> GetMoveDices(Character player, List<BDice.Species> moveDices)
