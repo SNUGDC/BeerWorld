@@ -12,6 +12,13 @@ public class BDice
 }
 
 [System.Serializable]
+public class BattleBuffUI
+{
+	public Character.Item item;
+	public SpriteRenderer spriteRenderer;
+}
+
+[System.Serializable]
 public class BattlePlayerUI
 {
 	public GameObject attackDiceParent;
@@ -20,6 +27,7 @@ public class BattlePlayerUI
     public GameObject[] defenseDices = new GameObject[4];
     public GameObject[] hearts = new GameObject[4];
     public SpriteRenderer unitRenderer;
+	public List<BattleBuffUI> battleBuffUIs = new List<BattleBuffUI>();
 }
 
 public class BattlePlayer
