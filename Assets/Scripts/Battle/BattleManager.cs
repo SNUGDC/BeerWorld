@@ -229,32 +229,39 @@ public class BattleManager : MonoBehaviour
 			}
 		}
 
+		//Wait for animation end.
 		var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
-		Run.After(0.1f, () => {
-			Run.WaitWhile(diceAnimation.IsRollAnimating)
-				.ExecuteWhenDone(() => {
-					totalPlayerDice = playerCalcResult.totalDiceResult;
-					totalEnemyDice = enemyCalcResult.totalDiceResult;
+		Run.WaitSeconds(0.1f)
+		.Then(Run.WaitWhile(diceAnimation.IsRollAnimating))
+		.ExecuteWhenDone(() => {
+			totalPlayerDice = playerCalcResult.totalDiceResult;
+			totalEnemyDice = enemyCalcResult.totalDiceResult;
 
+			Run useItem = Run.WaitSeconds(0);
 //------------------DiceChange
-                    if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
-                    {
-                        ChangeDiceWithEnemy();
-                        useItemsInBattle.Remove(Character.Item.DiceChange);
-												UpdateBuffUI();
-                    }
+			if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
+			{
+				ChangeDiceWithEnemy();
+				useItemsInBattle.Remove(Character.Item.DiceChange);
+				UpdateBuffUI();
+			}
 
 //------------------DiceResultChange
-                    if (useItemsInBattle.Contains(Character.Item.DiceResultChange) == true)
-                    {
-                        DiceReroll();
-                        useItemsInBattle.Remove(Character.Item.DiceResultChange);
-												UpdateBuffUI();
-                    }
+			if (useItemsInBattle.Contains(Character.Item.DiceResultChange) == true)
+			{
+				useItem.Then(() => {
+						return DiceReroll().ExecuteWhenDone(() => {
+							useItemsInBattle.Remove(Character.Item.DiceResultChange);
+							UpdateBuffUI();
+						});
+					}
+				);
+			}
 
-					//show animation with calculation result.
-					state = State.ShowDamage;
-					Run.Coroutine(AnimateDamage(totalPlayerDice, totalEnemyDice));
+			useItem.ExecuteWhenDone(() => {
+				//show animation with calculation result.
+				state = State.ShowDamage;
+				Run.Coroutine(AnimateDamage(totalPlayerDice, totalEnemyDice));
 			});
 		});
 	}
@@ -406,13 +413,14 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Changed player diceResult and enemy diceResult");
     }
 
-    void DiceReroll()
+    Run DiceReroll()
     {
         //Add effect.
 
         int minDiceValue = Slinqable.Slinq(playerCalcResult.diceResults).Min();
         int indexOfLowestDice = playerCalcResult.diceResults.FindIndex(
             (diceResult) => diceResult == minDiceValue);
+
 
         if (attackOrDefense == AttackOrDefense.Attack)
         {        
@@ -421,8 +429,18 @@ public class BattleManager : MonoBehaviour
             int diceResult = playerCalcResult.diceResults [indexOfLowestDice];
             player.ui.attackDices [indexOfLowestDice].SendMessage("rollByNumber", diceResult);
 
+					var animationGameObject = enemy.ui.attackDices[indexOfLowestDice];
+					var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
+
             totalPlayerDice += (diceResult - minDiceValue);
+
+					return Run.WaitSeconds(0.1f)
+					.Then(Run.WaitWhile(diceAnimation.IsRollAnimating));
         }
+				else
+				{
+					return Run.WaitSeconds(0);
+				}
     }
         
     void Dodge()
