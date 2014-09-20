@@ -199,13 +199,6 @@ public class CharacterManager
 		InstantiateCharacter();
 		InitializeCharacter();
 		characterMover = characterInstance.GetComponent<CharacterMover> ();
-
-		//if (Network.isClient == false)
-		//{
-			//moveState = MoveState.Idle;
-			//Debug.Log("MoveState of server : Idle");
-			//Run.Coroutine(StartTurn());
-		//}
 	}
 
 	public void SetMovement(int toMove)

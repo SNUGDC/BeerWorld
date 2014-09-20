@@ -111,6 +111,7 @@ public class Character : Unit {
         } else
         {
             bonusStat = 0;
+            Debug.Log("(De)buff removed");
         }
 
         if (remainJailTurn != 0)
