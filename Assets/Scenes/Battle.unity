@@ -11455,6 +11455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectJailPrefab: {fileID: 100004, guid: 9cdd93be3495948789c99479ed2a28e6, type: 2}
+  itemAcquisitionEffectPrefab: {fileID: 100002, guid: fc7441ab550d04bb49a96f513540ac34,
+    type: 2}
 --- !u!1 &787469159
 GameObject:
   m_ObjectHideFlags: 0

@@ -260,9 +260,14 @@ public class CharacterManager
             {   
                 if (characterInstance.GetNumberOfItems() < Character.MaxInventorySize)
                 {
+									returnRun = returnRun.Then(() => {
+										return EffectManager.Get().ShowItemAcquisitionEffect(tile.transform.position);
+									})
+									.ExecuteWhenDone(() => {
                     Character.Item newItem = SelectRandomItem();
                     characterInstance.AddItem(newItem);
                     Debug.Log("Get Item!");
+									});
                 }
                 else
                 {
