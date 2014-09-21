@@ -382,6 +382,7 @@ public class CharacterManager
 	public void BattleLose()
 	{
 		characterInstance.currentHp = characterInstance.maxHp;
+		characterInstance.gameObject.SendMessage ("setReturn", true);
 		var move = Run.Coroutine(Move(characterInstance.GetSpawnTile()));
 		Debug.LogWarning(moveState.ToString());
 
@@ -391,6 +392,7 @@ public class CharacterManager
 				NetworkManager.SendTurnEndMessage();
 			}
 			moveState = MoveState.Inactive;
+			characterInstance.gameObject.SendMessage ("setReturn", false);
 		});
 	}
 

@@ -318,8 +318,8 @@ public class BattleManager : MonoBehaviour
 				else if(target.ui == rightPlayerUI)
 					leftPlayerUI.unitRenderer.transform.parent.gameObject.SendMessage("Attack");
 				target.ui.unitRenderer.transform.parent.gameObject.SendMessage("Hit");
-				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 				multiAudioClip.audioSources[0].Play ();
+				yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			}
 		}
 		else
@@ -336,6 +336,7 @@ public class BattleManager : MonoBehaviour
 			}
  			enemy.ApplyDamage(1);
 			UpdateRemainHP();
+			target.ui.unitRenderer.transform.parent.gameObject.SendMessage("Hit");
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			Debug.Log("Each player is Damaged 1");
 		}
@@ -351,12 +352,16 @@ public class BattleManager : MonoBehaviour
 
 		if (enemy.IsDie())
 		{
+			enemy.ui.unitRenderer.transform.parent.gameObject.SendMessage("Fade");
 			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
+			yield return new WaitForSeconds(DelayManager.Get().batttleLoseShowDelay);
 			state = State.BattleEnd;
 		}
 		else if (player.IsDie())
 		{
+			player.ui.unitRenderer.transform.parent.gameObject.SendMessage("Fade");
 			BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
+			yield return new WaitForSeconds(DelayManager.Get().batttleLoseShowDelay);
 			state = State.BattleEnd;
 		}
 		else
