@@ -317,6 +317,13 @@ public class CharacterManager
 		}
 	}
 
+	public void TurnEnd()
+	{
+		moveState = MoveState.Inactive;
+		UpdateRemainBuffTime();
+		NetworkManager.SendTurnEndMessage();
+	}
+
 	public IEnumerator StateUpdate ()
 	{
 		if (moveState != MoveState.Inactive)
@@ -324,7 +331,16 @@ public class CharacterManager
 			characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
 		}
 
-		if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter(GetCurrentTileKey()))
+		if (moveState == MoveState.Idle && characterInstance.IsUnitInJail())
+		{
+			var jailWaiting = Run.WaitSeconds(0.5f)
+				.ExecuteWhenDone(() => {
+					TurnEnd();
+				});
+
+			yield return jailWaiting.WaitFor;
+		}
+		else if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter(GetCurrentTileKey()))
         {
             Debug.LogWarning("Encounter enemy.");
             NetworkManager.StartBattle(UnitUtil.GetEnemyIdOnTile(GetCurrentTileKey()));
@@ -336,12 +352,9 @@ public class CharacterManager
         } 
         else if (moveState == MoveState.CheckingTileOption)
         {
-            moveState = MoveState.Inactive;
-
             Run tileEffect = InteractionWithTile();
 						yield return tileEffect.WaitFor;
-            UpdateRemainBuffTime();
-						NetworkManager.SendTurnEndMessage();
+					TurnEnd();
         } 
 
         else if (moveState == MoveState.CheckingSaveTile)
