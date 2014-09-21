@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class TurnManager : MonoBehaviour
 {
 	private static TurnManager instance;
-	private GameObject turnAlarm;
 
 	public static TurnManager Get()
 	{
@@ -14,7 +13,6 @@ public class TurnManager : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
-		turnAlarm = FindObjectOfType<EnemyTurnAnimation>().gameObject;
 	}
 
 	//private List<NetworkViewID> playerList = new List<NetworkViewID>();
@@ -28,6 +26,7 @@ public class TurnManager : MonoBehaviour
 	private State state = State.Player;
 	private int currentTurnIndex;
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
+	private int turnCount = 1;
 
 	public void AddPlayerTEMP(NetworkViewID otherPlayer)
 	{
@@ -54,7 +53,7 @@ public class TurnManager : MonoBehaviour
 			currentTurnIndex = 0;
 			if (otherPlayers.Count == 0)
 			{
-				turnAlarm.SendMessage("turnEnemy");
+				NetworkManager.ShowEnemyTurn();
 				state = State.Enemy;
 				EnemyTurnStart();
 			}
@@ -68,7 +67,7 @@ public class TurnManager : MonoBehaviour
 			currentTurnIndex += 1;
 			if (currentTurnIndex >= otherPlayers.Count)
 			{
-				turnAlarm.SendMessage("turnEnemy");
+				NetworkManager.ShowEnemyTurn();
 				currentTurnIndex = 0;
 				state = State.Enemy;
 				EnemyTurnStart();
@@ -82,10 +81,16 @@ public class TurnManager : MonoBehaviour
 			}
 			else
 			{
-				turnAlarm.SendMessage("turnPlayer");
+				CountUpTurn();
 				state = State.Player;
 			}
 		}
+	}
+
+	private void CountUpTurn()
+	{
+		turnCount += 1;
+		NetworkManager.SyncTurnCount(turnCount);
 	}
 
 	public State GetState()

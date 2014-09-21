@@ -47,4 +47,16 @@ public partial class NetworkManager : MonoBehaviour
 	{
 		BattleManager.battleManagerInstance.OnRollClicked();
 	}
+
+	public static void UseItem(Character.Item item)
+	{
+		networkInstance.networkView.RPC("ReceiveUseItem", RPCMode.All, item.ToString());
+	}
+
+	[RPC]
+	private void ReceiveUseItem(string strItem)
+	{
+		Character.Item item = (Character.Item)Enum.Parse(typeof(Character.Item), strItem);
+		BattleUIManager.Get().ReceivedUseItemCard(item);
+	}
 }

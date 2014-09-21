@@ -16,6 +16,14 @@ public class BattleUIManager : MonoBehaviour
 	public List <Sprite> buffSprites;
 	public List <Sprite> deBuffSprites;
 	public List <ItemSpriteSet> itemSprites;
+	public TurnUI turnUI;
+
+	[System.Serializable]
+	public class TurnUI
+	{
+		public GameObject turnAlarm;
+		public TextMesh turnText;
+	}
 
 	[System.Serializable]
 	public class ItemSpriteSet
@@ -171,18 +179,38 @@ public class BattleUIManager : MonoBehaviour
 			return;
 		}
 
+		NetworkManager.UseItem(item);
+
 		var inventoryScoroll = inventoryUI.GetComponent<RightScroller>();
 		inventoryScoroll.Close();
+	}
 
+	public void ReceivedUseItemCard(Character.Item item)
+	{
 		ShowItemUseAnimation(item)
 			.ExecuteWhenDone(() => {
 				var characterManager = GameManager.GetMyCharacterManager();
 				var character = characterManager.GetCharacterInstance();
-				character.UseItem(item);
-				RemoveItem(item);
-				RearrangeInventory();
+				if (BattleManager.Get().IsPlayerTurn(characterManager))
+				{
+					RemoveItem(item);
+					RearrangeInventory();
+
+					character.UseItem(item);
+				}
 
 				BattleManager.Get().AddUseItemInBattle(item);
 			});
+	}
+
+	public void ShowEnemyTurn()
+	{
+		turnUI.turnAlarm.SendMessage("turnEnemy");
+	}
+
+	public void SetTurnCount(int turnCount)
+	{
+		turnUI.turnAlarm.SendMessage("turnPlayer");
+		turnUI.turnText.text = turnCount + "/15";
 	}
 }

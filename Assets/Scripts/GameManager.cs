@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour
 	public Enemy enemyPrefab;
 	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
-    //temp
-    private Character.CharClass charClass = Character.CharClass.Novice;
-
 	public Dictionary<string, EnemyManager> GetEnemies()
 	{
 		return enemies;
@@ -59,6 +56,7 @@ public class GameManager : MonoBehaviour
 	private Dictionary<NetworkViewID, CharacterManager> otherCharacterManagers = new Dictionary<NetworkViewID, CharacterManager>();
 
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
+	private Dictionary<NetworkViewID, Character.CharClass> playerClasses = new Dictionary<NetworkViewID, Character.CharClass>();
 
 	public static IEnumerable<CharacterManager> GetAllPlayersEnumerator()
 	{
@@ -122,14 +120,31 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	//Used for devtest.
+	public void GameStartButtonClicked()
+	{
+		NetworkManager.SendUsersNetworkViewID();
+	}
+
 	public void AddUser(NetworkViewID id, Character.CharClass charClass)
 	{
 		if (id == NetworkManager.networkInstance.Id)
 		{
+			playerClasses.Add(id, charClass);
+
+			//for localtest.
+			if (Network.connections.Length == 0)
+			{
+				Run.After(0.3f, () => {
+					GameStart();
+				});
+			}
 			return;
 		}
 
 		otherPlayers.Add(id);
+		playerClasses.Add(id, charClass);
+
 		TurnManager.Get().AddPlayerTEMP(id);
 
 		if (otherPlayers.Count == Network.connections.Length && Network.isServer)
@@ -148,13 +163,13 @@ public class GameManager : MonoBehaviour
 
 	public void CreateCharacters()
 	{
-		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass);
+		myCharacterManager = CharacterManager.CreateInStart(characterPrefab, arrowPrefab, playerClasses[NetworkManager.networkInstance.Id]);
 		myCharacterManager.Init();
 
 		Slinqable.Slinq(otherPlayers).ForEach(
 			(otherPlayerId) => {
 				otherCharacterManagers.Add(otherPlayerId,
-						CharacterManager.CreateInStart(characterPrefab, arrowPrefab, charClass));
+						CharacterManager.CreateInStart(characterPrefab, arrowPrefab, playerClasses[otherPlayerId]));
 				otherCharacterManagers[otherPlayerId].Init();
 			}
 		);
@@ -179,27 +194,24 @@ public class GameManager : MonoBehaviour
 	}
 
     //temp
-    Character.CharClass RandomSelectClass()
-    {
-        int temp = Random.Range(1,3);
-        switch (temp)
-        {
-            case 1:
-                return Character.CharClass.Warrior;
-            case 2:
-                return Character.CharClass.Tanker;
-            case 3:
-                return Character.CharClass.Attacker;
-            default:
-                return Character.CharClass.Novice;
-        }
-    }
+    //Character.CharClass RandomSelectClass()
+    //{
+        //int temp = Random.Range(1,3);
+        //switch (temp)
+        //{
+            //case 1:
+                //return Character.CharClass.Warrior;
+            //case 2:
+                //return Character.CharClass.Tanker;
+            //case 3:
+                //return Character.CharClass.Attacker;
+            //default:
+                //return Character.CharClass.Novice;
+        //}
+    //}
     
-    void Awake ()
-    {
-        //temp
-        charClass = RandomSelectClass();
-
+	void Awake ()
+	{
 		gameManagerInstance = this;
 		enemyInfoList = new EnemyInfoHolder();
 	}

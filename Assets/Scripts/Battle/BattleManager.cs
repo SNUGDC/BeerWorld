@@ -65,6 +65,11 @@ public class BattleManager : MonoBehaviour
 //--Item Trigger
     List<Character.Item> useItemsInBattle = new List<Character.Item>();
 
+	public bool IsPlayerTurn(CharacterManager characterManager)
+	{
+		return characterManager == playerManager;
+	}
+
 		void UpdateBuffUI()
 		{
 			player.DisableAllBuffUI();
@@ -229,6 +234,9 @@ public class BattleManager : MonoBehaviour
 			totalPlayerDice = playerCalcResult.totalDiceResult;
 			totalEnemyDice = enemyCalcResult.totalDiceResult;
 
+			player.SetTotalDiceResult(totalPlayerDice);
+			enemy.SetTotalDiceResult(totalEnemyDice);
+
 			Run useItem = Run.WaitSeconds(0);
 //------------------DiceChange
 			if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
@@ -252,6 +260,12 @@ public class BattleManager : MonoBehaviour
 
 			useItem.ExecuteWhenDone(() => {
 				//show animation with calculation result.
+				totalPlayerDice = playerCalcResult.totalDiceResult;
+				totalEnemyDice = enemyCalcResult.totalDiceResult;
+
+				player.SetTotalDiceResult(totalPlayerDice);
+				enemy.SetTotalDiceResult(totalEnemyDice);
+
 				state = State.ShowDamage;
 				Run.Coroutine(AnimateDamage(totalPlayerDice, totalEnemyDice));
 			});

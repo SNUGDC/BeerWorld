@@ -17,7 +17,7 @@ public class GameStartButton : MonoBehaviour {
 	void OnMouseDown ()
 	{
 		audio.Play ();
-		GameManager.gameManagerInstance.GameStart();
+		GameManager.gameManagerInstance.GameStartButtonClicked();
 		gameObject.SetActive(false);
 	}
 }
