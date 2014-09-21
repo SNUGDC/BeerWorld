@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: b39d4ac9555104329adf000862733856
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: dices_0
+    21300002: dices_1
+    21300004: dices_2
+    21300006: dices_3
+    21300008: dices_4
+    21300010: dices_5
+    21300012: dices_6
+    21300014: dices_7
+    21300016: dices_8
+    21300018: dices_9
+    21300020: dices_10
+    21300022: dices_11
+    21300024: dices_12
+    21300026: dices_13
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: dices_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 451
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 451
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_2
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 451
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_3
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 370
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 364
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_5
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 363
+        width: 58
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 280
+        width: 60
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 294
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_8
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 282
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_9
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 200
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 199
+        width: 58
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_11
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 199
+        width: 58
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 118
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dices_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 130
+        width: 58
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

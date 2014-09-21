@@ -10,6 +10,13 @@ public class DiceAnimation : MonoBehaviour {
 	}
 	
 	public void rollByNumber(int num){
+		anim.SetBool("is4",false);
+		anim.SetInteger("num",num);
+		anim.SetTrigger("roll");
+	}
+
+	public void roll4ByNumber(int num){
+		anim.SetBool("is4",true);
 		anim.SetInteger("num",num);
 		anim.SetTrigger("roll");
 	}
