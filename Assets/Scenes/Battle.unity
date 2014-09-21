@@ -454,7 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clips:
   - {fileID: 8300000, guid: 7d790fec164173340809e38b6e20339f, type: 3}
-  - {fileID: 8300000, guid: 737592f95c4463e4f948a6f8cdfca1ef, type: 3}
+  - {fileID: 8300000, guid: 6ea42e8f70f50c14d81f95739ced6c00, type: 3}
   audioSources: []
 --- !u!61 &26031955
 BoxCollider2D:

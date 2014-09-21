@@ -26,6 +26,7 @@ public class BigDiceAnimation : MonoBehaviour {
 	void OnMouseDown(){
 		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
 		roll();
+		multiAudioClip.audioSources[0].playOnAwake=false;
 		multiAudioClip.audioSources[0].loop = true;
 		multiAudioClip.audioSources[0].Play ();
 	}
@@ -43,10 +44,12 @@ public class BigDiceAnimation : MonoBehaviour {
 				yield return new WaitForSeconds(0.1f*j);
 			}
 		}
+		multiAudioClip.audioSources[1].playOnAwake=false;
+		multiAudioClip.audioSources [1].Play ();
 		resultNum = (int)(Random.value*6)+1;
 		setNumber(resultNum);
 		if(diceGetter.Method!=null)
 			diceGetter(resultNum);
-		multiAudioClip.audioSources [1].Play ();
+		
 	}
 }
