@@ -237,12 +237,14 @@ public class CharacterManager
         Tile.TileType tileType = tile.tileType;
 
 				var returnRun = Run.WaitSeconds(0);
-
+		MultiAudioClip multiAudioClip = characterInstance.GetComponent<MultiAudioClip>();
+		
         if (moveState == MoveState.CheckingSaveTile)
         {
             if (tileType == Tile.TileType.Save)
             {
                 characterInstance.CheckSaveTile(characterMover.GetCurrentTileKey());
+				multiAudioClip.audioSources[3].Play ();
             }
         } 
         else
@@ -252,7 +254,6 @@ public class CharacterManager
 
 				BattleUIManager.Get().ShowBuffStartAnimation(GameManager.GetNetworkViewID(this), tile.transform.position);
                 characterInstance.SetBuffOrDeBuff();
-				MultiAudioClip multiAudioClip = characterInstance.GetComponent<MultiAudioClip>();
 				multiAudioClip.audioSources[0].Play ();
 				
             }
@@ -260,12 +261,13 @@ public class CharacterManager
             {   
                 if (characterInstance.GetNumberOfItems() < Character.MaxInventorySize)
                 {
+					multiAudioClip.audioSources[1].Play ();	
 									returnRun = returnRun.Then(() => {
 										return EffectManager.Get().ShowItemAcquisitionEffect(tile.transform.position);
 									})
 									.ExecuteWhenDone(() => {
                     Character.Item newItem = SelectRandomItem();
-                    characterInstance.AddItem(newItem);
+                    characterInstance.AddItem(newItem);	
                     Debug.Log("Get Item!");
 									});
                 }
@@ -282,6 +284,7 @@ public class CharacterManager
 							.ExecuteWhenDone(() => {
 								characterInstance.InJail();
 							});
+							multiAudioClip.audioSources[2].Play ();
             }
             else if (tileType == Tile.TileType.Warp)
             {

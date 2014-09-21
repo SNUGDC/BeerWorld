@@ -149,9 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clips:
   - {fileID: 8300000, guid: d08fc82c43ea14018a80afe6a718b40f, type: 3}
-  - {fileID: 8300000, guid: bb05a5b49bc8ddf459b1cc91aa72f3f7, type: 3}
-  - {fileID: 8300000, guid: 2142152993b86144099ac00ae78fc469, type: 3}
-  - {fileID: 8300000, guid: b0192871dc7acfb48b6c68628c640031, type: 3}
+  - {fileID: 8300000, guid: 5e21b739ce1f12c429f20e7446de3944, type: 3}
+  - {fileID: 8300000, guid: b39dd144bf17efc419f42a06e5d1fc02, type: 3}
+  - {fileID: 8300000, guid: 86ab1f7aaff7d2143ae7253bca42f66f, type: 3}
   audioSources: []
 --- !u!212 &21200000
 SpriteRenderer:
