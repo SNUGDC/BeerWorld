@@ -100,24 +100,26 @@ public class GameManager : MonoBehaviour
 
 	public void PassTurnToNextPlayer()
 	{
-		TurnManager.Get().PassTurn();
-		TurnManager.State turnState = TurnManager.Get().GetState();
+		var waitingPassTurn = TurnManager.Get().PassTurn();
+		waitingPassTurn.ExecuteWhenDone(() => {
+			TurnManager.State turnState = TurnManager.Get().GetState();
 
-		if (turnState == TurnManager.State.Player)
-		{
-			NetworkManager.SendTurnStartMessage(NetworkManager.networkInstance.Id);
-		}
-		else if (turnState == TurnManager.State.OtherPlayer)
-		{
-			NetworkViewID turnPlayerViewID = TurnManager.Get().GetTurnPlayer();
-			NetworkManager.SendTurnStartMessage(turnPlayerViewID);
-		}
-		else if (turnState == TurnManager.State.Enemy)
-		{
-			NetworkManager.StartEnemyTurn();
-			EnemyManager turnEnemy = TurnManager.Get().GetTurnEnemy();
-			turnEnemy.ChangeMoveStateToIdle();
-		}
+			if (turnState == TurnManager.State.Player)
+			{
+				NetworkManager.SendTurnStartMessage(NetworkManager.networkInstance.Id);
+			}
+			else if (turnState == TurnManager.State.OtherPlayer)
+			{
+				NetworkViewID turnPlayerViewID = TurnManager.Get().GetTurnPlayer();
+				NetworkManager.SendTurnStartMessage(turnPlayerViewID);
+			}
+			else if (turnState == TurnManager.State.Enemy)
+			{
+				NetworkManager.StartEnemyTurn();
+				EnemyManager turnEnemy = TurnManager.Get().GetTurnEnemy();
+				turnEnemy.ChangeMoveStateToIdle();
+			}
+		});
 	}
 
 	//Used for devtest.
