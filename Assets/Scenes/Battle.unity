@@ -11331,6 +11331,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1543471112}
   m_RootOrder: 0
+--- !u!1 &772657291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 772657292}
+  - 114: {fileID: 772657293}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772657292
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 772657291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.18762374, y: 1.30858815, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 961032061}
+  m_RootOrder: 5
+--- !u!114 &772657293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 772657291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e79a8b4418a34e2a86c3b09be0bc68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectJailPrefab: {fileID: 100004, guid: 9cdd93be3495948789c99479ed2a28e6, type: 2}
 --- !u!1 &787469159
 GameObject:
   m_ObjectHideFlags: 0
@@ -13571,6 +13611,7 @@ Transform:
   - {fileID: 533606441}
   - {fileID: 1790018664}
   - {fileID: 527024019}
+  - {fileID: 772657292}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!1 &963039768

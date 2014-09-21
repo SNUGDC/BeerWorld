@@ -230,11 +230,13 @@ public class CharacterManager
         }
     }
 
-    void InteractionWithTile()
+    Run InteractionWithTile()
     {
         int tileKey = GetCurrentTileKey();
         Tile tile = TileManager.GetExistTile(tileKey);
         Tile.TileType tileType = tile.tileType;
+
+				var returnRun = Run.WaitSeconds(0);
 
         if (moveState == MoveState.CheckingSaveTile)
         {
@@ -269,7 +271,12 @@ public class CharacterManager
             }
             else if (tileType == Tile.TileType.Jail)
             {   
-                characterInstance.InJail();
+							returnRun = returnRun.Then(() => {
+								return EffectManager.Get().ShowJailEffect(tile.transform.position);
+							})
+							.ExecuteWhenDone(() => {
+								characterInstance.InJail();
+							});
             }
             else if (tileType == Tile.TileType.Warp)
             {
@@ -282,6 +289,8 @@ public class CharacterManager
 //                Debug.Log("Default Tile.");
             }
         }
+
+				return returnRun;
     }
 
     void UpdateRemainBuffTime()
@@ -321,14 +330,16 @@ public class CharacterManager
         {
             moveState = MoveState.Inactive;
 
-            InteractionWithTile();
+            Run tileEffect = InteractionWithTile();
+						yield return tileEffect.WaitFor;
             UpdateRemainBuffTime();
 						NetworkManager.SendTurnEndMessage();
         } 
 
         else if (moveState == MoveState.CheckingSaveTile)
         {
-            InteractionWithTile();
+            Run tileEffect = InteractionWithTile();
+						yield return tileEffect.WaitFor;
 
             moveState = MoveState.Moving;
         }
