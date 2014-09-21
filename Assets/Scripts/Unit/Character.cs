@@ -184,7 +184,12 @@ public class Character : Unit {
 
     public void CheckSaveTile(int tileKeyOfSaveTile)
     {
+				if (spawnTile.tileType == Tile.TileType.Save)
+				{
+					spawnTile.ToggleSaveTile(false);
+				}
         Tile saveTile = TileManager.GetExistTile(tileKeyOfSaveTile);
+				saveTile.ToggleSaveTile(true);
         spawnTile = saveTile;
         Debug.Log("Save at this check point!");
     }

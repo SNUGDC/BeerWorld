@@ -125,6 +125,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &176416
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -330,6 +331,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &8056163
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -591,6 +593,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &34161557
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -810,6 +813,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &46925958
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -991,6 +995,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &68392193
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1064,6 +1069,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &74646798
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1245,6 +1251,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &97814114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1345,6 +1352,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &103348114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1607,6 +1615,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &112650113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1707,6 +1716,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &124048563
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1821,6 +1831,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &129992247
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1894,6 +1905,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &131058127
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1994,6 +2006,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &138628300
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2197,6 +2210,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &144825719
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2321,6 +2335,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &146868867
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2394,6 +2409,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &149418571
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2467,6 +2483,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &168279277
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2672,6 +2689,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &184437950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2826,6 +2844,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &207644549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2953,6 +2972,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &217027475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3108,6 +3128,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &223424331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3208,6 +3229,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &235586591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3316,6 +3338,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &241944415
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3389,6 +3412,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &242869407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3462,6 +3486,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &243695763
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3535,6 +3560,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &250003661
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3608,6 +3634,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &253425444
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3681,6 +3708,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &257643757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3781,6 +3809,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &276872458
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3908,6 +3937,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &292689082
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3981,6 +4011,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &292900932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4158,6 +4189,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &302310682
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4282,6 +4314,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &306339779
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4467,6 +4500,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &323019744
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4594,6 +4628,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &332359087
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4667,6 +4702,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &337822544
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4790,6 +4826,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &339761193
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5022,6 +5059,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &359414401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5095,6 +5133,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &361828409
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5195,6 +5234,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &367009158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5386,6 +5426,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &371080946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5643,6 +5684,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &389173351
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5716,6 +5758,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &396349551
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5816,6 +5859,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &398896901
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5889,6 +5933,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &399891769
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6196,6 +6241,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &426894103
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6296,6 +6342,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &430197134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6396,6 +6443,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &445967721
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6547,6 +6595,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &463179877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6620,6 +6669,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &467633595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7008,6 +7058,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &490184759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7081,6 +7132,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &493084615
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7154,6 +7206,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &496546961
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7227,6 +7280,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &501183896
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7378,6 +7432,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &508966523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7451,6 +7506,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &512281266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7605,6 +7661,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &525941619
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7722,6 +7779,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &527528759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7822,6 +7880,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &531451217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8172,6 +8231,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &538742697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8401,6 +8461,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &550849644
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8528,6 +8589,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &561874297
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8601,6 +8663,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &579654839
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8728,6 +8791,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &596914984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8828,6 +8892,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &598377690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8978,6 +9043,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &607491078
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9302,6 +9368,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &644107621
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9402,6 +9469,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &652887939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9502,6 +9570,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &656080036
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9656,6 +9725,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &659509733
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9779,6 +9849,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &664733815
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9879,6 +9950,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &666184681
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9979,6 +10051,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &672708618
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10052,6 +10125,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &675223662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10152,6 +10226,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &682878002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10333,6 +10408,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &696157285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10433,6 +10509,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &707802735
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10506,6 +10583,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &720537966
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10714,6 +10792,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &727852393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10902,6 +10981,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &742028437
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11002,6 +11082,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &748265715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11156,6 +11237,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &755021917
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11283,6 +11365,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &766744591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11640,6 +11723,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &818382225
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11713,6 +11797,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &819384098
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11786,6 +11871,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &829821157
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11990,6 +12076,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &856371426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12090,6 +12177,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &862719211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12214,6 +12302,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &863339202
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12367,6 +12456,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &904200006
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12440,6 +12530,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &904357081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12610,6 +12701,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &920367850
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12683,6 +12775,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &923409216
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12756,6 +12849,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &923767721
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13147,6 +13241,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &932738210
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13220,6 +13315,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &937027644
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13398,6 +13494,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &943190454
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13720,6 +13817,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &968556040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13883,6 +13981,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &980634883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13983,6 +14082,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &988175546
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14056,6 +14156,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &990269499
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14210,6 +14311,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1003620347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14388,6 +14490,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1017401682
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14461,6 +14564,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1020034871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14639,6 +14743,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1042202032
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14739,6 +14844,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1043808342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14908,6 +15014,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1061701942
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14981,6 +15088,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1063132803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15081,6 +15189,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1073788355
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15181,6 +15290,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1075765250
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15308,6 +15418,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1104089405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15381,6 +15492,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1105434017
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15454,6 +15566,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1112040622
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15527,6 +15640,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1115202675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15654,6 +15768,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1120831286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15754,6 +15869,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1131268300
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15962,6 +16078,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1153683135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16190,6 +16307,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1166872802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16561,6 +16679,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1200014546
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16661,6 +16780,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1205654130
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16734,6 +16854,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1209823051
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16834,6 +16955,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1212116138
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16985,6 +17107,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1220925756
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17085,6 +17208,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1231617079
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17158,6 +17282,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1232278553
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17258,6 +17383,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1233463196
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17358,6 +17484,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1235900434
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17458,6 +17585,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1245448727
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17531,6 +17659,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1252348429
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17604,6 +17733,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1253892884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17878,6 +18008,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1271966719
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17951,6 +18082,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1273255966
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18051,6 +18183,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1291442570
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18124,6 +18257,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1291935810
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18197,6 +18331,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1293456018
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18321,6 +18456,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1297606620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18394,6 +18530,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1297881449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18467,6 +18604,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1300520685
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18621,6 +18759,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1308542952
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18826,6 +18965,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1317831756
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18926,6 +19066,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1318957279
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19053,6 +19194,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1325948375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19352,6 +19494,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1346199640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19583,6 +19726,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1358760898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19810,6 +19954,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1374202304
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19937,6 +20082,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1383518667
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20010,6 +20156,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1385380467
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20083,6 +20230,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1388635374
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20183,6 +20331,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1394129733
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20828,6 +20977,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1452704650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21009,6 +21159,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1463060217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21163,6 +21314,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1475371999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21341,6 +21493,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1490355206
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21665,6 +21818,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1531052909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21798,6 +21952,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1537925932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21858,6 +22013,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1538273664
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21944,6 +22100,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1539141967
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22017,6 +22174,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1541501464
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22090,6 +22248,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1543471114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22276,6 +22435,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1554714902
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22456,6 +22616,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1558319190
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22529,6 +22690,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1564825763
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22783,6 +22945,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1580504334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22856,6 +23019,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1590114805
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22983,6 +23147,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1597979956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23124,6 +23289,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1598409325
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23324,6 +23490,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1604398276
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23503,6 +23670,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1608582337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23576,6 +23744,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1615722681
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23649,6 +23818,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1628878423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23881,6 +24051,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1655921702
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24039,6 +24210,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1671819720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24166,6 +24338,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1685449336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24347,6 +24520,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1690460959
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24447,6 +24621,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1713824903
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24520,6 +24695,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1718186232
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24593,6 +24769,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1724968989
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24666,6 +24843,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1730582826
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24920,6 +25098,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1761221526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25020,6 +25199,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1762113790
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25161,6 +25341,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1772129333
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25362,6 +25543,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1787459582
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25501,6 +25683,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1794145419
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25574,6 +25757,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1797405595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25647,6 +25831,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1797578005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25774,6 +25959,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1814240399
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25874,6 +26060,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1827177484
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25974,6 +26161,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1833843621
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26134,6 +26322,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1848899105
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26207,6 +26396,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1849155525
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26484,6 +26674,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1866831896
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26584,6 +26775,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1873633939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26657,6 +26849,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1874333838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26730,6 +26923,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1903356185
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26965,6 +27159,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1917893640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27065,6 +27260,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1923618603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27165,6 +27361,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1933303513
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27365,6 +27562,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1940824138
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27438,6 +27636,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1946716052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27538,6 +27737,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1971635927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27638,6 +27838,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1977780725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27738,6 +27939,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &1991962340
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27997,6 +28199,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2001989149
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28070,6 +28273,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2007752234
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28143,6 +28347,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2009237967
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28216,6 +28421,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2017821516
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28316,6 +28522,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2026149211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28416,6 +28623,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2033786918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28566,6 +28774,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2052774351
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28639,6 +28848,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2057568394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28817,6 +29027,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2061564003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28890,6 +29101,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2062720384
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28990,6 +29202,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2071831155
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29207,6 +29420,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2081492299
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29313,6 +29527,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2083424883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29386,6 +29601,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2087285485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29459,6 +29675,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2091310268
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29559,6 +29776,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2102588782
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29686,6 +29904,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2107080491
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29786,6 +30005,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2112969499
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29892,6 +30112,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2120950954
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29965,6 +30186,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2121274552
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30038,6 +30260,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2124937405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30111,6 +30334,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2124960078
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30238,6 +30462,7 @@ MonoBehaviour:
   warpTile: {fileID: 21300000, guid: 74a0bd8ce469647e9b834941810daee4, type: 3}
   jailTile: {fileID: 21300000, guid: 170a856f55b99441ea5bfdbd6265a2ba, type: 3}
   saveTile: {fileID: 21300000, guid: 6ca1b4ceb2f894c0a9837605fd064ddf, type: 3}
+  saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
 --- !u!212 &2141630153
 SpriteRenderer:
   m_ObjectHideFlags: 0

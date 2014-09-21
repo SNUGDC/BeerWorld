@@ -28,6 +28,7 @@ public class Tile : MonoBehaviour {
 	public Sprite warpTile;
 	public Sprite jailTile;
 	public Sprite saveTile;
+	public Sprite saveTileToggled;
 
 	public bool IsStartTile()
 	{
@@ -49,13 +50,22 @@ public class Tile : MonoBehaviour {
 		return FieldTileUtility.GetCoordFromKey(tileKey);
 	}
 
-	// Use this for initialization
-	void Start () {
+	public void ToggleSaveTile(bool isSet)
+	{
+		if (tileType != TileType.Save)
+		{
+			Debug.LogError("Cannot toggle not save tile.");
+			return;
+		}
 
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+		var spriteRenderer = GetComponent<SpriteRenderer>();
+		if (isSet)
+		{
+			spriteRenderer.sprite = saveTileToggled;
+		}
+		else
+		{
+			spriteRenderer.sprite = saveTile;
+		}
 	}
 }

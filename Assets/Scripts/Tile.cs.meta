@@ -2,7 +2,15 @@ fileFormatVersion: 2
 guid: c485ed3300eb647be8d7db0f9409014f
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - defaultTile: {instanceID: 0}
+  - startTile: {instanceID: 0}
+  - itemTile: {instanceID: 0}
+  - buffTile: {instanceID: 0}
+  - warpTile: {instanceID: 0}
+  - jailTile: {instanceID: 0}
+  - saveTile: {instanceID: 0}
+  - saveTileToggled: {fileID: 21300000, guid: c659d75b934b1441885fd813fd23e69c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
