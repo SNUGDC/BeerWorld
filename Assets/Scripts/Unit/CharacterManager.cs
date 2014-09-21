@@ -387,12 +387,12 @@ public class CharacterManager
 		Debug.LogWarning(moveState.ToString());
 
 		move.ExecuteWhenDone(() => {
+			characterInstance.gameObject.SendMessage ("setReturn", false);
 			if (moveState == MoveState.Battle && GameManager.gameManagerInstance.isMyCharacterManager(this))
 			{
 				NetworkManager.SendTurnEndMessage();
 			}
 			moveState = MoveState.Inactive;
-			characterInstance.gameObject.SendMessage ("setReturn", false);
 		});
 	}
 

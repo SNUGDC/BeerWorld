@@ -341,16 +341,17 @@ public class BattleManager : MonoBehaviour
 			multiAudioClip.audioSources[1].Play ();
 			if (useItemsInBattle.Contains(Character.Item.Dodge))
 			{
-					Dodge();
-					useItemsInBattle.Remove(Character.Item.Dodge);
+				Dodge();
+				useItemsInBattle.Remove(Character.Item.Dodge);
 			}
 			else
 			{
-					player.ApplyDamage(1);
+				player.ApplyDamage(1);
+				player.ui.unitRenderer.transform.parent.gameObject.SendMessage("Hit");
 			}
  			enemy.ApplyDamage(1);
 			UpdateRemainHP();
-			target.ui.unitRenderer.transform.parent.gameObject.SendMessage("Hit");
+			enemy.ui.unitRenderer.transform.parent.gameObject.SendMessage("Hit");
 			yield return new WaitForSeconds(DelayManager.Get().battleHpMinusDelay);
 			Debug.Log("Each player is Damaged 1");
 		}
@@ -445,18 +446,17 @@ public class BattleManager : MonoBehaviour
             int diceResult = playerCalcResult.diceResults [indexOfLowestDice];
             player.ui.attackDices [indexOfLowestDice].SendMessage("rollByNumber", diceResult);
 
-					var animationGameObject = enemy.ui.attackDices[indexOfLowestDice];
-					var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
+			var animationGameObject = enemy.ui.attackDices[indexOfLowestDice];
+			var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
 
             totalPlayerDice += (diceResult - minDiceValue);
 
-					return Run.WaitSeconds(0.1f)
-					.Then(Run.WaitWhile(diceAnimation.IsRollAnimating));
+			return Run.WaitSeconds(0.1f).Then(Run.WaitWhile(diceAnimation.IsRollAnimating));
         }
-				else
-				{
-					return Run.WaitSeconds(0);
-				}
+		else
+		{
+			return Run.WaitSeconds(0);
+		}
     }
         
     void Dodge()
@@ -472,7 +472,7 @@ public class BattleManager : MonoBehaviour
         }
     }
         
-        void Berserk()
+    void Berserk()
     {
     }
 
