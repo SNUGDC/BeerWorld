@@ -7,11 +7,19 @@ public class Dice
 	{
 		if (diceSpecies == BDice.Species.Four)
 		{
-			return BattleManager.random.Next(1, 5);
+			var result =  BattleManager.random.Next(1, 5);
+			if (result < 1 && 4 < result) {
+				Debug.LogError("4DIce is " + result);
+			}
+			return result;
 		}
 		else if (diceSpecies == BDice.Species.Six)
 		{
-			return BattleManager.random.Next(1, 7);
+			var result = BattleManager.random.Next(1, 7);
+			if (result < 1 && 6 < result) {
+				Debug.LogError("6DIce is " + result);
+			}
+			return result;
 		}
 		else if (diceSpecies == BDice.Species.One)
 		{
