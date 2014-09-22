@@ -348,7 +348,14 @@ public class CharacterManager
         } 
         else if (remainMoveCount <= 0 && moveState == MoveState.Moving)
         {
-            moveState = MoveState.CheckingTileOption;
+            if (UnitUtil.GetPlayerCountAt(GetCurrentTileKey()) > 1)
+            {
+                remainMoveCount = 1;
+            }
+            else
+            {
+                moveState = MoveState.CheckingTileOption;
+            }
         } 
         else if (moveState == MoveState.CheckingTileOption)
         {

@@ -31,6 +31,15 @@ public static class UnitUtil
 			).FirstOrNone().isSome;
 	}
 
+    public static int GetEnemyCountAt(int tileKey)
+    {
+        var enemies = GameManager.gameManagerInstance.GetEnemiesList();
+        
+        return Slinqable.Slinq(enemies).Where(
+            (enemyManager) => enemyManager.GetCurrentTileKey() == tileKey
+            ).Count();
+    }
+
 	public static bool IsPlayerEncounter(int tileKey)
 	{
 		var players = GameManager.GetAllPlayersEnumerator();
@@ -40,6 +49,15 @@ public static class UnitUtil
 			).FirstOrNone().isSome;
 	}
 
+    public static int GetPlayerCountAt(int tileKey)
+    {
+        var players = GameManager.GetAllPlayersEnumerator();
+        
+        return Slinqable.Slinq(players).Where(
+            (characterManager) => characterManager.GetCurrentTileKey() == tileKey
+            ).Count();
+    }
+    
 	public static string GetEnemyIdOnTile(int tileKey)
 	{
 		var enemies = GameManager.gameManagerInstance.GetEnemiesList();
