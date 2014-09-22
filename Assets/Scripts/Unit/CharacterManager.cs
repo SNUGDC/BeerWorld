@@ -333,12 +333,16 @@ public class CharacterManager
 
 		if (moveState == MoveState.Idle && characterInstance.IsUnitInJail())
 		{
-			var jailWaiting = Run.WaitSeconds(0.5f)
+			int tileKey = GetCurrentTileKey();
+			Tile tile = TileManager.GetExistTile(tileKey);
+
+			var jailEffect = EffectManager.Get().ShowJailEffect(tile.transform.position);
+			var jailWaiting = Run.WaitSeconds(0.5f);
+
+			yield return Run.Join(new List<Run>{ jailEffect, jailWaiting })
 				.ExecuteWhenDone(() => {
 					TurnEnd();
-				});
-
-			yield return jailWaiting.WaitFor;
+				}).WaitFor;
 		}
 		else if (moveState == MoveState.Moving && UnitUtil.IsEnemyEncounter(GetCurrentTileKey()))
         {
