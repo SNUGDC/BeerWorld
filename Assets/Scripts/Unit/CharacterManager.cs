@@ -428,6 +428,8 @@ public class CharacterManager
 		characterInstance.gameObject.SendMessage ("setReturn", true);
 		var move = Run.Coroutine(Move(characterInstance.GetSpawnTile()));
 		Debug.LogWarning(moveState.ToString());
+		MultiAudioClip multiAudioClip = characterInstance.GetComponent<MultiAudioClip>();
+		multiAudioClip.audioSources[4].Play ();
 
 		move.ExecuteWhenDone(() => {
 			characterInstance.gameObject.SendMessage ("setReturn", false);
