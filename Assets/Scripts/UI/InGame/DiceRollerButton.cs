@@ -18,15 +18,15 @@ public class DiceRollerButton : MonoBehaviour
 		var character = characterManager.GetCharacterInstance();
 		if (moveState == CharacterManager.MoveState.Idle && !character.IsUnitInJail())
 		{
-			BigDice.SetActive(true);
-			BigDice.GetComponent<BigDiceAnimation>().diceGetter = getDice;
-//			spriteRenderer.enabled = true;
-//			collider2D.enabled = true;
-//		}		
-//		else
-//		{
-//			spriteRenderer.enabled = false;
-//			collider2D.enabled = false;
+//			BigDice.SetActive(true);
+//			BigDice.GetComponent<BigDiceAnimation>().diceGetter = getDice;
+			spriteRenderer.enabled = true;
+			collider2D.enabled = true;
+		}		
+		else
+		{
+			spriteRenderer.enabled = false;
+			collider2D.enabled = false;
 		}
 
 		if (Input.GetKeyUp(KeyCode.Alpha1))
@@ -57,17 +57,23 @@ public class DiceRollerButton : MonoBehaviour
 
     void OnMouseDown()
     {
-			var characterManager = GameManager.GetMyCharacterManager();
-        List<BDice.Species> moveDices = new List<BDice.Species>();
-		audio.Play();
-        moveDices = GetMoveDices(characterManager.GetCharacterInstance(), moveDices);
-        int diceResult = 0;
-        for (int i = 0; i < moveDices.Count; i++)
-        {
-            diceResult += Dice.Roll(moveDices [i]);
-        }
-        Debug.Log("Dice : " + diceResult);
-
-        characterManager.SetMovement(diceResult);
+		BigDice.SetActive(true);
+		BigDice.GetComponent<BigDiceAnimation>().diceGetter = getDice;
+		BigDice.SendMessage("OnMouseDown");
+//			var characterManager = GameManager.GetMyCharacterManager();
+//        List<BDice.Species> moveDices = new List<BDice.Species>();
+//		audio.Play();
+//        moveDices = GetMoveDices(characterManager.GetCharacterInstance(), moveDices);
+//        int diceResult = 0;
+//        for (int i = 0; i < moveDices.Count; i++)
+//        {
+//            diceResult += Dice.Roll(moveDices [i]);
+//        }
+//        Debug.Log("Dice : " + diceResult);
+//
+//        characterManager.SetMovement(diceResult);
     }
+	void OnMouseUp(){
+		BigDice.SendMessage("OnMouseUp");
+	}
 }

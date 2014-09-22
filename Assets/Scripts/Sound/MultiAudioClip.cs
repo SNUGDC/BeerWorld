@@ -7,7 +7,7 @@ public class MultiAudioClip : MonoBehaviour {
 	public AudioSource[] audioSources;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		audioSources = new AudioSource[Clips.Length];
 		
 		int i = 0;
@@ -27,10 +27,5 @@ public class MultiAudioClip : MonoBehaviour {
 			i++;
 			
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

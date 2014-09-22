@@ -16,16 +16,12 @@ public class BigDiceAnimation : MonoBehaviour {
 		anim.SetInteger("num",num);
 		anim.SetTrigger("pop");
 	}
-	public void roll(){
-		anim.SetTrigger("roll");
-	}
 	public void reset(){
 		anim.SetTrigger ("reset");
 	}
 
 	void OnMouseDown(){
 		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
-		roll();
 		multiAudioClip.audioSources[0].playOnAwake=false;
 		multiAudioClip.audioSources[0].loop = true;
 		multiAudioClip.audioSources[0].Play ();
@@ -34,6 +30,7 @@ public class BigDiceAnimation : MonoBehaviour {
 		StartCoroutine("ShowRandomDice");
 	}
 	IEnumerator ShowRandomDice(){
+		anim.SetTrigger("stopRoll");
 		MultiAudioClip multiAudioClip = GetComponent<MultiAudioClip>();
 		for(int j=1; j<4; j++){
 			for(int i=0; i<4; i++){
