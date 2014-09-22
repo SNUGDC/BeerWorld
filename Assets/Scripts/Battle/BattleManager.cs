@@ -150,7 +150,26 @@ public class BattleManager : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyUp(KeyCode.A))
+//------Berserk
+		if (useItemsInBattle.Contains(Character.Item.Berserk))
+        {
+            player.CopyDefenceDicesToAttackDices();
+            useItemsInBattle.Remove(Character.Item.Berserk);
+        }
+//------Block
+        if (useItemsInBattle.Contains(Character.Item.Block))
+        {
+            player.CopyDefenceDicesToAttackDices();
+            useItemsInBattle.Remove(Character.Item.Block);
+        }
+//------Adding
+        if (useItemsInBattle.Contains(Character.Item.Adding))
+        {
+            player.AddBonusStat();
+            useItemsInBattle.Remove(Character.Item.Adding);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.A))
 		{
 			if (state == State.WaitingRoll)
 			{

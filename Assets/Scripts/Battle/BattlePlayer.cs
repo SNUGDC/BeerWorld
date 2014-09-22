@@ -34,11 +34,11 @@ public class BattlePlayerUI
 
 public class BattlePlayer
 {
-  public readonly List<BDice.Species> attackDices;
-  public readonly List<BDice.Species> defenseDices;
+  public List<BDice.Species> attackDices;
+  public List<BDice.Species> defenseDices;
   public readonly int maxHp;
   public readonly BattlePlayerUI ui;
-  public readonly int bonusStat;
+  public int bonusStat;
   private int currentHp;
 
   //using Test.
@@ -67,6 +67,27 @@ public class BattlePlayer
 
 		ui.damageCount.text = "0";
   }
+
+    public void CopyAttackDicesToDefenceDices()
+    {
+        this.defenseDices = this.attackDices;
+        //animation.
+        //re-show defenctDices.
+    }
+
+    public void CopyDefenceDicesToAttackDices()
+    {
+        this.attackDices = this.defenseDices;
+        //animation.
+        //re-show attackDices.
+    }
+
+    public void AddBonusStat()
+    {
+        int newBonusStat = Random.Range(1, 4);
+        this.bonusStat += newBonusStat;
+        //animation.
+    }
 
 	void ShowDiceCount()
 	{
