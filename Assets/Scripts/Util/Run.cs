@@ -319,7 +319,6 @@ public class Run
 			yield return null;
 
 		var nRun = nextRunGetter();
-		nRun.Start();
 		yield return nRun.WaitFor;
 
 		aRun.isDone = true;

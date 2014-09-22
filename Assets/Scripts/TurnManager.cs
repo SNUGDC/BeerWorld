@@ -46,14 +46,17 @@ public class TurnManager : MonoBehaviour
 		waitingEnemies = new Queue<EnemyManager>(enemies);
 	}
 
-	public void PassTurn()
+	public Run PassTurn()
 	{
+		//FIXME: just waiting 1 second for animation.
+		Run waiting = Run.WaitSeconds(0);
 		if (state == State.Player)
 		{
 			currentTurnIndex = 0;
 			if (otherPlayers.Count == 0)
 			{
 				NetworkManager.ShowEnemyTurn();
+				waiting = waiting.Then(() => Run.WaitSeconds(1f));
 				state = State.Enemy;
 				EnemyTurnStart();
 			}
@@ -68,6 +71,7 @@ public class TurnManager : MonoBehaviour
 			if (currentTurnIndex >= otherPlayers.Count)
 			{
 				NetworkManager.ShowEnemyTurn();
+				waiting = waiting.Then(() => Run.WaitSeconds(1f));
 				currentTurnIndex = 0;
 				state = State.Enemy;
 				EnemyTurnStart();
@@ -75,16 +79,14 @@ public class TurnManager : MonoBehaviour
 		}
 		else
 		{
-			if (waitingEnemies.Count > 0)
-			{
-				return;
-			}
-			else
+			if (waitingEnemies.Count <= 0)
 			{
 				CountUpTurn();
+				waiting = waiting.Then(() => Run.WaitSeconds(1f));
 				state = State.Player;
 			}
 		}
+		return waiting;
 	}
 
 	private void CountUpTurn()
