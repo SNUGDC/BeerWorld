@@ -206,7 +206,7 @@ public class BattleManager : MonoBehaviour
 		else
 		{
 			playerCalcResult = calculator.GetDefenseDiceResult(player);
-			enemyCalcResult = calculator.GetAttackDiceResult(player);
+			enemyCalcResult = calculator.GetAttackDiceResult(enemy);
 		}
 
 		Run.After(DelayManager.Get().battleDiceRollToDiceResultDelay, () => {
