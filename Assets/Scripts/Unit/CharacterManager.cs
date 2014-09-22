@@ -262,11 +262,11 @@ public class CharacterManager
                 if (characterInstance.GetNumberOfItems() < Character.MaxInventorySize)
                 {
 					multiAudioClip.audioSources[1].Play ();	
+									Character.Item newItem = SelectRandomItem();
 									returnRun = returnRun.Then(() => {
-										return EffectManager.Get().ShowItemAcquisitionEffect(tile.transform.position);
+										return EffectManager.Get().ShowItemAcquisitionEffect(tile.transform.position, newItem);
 									})
 									.ExecuteWhenDone(() => {
-                    Character.Item newItem = SelectRandomItem();
                     characterInstance.AddItem(newItem);	
                     Debug.Log("Get Item!");
 									});

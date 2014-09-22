@@ -23,11 +23,14 @@ public class EffectManager : MonoBehaviour
 		return Run.WaitWhile(() => effect != null);
 	}
 
-	public Run ShowItemAcquisitionEffect(Vector3 position)
+	public Run ShowItemAcquisitionEffect(Vector3 position, Character.Item item)
 	{
 		var effect = Instantiate(itemAcquisitionEffectPrefab, position, Quaternion.identity) as GameObject;
 		effect.transform.parent = BattleUIManager.Get().transform;
 		effect.transform.localPosition = Vector3.zero;
+
+		var itemSprite = BattleUIManager.Get().GetSpriteOfItem(item);
+		effect.GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
 
 		return Run.WaitWhile(() => effect != null);
 	}
