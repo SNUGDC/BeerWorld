@@ -154,7 +154,7 @@ public class Character : Unit {
             bonusDice = -1;
             Debug.Log("Get Debuff! Dice -1 durint 3 turns");
         }
-        remainBuffOrDebuffTurn = 3+1;
+        remainBuffOrDebuffTurn = 3;
     }
 
 	public Tile GetSpawnTile()

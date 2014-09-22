@@ -295,8 +295,15 @@ public class EnemyManager
 
 		if ((remainMoveCount <= 0 && moveState == MoveState.Moving)||(moveState == MoveState.MakingComplete))
 		{
-			moveState = MoveState.Inactive;
-			GameManager.gameManagerInstance.PassTurnToNextPlayer();
+            if (UnitUtil.GetEnemyCountAt(GetCurrentTileKey()) > 1)
+            {
+                remainMoveCount = 1;
+            }
+            else
+            {
+                moveState = MoveState.Inactive;
+			    GameManager.gameManagerInstance.PassTurnToNextPlayer();
+            }
 		}
 		else if (moveState == MoveState.Moving)
 		{

@@ -105,7 +105,7 @@ public class BattleUIManager : MonoBehaviour
 		buffAnimation.PlayBuffAt(tilePos, playerIndex);
 	}
 
-	Sprite GetSpriteOfItem(Character.Item item)
+	public Sprite GetSpriteOfItem(Character.Item item)
 	{
 		var sprite = Slinqable.Slinq(itemSprites).FirstOrNone(
 			(itemSprite) => itemSprite.item == item
