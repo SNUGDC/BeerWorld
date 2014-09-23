@@ -10895,6 +10895,15 @@ MonoBehaviour:
     - {fileID: 1939756267}
     - {fileID: 879332337}
     leftUIGO: {fileID: 1370185154}
+    classSprite:
+    - charClass: 0
+      sprite: {fileID: 21300000, guid: 7ea988269bc0d4263a81f433aa21b0ff, type: 3}
+    - charClass: 1
+      sprite: {fileID: 21300000, guid: 81d4819ab025d4b44b8415dae7de07a0, type: 3}
+    - charClass: 2
+      sprite: {fileID: 21300000, guid: 088f40b560f454fd9a7a95545e2ad353, type: 3}
+    - charClass: 3
+      sprite: {fileID: 21300000, guid: e2ec2e342a96f436b903111fb0ef9c55, type: 3}
   inventoryUI: {fileID: 1406857180}
   players: []
   heartSprites:

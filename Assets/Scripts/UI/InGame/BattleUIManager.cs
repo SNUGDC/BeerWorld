@@ -53,7 +53,7 @@ public class BattleUIManager : MonoBehaviour
 		});
 	}
 
-	public void SetPlayers(List<NetworkViewID> playerIds)
+	public void SetPlayers(List<NetworkViewID> playerIds, Dictionary<NetworkViewID, Character.CharClass> playerClasses)
 	{
 		if (playerIds.Count > leftUI.playerUIs.Count)
 		{
@@ -63,7 +63,7 @@ public class BattleUIManager : MonoBehaviour
 		Queue<GameObject> playerUIs = new Queue<GameObject>(leftUI.playerUIs);
 		var players = Slinqable.Slinq(playerIds).Select((playerId) => {
 			var playerUI = playerUIs.Dequeue();
-			return new LeftUIComps.Player(playerUI, playerId);
+			return new LeftUIComps.Player(playerUI, playerId, playerClasses[playerId]);
 		});
 
 		this.players = players.ToList();

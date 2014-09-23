@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
 
 	public void SetTurnOrder(List<NetworkViewID> playerOrder)
 	{
-		BattleUIManager.Get().SetPlayers(playerOrder);
+		BattleUIManager.Get().SetPlayers(playerOrder, playerClasses);
 	}
 
 	public void CreateCharacters()
