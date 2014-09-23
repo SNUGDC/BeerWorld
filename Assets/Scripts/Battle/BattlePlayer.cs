@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Algebraics;
 using Smooth.Slinq;
 
 public class BDice
@@ -183,6 +184,29 @@ public class BattlePlayer
 		Slinqable.Slinq(ui.battleBuffUIs)
 			.Where((buffUI) => buffUI.item == item)
 			.ForEach((buffUI) => buffUI.spriteRenderer.enabled = true);
+	}
+
+	public Run ScaleBuffUI(Character.Item item)
+	{
+		float scale = 1.5f;
+		float effectTime = 0.5f;
+
+		Vector3 scaleVector = new Vector3(scale, scale, 1);
+
+		Option<Run> effect = Slinqable.Slinq(ui.battleBuffUIs)
+			.Where((buffUI) => buffUI.item == item)
+			.FirstOrNone()
+			.Select((buffUI) => {
+				var buffGO = buffUI.spriteRenderer.gameObject;
+				iTween.ScaleTo(buffGO, iTween.Hash("scale", scaleVector, "time", effectTime));
+				return Run.WaitSeconds(effectTime)
+					.ExecuteWhenDone(() => {
+						iTween.ScaleTo(buffGO, iTween.Hash("scale", Vector3.one, "time", effectTime));
+					})
+					.Then(() => Run.WaitSeconds(effectTime));
+			});
+
+		return effect.ValueOr(Run.WaitSeconds(0));
 	}
 
 	public void SetTotalDiceResult(int diceResult)

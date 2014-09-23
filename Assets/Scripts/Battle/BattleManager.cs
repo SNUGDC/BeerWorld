@@ -333,7 +333,8 @@ public class BattleManager : MonoBehaviour
 //----------Dodge item.
 			if (useItemsInBattle.Contains(Character.Item.Dodge))
 			{
-				Dodge();
+				Run dodgeEffect = Dodge();
+				yield return dodgeEffect.WaitFor;
 				useItemsInBattle.Remove(Character.Item.Dodge);
 			}
 
@@ -360,7 +361,8 @@ public class BattleManager : MonoBehaviour
 			multiAudioClip.audioSources[1].Play ();
 			if (useItemsInBattle.Contains(Character.Item.Dodge))
 			{
-				Dodge();
+				Run dodgeEffect = Dodge();
+				yield return dodgeEffect.WaitFor;
 				useItemsInBattle.Remove(Character.Item.Dodge);
 			}
 			else
@@ -478,7 +480,7 @@ public class BattleManager : MonoBehaviour
 		}
     }
         
-    void Dodge()
+    Run Dodge()
     {
         //Add dodge effect.
         if (target == player)
@@ -489,6 +491,8 @@ public class BattleManager : MonoBehaviour
         {
             player.ApplyDamage(0);
         }
+
+				return ShowItemScaleEffect(Character.Item.Dodge);
     }
         
     void Berserk()
@@ -502,5 +506,11 @@ public class BattleManager : MonoBehaviour
     void Adding()
     {
     }
+
+		Run ShowItemScaleEffect(Character.Item item)
+		{
+			var extendedSize = 1.5f;
+			return player.ScaleBuffUI(item);
+		}
 }
 
