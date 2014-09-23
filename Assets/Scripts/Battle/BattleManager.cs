@@ -263,24 +263,28 @@ public class BattleManager : MonoBehaviour
 //------------------DiceChange
 			if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
 			{
-				ChangeDiceWithEnemy();
-				UpdateBuffUI();
-				useItem.Then(() => ShowItemScaleEffect(Character.Item.DiceChange));
+				Debug.Log("DiceChangeSkill used.");
+				useItem = useItem.Then(() => ShowItemScaleEffect(Character.Item.DiceChange))
+				.ExecuteWhenDone(() => {
+					ChangeDiceWithEnemy();
+					UpdateBuffUI();
+					useItemsInBattle.Remove(Character.Item.DiceChange);
+				});
 			}
 
 //------------------DiceResultChange
 			if (useItemsInBattle.Contains(Character.Item.DiceResultChange) == true)
 			{
-				useItem.Then(() => {
-						var diceRollWait = DiceReroll().ExecuteWhenDone(() => {
-							useItemsInBattle.Remove(Character.Item.DiceResultChange);
-							UpdateBuffUI();
-						});
-						var diceRollScale = ShowItemScaleEffect(Character.Item.DiceResultChange);
+				useItem = useItem.Then(() => {
+					var diceRollWait = DiceReroll();
+					var diceRollScale = ShowItemScaleEffect(Character.Item.DiceResultChange);
 
-						return Run.Join(new List<Run>{ diceRollWait, diceRollScale });
-					}
-				);
+					return Run.Join(new List<Run>{ diceRollWait, diceRollScale })
+					.ExecuteWhenDone(() => {
+						UpdateBuffUI();
+						useItemsInBattle.Remove(Character.Item.DiceResultChange);
+					});
+				});
 			}
 
 			useItem.ExecuteWhenDone(() => {
@@ -458,33 +462,34 @@ public class BattleManager : MonoBehaviour
     }
 
     Run DiceReroll()
-    {
-        //Add effect.
-
-        int minDiceValue = Slinqable.Slinq(playerCalcResult.diceResults).Min();
-        int indexOfLowestDice = playerCalcResult.diceResults.FindIndex(
-            (diceResult) => diceResult == minDiceValue);
-
-
-        if (attackOrDefense == AttackOrDefense.Attack)
-        {        
-            //Add re-roll effect playerDice @player.ui.attackDices[i]
-
-            int diceResult = playerCalcResult.diceResults [indexOfLowestDice];
-            player.ui.attackDices [indexOfLowestDice].SendMessage("rollByNumber", diceResult);
-
-			var animationGameObject = enemy.ui.attackDices[indexOfLowestDice];
-			var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
-
-            totalPlayerDice += (diceResult - minDiceValue);
-
-			return Run.WaitSeconds(0.1f).Then(Run.WaitWhile(diceAnimation.IsRollAnimating));
-        }
-		else
 		{
-			return Run.WaitSeconds(0);
+			//Add effect.
+
+			int minDiceValue = Slinqable.Slinq(playerCalcResult.diceResults).Min();
+			int indexOfLowestDice = playerCalcResult.diceResults.FindIndex(
+					(diceResult) => diceResult == minDiceValue);
+
+
+			if (attackOrDefense == AttackOrDefense.Attack)
+			{        
+				//Add re-roll effect playerDice @player.ui.attackDices[i]
+
+				int diceResult = playerCalcResult.diceResults [indexOfLowestDice];
+				Debug.Log("Attack dicke to reroll is " + indexOfLowestDice);
+				player.ui.attackDices [indexOfLowestDice].SendMessage("rollByNumber", diceResult);
+
+				var animationGameObject = enemy.ui.attackDices[indexOfLowestDice];
+				var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
+
+				totalPlayerDice += (diceResult - minDiceValue);
+
+				return Run.WaitSeconds(0.1f).Then(Run.WaitWhile(diceAnimation.IsRollAnimating));
+			}
+			else
+			{
+				return Run.WaitSeconds(0);
+			}
 		}
-    }
         
     Run Dodge()
     {
