@@ -270,6 +270,7 @@ public class BattleManager : MonoBehaviour
 					ChangeDiceWithEnemy();
 					UpdateBuffUI();
 					useItemsInBattle.Remove(Character.Item.DiceChange);
+					UpdateTotalDiceResult();
 				});
 			}
 
@@ -449,6 +450,14 @@ public class BattleManager : MonoBehaviour
 				enemy.ui.hearts[i].SetActive(false);
 			}
 		}
+	}
+
+	void UpdateTotalDiceResult()
+	{
+		totalPlayerDice = playerCalcResult.totalDiceResult;
+		totalEnemyDice = enemyCalcResult.totalDiceResult;
+		player.SetTotalDiceResult(totalPlayerDice);
+		enemy.SetTotalDiceResult(totalEnemyDice);
 	}
 
     void ChangeDiceWithEnemy()
