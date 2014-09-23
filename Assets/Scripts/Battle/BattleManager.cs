@@ -268,8 +268,8 @@ public class BattleManager : MonoBehaviour
 				useItem = useItem.Then(() => ShowItemScaleEffect(Character.Item.DiceChange))
 				.ExecuteWhenDone(() => {
 					ChangeDiceWithEnemy();
-					UpdateBuffUI();
 					useItemsInBattle.Remove(Character.Item.DiceChange);
+					UpdateBuffUI();
 					UpdateTotalDiceResult();
 				});
 			}
@@ -283,8 +283,8 @@ public class BattleManager : MonoBehaviour
 
 					return Run.Join(new List<Run>{ diceRollWait, diceRollScale })
 					.ExecuteWhenDone(() => {
-						UpdateBuffUI();
 						useItemsInBattle.Remove(Character.Item.DiceResultChange);
+						UpdateBuffUI();
 					});
 				});
 			}
@@ -348,6 +348,7 @@ public class BattleManager : MonoBehaviour
 				Run dodgeEffect = Dodge();
 				yield return dodgeEffect.WaitFor;
 				useItemsInBattle.Remove(Character.Item.Dodge);
+				UpdateBuffUI();
 			}
 
 			if (damage > target.GetHp())
