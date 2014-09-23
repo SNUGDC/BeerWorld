@@ -230,11 +230,27 @@ public class GameManager : MonoBehaviour
 	public void InstantiateEnemyByNetwork(string enemyId, int tileKey, Enemy.EnemyType type)
 	{
 		Tile startTile = TileManager.GetExistTile(tileKey);
-		EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile, type, enemyId);
 
-		enemyManager.Init();
+		Camera.main.transform.position = new Vector3(
+			startTile.transform.position.x,
+			startTile.transform.position.y,
+			Camera.main.transform.position.z);
 
-		enemies.Add(enemyId, enemyManager);
+		Run.WaitSeconds(0.3f)
+			.ExecuteWhenDone(() => {
+				EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile, type, enemyId);
+				enemyManager.Init();
+				enemies.Add(enemyId, enemyManager);
+			})
+			.Then(() => Run.WaitSeconds(0.3f))
+			.ExecuteWhenDone(() => {
+				if (Network.isServer)
+				{
+					Slinqable.Slinq(enemies.Values)
+						.FirstOrNone((enemyManager) => enemyManager.GetMoveState() == EnemyManager.MoveState.MakingEnemy)
+						.ForEach((enemyManager) => enemyManager.OnEnemyMakingEffectEnd());
+				}
+			});
 	}
 
 	public void MoveEnemy(int tileKey, string enemyId)

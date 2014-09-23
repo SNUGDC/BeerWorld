@@ -61,7 +61,8 @@ public class EnemyManager
 		Idle,  // diceRoller btn visible.
 		Moving,
 		Battle,
-        MakingComplete
+		MakingEnemy,
+		MakingComplete
 	}
 
 	[SerializeField]
@@ -157,10 +158,14 @@ public class EnemyManager
             if (makeCooldown == 0)
             {
                 MakeSmallestEnemy();
+								moveState = MoveState.MakingEnemy;
                 makeCooldown = 2;
             }
+						else
+						{
+							moveState = MoveState.MakingComplete;
+						}
             makeCooldown--;
-            moveState = MoveState.MakingComplete;
         } 
         else
         {
@@ -339,5 +344,10 @@ public class EnemyManager
 			GameManager.gameManagerInstance.PassTurnToNextPlayer();
 		}
 		GameManager.gameManagerInstance.KillEnemy(enemyId);
+	}
+
+	public void OnEnemyMakingEffectEnd()
+	{
+		moveState = MoveState.MakingComplete;
 	}
 }
