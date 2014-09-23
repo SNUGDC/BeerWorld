@@ -251,7 +251,8 @@ public class BattleManager : MonoBehaviour
 		//Wait for animation end.
 		var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
 		Run.WaitSeconds(0.1f)
-		.Then(Run.WaitWhile(diceAnimation.IsRollAnimating))
+		.Then(() => Run.WaitWhile(diceAnimation.IsRollAnimating))
+		.Then(() => Run.WaitSeconds(0.1f))
 		.ExecuteWhenDone(() => {
 			totalPlayerDice = playerCalcResult.totalDiceResult;
 			totalEnemyDice = enemyCalcResult.totalDiceResult;
@@ -453,7 +454,6 @@ public class BattleManager : MonoBehaviour
     void ChangeDiceWithEnemy()
     {
         //Add DiceChange effect.
-			// FIXME: Is diceResults also swapped?
         int temp = playerCalcResult.totalDiceResult;
         playerCalcResult.totalDiceResult = enemyCalcResult.totalDiceResult;
         enemyCalcResult.totalDiceResult = temp;
@@ -469,25 +469,38 @@ public class BattleManager : MonoBehaviour
 			int indexOfLowestDice = playerCalcResult.diceResults.FindIndex(
 					(diceResult) => diceResult == minDiceValue);
 
+			//FIXME ui is reversed.
+			int indexOfLowestDiceUI = player.ui.attackDices.Length - 1 - indexOfLowestDice;
 
 			if (attackOrDefense == AttackOrDefense.Attack)
 			{        
 				//Add re-roll effect playerDice @player.ui.attackDices[i]
 
-				int diceResult = playerCalcResult.diceResults [indexOfLowestDice];
+				int diceResult = Dice.Roll(player.attackDices[indexOfLowestDice]);
 				Debug.Log("Attack dicke to reroll is " + indexOfLowestDice);
-				player.ui.attackDices [indexOfLowestDice].SendMessage("rollByNumber", diceResult);
+				player.ui.attackDices [indexOfLowestDiceUI].SendMessage("rollByNumber", diceResult);
 
-				var animationGameObject = enemy.ui.attackDices[indexOfLowestDice];
+				var animationGameObject = player.ui.attackDices[indexOfLowestDiceUI];
 				var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
 
 				totalPlayerDice += (diceResult - minDiceValue);
+				playerCalcResult.totalDiceResult =  totalPlayerDice;
 
-				return Run.WaitSeconds(0.1f).Then(Run.WaitWhile(diceAnimation.IsRollAnimating));
+				return Run.WaitSeconds(0.1f).Then(() => Run.WaitWhile(diceAnimation.IsRollAnimating));
 			}
 			else
 			{
-				return Run.WaitSeconds(0);
+				int diceResult = Dice.Roll(player.defenseDices[indexOfLowestDice]);
+				Debug.Log("Defense dicke to reroll is " + indexOfLowestDice);
+				player.ui.defenseDices [indexOfLowestDiceUI].SendMessage("rollByNumber", diceResult);
+
+				var animationGameObject = player.ui.attackDices[indexOfLowestDiceUI];
+				var diceAnimation = animationGameObject.GetComponent<DiceAnimation>();
+
+				totalPlayerDice += (diceResult - minDiceValue);
+				playerCalcResult.totalDiceResult =  totalPlayerDice;
+
+				return Run.WaitSeconds(0.1f).Then(() => Run.WaitWhile(diceAnimation.IsRollAnimating));
 			}
 		}
         
