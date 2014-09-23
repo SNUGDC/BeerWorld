@@ -155,18 +155,21 @@ public class BattleManager : MonoBehaviour
         {
             player.CopyDefenceDicesToAttackDices();
             useItemsInBattle.Remove(Character.Item.Berserk);
+						ShowItemScaleEffect(Character.Item.Berserk);
         }
 //------Block
         if (useItemsInBattle.Contains(Character.Item.Block))
         {
             player.CopyDefenceDicesToAttackDices();
             useItemsInBattle.Remove(Character.Item.Block);
+						ShowItemScaleEffect(Character.Item.Block);
         }
 //------Adding
         if (useItemsInBattle.Contains(Character.Item.Adding))
         {
             player.AddBonusStat();
             useItemsInBattle.Remove(Character.Item.Adding);
+						ShowItemScaleEffect(Character.Item.Adding);
         }
         
         if (Input.GetKeyUp(KeyCode.A))
@@ -261,18 +264,21 @@ public class BattleManager : MonoBehaviour
 			if (useItemsInBattle.Contains(Character.Item.DiceChange) == true)
 			{
 				ChangeDiceWithEnemy();
-				useItemsInBattle.Remove(Character.Item.DiceChange);
 				UpdateBuffUI();
+				useItem.Then(() => ShowItemScaleEffect(Character.Item.DiceChange));
 			}
 
 //------------------DiceResultChange
 			if (useItemsInBattle.Contains(Character.Item.DiceResultChange) == true)
 			{
 				useItem.Then(() => {
-						return DiceReroll().ExecuteWhenDone(() => {
+						var diceRollWait = DiceReroll().ExecuteWhenDone(() => {
 							useItemsInBattle.Remove(Character.Item.DiceResultChange);
 							UpdateBuffUI();
 						});
+						var diceRollScale = ShowItemScaleEffect(Character.Item.DiceResultChange);
+
+						return Run.Join(new List<Run>{ diceRollWait, diceRollScale });
 					}
 				);
 			}
