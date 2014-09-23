@@ -16,6 +16,7 @@ public class EffectManager : MonoBehaviour
 
 	public GameObject effectJailPrefab;
 	public GameObject itemAcquisitionEffectPrefab;
+	public GameObject enemySpawnEffectPrefab;
 
 	public Run ShowJailEffect(Vector3 position)
 	{
@@ -32,6 +33,12 @@ public class EffectManager : MonoBehaviour
 		var itemSprite = BattleUIManager.Get().GetSpriteOfItem(item);
 		effect.GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
 
+		return Run.WaitWhile(() => effect != null);
+	}
+
+	public Run ShowEnemySpawnEffect(Vector3 position)
+	{
+		var effect = Instantiate(enemySpawnEffectPrefab, position, Quaternion.identity);
 		return Run.WaitWhile(() => effect != null);
 	}
 }

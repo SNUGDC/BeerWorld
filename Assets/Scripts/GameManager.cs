@@ -236,13 +236,16 @@ public class GameManager : MonoBehaviour
 			startTile.transform.position.y,
 			Camera.main.transform.position.z);
 
-		Run.WaitSeconds(0.3f)
+		var summonEffect = EffectManager.Get().ShowEnemySpawnEffect(startTile.transform.position);
+
+		var summon = Run.WaitSeconds(0.3f)
 			.ExecuteWhenDone(() => {
 				EnemyManager enemyManager = EnemyManager.Create(enemyPrefab, startTile, type, enemyId);
 				enemyManager.Init();
 				enemies.Add(enemyId, enemyManager);
-			})
-			.Then(() => Run.WaitSeconds(0.3f))
+			});
+
+		Run.Join(new List<Run> { summonEffect, summon })
 			.ExecuteWhenDone(() => {
 				if (Network.isServer)
 				{
