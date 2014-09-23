@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 41f5ee6e97ed74188b41a3f81f856483
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: lobby_player_Tanker
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

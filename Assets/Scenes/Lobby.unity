@@ -334,6 +334,7 @@ GameObject:
   - 212: {fileID: 1619794680}
   - 114: {fileID: 1619794683}
   - 82: {fileID: 1619794684}
+  - 95: {fileID: 1619794685}
   m_Layer: 0
   m_Name: StageSelect
   m_TagString: Untagged
@@ -457,6 +458,21 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!95 &1619794685
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1619794679}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a934683616fc141de816928e3faf7e39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1683681437
 GameObject:
   m_ObjectHideFlags: 0

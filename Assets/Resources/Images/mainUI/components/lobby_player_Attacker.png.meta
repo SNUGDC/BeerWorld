@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: c3dc97b7dee4641ccb1a28d2bacf9d37
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: lobby_player_Attacker
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

@@ -10,6 +10,7 @@ public class LoginOrSignButton : MonoBehaviour {
 	SpriteRenderer spRender;
 	public Sprite idleButton;
 	public Sprite pushedButton;
+	public GameObject loadingPop;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,8 @@ public class LoginOrSignButton : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
+		if(loadingPop != null)
+			loadingPop.SetActive(true);
 		StartCoroutine( Request2Web("login"));
 		spRender.sprite = idleButton;
 	}
