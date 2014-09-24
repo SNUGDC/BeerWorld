@@ -4,8 +4,7 @@ using System.Collections;
 public partial class StageMatchingButton : MonoBehaviour {
 	RoomManager rmManager;
 	public string mapName = "France"; 
-	public GameObject loadingImage;
-	GameObject loading;
+	public GameObject loading;
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +20,13 @@ public partial class StageMatchingButton : MonoBehaviour {
 		rmManager.UpdateMasterServerInfo();
 		SearchRoom ("France");
 		audio.Play ();
+		loading.SetActive(true);
 		//loading = Instantiate (loadingImage) as GameObject;
 	}
 
 	void OnQueue(){
 		HostData[] roomList = MasterServer.PollHostList();
+		loading.SetActive(false);
 		if(roomList.Length == 0){
 			//Destroy(loading);
 			CreateRoom(SystemInfo.deviceUniqueIdentifier, mapName);
