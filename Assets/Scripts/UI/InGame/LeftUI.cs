@@ -86,7 +86,16 @@ namespace LeftUIComps
 
 		public void SetHp(int currentHp)
 		{
-			life.sprite = BattleUIManager.Get().heartSprites[currentHp];
+			if (currentHp < 1)
+			{
+				life.enabled = false;
+			}
+			else
+			{
+				life.enabled = true;
+				var imageIndex = currentHp - 1;
+				life.sprite = BattleUIManager.Get().heartSprites[imageIndex];
+			}
 		}
 
 		public void SetBuff(bool isBuff, int turn)
