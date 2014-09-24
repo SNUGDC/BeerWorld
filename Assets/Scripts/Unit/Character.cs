@@ -288,4 +288,12 @@ public class Character : Unit {
         renderer = GetComponentInChildren<SpriteRenderer>();
         renderer.sprite = charImg;
 	}
+
+	public void Die()
+	{
+		remainBuffOrDebuffTurn = 0;
+		bonusDice = 0;
+		remainJailTurn = 0;
+		currentHp = maxHp;
+	}
 }

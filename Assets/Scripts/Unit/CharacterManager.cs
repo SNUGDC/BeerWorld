@@ -437,7 +437,7 @@ public class CharacterManager
 	// Called from all users.
 	public void BattleLose()
 	{
-		characterInstance.currentHp = characterInstance.maxHp;
+    characterInstance.Die();
 		characterInstance.gameObject.SendMessage ("setReturn", true);
 		var move = Run.Coroutine(Move(characterInstance.GetSpawnTile()));
 		Debug.LogWarning(moveState.ToString());
