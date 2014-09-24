@@ -1,10 +1,8 @@
 fileFormatVersion: 2
-guid: 6f4fa08bc348e4402a02c982a0b6b3aa
+guid: 82b3edf7a4f8d4d639e8000e03e95bb8
 TextureImporter:
   fileIDToRecycleName:
-    21300000: NewWhite2
-    21300002: NewWhite4
-    21300004: resized_NewWhite2
+    21300000: resized_NewWhite2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +36,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 9
-  spritePivot: {x: .430000007, y: .155237198}
+  spritePivot: {x: .431600511, y: .155237198}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 300
   alphaIsTransparency: 1
