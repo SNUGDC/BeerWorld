@@ -4,7 +4,15 @@ using System.Collections.Generic;
 public class DiceRollerButton : MonoBehaviour
 {	
 	public GameObject BigDice;
+	private Animator anim;
 	private int result;
+	private SpriteRenderer spriteRenderer;
+
+	void Awake(){
+		anim = GetComponent<Animator>();
+		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+	}
+
 	void Update ()
 	{		
 		var characterManager = GameManager.GetMyCharacterManager();
@@ -14,19 +22,24 @@ public class DiceRollerButton : MonoBehaviour
 		}
 
 		CharacterManager.MoveState moveState = characterManager.GetMoveState();
-		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		var character = characterManager.GetCharacterInstance();
 		if (moveState == CharacterManager.MoveState.Idle && !character.IsUnitInJail())
 		{
 //			BigDice.SetActive(true);
 //			BigDice.GetComponent<BigDiceAnimation>().diceGetter = getDice;
-			spriteRenderer.enabled = true;
-			collider2D.enabled = true;
+			if(!spriteRenderer.enabled){
+				anim.SetTrigger("ready");
+				spriteRenderer.enabled = true;
+				collider2D.enabled = true;
+			}
 		}		
 		else
 		{
-			spriteRenderer.enabled = false;
-			collider2D.enabled = false;
+			if(spriteRenderer.enabled){
+				anim.SetTrigger("pop");
+				spriteRenderer.enabled = false;
+				collider2D.enabled = false;
+			}
 		}
 
 		if (Input.GetKeyUp(KeyCode.Alpha1))
@@ -59,6 +72,7 @@ public class DiceRollerButton : MonoBehaviour
     {
 		BigDice.SetActive(true);
 		BigDice.GetComponent<BigDiceAnimation>().diceGetter = getDice;
+		anim.SetTrigger("roll");
 		BigDice.SendMessage("OnMouseDown");
 //			var characterManager = GameManager.GetMyCharacterManager();
 //        List<BDice.Species> moveDices = new List<BDice.Species>();

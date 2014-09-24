@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Locked
+  m_Name: clickRoll
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -18,52 +18,28 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 1.29999995, y: 1.29999995, z: 1}
-        inSlope: {x: -3.59999943, y: -3.59999943, z: 0}
-        outSlope: {x: -3.59999943, y: -3.59999943, z: 0}
-        tangentMode: 1092616192
-      - time: .0833333358
-        value: {x: 1, y: 1, z: 1}
-        inSlope: {x: -1.79999971, y: -1.79999971, z: 0}
-        outSlope: {x: -1.79999971, y: -1.79999971, z: 0}
-        tangentMode: 0
-      - time: .833333313
-        value: {x: 1, y: 1, z: 1}
+        value: {x: 1.04999995, y: 1.04999995, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
+      - time: .333333343
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: -.112501159, y: -.176087096, z: 0}
+        outSlope: {x: .152830914, y: .180000514, z: 0}
+        tangentMode: 0
+      - time: .666666687
+        value: {x: 1.04999995, y: 1.04999995, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 167566480
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: lock
+    path: rollButton2
   m_FloatCurves:
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: .5
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Enabled
-    path: 
-    classID: 114
-    script: {fileID: 11500000, guid: e57cb7d0023464a47ad5969145509e76, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: .0833333358
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -71,7 +47,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_IsActive
-    path: GameObject
+    path: rollButton2
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -82,19 +58,13 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 2274335502
+    - path: 3227570229
       attribute: 3
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 0
-      attribute: 3305885265
-      script: {fileID: 11500000, guid: e57cb7d0023464a47ad5969145509e76, type: 3}
-      classID: 114
-      customType: 24
-      isPPtrCurve: 0
-    - path: 1482111001
+    - path: 3227570229
       attribute: 2086281974
       script: {fileID: 0}
       classID: 1
@@ -104,7 +74,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .833333313
+    m_StopTime: .666666687
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -123,48 +93,48 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1.29999995
-        inSlope: -3.59999943
-        outSlope: -3.59999943
-        tangentMode: 10
-      - time: .0833333358
-        value: 1
-        inSlope: -1.79999971
-        outSlope: -1.79999971
-        tangentMode: 10
-      - time: .833333313
-        value: 1
+        value: 1.04999995
         inSlope: 0
         outSlope: 0
-        tangentMode: 10
+        tangentMode: 0
+      - time: .333333343
+        value: 1
+        inSlope: -.112501159
+        outSlope: .152830914
+        tangentMode: 1
+      - time: .666666687
+        value: 1.04999995
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.x
-    path: lock
+    path: rollButton2
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1.29999995
-        inSlope: -3.59999943
-        outSlope: -3.59999943
-        tangentMode: 10
-      - time: .0833333358
-        value: 1
-        inSlope: -1.79999971
-        outSlope: -1.79999971
-        tangentMode: 10
-      - time: .833333313
-        value: 1
+        value: 1.04999995
         inSlope: 0
         outSlope: 0
-        tangentMode: 10
+        tangentMode: 0
+      - time: .333333343
+        value: 1
+        inSlope: -.176087096
+        outSlope: .180000514
+        tangentMode: 1
+      - time: .666666687
+        value: 1.04999995
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.y
-    path: lock
+    path: rollButton2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -175,12 +145,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .0833333358
+      - time: .333333343
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .833333313
+      - time: .666666687
         value: 1
         inSlope: 0
         outSlope: 0
@@ -188,37 +158,13 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.z
-    path: lock
+    path: rollButton2
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: .5
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Enabled
-    path: 
-    classID: 114
-    script: {fileID: 11500000, guid: e57cb7d0023464a47ad5969145509e76, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: .0833333358
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -226,7 +172,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_IsActive
-    path: GameObject
+    path: rollButton2
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []

@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: e5f540800d2754417a090b7aa7e641ff
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: lobby_player
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

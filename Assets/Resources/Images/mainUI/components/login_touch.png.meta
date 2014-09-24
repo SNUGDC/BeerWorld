@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 7534f72c9058b4a759249de02850f848
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: login_touch
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

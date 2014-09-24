@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 5ce8e1d0142aa46449169ab8ad8eadd5
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: warrior_char
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
