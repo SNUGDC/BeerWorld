@@ -96,9 +96,9 @@ MonoBehaviour:
   speciesOfDefenseDice: 0
   numberOfMoveDice: 0
   speciesOfMoveDice: 0
-  warriorImg: {fileID: 21300000, guid: 9305de6c04ee94c77a0327b19ab95c11, type: 3}
-  tankerImg: {fileID: 21300000, guid: 0fab8741758884d0b86bbfa6a8b489ba, type: 3}
-  attackerImg: {fileID: 21300000, guid: 9de2fe331381b49f2b6e37d797644a79, type: 3}
+  warriorImg: {fileID: 21300000, guid: d994818e80ccf4a6cbc1b5ebc17a17dc, type: 3}
+  tankerImg: {fileID: 21300000, guid: 346cd07458fb3456ea8439f011e8a393, type: 3}
+  attackerImg: {fileID: 21300000, guid: f8614cc578669421097f63018319cec8, type: 3}
   thiefImg: {fileID: 0}
   noviceImg: {fileID: 21300000, guid: 758e4ce22ed554118a5a7c4e1cee82f5, type: 3}
   charImg: {fileID: 0}
