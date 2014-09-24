@@ -13,6 +13,10 @@ public partial class NetworkManager : MonoBehaviour {
 	}
 
 	public static NetworkManager networkInstance = null;
+	public static NetworkManager Get()
+	{
+		return networkInstance;
+	}
 
 	public static bool isConnected()
 	{

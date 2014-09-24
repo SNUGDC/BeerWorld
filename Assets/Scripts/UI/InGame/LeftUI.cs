@@ -37,6 +37,8 @@ namespace LeftUIComps
 		private SpriteRenderer buff;
 		[SerializeField]
 		private Character.CharClass charClass;
+		[SerializeField]
+		private SpriteRenderer backgroundForOwner;
 
 		public Player(GameObject playerUI, NetworkViewID playerId, Character.CharClass playerClass)
 		{
@@ -46,9 +48,18 @@ namespace LeftUIComps
 			this.life = FindGameObjectByName.FindChild(playerUI, "life").GetComponent<SpriteRenderer>();
 			this.buff = FindGameObjectByName.FindChild(playerUI, "buff").GetComponent<SpriteRenderer>();
 			this.charClass = playerClass;
+			this.backgroundForOwner = FindGameObjectByName.FindChild(playerUI, "myPlayer").GetComponent<SpriteRenderer>();
 
 			SetPortrait();
 			EnableUI();
+			if (playerId == NetworkManager.Get().GetNetworkID())
+			{
+				backgroundForOwner.enabled = true;
+			}
+			else
+			{
+				backgroundForOwner.enabled = false;
+			}
 		}
 
 		public void SetPortrait()
