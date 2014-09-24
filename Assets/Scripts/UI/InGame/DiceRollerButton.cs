@@ -6,8 +6,11 @@ public class DiceRollerButton : MonoBehaviour
 	public GameObject BigDice;
 	private Animator anim;
 	private int result;
+	private SpriteRenderer spriteRenderer;
+
 	void Awake(){
 		anim = GetComponent<Animator>();
+		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 	}
 
 	void Update ()
@@ -19,7 +22,6 @@ public class DiceRollerButton : MonoBehaviour
 		}
 
 		CharacterManager.MoveState moveState = characterManager.GetMoveState();
-		SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		var character = characterManager.GetCharacterInstance();
 		if (moveState == CharacterManager.MoveState.Idle && !character.IsUnitInJail())
 		{

@@ -12,28 +12,7 @@ AnimationClip:
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
   m_CompressedRotationCurves: []
-  m_PositionCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: -1.59932041, y: -1.84314704, z: -.0999999046}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 1801677164
-      - time: .333333343
-        value: {x: -1.74768734, y: -1.99151337, z: -.0999999046}
-        inSlope: {x: -.194731966, y: -.166905299, z: 0}
-        outSlope: {x: .235642493, y: .160229146, z: 0}
-        tangentMode: 0
-      - time: .666666687
-        value: {x: -1.59932041, y: -1.84314704, z: -.0999999046}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: bigDice_point
+  m_PositionCurves: []
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -47,12 +26,12 @@ AnimationClip:
         value: {x: 1, y: 1, z: 1}
         inSlope: {x: -.112501159, y: -.176087096, z: 0}
         outSlope: {x: .152830914, y: .180000514, z: 0}
-        tangentMode: 165052432
+        tangentMode: 0
       - time: .666666687
         value: {x: 1.04999995, y: 1.04999995, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 30720
+        tangentMode: 167566480
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: rollButton2
@@ -71,20 +50,6 @@ AnimationClip:
     path: rollButton2
     classID: 1
     script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_IsActive
-    path: bigDice_point
-    classID: 1
-    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -93,12 +58,6 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 3253409425
-      attribute: 1
-      script: {fileID: 0}
-      classID: 4
-      customType: 0
-      isPPtrCurve: 0
     - path: 3227570229
       attribute: 3
       script: {fileID: 0}
@@ -106,12 +65,6 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - path: 3227570229
-      attribute: 2086281974
-      script: {fileID: 0}
-      classID: 1
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3253409425
       attribute: 2086281974
       script: {fileID: 0}
       classID: 1
@@ -136,78 +89,6 @@ AnimationClip:
     m_HeightFromFeet: 0
     m_Mirror: 0
   m_EditorCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -1.59932041
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: .333333343
-        value: -1.74768734
-        inSlope: -.194731966
-        outSlope: .235642493
-        tangentMode: 1
-      - time: .666666687
-        value: -1.59932041
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.x
-    path: bigDice_point
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -1.84314704
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: .333333343
-        value: -1.99151337
-        inSlope: -.166905299
-        outSlope: .160229146
-        tangentMode: 1
-      - time: .666666687
-        value: -1.84314704
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.y
-    path: bigDice_point
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.0999999046
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .333333343
-        value: -.0999999046
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .666666687
-        value: -.0999999046
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.z
-    path: bigDice_point
-    classID: 4
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -292,20 +173,6 @@ AnimationClip:
       m_PostInfinity: 2
     attribute: m_IsActive
     path: rollButton2
-    classID: 1
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_IsActive
-    path: bigDice_point
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
