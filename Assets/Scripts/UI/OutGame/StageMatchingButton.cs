@@ -26,7 +26,7 @@ public partial class StageMatchingButton : MonoBehaviour {
 
 	void OnQueue(){
 		HostData[] roomList = MasterServer.PollHostList();
-		loading.SetActive(false);
+//		loading.SetActive(false);
 		if(roomList.Length == 0){
 			//Destroy(loading);
 			CreateRoom(SystemInfo.deviceUniqueIdentifier, mapName);
