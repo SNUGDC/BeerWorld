@@ -53,7 +53,7 @@ public class CharacterMover : MonoBehaviour
 		return MoveTo(tile);
 	}
 
-	public IEnumerator MoveTo(Tile toMoveTile)
+	private IEnumerator MoveToIter(Tile toMoveTile)
 	{
 		Vector3 nextTilePosition = new Vector3(
 				toMoveTile.transform.position.x,
@@ -75,6 +75,19 @@ public class CharacterMover : MonoBehaviour
 
 		int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
 		UpdateTileKey(currentTileKey);
+	}
+
+	Queue<Run> moveAnimationQueue = new Queue<Run>();
+	public IEnumerator MoveTo(Tile toMoveTile)
+	{
+		yield return Run.WaitWhile(() => moveAnimationQueue.Count > 0).WaitFor;
+
+		var animation = Run.Coroutine(MoveToIter(toMoveTile));
+		moveAnimationQueue.Enqueue(animation);
+
+		yield return animation.WaitFor;
+
+		moveAnimationQueue.Dequeue();
 	}
 
 	bool IsPreTile(Tile tile)

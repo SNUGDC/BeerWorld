@@ -140,6 +140,19 @@ public class CharacterManager
 		return Move(tile);
 	}
 
+	public IEnumerator MoveByNetwork(int coordX, int coordY)
+	{
+		Tile tile = TileManager.GetTileByCoord(coordX, coordY);
+
+		var moveAnimation = Run.Coroutine(Move(tile));
+		var cameraFollow = Run.EachFrame(() => {
+			characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
+		});
+
+		yield return moveAnimation.WaitFor;
+		cameraFollow.Abort();
+	}
+
 	public IEnumerator Move(Tile toMoveTile)
 	{
 		return characterMover.MoveTo(toMoveTile);
