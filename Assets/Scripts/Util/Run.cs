@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -232,6 +232,11 @@ public class Run
 		tmp.action = _WaitForRuns(tmp, runs);
 		tmp.Start();
 		return tmp;
+	}
+
+	public static Run Join(Run r1, Run r2)
+	{
+		return Join(new List<Run> { r1, r2 });
 	}
 
 	private static IEnumerator _WaitForRuns(Run aRun, List<Run> runs)

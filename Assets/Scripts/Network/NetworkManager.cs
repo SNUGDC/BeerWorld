@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -191,7 +191,7 @@ public partial class NetworkManager : MonoBehaviour {
 	[RPC]
 	private void ReceiveMoveTile(NetworkViewID id, int coordX, int coordY)
 	{
-		Run.Coroutine(GameManager.GetCharacterManager(id).Move(coordX, coordY));
+		Run.Coroutine(GameManager.GetCharacterManager(id).MoveByNetwork(coordX, coordY));
 		//GameManager.GetMyCharacterManager().MoveCharacter(coordX, coordY);
 		Debug.Log("Move tile to " + coordX + ", " + coordY);
 	}
