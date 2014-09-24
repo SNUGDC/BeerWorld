@@ -64,7 +64,7 @@ public class BattlePlayer
 			buffUI.spriteRenderer.enabled = false;
 		});
 
-		ShowDiceCount();
+		InitializeDice();
 
 		ui.damageCount.text = "0";
   }
@@ -90,18 +90,27 @@ public class BattlePlayer
         //animation.
     }
 
-	void ShowDiceCount()
+	void InitializeDice()
 	{
 		Slinqable.Slinq(ui.attackDices)
 			.ForEach((attackDice) => {
 				attackDice.SetActive(false);
 			});
 
+		Queue<BDice.Species> attackDiceSpecies = new Queue<BDice.Species>(attackDices);
 		Slinqable.Slinq(ui.attackDices)
 			.Reverse()
 			.Take(attackDices.Count)
 			.ForEach((attackDice) => {
 				attackDice.SetActive(true);
+				if (attackDiceSpecies.Dequeue() == BDice.Species.Four)
+				{
+					attackDice.SendMessage("roll4ByNumber", 1);
+				}
+				else
+				{
+					attackDice.SendMessage("rollByNumber", 1);
+				}
 			});
 
 		Slinqable.Slinq(ui.defenseDices)
@@ -109,11 +118,20 @@ public class BattlePlayer
 				defenseDice.SetActive(false);
 			});
 
+		Queue<BDice.Species> defenseDiceSpecies = new Queue<BDice.Species>(defenseDices);
 		Slinqable.Slinq(ui.defenseDices)
 			.Reverse()
 			.Take(defenseDices.Count)
 			.ForEach((defenseDice) => {
 				defenseDice.SetActive(true);
+				if (defenseDiceSpecies.Dequeue() == BDice.Species.Four)
+				{
+					defenseDice.SendMessage("roll4ByNumber", 1);
+				}
+				else
+				{
+					defenseDice.SendMessage("rollByNumber", 1);
+				}
 			});
 	}
 

@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class CalculationResult
 {
-    public readonly List<int> diceResults;
+
+    public readonly List<BDiceResult> diceResults;
     public int totalDiceResult;
 
-    public CalculationResult(List<int> diceResults, int totalDiceResult)
+    public CalculationResult(List<BDiceResult> diceResults, int totalDiceResult)
     {
         this.diceResults = diceResults;
         this.totalDiceResult = totalDiceResult;
@@ -24,6 +25,19 @@ public class CalculationResult
     }
 }
 
+[System.Serializable]
+public class BDiceResult
+{
+	public readonly BDice.Species species;
+	public readonly int diceValue;
+
+	public BDiceResult(BDice.Species species, int diceValue)
+	{
+		this.species = species;
+		this.diceValue = diceValue;
+	}
+}
+
 public class BattleCalculator
 {
     public CalculationResult GetAttackDiceResult(BattlePlayer player)
@@ -32,14 +46,14 @@ public class BattleCalculator
         // needed : Dice Info <- player.
         List<BDice.Species> attackDices = player.attackDices;
 
-        List<int> diceResults = new List<int>();
+        List<BDiceResult> diceResults = new List<BDiceResult>();
         int totalDiceResult = 0;
 
         for (int i = 0; i < attackDices.Count; i++)
         {
             int diceResult = Dice.Roll(attackDices[i]);
 
-            diceResults.Add(diceResult);
+            diceResults.Add(new BDiceResult(attackDices[i], diceResult));
             totalDiceResult += diceResult;
         }
 
@@ -56,14 +70,14 @@ public class BattleCalculator
     {
         List<BDice.Species> defenseDices = player.defenseDices;
 
-        List<int> diceResults = new List<int>();
+        List<BDiceResult> diceResults = new List<BDiceResult>();
         int totalDiceResult = 0;
 
         for (int i = 0; i < defenseDices.Count; i++)
         {
             int diceResult = Dice.Roll(defenseDices[i]);
 
-            diceResults.Add(diceResult);
+            diceResults.Add(new BDiceResult(defenseDices[i], diceResult));
             totalDiceResult += diceResult;
         }
 

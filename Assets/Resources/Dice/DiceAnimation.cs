@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DiceAnimation : MonoBehaviour {
 	static int rollState = Animator.StringToHash("Base.roll");
+	static int roll4State = Animator.StringToHash("Base.4_roll");
 	Animator anim;
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class DiceAnimation : MonoBehaviour {
 	public bool IsRollAnimating()
 	{
 		var currentBaseState = anim.GetCurrentAnimatorStateInfo(0);
-		return currentBaseState.nameHash == rollState;
+		return currentBaseState.nameHash == rollState ||
+      currentBaseState.nameHash == roll4State;
 	}
 }

@@ -225,14 +225,21 @@ public class BattleManager : MonoBehaviour
 
 		GameObject animationGameObject = null;
 
-		Action<List<int>, GameObject[]> render = (diceResults, uiDices) => {
-			Queue<int> diceResultQueue = new Queue<int>(diceResults);
+		Action<List<BDiceResult>, GameObject[]> render = (diceResults, uiDices) => {
+			Queue<BDiceResult> diceResultQueue = new Queue<BDiceResult>(diceResults);
 			Slinqable.Slinq(uiDices)
 				.Reverse()
 				.Take(diceResults.Count)
 				.ForEach((attackDice) => {
 					var diceResult = diceResultQueue.Dequeue();
-					attackDice.SendMessage("rollByNumber", diceResult);
+					if (diceResult.species == BDice.Species.Four)
+					{
+						attackDice.SendMessage("roll4ByNumber", diceResult.diceValue);
+					}
+					else
+					{
+						attackDice.SendMessage("rollByNumber", diceResult.diceValue);
+					}
 					animationGameObject = attackDice;
 				});
 		};
@@ -475,9 +482,10 @@ public class BattleManager : MonoBehaviour
 		{
 			//Add effect.
 
-			int minDiceValue = Slinqable.Slinq(playerCalcResult.diceResults).Min();
+			int minDiceValue = Slinqable.Slinq(playerCalcResult.diceResults)
+				.Select((diceResult) => diceResult.diceValue).Min();
 			int indexOfLowestDice = playerCalcResult.diceResults.FindIndex(
-					(diceResult) => diceResult == minDiceValue);
+					(diceResult) => diceResult.diceValue == minDiceValue);
 
 			//FIXME ui is reversed.
 			int indexOfLowestDiceUI = player.ui.attackDices.Length - 1 - indexOfLowestDice;
