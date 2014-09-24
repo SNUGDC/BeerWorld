@@ -125,7 +125,7 @@ public class Character : Unit {
     public void InJail()
     {
         //FIXME : After implement turn counting system. 
-        remainJailTurn = 1+1;
+        remainJailTurn = 1;
         Debug.Log("In Jail during 1 turn...");
     }
 
@@ -154,8 +154,7 @@ public class Character : Unit {
             bonusDice = -1;
             Debug.Log("Get Debuff! Dice -1 durint 3 turns");
         }
-				//Default is 3 but 4 is changed to 3.
-        remainBuffOrDebuffTurn = 4;
+        remainBuffOrDebuffTurn = 3;
     }
 
 	public Tile GetSpawnTile()

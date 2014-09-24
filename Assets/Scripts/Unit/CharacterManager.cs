@@ -323,6 +323,7 @@ public class CharacterManager
 
 	IEnumerator StartTurn()
 	{
+		UpdateRemainBuffTime();
 		while (moveState != MoveState.Inactive)
 		{
 			var stateUpdate = Run.Coroutine(StateUpdate());
@@ -333,7 +334,6 @@ public class CharacterManager
 	public void TurnEnd()
 	{
 		moveState = MoveState.Inactive;
-		UpdateRemainBuffTime();
 		NetworkManager.SendTurnEndMessage();
 	}
 
