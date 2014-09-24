@@ -31,7 +31,9 @@ public class ReadyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetKeyDown(KeyCode.A)){
+			networkView.RPC("GameStart", RPCMode.All);
+		}
 	}
 
 	public void MakeHost(){
@@ -106,5 +108,6 @@ public class ReadyManager : MonoBehaviour {
 	[RPC]
 	void GameStart(){
 		Application.LoadLevel ("Battle");
+		GameObject.Find("RoomManager").GetComponent<RoomManager>().setCharacter(myChar.currCharacter);
 	}
 }

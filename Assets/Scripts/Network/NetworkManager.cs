@@ -132,7 +132,8 @@ public partial class NetworkManager : MonoBehaviour {
 
 	public static void SendUsersNetworkViewID ()
 	{
-        Character.CharClass charClass = RandomSelectClass();
+        //Character.CharClass charClass = RandomSelectClass();
+		Character.CharClass charClass = (Character.CharClass) Character.CharClass.Parse(typeof(Character.CharClass),GameObject.Find("RoomManager").GetComponent<RoomManager>().getCharacter());
         if (charClass == Character.CharClass.Warrior)
         {
             networkInstance.networkView.RPC("ReceiveWarriorUsersNetworkViewID", RPCMode.AllBuffered, networkInstance.Id);

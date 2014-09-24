@@ -9,6 +9,10 @@ public class RoomManager : MonoBehaviour {
 	public NetworkViewID Id;
     public string ipAddress = "147.46.76.106";
     public int port = 5000;
+	string charType{
+		get;
+		set;
+	}
 
 	void Awake(){
 		DontDestroyOnLoad (this.gameObject);
@@ -61,5 +65,13 @@ public class RoomManager : MonoBehaviour {
 		Network.Disconnect (250);
 		Application.LoadLevel ("Lobby");
 		Destroy (this.gameObject);
+	}
+
+	public void setCharacter(string Type){
+		charType = Type;
+	}
+
+	public string getCharacter(){
+		return charType;
 	}
 }
