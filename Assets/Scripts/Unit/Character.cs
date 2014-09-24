@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class Character : Unit {
@@ -12,7 +12,7 @@ public class Character : Unit {
 		}
 		set
 		{
-			ui.SetBuff(bonusDice > 0, _remainBuffOrDebuffTurn);
+			ui.SetBuff(bonusDice > 0, value);
 			_remainBuffOrDebuffTurn = value;
 		}
 	}
@@ -154,7 +154,8 @@ public class Character : Unit {
             bonusDice = -1;
             Debug.Log("Get Debuff! Dice -1 durint 3 turns");
         }
-        remainBuffOrDebuffTurn = 3;
+				//Default is 3 but 4 is changed to 3.
+        remainBuffOrDebuffTurn = 4;
     }
 
 	public Tile GetSpawnTile()

@@ -110,18 +110,28 @@ namespace LeftUIComps
 				buff.enabled = true;
 			}
 
+			var buffSpriteIndex = 3; // transparent background.
+			if (turn >= 3)
+			{
+				buffSpriteIndex = 0;
+			}
+			else if (turn == 2)
+			{
+				buffSpriteIndex = 1;
+			}
+			else if (turn == 1)
+			{
+				buffSpriteIndex = 2;
+			}
+
 			var uiManager = BattleUIManager.Get();
 			if (isBuff)
 			{
-				var spriteId = uiManager.buffSprites.Count - Mathf.Clamp(turn, 1, uiManager.buffSprites.Count);
-
-				buff.sprite = BattleUIManager.Get().buffSprites[spriteId];
+				buff.sprite = BattleUIManager.Get().buffSprites[buffSpriteIndex];
 			}
 			else
 			{
-				var spriteId = uiManager.deBuffSprites.Count - Mathf.Clamp(turn, 1, uiManager.deBuffSprites.Count);
-
-				buff.sprite = BattleUIManager.Get().deBuffSprites[spriteId];
+				buff.sprite = BattleUIManager.Get().deBuffSprites[buffSpriteIndex];
 			}
 		}
 	}
