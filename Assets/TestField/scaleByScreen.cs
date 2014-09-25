@@ -10,9 +10,4 @@ public class scaleByScreen : MonoBehaviour {
 		float scale = widthByPixel/fixedWidth;
 		transform.localScale = Vector3.one * scale;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

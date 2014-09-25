@@ -12,7 +12,11 @@ public class positionByScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		cam = transform.parent.camera;
+		if(transform.parent !=null && transform.parent.gameObject.GetComponent<Camera>() != null)
+			cam = transform.parent.camera;
+		else
+			cam = Camera.main;
+
 		widthByPixel = Screen.width;
 		pixelPerUnit = Screen.height/(cam.orthographicSize*2);
 		width = widthByPixel/pixelPerUnit;
@@ -26,10 +30,5 @@ public class positionByScreen : MonoBehaviour {
 			buttonPosition.x = distanceFromEdge - width/2;
 			transform.localPosition = buttonPosition;
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
