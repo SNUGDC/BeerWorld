@@ -28,7 +28,7 @@ public class TurnManager : MonoBehaviour
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
 	public int turnCount = 1;
 
-    public readonly int MaxTurn = 1;
+    public int MaxTurn = 15;
 
 	public void AddPlayerTEMP(NetworkViewID otherPlayer)
 	{
@@ -95,8 +95,10 @@ public class TurnManager : MonoBehaviour
         turnCount += 1;
 		NetworkManager.SyncTurnCount(turnCount);
 
-        Debug.Log("current turn : " + turnCount);
-        if (turnCount > MaxTurn)
+        Debug.Log((turnCount > MaxTurn));
+        Debug.Log(!(GameManager.gameManagerInstance.IsRemainMiddleEnemy()));
+
+        if ((turnCount > MaxTurn) || !(GameManager.gameManagerInstance.IsRemainMiddleEnemy()))
         {
             NetworkManager.SendPopGameOverImg();
         }

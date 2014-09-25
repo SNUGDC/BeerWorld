@@ -27,6 +27,20 @@ public class GameManager : MonoBehaviour
         });
     }
 
+    public bool IsRemainMiddleEnemy()
+    {
+        EnemyManager enemy;
+        foreach (KeyValuePair<string, EnemyManager> pair in enemies)
+        {
+            enemy = pair.Value;
+            if (enemy.GetEnemyInstance().GetEnemyType() == Enemy.EnemyType.Middle)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 	public Dictionary<string, EnemyManager> GetEnemies()
 	{
 		return enemies;
