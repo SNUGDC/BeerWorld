@@ -44,6 +44,17 @@ public partial class NetworkManager : MonoBehaviour {
 		//implement if func when started
 	}
 
+    public static void SendPopGameOverImg()
+    {
+        networkInstance.networkView.RPC("ReceivePopGameOverImg", RPCMode.All, networkInstance.Id);
+    }
+
+    [RPC]
+    private void ReceivePopGameOverImg(NetworkViewID id)
+    {
+        GameManager.PopGameOverImg();
+    }
+
 	public static void SendRollDice(int diceResult)
 	{
 		networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.Others, networkInstance.Id, diceResult);

@@ -26,7 +26,9 @@ public class TurnManager : MonoBehaviour
 	private State state = State.Player;
 	private int currentTurnIndex;
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
-	private int turnCount = 1;
+	public int turnCount = 1;
+
+    public readonly int MaxTurn = 1;
 
 	public void AddPlayerTEMP(NetworkViewID otherPlayer)
 	{
@@ -41,7 +43,6 @@ public class TurnManager : MonoBehaviour
 	Queue<EnemyManager> waitingEnemies;
 	private void EnemyTurnStart()
 	{
-//		var enemies = GameManager.gameManagerInstance.GetEnemiesList();
         var enemies = GameManager.gameManagerInstance.GetEnemiesListSizeOrdered();
 		waitingEnemies = new Queue<EnemyManager>(enemies);
 	}
@@ -91,8 +92,14 @@ public class TurnManager : MonoBehaviour
 
 	private void CountUpTurn()
 	{
-		turnCount += 1;
+        turnCount += 1;
 		NetworkManager.SyncTurnCount(turnCount);
+
+        Debug.Log("current turn : " + turnCount);
+        if (turnCount > MaxTurn)
+        {
+            NetworkManager.SendPopGameOverImg();
+        }
 	}
 
 	public State GetState()

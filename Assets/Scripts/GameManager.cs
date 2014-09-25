@@ -15,6 +15,18 @@ public class GameManager : MonoBehaviour
 	public Enemy enemyPrefab;
 	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
+    public GameObject gameOverImg;
+
+    public static GameObject gameOverObj;
+
+    public static void PopGameOverImg()
+    {
+        gameOverObj.SetActive(true);
+        Run.After(5f, () => {
+            Application.LoadLevel("Login");
+        });
+    }
+
 	public Dictionary<string, EnemyManager> GetEnemies()
 	{
 		return enemies;
@@ -179,7 +191,9 @@ public class GameManager : MonoBehaviour
 
 	public void GameStart()
 	{
-		var enemyInfos = enemyInfoList.GetEnemyInfoList();
+        gameOverObj = gameOverImg;
+
+        var enemyInfos = enemyInfoList.GetEnemyInfoList();
 		Slinqable.Slinq(enemyInfos).ForEach(
 			(enemyInfo) => {
 				NetworkManager.MakeEnemy(enemyInfo);

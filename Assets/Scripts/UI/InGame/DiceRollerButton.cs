@@ -23,7 +23,9 @@ public class DiceRollerButton : MonoBehaviour
 
 		CharacterManager.MoveState moveState = characterManager.GetMoveState();
 		var character = characterManager.GetCharacterInstance();
-		if (moveState == CharacterManager.MoveState.Idle && !character.IsUnitInJail())
+		if (moveState == CharacterManager.MoveState.Idle 
+            && !character.IsUnitInJail() 
+            && !(TurnManager.Get().turnCount > TurnManager.Get().MaxTurn))
 		{
 //			BigDice.SetActive(true);
 //			BigDice.GetComponent<BigDiceAnimation>().diceGetter = getDice;
