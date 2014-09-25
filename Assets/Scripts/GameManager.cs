@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public static void PopGameOverImg()
     {
+        GetMyCharacterManager().SetMoveStateInactive();
         gameOverObj.SetActive(true);
         Run.After(5f, () => {
             Application.LoadLevel("Login");
@@ -222,23 +223,6 @@ public class GameManager : MonoBehaviour
 		NetworkManager.SendGameStartMessage();
 		NetworkManager.SendTurnStartMessage(NetworkManager.networkInstance.Id);
 	}
-
-    //temp
-    //Character.CharClass RandomSelectClass()
-    //{
-        //int temp = Random.Range(1,3);
-        //switch (temp)
-        //{
-            //case 1:
-                //return Character.CharClass.Warrior;
-            //case 2:
-                //return Character.CharClass.Tanker;
-            //case 3:
-                //return Character.CharClass.Attacker;
-            //default:
-                //return Character.CharClass.Novice;
-        //}
-    //}
     
 	void Awake ()
 	{

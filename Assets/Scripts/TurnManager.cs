@@ -26,9 +26,9 @@ public class TurnManager : MonoBehaviour
 	private State state = State.Player;
 	private int currentTurnIndex;
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
-	public int turnCount = 1;
+	public int turnCount = 15;
 
-    public int MaxTurn = 15;
+    public int MaxTurn = 1;
 
 	public void AddPlayerTEMP(NetworkViewID otherPlayer)
 	{

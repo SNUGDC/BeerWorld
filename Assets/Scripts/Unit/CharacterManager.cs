@@ -64,6 +64,11 @@ public class CharacterManager
 	[SerializeField]
 	private MoveState moveState = MoveState.Inactive;
 
+    public void SetMoveStateInactive()
+    {
+        moveState = MoveState.Inactive;
+    }
+
 	public CharacterManager.MoveState GetMoveState()
 	{
 		return moveState;
@@ -341,8 +346,11 @@ public class CharacterManager
 	{
 		if (moveState != MoveState.Inactive)
 		{
-			characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
-		}
+            if (Application.loadedLevelName == "Battle")
+            {
+                characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
+            }
+        }
 
 		if (moveState == MoveState.Idle && characterInstance.IsUnitInJail())
 		{
