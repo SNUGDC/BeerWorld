@@ -5,7 +5,7 @@ public class LoginOrSignButton : MonoBehaviour {
 	string username="admin";
 	float height_unit = Screen.height / 720f * 1.4f;
 	float width_unit =  Screen.width / 1280f * 1.4f;
-	string url = "http://147.46.76.106:8000/";
+	string url = "http://147.46.241.250:8000/";
 	string response;
 	SpriteRenderer spRender;
 	public Sprite idleButton;

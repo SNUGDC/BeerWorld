@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951b4315ceae64bfda0289e06a05c7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipAddress: 147.46.76.106
+  ipAddress: 147.46.241.250
   port: 5000
 --- !u!148 &918575892
 NetworkView:
