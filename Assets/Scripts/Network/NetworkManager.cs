@@ -52,7 +52,7 @@ public partial class NetworkManager : MonoBehaviour {
     [RPC]
     private void ReceivePopGameOverImg(NetworkViewID id)
     {
-        GameManager.PopGameOverImg();
+        GameManager.gameManagerInstance.PopGameOverImg();
     }
 
 	public static void SendRollDice(int diceResult)

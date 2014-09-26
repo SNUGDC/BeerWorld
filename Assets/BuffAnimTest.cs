@@ -4,11 +4,12 @@ using System.Collections;
 public class BuffAnimTest : MonoBehaviour {
 	private BuffAnimation buffAnim;
 	// Use this for initialization
-	void Awake () {
-		buffAnim = FindObjectOfType<BuffAnimation>();
-	}
+//	void Awake () {
+//		buffAnim = FindObjectOfType<BuffAnimation>();
+//	}
 
 	void OnMouseDown(){
-		buffAnim.PlayBuffAt(transform.position,0);
+		//buffAnim.PlayBuffAt(transform.position,0);
+		NetworkManager.SendPopGameOverImg();
 	}
 }

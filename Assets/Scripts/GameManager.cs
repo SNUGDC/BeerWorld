@@ -19,10 +19,13 @@ public class GameManager : MonoBehaviour
 
     public static GameObject gameOverObj;
 
-    public static void PopGameOverImg()
+    public void PopGameOverImg()
     {
-        GetMyCharacterManager().SetMoveStateInactive();
-        gameOverObj.SetActive(true);
+		foreach(KeyValuePair<NetworkViewID, CharacterManager> manager in otherCharacterManagers){
+        	manager.Value.SetMoveStateInactive();
+		}
+		myCharacterManager.SetMoveStateInactive();
+        gameOverImg.SetActive(true);
         Run.After(5f, () => {
             Application.LoadLevel("Login");
         });
