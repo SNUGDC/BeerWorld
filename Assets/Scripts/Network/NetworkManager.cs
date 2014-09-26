@@ -127,7 +127,7 @@ public partial class NetworkManager : MonoBehaviour {
     //temp
     static Character.CharClass RandomSelectClass()
     {
-        int temp = Random.Range(1,3);
+        int temp = Random.Range(1,4);
         switch (temp)
         {
             case 1:
@@ -143,9 +143,17 @@ public partial class NetworkManager : MonoBehaviour {
 
 	public static void SendUsersNetworkViewID ()
 	{
-        //Character.CharClass charClass = RandomSelectClass();
-		Character.CharClass charClass = (Character.CharClass) Character.CharClass.Parse(typeof(Character.CharClass),GameObject.Find("RoomManager").GetComponent<RoomManager>().getCharacter());
-        if (charClass == Character.CharClass.Warrior)
+		Character.CharClass charClass;
+		if(GameObject.FindObjectOfType<RoomManager>() == null)
+		{
+			charClass = RandomSelectClass();
+		}
+		else
+		{
+			charClass = (Character.CharClass) Character.CharClass.Parse(typeof(Character.CharClass),GameObject.Find("RoomManager").GetComponent<RoomManager>().getCharacter());    
+		}
+
+		if (charClass == Character.CharClass.Warrior)
         {
             networkInstance.networkView.RPC("ReceiveWarriorUsersNetworkViewID", RPCMode.AllBuffered, networkInstance.Id);
         }
@@ -161,7 +169,7 @@ public partial class NetworkManager : MonoBehaviour {
         {
             networkInstance.networkView.RPC("ReceiveNoviceUsersNetworkViewID", RPCMode.AllBuffered, networkInstance.Id);
         }
-    }	
+    }
 
 	[RPC]
 	private void ReceiveNoviceUsersNetworkViewID(NetworkViewID id)
