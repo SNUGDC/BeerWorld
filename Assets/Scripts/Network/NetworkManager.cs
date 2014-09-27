@@ -243,6 +243,8 @@ public partial class NetworkManager : MonoBehaviour {
 	private void ReceiveTurnStartMessage(NetworkViewID nextPlayerId)
 	{
 		BattleUIManager.Get().SetPlayerTurn(nextPlayerId);
+		GameManager.GetCharacterManager(nextPlayerId).CameraFollow();
+
 		if (NetworkManager.networkInstance.Id == nextPlayerId)
 		{
 			GameManager.GetMyCharacterManager().ChangeMoveStateToIdle();

@@ -145,14 +145,17 @@ public class CharacterManager
 		return Move(tile);
 	}
 
+	public void CameraFollow()
+	{
+		characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
+	}
+
 	public IEnumerator MoveByNetwork(int coordX, int coordY)
 	{
 		Tile tile = TileManager.GetTileByCoord(coordX, coordY);
 
 		var moveAnimation = Run.Coroutine(Move(tile));
-		var cameraFollow = Run.EachFrame(() => {
-			characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
-		});
+		var cameraFollow = Run.EachFrame(() => CameraFollow());
 
 		yield return moveAnimation.WaitFor;
 		cameraFollow.Abort();
@@ -344,7 +347,7 @@ public class CharacterManager
 		{
             if (Application.loadedLevelName == "Battle")
             {
-                characterInstance.SendMessage("OnCmaeraFollow", characterInstance, SendMessageOptions.DontRequireReceiver);
+							CameraFollow();
             }
         }
 
