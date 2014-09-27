@@ -173,7 +173,6 @@ public class BattlePlayer
 
 	public void ResetDiceTransform()
 	{
-		Debug.LogWarning("Reset dice transform");
 		var attackDicePosition = ui.attackDiceParent.transform.position;
 		var attackDiceScale = ui.attackDiceParent.transform.localScale;
 
@@ -182,7 +181,6 @@ public class BattlePlayer
 
 		if (attackDicePosition.y < defenseDicePosition.y)
 		{
-			Debug.Log("Change attack and defense in reset dice");
 			ui.attackDiceParent.transform.position = defenseDicePosition;
 			ui.attackDiceParent.transform.localScale = defenseDiceScale;
 			ui.defenseDiceParent.transform.position = attackDicePosition;
