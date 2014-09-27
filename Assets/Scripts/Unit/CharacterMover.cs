@@ -53,41 +53,24 @@ public class CharacterMover : MonoBehaviour
 		return MoveTo(tile);
 	}
 
-	private IEnumerator MoveToIter(Tile toMoveTile)
+	public IEnumerator MoveTo(Tile toMoveTile)
 	{
+		//iTween.MoveTo(
 		Vector3 nextTilePosition = new Vector3(
 				toMoveTile.transform.position.x,
 				toMoveTile.transform.position.y,
 				transform.position.z);
+		Vector3 currentPosition = transform.position;
+		Vector3 diff = currentPosition - nextTilePosition;
+		float moveTime = diff.magnitude / DelayManager.Get().playerMoveSpeed;
 
-		while (true)
-		{
-			var diff = nextTilePosition - transform.position;
-			if (diff.magnitude <= float.Epsilon)
-			{
-				break;
-			}
-
-			transform.position = Vector3.MoveTowards(transform.position, nextTilePosition, DelayManager.Get().playerMoveSpeed * Time.deltaTime);
-
-			yield return null;
-		}
+		iTween.MoveTo(gameObject,
+			iTween.Hash("position", nextTilePosition, "time", moveTime, "easeType", DelayManager.Get().moveEaseType)
+		);
+		yield return Run.WaitSeconds(moveTime).WaitFor;
 
 		int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
 		UpdateTileKey(currentTileKey);
-	}
-
-	Queue<Run> moveAnimationQueue = new Queue<Run>();
-	public IEnumerator MoveTo(Tile toMoveTile)
-	{
-		yield return Run.WaitWhile(() => moveAnimationQueue.Count > 0).WaitFor;
-
-		var animation = Run.Coroutine(MoveToIter(toMoveTile));
-		moveAnimationQueue.Enqueue(animation);
-
-		yield return animation.WaitFor;
-
-		moveAnimationQueue.Dequeue();
 	}
 
 	bool IsPreTile(Tile tile)

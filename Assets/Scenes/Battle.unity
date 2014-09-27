@@ -7705,6 +7705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoveSpeed: 5
+  moveEaseType: 21
   battleDiceResultToAttackDelay: .5
   battleHpMinusDelay: .5
   battleDiceRollToDiceResultDelay: .200000003
