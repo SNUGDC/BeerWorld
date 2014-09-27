@@ -123,8 +123,31 @@ public class BattleManager : MonoBehaviour
 		this.isMine = isMine;
 	}
 
-	public void EndBattle()
+	private void EndBattle()
 	{
+		//For sync battle result
+		if (GameManager.Get().isMyCharacterManager(playerManager))
+		{
+			NetworkManager.SetBattleResult(player.GetHp(), enemy.GetHp());
+		}
+	}
+
+	public void ReceiveEndBattle(int playerHp, int enemyHp)
+	{
+		if (playerHp < 1)
+		{
+			BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
+		}
+		else if (enemyHp < 1)
+		{
+			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
+		}
+		else
+		{
+			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
+			Debug.LogWarning("Player and enemy hp is neither zero.");
+		}
+
 		BattleResultApplier.ApplyBattleResult(player, enemy, playerManager, enemyManager);
 		battleCamera.enabled = false;
 		player.ResetDiceTransform();
@@ -409,14 +432,12 @@ public class BattleManager : MonoBehaviour
 		if (enemy.IsDie())
 		{
 			enemy.ui.unitRenderer.transform.parent.gameObject.SendMessage("Fade");
-			BattleResultApplier.state = BattleResultApplier.BattleResultState.PlayerWin;
 			yield return new WaitForSeconds(DelayManager.Get().batttleLoseShowDelay);
 			state = State.BattleEnd;
 		}
 		else if (player.IsDie())
 		{
 			player.ui.unitRenderer.transform.parent.gameObject.SendMessage("Fade");
-			BattleResultApplier.state = BattleResultApplier.BattleResultState.EnemyWin;
 			yield return new WaitForSeconds(DelayManager.Get().batttleLoseShowDelay);
 			state = State.BattleEnd;
 		}
@@ -555,4 +576,3 @@ public class BattleManager : MonoBehaviour
 			return player.ScaleBuffUI(item);
 		}
 }
-

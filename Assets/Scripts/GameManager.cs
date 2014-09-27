@@ -8,6 +8,10 @@ using Smooth;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager gameManagerInstance = null;
+	public static GameManager Get()
+	{
+		return gameManagerInstance;
+	}
 	public Character characterPrefab;
 	public DirectionArrow arrowPrefab;
 	private CharacterManager myCharacterManager = null;

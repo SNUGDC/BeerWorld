@@ -59,4 +59,15 @@ public partial class NetworkManager : MonoBehaviour
 		Character.Item item = (Character.Item)Enum.Parse(typeof(Character.Item), strItem);
 		BattleUIManager.Get().ReceivedUseItemCard(item);
 	}
+
+	public static void SetBattleResult(int playerHp, int enemyHp)
+	{
+		networkInstance.networkView.RPC("ReceiveSetBattleResult", RPCMode.All, playerHp, enemyHp);
+	}
+
+	[RPC]
+	private void ReceiveSetBattleResult(int playerHp, int enemyHp)
+	{
+		BattleManager.Get().ReceiveEndBattle(playerHp, enemyHp);
+	}
 }
