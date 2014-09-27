@@ -12,9 +12,17 @@ public class Character : Unit {
 		}
 		set
 		{
-			ui.SetBuff(bonusDice > 0, value);
-			_remainBuffOrDebuffTurn = value;
+			if (playerId.isMine)
+			{
+				NetworkManager.UpdateBuff(playerId, value);
+			}
 		}
+	}
+
+	public void UpdateBuffRemainTimeByNetwork(int remainTurn)
+	{
+		ui.SetBuff(bonusDice > 0, remainTurn);
+		_remainBuffOrDebuffTurn = remainTurn;
 	}
 
     int bonusDice = 0;
@@ -140,10 +148,9 @@ public class Character : Unit {
             return false;
     }
 
-    public void SetBuffOrDeBuff()
+    public void SetBuffOrDeBuff(int rollResult)
     {
         //FIXME : After implement turn counting system.
-        int rollResult = Dice.Roll(BDice.Species.Six);
         if (rollResult <= 3)
         {
             bonusDice = 1;

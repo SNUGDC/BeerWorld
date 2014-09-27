@@ -297,4 +297,34 @@ public partial class NetworkManager : MonoBehaviour {
 	{
 		BattleUIManager.Get().ShowEnemyTurn();
 	}
+
+	public static void Buff(NetworkViewID playerId, Vector3 tilePosition)
+	{
+		int rollResult = Dice.Roll(BDice.Species.Six);
+		networkInstance.networkView.RPC("ReceiveBuff", RPCMode.Others, playerId, tilePosition, rollResult);
+		networkInstance.ReceiveBuff(playerId, tilePosition, rollResult);
+	}
+
+	[RPC]
+	private void ReceiveBuff(NetworkViewID playerId, Vector3 tilePosition, int rollResult)
+	{
+		var character = GameManager.GetCharacterManager(playerId).GetCharacterInstance();
+		character.SetBuffOrDeBuff(rollResult);
+		MultiAudioClip multiAudioClip = character.GetComponent<MultiAudioClip>();
+		multiAudioClip.audioSources[0].Play ();
+		BattleUIManager.Get().ShowBuffStartAnimation(playerId, tilePosition);
+	}
+
+	public static void UpdateBuff(NetworkViewID playerId, int remainTurn)
+	{
+		networkInstance.networkView.RPC("ReceiveUpdateBuff", RPCMode.Others, playerId, remainTurn);
+		networkInstance.ReceiveUpdateBuff(playerId, remainTurn);
+	}
+
+	[RPC]
+	private void ReceiveUpdateBuff(NetworkViewID playerId, int remainTurn)
+	{
+		var character = GameManager.GetCharacterManager(playerId).GetCharacterInstance();
+		character.UpdateBuffRemainTimeByNetwork(remainTurn);
+	}
 }

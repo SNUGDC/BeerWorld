@@ -120,11 +120,14 @@ public class GameManager : MonoBehaviour
 
 	public static CharacterManager GetCharacterManager(NetworkViewID id)
 	{
-		if (null == gameManagerInstance.otherCharacterManagers[id])
+		if (id.isMine)
 		{
-			Debug.LogError("Cannot find user of " + id);
+			return gameManagerInstance.myCharacterManager;
 		}
-		return gameManagerInstance.otherCharacterManagers[id];
+		else
+		{
+			return gameManagerInstance.otherCharacterManagers[id];
+		}
 	}
 
 	public bool isMyCharacterManager(CharacterManager unitManager)

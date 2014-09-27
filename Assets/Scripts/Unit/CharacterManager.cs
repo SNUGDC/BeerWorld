@@ -269,11 +269,7 @@ public class CharacterManager
         {
             if (tileType == Tile.TileType.Buff)
             {
-
-				BattleUIManager.Get().ShowBuffStartAnimation(GameManager.GetNetworkViewID(this), tile.transform.position);
-                characterInstance.SetBuffOrDeBuff();
-				multiAudioClip.audioSources[0].Play ();
-				
+							NetworkManager.Buff(NetworkManager.Get().Id, tile.transform.position);
             }
             else if (tileType == Tile.TileType.Item)
             {   
