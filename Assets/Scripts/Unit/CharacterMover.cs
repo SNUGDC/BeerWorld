@@ -55,6 +55,9 @@ public class CharacterMover : MonoBehaviour
 
 	public IEnumerator MoveTo(Tile toMoveTile)
 	{
+		int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
+		UpdateTileKey(currentTileKey);
+
 		//iTween.MoveTo(
 		Vector3 nextTilePosition = new Vector3(
 				toMoveTile.transform.position.x,
@@ -68,9 +71,6 @@ public class CharacterMover : MonoBehaviour
 			iTween.Hash("position", nextTilePosition, "time", moveTime, "easeType", DelayManager.Get().moveEaseType)
 		);
 		yield return Run.WaitSeconds(moveTime).WaitFor;
-
-		int currentTileKey = FieldTileUtility.GetKeyFromTile(toMoveTile);
-		UpdateTileKey(currentTileKey);
 	}
 
 	bool IsPreTile(Tile tile)
