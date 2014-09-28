@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Smooth.Slinq;
 
 public class TurnManager : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class TurnManager : MonoBehaviour
 	{
 		Player,
 		OtherPlayer,
-		Enemy
+		Enemy,
+		End
 	}
 
 	private State state = State.Player;
@@ -41,10 +43,26 @@ public class TurnManager : MonoBehaviour
 	}
 
 	Queue<EnemyManager> waitingEnemies;
-	private void EnemyTurnStart()
+	Run EndPlayerTurn()
 	{
-        var enemies = GameManager.gameManagerInstance.GetEnemiesListSizeOrdered();
+		var waiting = Run.WaitSeconds(0);
+		state = State.Enemy;
+
+		var enemies = GameManager.gameManagerInstance.GetEnemiesListSizeOrdered();
 		waitingEnemies = new Queue<EnemyManager>(enemies);
+
+		if (waitingEnemies.Count < 1)
+		{
+			state = State.End;
+			CountUpTurn();
+		}
+		else
+		{
+			NetworkManager.ShowEnemyTurn();
+			waiting = waiting.Then(() => Run.WaitSeconds(1f));
+		}
+
+		return waiting;
 	}
 
 	public Run PassTurn()
@@ -56,10 +74,7 @@ public class TurnManager : MonoBehaviour
 			currentTurnIndex = 0;
 			if (otherPlayers.Count == 0)
 			{
-				NetworkManager.ShowEnemyTurn();
-				waiting = waiting.Then(() => Run.WaitSeconds(1f));
-				state = State.Enemy;
-				EnemyTurnStart();
+				waiting = waiting.Then(() => EndPlayerTurn());
 			}
 			else
 			{
@@ -71,20 +86,17 @@ public class TurnManager : MonoBehaviour
 			currentTurnIndex += 1;
 			if (currentTurnIndex >= otherPlayers.Count)
 			{
-				NetworkManager.ShowEnemyTurn();
-				waiting = waiting.Then(() => Run.WaitSeconds(1f));
 				currentTurnIndex = 0;
-				state = State.Enemy;
-				EnemyTurnStart();
+				waiting = waiting.Then(() => EndPlayerTurn());
 			}
 		}
 		else
 		{
 			if (waitingEnemies.Count <= 0)
 			{
-				CountUpTurn();
 				waiting = waiting.Then(() => Run.WaitSeconds(1f));
 				state = State.Player;
+				CountUpTurn();
 			}
 		}
 		return waiting;
@@ -92,16 +104,19 @@ public class TurnManager : MonoBehaviour
 
 	private void CountUpTurn()
 	{
-        turnCount += 1;
-		NetworkManager.SyncTurnCount(turnCount);
+		Debug.Log((turnCount > MaxTurn));
+		Debug.Log(!(GameManager.gameManagerInstance.IsRemainMiddleEnemy()));
 
-        Debug.Log((turnCount > MaxTurn));
-        Debug.Log(!(GameManager.gameManagerInstance.IsRemainMiddleEnemy()));
-
-        if ((turnCount > MaxTurn) || !(GameManager.gameManagerInstance.IsRemainMiddleEnemy()))
-        {
-            NetworkManager.SendPopGameOverImg();
-        }
+		if ((turnCount > MaxTurn) || !(GameManager.gameManagerInstance.IsRemainMiddleEnemy()))
+		{
+			state = State.End;
+			NetworkManager.SendPopGameOverImg();
+		}
+		else
+		{
+			turnCount += 1;
+			NetworkManager.SyncTurnCount(turnCount);
+		}
 	}
 
 	public State GetState()
