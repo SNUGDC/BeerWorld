@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Smooth.Slinq;
 
 public class EnemyManager
 {
@@ -98,7 +99,7 @@ public class EnemyManager
     Tile SelectRandomTile(Dictionary<TileManager.TileDirection, Tile> emptyTiles)
     {
         int size = emptyTiles.Count;
-        int randomKey = Random.Range(0, size - 1);
+        int randomKey = Random.Range(0, size);
 
         List<Tile> targetTiles = new List<Tile>();
         foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in emptyTiles)
@@ -227,14 +228,13 @@ public class EnemyManager
 
 	void SetDestination (Dictionary<TileManager.TileDirection, Tile> movableDictionaryWithoutSaveTiles)
 	{
-        foreach (KeyValuePair<TileManager.TileDirection, Tile> pair in movableDictionaryWithoutSaveTiles)
-		{
-			toMoveTile = pair.Value;
-			if (toMoveTile == null)
-			{
-				continue;
-			}
-		}
+		Slinqable.Slinq(movableDictionaryWithoutSaveTiles.Values).
+			OrderBy((tile) => Random.Range(0, 100))
+			.FirstOrNone()
+			.ForEachOr(
+				(tile) => toMoveTile = tile,
+				() => Debug.LogError("Cannot find next tile")
+			);
 	}
 
 	void InstantiateUnit()
