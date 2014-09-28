@@ -230,7 +230,7 @@ public class CharacterManager
 
     Character.Item SelectRandomItem()
     {
-        int random = Random.Range(1, 6); //There are 6 kind of items.
+        int random = Random.Range(1, 4); //There are 4 kind of items.
 
         switch (random)
         {
@@ -241,10 +241,6 @@ public class CharacterManager
             case 3:
                 return Character.Item.Dodge;
             case 4:
-                return Character.Item.Berserk;
-            case 5:
-                return Character.Item.Block;
-            case 6:
                 return Character.Item.Adding;
             default:
                 return Character.Item.None;
