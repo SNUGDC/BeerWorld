@@ -55,7 +55,7 @@ public class Enemy : Unit
 		speciesOfDefenseDice = BDice.Species.Four;
 
 		numberOfMoveDice = 1;
-		speciesOfMoveDice = BDice.Species.One;
+		speciesOfMoveDice = BDice.Species.Six;
 	}
 
     void SetMiddleEnemyStats()
