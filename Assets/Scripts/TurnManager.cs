@@ -107,10 +107,15 @@ public class TurnManager : MonoBehaviour
 		Debug.Log((turnCount > MaxTurn));
 		Debug.Log(!(GameManager.gameManagerInstance.IsRemainMiddleEnemy()));
 
-		if ((turnCount > MaxTurn) || !(GameManager.gameManagerInstance.IsRemainMiddleEnemy()))
+		if (turnCount > MaxTurn)
 		{
 			state = State.End;
 			NetworkManager.SendPopGameOverImg();
+		}
+		else if (!GameManager.gameManagerInstance.IsRemainMiddleEnemy())
+		{
+			state = State.End;
+			NetworkManager.SendPopGameWinImg();
 		}
 		else
 		{

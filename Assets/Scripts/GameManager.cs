@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 	private Dictionary<string, EnemyManager> enemies = new Dictionary<string, EnemyManager>();
 
     public GameObject gameOverImg;
+		public GameObject gameWinImg;
 
     public static GameObject gameOverObj;
 
@@ -34,6 +35,18 @@ public class GameManager : MonoBehaviour
             Application.LoadLevel("Login");
         });
     }
+
+		public void PopGameWinImg()
+    {
+			foreach(KeyValuePair<NetworkViewID, CharacterManager> manager in otherCharacterManagers){
+				manager.Value.SetMoveStateInactive();
+			}
+			myCharacterManager.SetMoveStateInactive();
+			gameWinImg.SetActive(true);
+			Run.After(5f, () => {
+				Application.LoadLevel("Login");
+			});
+		}
 
     public bool IsRemainMiddleEnemy()
     {

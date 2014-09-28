@@ -15228,6 +15228,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 11400000, guid: 8ed448d76a4ed4a228d92b8b6da9d495, type: 2}
   enemyPrefab: {fileID: 11400002, guid: 0de8b6688967c4dbfa015bb37db0631e, type: 2}
   gameOverImg: {fileID: 385891000}
+  gameWinImg: {fileID: 385891000}
 --- !u!1 &1061701939
 GameObject:
   m_ObjectHideFlags: 0

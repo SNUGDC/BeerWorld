@@ -55,6 +55,17 @@ public partial class NetworkManager : MonoBehaviour {
         GameManager.gameManagerInstance.PopGameOverImg();
     }
 
+	public static void SendPopGameWinImg()
+	{
+		networkInstance.networkView.RPC("ReceivePopGameWinImg", RPCMode.All);
+	}
+
+	[RPC]
+	private void ReceivePopGameWinImg()
+	{
+		GameManager.gameManagerInstance.PopGameWinImg();
+	}
+
 	public static void SendRollDice(int diceResult)
 	{
 		networkInstance.networkView.RPC("ReceiveRollDice", RPCMode.Others, networkInstance.Id, diceResult);
