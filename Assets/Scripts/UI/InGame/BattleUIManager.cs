@@ -211,6 +211,6 @@ public class BattleUIManager : MonoBehaviour
 	public void SetTurnCount(int turnCount)
 	{
 		turnUI.turnAlarm.SendMessage("turnPlayer");
-		turnUI.turnText.text = turnCount + "/15";
+		turnUI.turnText.text = turnCount + "/" + TurnManager.Get().MaxTurn;
 	}
 }

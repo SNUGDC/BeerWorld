@@ -49,7 +49,7 @@ public class EnemyManager
 	private CharacterMover characterMover;
 
 	private int remainMoveCount = 0;
-    int makeCooldown = 2;
+    int makeCooldown = 1;
 
 	public Enemy GetEnemyInstance()
 	{

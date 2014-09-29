@@ -28,9 +28,9 @@ public class TurnManager : MonoBehaviour
 	private State state = State.Player;
 	private int currentTurnIndex;
 	private List<NetworkViewID> otherPlayers = new List<NetworkViewID>();
-	public int turnCount = 15;
+	public int turnCount = 1;
 
-    public int MaxTurn = 1;
+    public int MaxTurn = 10;
 
 	public void AddPlayerTEMP(NetworkViewID otherPlayer)
 	{
@@ -104,10 +104,10 @@ public class TurnManager : MonoBehaviour
 
 	private void CountUpTurn()
 	{
-		Debug.Log((turnCount > MaxTurn));
+		Debug.Log((turnCount > MaxTurn) + ", " +  turnCount + ", " + MaxTurn);
 		Debug.Log(!(GameManager.gameManagerInstance.IsRemainMiddleEnemy()));
 
-		if (turnCount > MaxTurn)
+		if (turnCount >= MaxTurn)
 		{
 			state = State.End;
 			NetworkManager.SendPopGameOverImg();
